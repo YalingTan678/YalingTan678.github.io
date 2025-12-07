@@ -29,6 +29,8 @@ author:
   location         : "West Lafayette, IN"
   email            : "tyaling@purdue.edu" 
 
+  future: true
+
   # Academic websites
   googlescholar    : "https://scholar.google.com/citations?user=_BC9GucAAAAJ&hl=en"
   orcid            : "https://orcid.org/my-orcid?orcid=0009-0003-3935-4113"
