@@ -38,8 +38,15 @@ author_profile: true
 </style>
 
 <p style="font-size:1.2em; line-height:1.8;">
-I am a first-year Ph.D. student in Learning Design & Technology at Purdue University, advised by Dr. Victoria Lynn Lowell (Walker). I received my master's degree in Interpreting from Northeastern University in China in 2024. My research sits at the intersection of informal digital learning of English, self-directed learning, and AI-mediated learning. I explore how generative AI can support equitable, authentic, and pragmatically rich learning experiences for multilingual learners.
+I am a first-year Ph.D. student in 
+<a href="https://www.education.purdue.edu/learning-design-technology/" target="_blank">Learning Design & Technology at Purdue University</a>, 
+advised by <a href="https://education.purdue.edu/faculty-profiles/victoria-lynn-lowell/" target="_blank">Dr. Victoria Lynn Lowell (Walker)</a>. 
+I received my master's degree in Interpreting from 
+<a href="https://www.neu.edu.cn/" target="_blank">Northeastern University in China</a> in 2024. 
+My research sits at the intersection of informal digital learning of English, self-directed learning, and AI-mediated learning. 
+I explore how generative AI can support equitable, authentic, and pragmatically rich learning experiences for multilingual learners.
 </p>
+
 
 <h2>Research Interests</h2>
 
