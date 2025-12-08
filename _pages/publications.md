@@ -18,9 +18,9 @@ You can also find my articles on [my Google Scholar profile]({{ site.author.goog
 
 ## Conference Presentations
 
-<sup>*</sup>Denotes upcoming presentation.
+\* Upcoming presentation.
 
-- **Tan, L. Y.**<sup>*</sup>, Lowell, V., & Li, B. (2026, April). A meta-analysis on the achievement of technology on students from low-income families. Paper to be presented at the *AERA International Convention*, Los Angeles, CA.
+- **Tan, L. Y.**\*, Lowell, V., & Li, B. (2026, April). A meta-analysis on the achievement of technology on students from low-income families. Paper to be presented at the *AERA International Convention*, Los Angeles, CA.
 
 - **Tan, L. Y.**, Lowell, V., & Li, B. (2025, November 10). Assessing the effects of extramural GAI-mediated informal digital learning of English on pragmatic and communicative competence of Chinese undergraduates: A mixed-methods study. Paper presented at the *Purdue AI in P-12 Conference*, West Lafayette, IN.
 
@@ -31,5 +31,6 @@ You can also find my articles on [my Google Scholar profile]({{ site.author.goog
 - **Tan, L. Y.**, & Zhang, Y. (2024, May 17–19). Exploring the extracurricular development of AI-assisted English learners: A quantitative phenomenological study. Paper presented at the *3rd International Conference on Sociocultural Theory and Foreign Language Research*, Guangdong, China.
 
 - **Tan, L. Y.** (2024, May 30–June 1). Participated in the *10th International Conference on Intercultural Pragmatics and Communication*, Pisa, Italy.
+
 
 
