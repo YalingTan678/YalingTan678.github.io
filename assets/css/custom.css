@@ -81,3 +81,39 @@ a:hover {
   font-size: 16px;
   line-height: 1.6;
 }
+/* 美化左侧 author profile 栏字体和排版 */
+.author__name {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+}
+
+.author__pronouns {
+  font-size: 1rem;
+  font-style: italic;
+  color: #555;
+}
+
+.author__bio {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.author__urls li {
+  font-size: 1rem;
+  margin-bottom: 0.4rem;
+}
+
+.author__urls a {
+  font-size: 1rem;
+  color: #0077cc;
+}
+
+.author__avatar img {
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  max-width: 120px;
+}
+
