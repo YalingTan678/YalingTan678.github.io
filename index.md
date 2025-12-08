@@ -5,8 +5,12 @@ author_profile: true
 
 <h1 style="font-size:2.2rem; font-weight:600; margin-bottom:1rem;">Lily Tan</h1>
 <p style="font-size:1.2rem; line-height:1.8;">
-Ph.D. Student in Learning Design & Technology at Purdue University<br>
-My research sits at the intersection of language learning, educational technology, and AI-mediated learning environments. I explore how generative AI can support equitable, authentic, and pragmatically rich learning experiences for multilingual learners.
+I study how emerging technologies transform education beyond the classroom. My work centers on AI-assisted self-directed learning and IDLE, aiming to design authentic learning pathways that bridge the gap between theoretical knowledge and real-world application.
+•	Informal Digital Learning of English
+•	AI-assisted Self-directed Learning
+•	Authentic Learning and Design in AI learning
+<img width="468" height="103" alt="image" src="https://github.com/user-attachments/assets/b2cba09b-7e04-4305-823c-a8fbe7b85f5f" />
+
 </p>
 
 <!-- 可选研究议程图示 -->
