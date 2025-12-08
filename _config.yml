@@ -30,8 +30,9 @@ author:
   orcid            : "https://orcid.org/my-orcid?orcid=0009-0003-3935-4113"
   researchgate     : "https://www.researchgate.net/profile/Lily-Tan-9?ev=hdr_xprf"
   linkedin         : "lily-tan-50bb152b5"
-  
-  nav:
+
+# Navigation bar
+nav:
   - title: "Home"
     url: /
   - title: "Research"
@@ -40,6 +41,7 @@ author:
     url: /teaching/
   - title: "Service"
     url: /service/
+
 
 
 # Publication Category
