@@ -1,12 +1,62 @@
 ---
-layout: archive
+layout: single
 title: "Teaching"
 permalink: /teaching/
 author_profile: true
 ---
 
-{% include base_path %}
+## Teaching Philosophy
 
-{% for post in site.teaching reversed %}
+我相信教学是帮助学生在真实情境中实践语言与技术的过程……（这里写你自己的 teaching philosophy，一两段就好，可以中英文混合）
+
+<hr>
+
+## Teaching Experience Highlights
+
+<div class="row">
+
+  <!-- 卡片 1 -->
+  <div class="col-md-4">
+    <a href="/teaching/linguistics-101/">
+      <img src="/images/teaching-ling101.jpg"
+           alt="Teaching linguistics course"
+           style="width:100%; border-radius:18px; box-shadow:0 10px 25px rgba(0,0,0,0.12); margin-bottom:12px;">
+    </a>
+    <p><strong>Teaching Assistant – Linguistics 101</strong><br>
+      Designing in-class activities and discussion tasks to support first-year undergraduates in learning core concepts in linguistics.
+    </p>
+  </div>
+
+  <!-- 卡片 2 -->
+  <div class="col-md-4">
+    <a href="/teaching/idle-workshop/">
+      <img src="/images/teaching-idle-workshop.jpg"
+           alt="IDLE workshop"
+           style="width:100%; border-radius:18px; box-shadow:0 10px 25px rgba(0,0,0,0.12); margin-bottom:12px;">
+    </a>
+    <p><strong>Workshop Facilitator – AI-mediated IDLE</strong><br>
+      Leading workshops that introduce AI-mediated informal digital learning of English and guide students to design their own learning routines.
+    </p>
+  </div>
+
+  <!-- 卡片 3 -->
+  <div class="col-md-4">
+    <a href="/teaching/k12-translation-course/">
+      <img src="/images/teaching-k12.jpg"
+           alt="Teaching younger learners"
+           style="width:100%; border-radius:18px; box-shadow:0 10px 25px rgba(0,0,0,0.12); margin-bottom:12px;">
+    </a>
+    <p><strong>Instructor – K-12 Translation & Storytelling</strong><br>
+      Designing project-based translation and storytelling tasks to engage younger learners with authentic English materials.
+    </p>
+  </div>
+
+</div>
+
+<hr>
+
+<!-- 如果你还想保留原来 academicpages 自动列出的 teaching 列表，可以在下面加： -->
+
+{% raw %}{% for post in site.teaching reversed %}
   {% include archive-single.html %}
-{% endfor %}
+{% endfor %}{% endraw %}
