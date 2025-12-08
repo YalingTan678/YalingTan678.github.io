@@ -47,7 +47,6 @@ author_profile: true
 
 <div class="teach-content">
 
-<h2>Teaching Philosophy</h2>
 <p>My teaching philosophy is grounded in the belief that language acquisition is most effective when it is data-informed, authentic, and technologically empowered. Drawing on my research in Informal Digital Learning of English (IDLE) and AI-assisted self-directed learning, I aim to transition students from passive recipients of knowledge to active, autonomous learners who can navigate real-world linguistic challenges.</p>
 
 <h2>Teaching Experience Highlights</h2>
