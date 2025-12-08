@@ -12,7 +12,7 @@ author_profile: true
   gap: 1.5rem;
   margin-top: 2rem;
 }
-
+ 
 .card {
   flex: 1 1 300px;
   background-color: #fff3e0;
