@@ -1,7 +1,10 @@
 ---
-layout: home
+layout: single
+title: "Lily Tan"
+permalink: /
 author_profile: true
 ---
+
 
 <h1 style="font-size:2.2rem; font-weight:600; margin-bottom:1rem;">Lily Tan</h1>
 <p style="font-size:1.2rem; line-height:1.8;">
