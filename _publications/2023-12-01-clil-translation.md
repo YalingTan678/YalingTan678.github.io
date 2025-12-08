@@ -5,6 +5,7 @@ permalink: /publication/2023-12-01-clil-translation
 excerpt: 'This study explores innovations in the talent cultivation mode for Master of Translation and Interpreting (MTI) from the perspective of Content and Language Integrated Learning (CLIL).'
 date: 2023-12-01
 venue: 'Advances in Education'
+publication_type: "journal"
 paperurl: 'https://doi.org/10.12677/AE.2023.13121549'
 citation: 'Gao, L., & <strong>Tan, Y. L.</strong> (2023). Study on Master of Translation and Interpreting Talent Cultivation Mode from the Perspective of CLIL. <i>Advances in Education</i>, 13(12), 10029-10034.'
 ---
