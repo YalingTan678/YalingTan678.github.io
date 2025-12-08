@@ -15,7 +15,7 @@ main:
     url: /teaching/    
     
   - title: "Service"
-    url: /portfolio/
+    url: service/
         
   - title: "Learning & Development"
     url: /year-archive/
