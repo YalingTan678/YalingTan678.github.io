@@ -5,39 +5,6 @@ permalink: /publications/
 author_profile: true
 ---
 
-<style>
-  /* 正文区域字体、行距 */
-  .pub-content {
-    font-size: 18px;
-    line-height: 1.7;
-  }
-
-  .pub-content h2 {
-    font-size: 24px;
-    margin-top: 1.8rem;
-    margin-bottom: 0.8rem;
-  }
-
-  .pub-content li {
-    margin-bottom: 0.4rem;
-  }
-
-  /* 左侧个人信息栏字体 */
-  .author__name {
-    font-size: 1.3rem;
-  }
-
-  .author__content {
-    font-size: 0.98rem;
-  }
-
-  .author__urls-wrapper {
-    font-size: 0.95rem;
-  }
-</style>
-
-<div class="pub-content">
-
 You can also find my articles on [my Google Scholar profile]({{ site.author.googlescholar }}).
 
 ## Peer-Reviewed Journal Articles
@@ -64,5 +31,3 @@ You can also find my articles on [my Google Scholar profile]({{ site.author.goog
 - **Tan, L. Y.**, & Zhang, Y. (2024, May 17–19). Exploring the extracurricular development of AI-assisted English learners: A quantitative phenomenological study. Paper presented at the *3rd International Conference on Sociocultural Theory and Foreign Language Research*, Guangdong, China.
 
 - **Tan, L. Y.** (2024, May 30–June 1). Participated in the *10th International Conference on Intercultural Pragmatics and Communication*, Pisa, Italy.
-
-</div>
