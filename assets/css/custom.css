@@ -1,15 +1,35 @@
-<style>
+/* 通用按钮样式 */
 .btn {
   display: inline-block;
   padding: 0.6rem 1.2rem;
-  background-color: #0055a5;
   color: white;
   border-radius: 6px;
   text-decoration: none;
   font-weight: 500;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: background-color 0.3s ease;
 }
-.btn:hover {
-  background-color: #003f7f;
+
+/* Publications – 蓝色 */
+.btn-publications {
+  background-color: #0077cc;
 }
-</style>
+.btn-publications:hover {
+  background-color: #005fa3;
+}
+
+/* Research – 绿色 */
+.btn-research {
+  background-color: #2e8b57;
+}
+.btn-research:hover {
+  background-color: #246b45;
+}
+
+/* Teaching – 橙色 */
+.btn-teaching {
+  background-color: #f57c00;
+}
+.btn-teaching:hover {
+  background-color: #e06b00;
+}
