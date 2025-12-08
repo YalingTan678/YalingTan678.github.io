@@ -23,9 +23,10 @@ I am a first-year Ph.D. student in Learning Design & Technology at Purdue Univer
 </ul>
 
 <p style="margin-top:2rem;">
-  <a href="/publications/" class="btn" style="margin-right:1rem;">Publications</a>
-  <a href="/research/" class="btn" style="margin-right:1rem;">Research Projects</a>
-  <a href="/teaching/" class="btn">Teaching</a>
+  <a href="/publications/" class="btn btn-publications" style="margin-right:1rem;">Publications</a>
+  <a href="/research/" class="btn btn-research" style="margin-right:1rem;">Research Projects</a>
+  <a href="/teaching/" class="btn btn-teaching">Teaching</a>
 </p>
+
 
 
