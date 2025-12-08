@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "Generative AI, informal English learning, and equitable learning design"
+title: "Generative AI, IDLE, and equitable learning design"
 permalink: /
 author_profile: true
 ---
@@ -43,7 +43,7 @@ I am a first-year Ph.D. student in
 advised by <a href="https://education.purdue.edu/about/directory/victoria-lowell/" target="_blank">Dr. Victoria Lynn Lowell (Walker)</a>. 
 I received my master's degree in Interpreting from 
 <a href="https://www.neu.edu.cn/" target="_blank">Northeastern University in China</a> in 2024. 
-My research sits at the intersection of informal digital learning of English, self-directed learning, and AI-mediated learning. 
+My research sits at the intersection of informal digital learning of English (IDLE), self-directed learning (SDL), and AI-mediated learning. 
 I explore how generative AI can support equitable, authentic, and pragmatically rich learning experiences for multilingual learners.
 </p>
 
