@@ -6,9 +6,9 @@ author_profile: true
 ---
 
 <style>
-  /* 正文区域 */
+  /* 正文区域字体、行距 */
   .pub-content {
-    font-size: 18px;   /* 正文字号 */
+    font-size: 18px;
     line-height: 1.7;
   }
 
@@ -22,20 +22,19 @@ author_profile: true
     margin-bottom: 0.4rem;
   }
 
-  /* 左侧个人信息栏字号 */
+  /* 左侧个人信息栏字体 */
   .author__name {
-    font-size: 1.3rem;   /* 你的名字，例如 Lily Tan */
+    font-size: 1.3rem;
   }
 
   .author__content {
-    font-size: 0.98rem;  /* she/her、PhD Student 那些 */
+    font-size: 0.98rem;
   }
 
   .author__urls-wrapper {
-    font-size: 0.95rem;  /* Email、Google Scholar 等链接 */
+    font-size: 0.95rem;
   }
 </style>
-
 
 <div class="pub-content">
 
@@ -48,6 +47,7 @@ You can also find my articles on [my Google Scholar profile]({{ site.author.goog
 - **Tan, L. Y.**, & Gao, L. (2025). Pointing to context from a relevance theory perspective: A comparative study of human and machine interpreting. *Mediterranean Journal of Social Sciences, 16*(3), 1. [https://doi.org/10.36941/mjss-2025-0023](https://doi.org/10.36941/mjss-2025-0023)
 
 - Gao, L., & **Tan, Y.** (2023). Study on Master of Translation and Interpreting talent cultivation mode from the perspective of CLIL. *Education Advances, 13*(12), 10029–10034. [https://doi.org/10.12677/AE.2023.13121549](https://doi.org/10.12677/AE.2023.13121549)
+
 
 ## Conference Presentations
 
