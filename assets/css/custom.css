@@ -116,4 +116,33 @@ a:hover {
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   max-width: 120px;
 }
+/* 限制页面最大宽度，避免放大后内容溢出 */
+.page__content {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+/* 卡片容器自动换行并居中 */
+.card-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+/* 卡片最大宽度限制 */
+.card {
+  flex: 1 1 300px;
+  max-width: 400px;
+}
+body {
+  font-size: 1rem;
+}
+
+@media screen and (min-width: 1200px) {
+  body {
+    font-size: 1.1rem;
+  }
+}
 
