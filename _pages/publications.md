@@ -5,6 +5,28 @@ permalink: /publications/
 author_profile: true
 ---
 
+<style>
+  /* 整个 publications 正文 */
+  .pub-content {
+    font-size: 18px;       /* 调整正文字号（默认大概是 16px）*/
+    line-height: 1.7;      /* 行距大一点，更好读 */
+  }
+
+  /* 小标题 Peer-Reviewed Journal Articles / Conference Presentations */
+  .pub-content h2 {
+    font-size: 24px;
+    margin-top: 1.8rem;
+    margin-bottom: 0.8rem;
+  }
+
+  /* 列表每条之间空一点 */
+  .pub-content li {
+    margin-bottom: 0.4rem;
+  }
+</style>
+
+<div class="pub-content">
+
 You can also find my articles on [my Google Scholar profile]({{ site.author.googlescholar }}).
 
 ## Peer-Reviewed Journal Articles
@@ -14,7 +36,6 @@ You can also find my articles on [my Google Scholar profile]({{ site.author.goog
 - **Tan, L. Y.**, & Gao, L. (2025). Pointing to context from a relevance theory perspective: A comparative study of human and machine interpreting. *Mediterranean Journal of Social Sciences, 16*(3), 1. [https://doi.org/10.36941/mjss-2025-0023](https://doi.org/10.36941/mjss-2025-0023)
 
 - Gao, L., & **Tan, Y.** (2023). Study on Master of Translation and Interpreting talent cultivation mode from the perspective of CLIL. *Education Advances, 13*(12), 10029–10034. [https://doi.org/10.12677/AE.2023.13121549](https://doi.org/10.12677/AE.2023.13121549)
-
 
 ## Conference Presentations
 
@@ -32,5 +53,4 @@ You can also find my articles on [my Google Scholar profile]({{ site.author.goog
 
 - **Tan, L. Y.** (2024, May 30–June 1). Participated in the *10th International Conference on Intercultural Pragmatics and Communication*, Pisa, Italy.
 
-
-
+</div>
