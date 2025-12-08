@@ -22,9 +22,9 @@ I am a first-year Ph.D. student in Learning Design & Technology at Purdue Univer
   Designing authentic learning pathways that bridge theoretical knowledge and real-world application.</li>
 </ul>
 
-<p style="margin-top:2rem;">
-  <a href="/publications/" class="btn btn-publications" style="margin-right:1rem;">Publications</a>
-  <a href="/research/" class="btn btn-research" style="margin-right:1rem;">Research Projects</a>
+<p style="margin-top:2em;">
+  <a href="/publications/" class="btn btn-publications" style="margin-right:1em;">Publications</a>
+  <a href="/publications/" class="btn btn-research" style="margin-right:1em;">Research Projects</a>
   <a href="/teaching/" class="btn btn-teaching">Teaching</a>
 </p>
 
