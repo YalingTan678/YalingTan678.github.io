@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "Lily Tan"
+title: "Generative AI, informal English learning, and equitable learning design"
 permalink: /
 author_profile: true
 ---
