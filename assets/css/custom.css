@@ -8,9 +8,11 @@
   font-weight: 500;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   transition: background-color 0.3s ease;
+  text-align: center;
+  white-space: nowrap;
 }
 
-/* Publications – 蓝色 */
+/* 按钮颜色分类 */
 .btn-publications {
   background-color: #0077cc;
 }
@@ -18,7 +20,6 @@
   background-color: #005fa3;
 }
 
-/* Research – 绿色 */
 .btn-research {
   background-color: #2e8b57;
 }
@@ -26,10 +27,57 @@
   background-color: #246b45;
 }
 
-/* Teaching – 橙色 */
 .btn-teaching {
   background-color: #f57c00;
 }
 .btn-teaching:hover {
-  background-color: #e06b00;
+  background-color: #e66b00;
+}
+
+/* 链接样式 */
+a {
+  color: #0077cc;
+  text-decoration: none;
+  font-weight: 500;
+}
+a:hover {
+  text-decoration: underline;
+  color: #005fa3;
+}
+
+/* 按钮容器响应式布局 */
+.btn-group {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+/* 教学卡片颜色分类 */
+.teach-card {
+  padding: 1rem 1.2rem;
+  border-radius: 10px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+  margin-bottom: 1.5rem;
+}
+.teach-publications {
+  background-color: #eaf4ff;
+  border-left: 6px solid #0077cc;
+}
+.teach-research {
+  background-color: #e6f7ec;
+  border-left: 6px solid #2e8b57;
+}
+.teach-teaching {
+  background-color: #fff3e0;
+  border-left: 6px solid #f57c00;
+}
+.teach-card-title {
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+.teach-card p {
+  font-size: 16px;
+  line-height: 1.6;
 }
