@@ -319,3 +319,7 @@ compress_html:
   ignore:
     envs: development
     future: true
+    # Custom CSS
+custom_css:
+  - "/assets/css/custom.css"
+
