@@ -55,7 +55,7 @@ My service philosophy centers on inclusive design, mentorship, and community-bui
 
 <div class="card">
   <h3> Committee Member – GESC</h3>
-  <p><strong>Purdue Graduate Student Education Council</strong> (Sep 2025–2026)<br>
+  <p><strong>Purdue Graduate Student Education Council</strong> (Sep 2025–Present)<br>
   • Coordinate mentorship initiatives with committee members<br>
   • Match mentors and mentees based on research interests and career goals<br>
   • Design and promote events to foster meaningful connections</p>
