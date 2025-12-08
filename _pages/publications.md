@@ -5,6 +5,26 @@ permalink: /publications/
 author_profile: true
 ---
 
+<style>
+  /* 正文区域字体、行距 */
+  .pub-content {
+    font-size: 18px;   /* 想更大就改成 19px, 20px */
+    line-height: 1.7;
+  }
+
+  .pub-content h2 {
+    font-size: 24px;
+    margin-top: 1.6rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .pub-content li {
+    margin-bottom: 0.4rem;
+  }
+</style>
+
+<div class="pub-content" markdown="1">
+
 You can also find my articles on [my Google Scholar profile]({{ site.author.googlescholar }}).
 
 ## Peer-Reviewed Journal Articles
@@ -29,5 +49,6 @@ You can also find my articles on [my Google Scholar profile]({{ site.author.goog
 - **Tan, L. Y.** (2024, September 29). Pointing to context from a relevance theory perspective: A comparative study of human and machine interpreting. Paper presented at the *XXIInd International Computer Assisted Language Learning Conference*, Tokyo, Japan.
 
 - **Tan, L. Y.**, & Zhang, Y. (2024, May 17–19). Exploring the extracurricular development of AI-assisted English learners: A quantitative phenomenological study. Paper presented at the *3rd International Conference on Sociocultural Theory and Foreign Language Research*, Guangdong, China.
+</div>
 
 - **Tan, L. Y.** (2024, May 30–June 1). Participated in the *10th International Conference on Intercultural Pragmatics and Communication*, Pisa, Italy.
