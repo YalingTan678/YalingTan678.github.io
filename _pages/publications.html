@@ -12,9 +12,19 @@ author_profile: true
 
 {% include base_path %}
 
-{% for post in site.publications reversed %}
-  {% include archive-single.html %}
+<h2>Journal Articles</h2>
+{% for post in site.publications %}
+  {% if post.pubtype == "journal" %}
+    {% include archive-single.html %}
+  {% endif %}
 {% endfor %}
 
+<hr>
 
+<h2>Conference Presentations</h2>
+{% for post in site.publications %}
+  {% if post.pubtype == "conference" %}
+    {% include archive-single.html %}
+  {% endif %}
+{% endfor %}
 
