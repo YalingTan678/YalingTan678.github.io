@@ -6,24 +6,36 @@ author_profile: true
 ---
 
 <style>
-  /* 整个 publications 正文 */
+  /* 正文区域 */
   .pub-content {
-    font-size: 18px;       /* 调整正文字号（默认大概是 16px）*/
-    line-height: 1.7;      /* 行距大一点，更好读 */
+    font-size: 18px;   /* 正文字号 */
+    line-height: 1.7;
   }
 
-  /* 小标题 Peer-Reviewed Journal Articles / Conference Presentations */
   .pub-content h2 {
     font-size: 24px;
     margin-top: 1.8rem;
     margin-bottom: 0.8rem;
   }
 
-  /* 列表每条之间空一点 */
   .pub-content li {
     margin-bottom: 0.4rem;
   }
+
+  /* 左侧个人信息栏字号 */
+  .author__name {
+    font-size: 1.3rem;   /* 你的名字，例如 Lily Tan */
+  }
+
+  .author__content {
+    font-size: 0.98rem;  /* she/her、PhD Student 那些 */
+  }
+
+  .author__urls-wrapper {
+    font-size: 0.95rem;  /* Email、Google Scholar 等链接 */
+  }
 </style>
+
 
 <div class="pub-content">
 
