@@ -5,6 +5,7 @@ permalink: /publication/2025-05-10-pointing-to-context
 excerpt: 'This comparative study investigates the linguistic differences arising from the adaptive expertise of human interpreters versus machine devices in simultaneous interpreting.'
 date: 2025-05-10
 venue: 'Mediterranean Journal of Social Sciences'
+publication_type: "journal"
 paperurl: 'https://doi.org/10.36941/mjss-2025-0023'
 citation: '<strong>Tan, Y. L.</strong>, & Gao, L. (2025). Pointing to Context from a Relevance Theory Perspective: A Comparative Study of Human and Machine Interpreting. <i>Mediterranean Journal of Social Sciences</i>, 16(3).'
 ---
