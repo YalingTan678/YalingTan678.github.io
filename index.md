@@ -75,6 +75,13 @@ I explore how generative AI can support equitable, authentic, and pragmatically 
   <a href="/teaching/" class="btn btn-teaching">Teaching</a>
 </p>
 
+<div class="btn-group">
+  <a href="/publications/" class="btn btn-publications">Publications</a>
+  <a href="/teaching/" class="btn btn-teaching">Teaching</a>
+   <a href="/service/" class="btn btn-service">Service</a>
+</div>
+
+
 
 
 
