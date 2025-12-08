@@ -5,6 +5,7 @@ permalink: /publication/2025-12-01-two-years-innovation
 excerpt: 'This paper provides a systematic review of empirical generative AI research in language learning and teaching over the past two years.'
 date: 2025-12-01
 venue: 'Computers and Education: Artificial Intelligence'
+publication_type: "journal"
 paperurl: 'https://doi.org/10.1016/j.caeai.2025.100445'
 citation: 'Li, B., <strong>Tan, Y. L.</strong>, Wang, C., & Lowell, V. (2025). Two years of innovation: A systematic review of empirical generative AI research in language learning and teaching. <i>Computers and Education: Artificial Intelligence</i>, 9, 100445.'
 ---
