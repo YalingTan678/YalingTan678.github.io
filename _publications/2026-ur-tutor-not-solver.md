@@ -12,16 +12,10 @@ badge: 'Under Review'
 
 ## PeteChat Interface
 
-<div class="fig-gallery">
-  <div>
-    <img src="/images/pubs/petechat-v1.png" alt="PeteChat Version 1 — initial interface with critical issues" onclick="window.open(this.src)">
-    <div class="fig-caption">Phase 1: Initial interface — identified critical UX issues</div>
-  </div>
-  <div>
-    <img src="/images/pubs/petechat-v2.png" alt="PeteChat Version 2 — redesigned with SRL features" onclick="window.open(this.src)">
-    <div class="fig-caption">Phase 2: Redesigned with SRL scaffolding &amp; learning goals</div>
-  </div>
-</div>
+| Phase 1: Initial UI | Phase 2: Redesigned with SRL |
+|:---:|:---:|
+| ![PeteChat V1](/images/pubs/petechat-v1.png) | ![PeteChat V2](/images/pubs/petechat-v2.png) |
+| *Identified critical UX issues* | *Added learning goals & scaffolding* |
 
 ## Overview
 
