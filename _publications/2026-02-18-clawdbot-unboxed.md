@@ -10,13 +10,23 @@ publication_type: "talk"
 authors: '<strong>Tan, L.</strong>'
 ---
 
+## Event Poster
+
+![Clawdbot Unboxed — AI Lunch and Learn Series poster](/images/pubs/clawdbot-poster.jpg)
+
 ## Presentation Summary
 
-This invited presentation was part of the AI Lunch and Learn Series hosted by the College of Education at Purdue University. The talk provided a critical examination of conversational AI tools (specifically Clawdbot) used in educational settings.
+This 50-minute invited presentation was part of the **AI Lunch and Learn Series** hosted by the College of Education at Purdue University (February 18, 2026, BRNG 6138). The talk explained why Clawdbot/Moltbot/Openclaw is trending on GitHub and what makes it useful for "always-on" AI workflows.
 
 ## Topics Covered
 
 - Overview of conversational AI capabilities in education
-- Analysis of why these tools have gained rapid popularity among educators and students
+- Why Clawdbot is trending: core features, workflow, and key trade-offs
+- Step-by-step installation walkthrough
+- 1–2 practical use cases: how to set up AI to monitor, trigger, and run tasks 24/7
 - Critical examination of limitations, failure modes, and ethical concerns
 - Implications for instructional design and responsible AI integration
+
+## Resources
+
+- [Download Presentation Slides (PPTX)](/files/clawdbot-slides.pptx)

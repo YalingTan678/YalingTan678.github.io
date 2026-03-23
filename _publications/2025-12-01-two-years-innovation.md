@@ -16,71 +16,41 @@ citation: 'Li, B., *Tan, L.Y., Wang, C., & Lowell, V. (2025). Two years of innov
 
 This systematic review examines the evolution of empirical research on generative AI in language learning and teaching from 2023 to 2024. Following **PRISMA guidelines**, we analyzed **144 peer-reviewed articles** from Web of Science, Scopus, and ERIC databases.
 
-## At a Glance
-
-<div class="stat-bar">
-  <div class="stat-card"><div class="stat-card__num">144</div><div class="stat-card__label">Articles Analyzed</div></div>
-  <div class="stat-card"><div class="stat-card__num">6</div><div class="stat-card__label">Research Foci</div></div>
-  <div class="stat-card"><div class="stat-card__num">86.7%</div><div class="stat-card__label">Higher Education</div></div>
-  <div class="stat-card"><div class="stat-card__num">38.9%</div><div class="stat-card__label">Mixed Methods</div></div>
-</div>
+**At a glance:** 144 articles analyzed · 6 research foci · 86.7% higher education · 38.9% mixed methods
 
 ## Key Figures
 
-<div class="fig-gallery">
-  <div>
-    <img src="/images/pubs/two-years-growth.jpg" alt="Publication growth 2023 vs 2024" onclick="window.open(this.src)">
-    <div class="fig-caption">Publication growth: 21 (2023) → 123 (2024)</div>
-  </div>
-  <div>
-    <img src="/images/pubs/two-years-pie.jpg" alt="Journal distribution by field" onclick="window.open(this.src)">
-    <div class="fig-caption">Journal distribution by discipline</div>
-  </div>
-  <div>
-    <img src="/images/pubs/two-years-prisma.jpg" alt="PRISMA flow diagram" onclick="window.open(this.src)">
-    <div class="fig-caption">PRISMA flow diagram: screening process</div>
-  </div>
-  <div>
-    <img src="/images/pubs/two-years-journals.jpg" alt="Top journals by article count" onclick="window.open(this.src)">
-    <div class="fig-caption">Top journals by article count</div>
-  </div>
-</div>
+| Publication Growth (2023 vs 2024) | Journal Distribution |
+|:---:|:---:|
+| ![Growth chart](/images/pubs/two-years-growth.jpg) | ![Pie chart](/images/pubs/two-years-pie.jpg) |
+| *21 articles (2023) → 123 articles (2024)* | *43.1% Ed Tech, 38.9% Applied Linguistics* |
+
+| PRISMA Flow Diagram | Top Journals |
+|:---:|:---:|
+| ![PRISMA](/images/pubs/two-years-prisma.jpg) | ![Journals](/images/pubs/two-years-journals.jpg) |
+| *Two-phase screening of 1,214 articles* | *Top: Computers & Education: AI (16)* |
 
 ## Six Research Foci
 
-<div class="viz-bar">
-  <div class="viz-bar__row">
-    <div class="viz-bar__label">Writing & Feedback</div>
-    <div class="viz-bar__track"><div class="viz-bar__fill viz-bar__fill--1" style="width:42.4%">42.4%</div></div>
-  </div>
-  <div class="viz-bar__row">
-    <div class="viz-bar__label">Perceptions & Attitudes</div>
-    <div class="viz-bar__track"><div class="viz-bar__fill viz-bar__fill--2" style="width:28%">28%</div></div>
-  </div>
-  <div class="viz-bar__row">
-    <div class="viz-bar__label">Teaching & Learning</div>
-    <div class="viz-bar__track"><div class="viz-bar__fill viz-bar__fill--3" style="width:22%">22%</div></div>
-  </div>
-  <div class="viz-bar__row">
-    <div class="viz-bar__label">Psychological & Cognitive</div>
-    <div class="viz-bar__track"><div class="viz-bar__fill viz-bar__fill--4" style="width:18%">18%</div></div>
-  </div>
-  <div class="viz-bar__row">
-    <div class="viz-bar__label">Language Skills</div>
-    <div class="viz-bar__track"><div class="viz-bar__fill viz-bar__fill--5" style="width:15%">15%</div></div>
-  </div>
-  <div class="viz-bar__row">
-    <div class="viz-bar__label">Implementation</div>
-    <div class="viz-bar__track"><div class="viz-bar__fill viz-bar__fill--6" style="width:12%">12%</div></div>
-  </div>
-</div>
+1. **Writing & Feedback** — 42.4% (largest focus area)
+2. **Perceptions & Attitudes** — 28%
+3. **Teaching & Learning Strategies** — 22%
+4. **Psychological & Cognitive Aspects** — 18%
+5. **Language Skills Development** — 15%
+6. **Implementation & Integration** — 12%
 
-## Critical Gaps Identified
+## Key Findings
 
-- **Limited research in K-12 settings** — 86.7% focused on higher education
-- **Insufficient longitudinal studies** — most examined short-term effects
-- **Language diversity** — 86.1% focused on EFL; other languages underrepresented
-- Need for broader investigation across educational levels and geographical contexts
+- **Exponential growth** in publications with a shift from exploratory to empirically driven research
+- **Higher education** (86.7%) and **EFL contexts** (86.1%) dominated the landscape
+- Notable **geographical diversity** — strong East Asia representation, emerging Middle East contributions
+- **Mixed-methods** (38.9%) most prevalent; increasing use of AI-generated content and digital interaction data
+
+## Critical Gaps
+
+- **K-12 settings** underrepresented (86.7% focused on higher ed)
+- **Longitudinal studies** insufficient — most examined short-term effects
+- **Language diversity** — 86.1% focused on English; other languages underrepresented
 
 **Keywords**: Generative AI, Language education, Systematic review, ChatGPT, Empirical research
 
