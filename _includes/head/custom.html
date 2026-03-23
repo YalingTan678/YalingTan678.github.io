@@ -16,4 +16,56 @@
 <!-- Publication visualization styles -->
 <link rel="stylesheet" href="{{ base_path }}/assets/css/pub-viz.css"/>
 
+<!-- Layout override: flexbox sidebar + content (replaces Susy floats) -->
+<style>
+  @media screen and (min-width: 925px) {
+    #main {
+      display: flex !important;
+      flex-wrap: nowrap !important;
+      gap: 1.5rem;
+      max-width: 1280px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .sidebar {
+      width: 200px !important;
+      min-width: 200px !important;
+      flex-shrink: 0 !important;
+      float: none !important;
+      position: sticky !important;
+      top: 70px;
+      height: calc(100vh - 70px);
+      overflow-y: auto;
+    }
+    .sidebar::before, .sidebar::after {
+      display: none !important;
+    }
+    article.page {
+      flex: 1 !important;
+      min-width: 0 !important;
+      float: none !important;
+      width: auto !important;
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+    }
+    .page__related {
+      float: none !important;
+      margin-left: 0 !important;
+    }
+  }
+  @media screen and (max-width: 924px) {
+    #main {
+      display: block !important;
+    }
+    .sidebar {
+      width: 100% !important;
+      position: relative !important;
+      height: auto !important;
+      overflow: visible !important;
+    }
+  }
+</style>
+
 <!-- end custom head snippets -->
