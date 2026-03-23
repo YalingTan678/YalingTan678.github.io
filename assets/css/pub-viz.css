@@ -48,6 +48,11 @@ h3 { font-size: 1.05rem !important; font-weight: 600 !important; }
   position: relative !important;
   bottom: auto !important;
 }
+/* Hide share buttons and prev/next navigation */
+.page__share, .page__meta, .page__taxonomy,
+.pagination--pager, nav.pagination {
+  display: none !important;
+}
 
 /* ===== Publication Visualization Styles ===== */
 
