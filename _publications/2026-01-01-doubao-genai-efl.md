@@ -12,35 +12,6 @@ badge: 'Q2'
 citation: 'Wang, S. & *Tan, L. (2026). Doubao as a GenAI scaffold in senior high school EFL writing: A practice-oriented framework for improving writing performance. <i>Psicologia Educativa, 14</i>, 19–33.'
 ---
 
-<style>
-  .stat-bar { display: flex; gap: 1rem; flex-wrap: wrap; margin: 1.5rem 0; }
-  .stat-card { flex: 1; min-width: 100px; background: #f8fafc; border: 1px solid #e8edf5; border-radius: 12px; padding: 1rem; text-align: center; }
-  .stat-card__num { font-size: 1.6rem; font-weight: 700; color: #2a7ae2; }
-  .stat-card__label { font-size: 0.72rem; color: #718096; margin-top: 0.2rem; }
-
-  .model-flow { display: flex; gap: 0; margin: 2rem 0; flex-wrap: wrap; justify-content: center; }
-  .model-step { flex: 1; min-width: 180px; max-width: 220px; padding: 1.2rem 1rem; border-radius: 14px; text-align: center; position: relative; transition: transform 0.3s; }
-  .model-step:hover { transform: translateY(-4px); }
-  .model-step__num { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.3rem; }
-  .model-step__title { font-size: 0.9rem; font-weight: 600; margin-bottom: 0.4rem; }
-  .model-step__desc { font-size: 0.75rem; line-height: 1.45; }
-  .model-step--1 { background: #dbeafe; color: #1e40af; }
-  .model-step--2 { background: #ede9fe; color: #5b21b6; }
-  .model-step--3 { background: #d1fae5; color: #065f46; }
-  .model-step--4 { background: #fef3c7; color: #92400e; }
-  .model-arrow { display: flex; align-items: center; font-size: 1.3rem; color: #cbd5e1; padding: 0 0.3rem; }
-  @media (max-width: 700px) {
-    .model-flow { flex-direction: column; align-items: center; }
-    .model-arrow { transform: rotate(90deg); padding: 0.3rem 0; }
-  }
-
-  .score-compare { display: flex; gap: 2rem; align-items: flex-end; justify-content: center; margin: 1.5rem 0; }
-  .score-bar { text-align: center; }
-  .score-bar__bar { width: 80px; border-radius: 8px 8px 0 0; margin: 0 auto; transition: height 1s ease; }
-  .score-bar__val { font-size: 1.1rem; font-weight: 700; margin-top: 0.3rem; }
-  .score-bar__label { font-size: 0.75rem; color: #718096; }
-</style>
-
 ## Abstract
 
 This study examines senior high school students' experiences using **Doubao**, a domestic generative AI tool, for English writing feedback. A mixed-methods case study involving **90 Grade 11 EFL students** over one semester.

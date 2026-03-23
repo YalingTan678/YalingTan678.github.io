@@ -1,0 +1,52 @@
+/* ===== Publication Visualization Styles ===== */
+
+/* Stat cards */
+.stat-bar { display: flex; gap: 1rem; flex-wrap: wrap; margin: 1.5rem 0; }
+.stat-card { flex: 1; min-width: 100px; background: #f8fafc; border: 1px solid #e8edf5; border-radius: 12px; padding: 1rem; text-align: center; }
+.stat-card__num { font-size: 1.6rem; font-weight: 700; color: #2a7ae2; }
+.stat-card__label { font-size: 0.72rem; color: #718096; margin-top: 0.2rem; }
+
+/* Figure gallery */
+.fig-gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.5rem 0; }
+.fig-gallery img { width: 100%; border-radius: 10px; border: 1px solid #e8edf5; cursor: pointer; transition: transform 0.3s, box-shadow 0.3s; }
+.fig-gallery img:hover { transform: scale(1.03); box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
+.fig-caption { font-size: 0.78rem; color: #718096; text-align: center; margin-top: 0.3rem; }
+@media (max-width: 600px) { .fig-gallery { grid-template-columns: 1fr; } }
+
+/* Horizontal bar chart */
+.viz-bar { margin: 1.2rem 0; }
+.viz-bar__row { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.5rem; }
+.viz-bar__label { font-size: 0.78rem; color: #4a5568; width: 180px; text-align: right; flex-shrink: 0; }
+.viz-bar__track { flex: 1; height: 22px; background: #f0f4f8; border-radius: 6px; overflow: hidden; }
+.viz-bar__fill { height: 100%; border-radius: 6px; display: flex; align-items: center; justify-content: flex-end; padding-right: 6px; font-size: 0.7rem; font-weight: 600; color: #fff; transition: width 1s ease; }
+.viz-bar__fill--1 { background: linear-gradient(90deg, #f59e0b, #f97316); }
+.viz-bar__fill--2 { background: linear-gradient(90deg, #3b82f6, #2563eb); }
+.viz-bar__fill--3 { background: linear-gradient(90deg, #10b981, #059669); }
+.viz-bar__fill--4 { background: linear-gradient(90deg, #8b5cf6, #7c3aed); }
+.viz-bar__fill--5 { background: linear-gradient(90deg, #ec4899, #db2777); }
+.viz-bar__fill--6 { background: linear-gradient(90deg, #6366f1, #4f46e5); }
+
+/* Model flow diagram */
+.model-flow { display: flex; gap: 0; margin: 2rem 0; flex-wrap: wrap; justify-content: center; }
+.model-step { flex: 1; min-width: 160px; max-width: 220px; padding: 1.2rem 1rem; border-radius: 14px; text-align: center; position: relative; transition: transform 0.3s; }
+.model-step:hover { transform: translateY(-4px); }
+.model-step__num { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.3rem; }
+.model-step__title { font-size: 0.9rem; font-weight: 600; margin-bottom: 0.4rem; }
+.model-step__desc { font-size: 0.75rem; line-height: 1.45; }
+.model-step--1 { background: #dbeafe; color: #1e40af; }
+.model-step--2 { background: #ede9fe; color: #5b21b6; }
+.model-step--3 { background: #d1fae5; color: #065f46; }
+.model-step--4 { background: #fef3c7; color: #92400e; }
+.model-arrow { display: flex; align-items: center; font-size: 1.3rem; color: #cbd5e1; padding: 0 0.3rem; }
+@media (max-width: 700px) {
+  .model-flow { flex-direction: column; align-items: center; }
+  .model-arrow { transform: rotate(90deg); padding: 0.3rem 0; }
+  .viz-bar__label { width: 120px; font-size: 0.7rem; }
+}
+
+/* Score comparison bars */
+.score-compare { display: flex; gap: 2rem; align-items: flex-end; justify-content: center; margin: 1.5rem 0; }
+.score-bar { text-align: center; }
+.score-bar__bar { width: 80px; border-radius: 8px 8px 0 0; margin: 0 auto; }
+.score-bar__val { font-size: 1.1rem; font-weight: 700; margin-top: 0.3rem; }
+.score-bar__label { font-size: 0.75rem; color: #718096; }
