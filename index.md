@@ -120,6 +120,7 @@ author_profile: false
 <!-- ========== INTERACTIVE TIMELINE ========== -->
 <section class="lt-section lt-fade-in">
   <h2 class="lt-section__title">Journey</h2>
+  <p style="font-size:0.88rem;color:#4a5568;line-height:1.7;margin-bottom:1rem">From translation studies to AI-mediated learning design, every step has brought me closer to one goal: becoming an instructional designer who harnesses AI to create equitable, human-centered learning experiences at scale.</p>
   <!-- Filter buttons -->
   <div style="display:flex;gap:0.4rem;margin-bottom:1.2rem;flex-wrap:wrap">
     <button onclick="filterTL('all')" style="border:none;padding:0.3rem 0.7rem;border-radius:6px;font-size:0.72rem;font-weight:600;cursor:pointer;background:#1a1a2e;color:#fff;transition:all 0.2s">All</button>
