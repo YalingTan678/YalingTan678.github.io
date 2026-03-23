@@ -73,25 +73,45 @@ author_profile: false
   </div>
 </section>
 
-<!-- ========== METHODOLOGY ========== -->
+<!-- ========== METHODOLOGY (interactive pipeline) ========== -->
 <section class="lt-section lt-fade-in">
   <h2 class="lt-section__title">Methodology</h2>
-  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1rem">
-    <div style="background:#fff;border:1px solid #e8edf5;border-radius:14px;padding:1.3rem;text-align:center;transition:transform 0.25s,box-shadow 0.25s" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 8px 24px rgba(0,0,0,0.04)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
-      <div style="font-size:1.6rem;margin-bottom:0.5rem">&#128218;</div>
-      <div style="font-size:0.85rem;font-weight:600;color:#1a1a2e">Systematic Reviews</div>
+  <div style="display:flex;align-items:stretch;gap:0;background:#0f172a;border-radius:16px;overflow:hidden;position:relative">
+    <!-- Connecting line -->
+    <div style="position:absolute;top:50%;left:0;right:0;height:2px;background:linear-gradient(90deg,#3b82f6,#8b5cf6,#22c55e,#f59e0b);z-index:1;opacity:0.3"></div>
+    <!-- Card 1 -->
+    <div style="flex:1;padding:1.5rem 1.2rem;text-align:center;position:relative;z-index:2;border-right:1px solid rgba(255,255,255,0.06);cursor:default;transition:background 0.4s" onmouseover="this.style.background='rgba(59,130,246,0.15)'" onmouseout="this.style.background='transparent'">
+      <div style="width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#3b82f6,#60a5fa);margin:0 auto 0.7rem;display:flex;align-items:center;justify-content:center;font-size:1.4rem;box-shadow:0 4px 15px rgba(59,130,246,0.35);transition:transform 0.4s,box-shadow 0.4s" onmouseover="this.style.transform='scale(1.15) rotate(5deg)';this.style.boxShadow='0 8px 25px rgba(59,130,246,0.5)'" onmouseout="this.style.transform='';this.style.boxShadow='0 4px 15px rgba(59,130,246,0.35)'">&#128269;</div>
+      <div style="font-size:0.82rem;font-weight:700;color:#e2e8f0;margin-bottom:0.3rem">Systematic Reviews</div>
+      <div style="font-size:0.68rem;color:#94a3b8;line-height:1.5">PRISMA · Scoping<br>Meta-analyses</div>
+      <div style="margin-top:0.6rem;font-size:0.6rem;color:#60a5fa;font-weight:600;letter-spacing:0.05em">144 ARTICLES SCREENED</div>
     </div>
-    <div style="background:#fff;border:1px solid #e8edf5;border-radius:14px;padding:1.3rem;text-align:center;transition:transform 0.25s,box-shadow 0.25s" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 8px 24px rgba(0,0,0,0.04)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
-      <div style="font-size:1.6rem;margin-bottom:0.5rem">&#128300;</div>
-      <div style="font-size:0.85rem;font-weight:600;color:#1a1a2e">Mixed Methods</div>
+    <!-- Arrow -->
+    <div style="display:flex;align-items:center;color:rgba(255,255,255,0.2);font-size:1.2rem;z-index:2">&#10132;</div>
+    <!-- Card 2 -->
+    <div style="flex:1;padding:1.5rem 1.2rem;text-align:center;position:relative;z-index:2;border-right:1px solid rgba(255,255,255,0.06);cursor:default;transition:background 0.4s" onmouseover="this.style.background='rgba(139,92,246,0.15)'" onmouseout="this.style.background='transparent'">
+      <div style="width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#8b5cf6,#a78bfa);margin:0 auto 0.7rem;display:flex;align-items:center;justify-content:center;font-size:1.4rem;box-shadow:0 4px 15px rgba(139,92,246,0.35);transition:transform 0.4s,box-shadow 0.4s" onmouseover="this.style.transform='scale(1.15) rotate(-5deg)';this.style.boxShadow='0 8px 25px rgba(139,92,246,0.5)'" onmouseout="this.style.transform='';this.style.boxShadow='0 4px 15px rgba(139,92,246,0.35)'">&#128300;</div>
+      <div style="font-size:0.82rem;font-weight:700;color:#e2e8f0;margin-bottom:0.3rem">Mixed Methods</div>
+      <div style="font-size:0.68rem;color:#94a3b8;line-height:1.5">Quan + Qual<br>Surveys · Interviews</div>
+      <div style="margin-top:0.6rem;font-size:0.6rem;color:#a78bfa;font-weight:600;letter-spacing:0.05em">CONVERGENT DESIGN</div>
     </div>
-    <div style="background:#fff;border:1px solid #e8edf5;border-radius:14px;padding:1.3rem;text-align:center;transition:transform 0.25s,box-shadow 0.25s" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 8px 24px rgba(0,0,0,0.04)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
-      <div style="font-size:1.6rem;margin-bottom:0.5rem">&#128202;</div>
-      <div style="font-size:0.85rem;font-weight:600;color:#1a1a2e">Statistical Analysis</div>
+    <!-- Arrow -->
+    <div style="display:flex;align-items:center;color:rgba(255,255,255,0.2);font-size:1.2rem;z-index:2">&#10132;</div>
+    <!-- Card 3 -->
+    <div style="flex:1;padding:1.5rem 1.2rem;text-align:center;position:relative;z-index:2;border-right:1px solid rgba(255,255,255,0.06);cursor:default;transition:background 0.4s" onmouseover="this.style.background='rgba(34,197,94,0.15)'" onmouseout="this.style.background='transparent'">
+      <div style="width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#22c55e,#4ade80);margin:0 auto 0.7rem;display:flex;align-items:center;justify-content:center;font-size:1.4rem;box-shadow:0 4px 15px rgba(34,197,94,0.35);transition:transform 0.4s,box-shadow 0.4s" onmouseover="this.style.transform='scale(1.15) rotate(5deg)';this.style.boxShadow='0 8px 25px rgba(34,197,94,0.5)'" onmouseout="this.style.transform='';this.style.boxShadow='0 4px 15px rgba(34,197,94,0.35)'">&#128200;</div>
+      <div style="font-size:0.82rem;font-weight:700;color:#e2e8f0;margin-bottom:0.3rem">Statistical Analysis</div>
+      <div style="font-size:0.68rem;color:#94a3b8;line-height:1.5">SPSS · Prism<br>ANOVA · Coh-Metrix</div>
+      <div style="margin-top:0.6rem;font-size:0.6rem;color:#4ade80;font-weight:600;letter-spacing:0.05em">108 INDICES TESTED</div>
     </div>
-    <div style="background:#fff;border:1px solid #e8edf5;border-radius:14px;padding:1.3rem;text-align:center;transition:transform 0.25s,box-shadow 0.25s" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 8px 24px rgba(0,0,0,0.04)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
-      <div style="font-size:1.6rem;margin-bottom:0.5rem">&#127919;</div>
-      <div style="font-size:0.85rem;font-weight:600;color:#1a1a2e">Design-Based Research</div>
+    <!-- Arrow -->
+    <div style="display:flex;align-items:center;color:rgba(255,255,255,0.2);font-size:1.2rem;z-index:2">&#10132;</div>
+    <!-- Card 4 -->
+    <div style="flex:1;padding:1.5rem 1.2rem;text-align:center;position:relative;z-index:2;cursor:default;transition:background 0.4s" onmouseover="this.style.background='rgba(245,158,11,0.15)'" onmouseout="this.style.background='transparent'">
+      <div style="width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#f59e0b,#fbbf24);margin:0 auto 0.7rem;display:flex;align-items:center;justify-content:center;font-size:1.4rem;box-shadow:0 4px 15px rgba(245,158,11,0.35);transition:transform 0.4s,box-shadow 0.4s" onmouseover="this.style.transform='scale(1.15) rotate(-5deg)';this.style.boxShadow='0 8px 25px rgba(245,158,11,0.5)'" onmouseout="this.style.transform='';this.style.boxShadow='0 4px 15px rgba(245,158,11,0.35)'">&#127919;</div>
+      <div style="font-size:0.82rem;font-weight:700;color:#e2e8f0;margin-bottom:0.3rem">Design-Based Research</div>
+      <div style="font-size:0.68rem;color:#94a3b8;line-height:1.5">Iterative cycles<br>In-vivo prototyping</div>
+      <div style="margin-top:0.6rem;font-size:0.6rem;color:#fbbf24;font-weight:600;letter-spacing:0.05em">4 DBR PHASES</div>
     </div>
   </div>
 </section>
