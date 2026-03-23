@@ -11,11 +11,25 @@ author_profile: false
   <div style="border:1px solid #e2e8f0;border-radius:20px;overflow:hidden;background:#fff;box-shadow:0 4px 24px rgba(0,0,0,0.03)">
     <!-- Top row -->
     <div style="display:grid;grid-template-columns:1fr 1fr">
-      <!-- Q1: IDLE -->
-      <div style="padding:1.6rem;border-right:1px solid #f0f0f5;border-bottom:1px solid #f0f0f5;background:linear-gradient(135deg,#fff 60%,#eff6ff);transition:background 0.4s" onmouseover="this.style.background='linear-gradient(135deg,#fff 30%,#dbeafe)'" onmouseout="this.style.background='linear-gradient(135deg,#fff 60%,#eff6ff)'">
+      <!-- Q1: Literacy (was Q3) -->
+      <div style="padding:1.6rem;border-right:1px solid #f0f0f5;border-bottom:1px solid #f0f0f5;background:linear-gradient(135deg,#fff 60%,#ecfdf5);transition:background 0.4s" onmouseover="this.style.background='linear-gradient(135deg,#fff 30%,#d1fae5)'" onmouseout="this.style.background='linear-gradient(135deg,#fff 60%,#ecfdf5)'">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.6rem">
+          <span style="font-size:0.6rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#047857;background:#ecfdf5;padding:0.18rem 0.55rem;border-radius:20px">Literacy &amp; Design</span>
+          <span style="font-size:0.8rem;font-weight:600;color:#e2e8f0">01</span>
+        </div>
+        <h3 style="font-size:1rem;font-weight:700;color:#1a1a2e;margin:0 0 0.4rem;line-height:1.3">AI Literacy &amp; Learning Design</h3>
+        <p style="font-size:0.8rem;color:#64748b;line-height:1.6;margin:0 0 0.7rem">I translate research on agency, authenticity, and equity into AI literacy concepts, design principles, and practical learning environments.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:0.35rem">
+          <a href="/publication/2025-two-years-innovation" style="font-size:0.68rem;padding:0.2rem 0.55rem;border-radius:20px;border:1px solid #a7f3d0;color:#047857;text-decoration:none;font-weight:500;transition:all 0.2s;background:#fff" onmouseover="this.style.background='#d1fae5';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='#fff';this.style.transform=''">2yr GenAI Review · CAEAI '25</a>
+          <a href="/publication/ur-tutor-not-solver" style="font-size:0.68rem;padding:0.2rem 0.55rem;border-radius:20px;border:1px solid #a7f3d0;color:#047857;text-decoration:none;font-weight:500;transition:all 0.2s;background:#fff" onmouseover="this.style.background='#d1fae5';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='#fff';this.style.transform=''">PeteChat Design Case &#8594;</a>
+          <a href="/publication/2026-clawdbot-unboxed" style="font-size:0.68rem;padding:0.2rem 0.55rem;border-radius:20px;border:1px solid #a7f3d0;color:#047857;text-decoration:none;font-weight:500;transition:all 0.2s;background:#fff" onmouseover="this.style.background='#d1fae5';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='#fff';this.style.transform=''">Clawdbot · Talk '26</a>
+        </div>
+      </div>
+      <!-- Q2: IDLE (was Q1) -->
+      <div style="padding:1.6rem;border-bottom:1px solid #f0f0f5;background:linear-gradient(225deg,#fff 60%,#eff6ff);transition:background 0.4s" onmouseover="this.style.background='linear-gradient(225deg,#fff 30%,#dbeafe)'" onmouseout="this.style.background='linear-gradient(225deg,#fff 60%,#eff6ff)'">
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.6rem">
           <span style="font-size:0.6rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#2563eb;background:#eff6ff;padding:0.18rem 0.55rem;border-radius:20px">IDLE &amp; Pragmatics</span>
-          <span style="font-size:0.8rem;font-weight:600;color:#e2e8f0">01</span>
+          <span style="font-size:0.8rem;font-weight:600;color:#e2e8f0">02</span>
         </div>
         <h3 style="font-size:1rem;font-weight:700;color:#1a1a2e;margin:0 0 0.4rem;line-height:1.3">AI-Mediated Informal Digital Learning</h3>
         <p style="font-size:0.8rem;color:#64748b;line-height:1.6;margin:0 0 0.7rem">I study how learners engage with AI chatbots, podcasts, and self-directed tasks outside the classroom to develop pragmatic competence.</p>
@@ -25,11 +39,14 @@ author_profile: false
           <a href="/publication/2024-call-context" style="font-size:0.68rem;padding:0.2rem 0.55rem;border-radius:20px;border:1px solid #bfdbfe;color:#2563eb;text-decoration:none;font-weight:500;transition:all 0.2s;background:#fff" onmouseover="this.style.background='#dbeafe';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='#fff';this.style.transform=''">CALL Tokyo '24</a>
         </div>
       </div>
-      <!-- Q2: Equity -->
-      <div style="padding:1.6rem;border-bottom:1px solid #f0f0f5;background:linear-gradient(225deg,#fff 60%,#fff7ed);transition:background 0.4s" onmouseover="this.style.background='linear-gradient(225deg,#fff 30%,#fef3c7)'" onmouseout="this.style.background='linear-gradient(225deg,#fff 60%,#fff7ed)'">
+    </div>
+    <!-- Bottom row -->
+    <div style="display:grid;grid-template-columns:1fr 1fr">
+      <!-- Q3: Equity (was Q2) -->
+      <div style="padding:1.6rem;border-right:1px solid #f0f0f5;background:linear-gradient(45deg,#fff 60%,#fff7ed);transition:background 0.4s" onmouseover="this.style.background='linear-gradient(45deg,#fff 30%,#fef3c7)'" onmouseout="this.style.background='linear-gradient(45deg,#fff 60%,#fff7ed)'">
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.6rem">
           <span style="font-size:0.6rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#c2410c;background:#fff7ed;padding:0.18rem 0.55rem;border-radius:20px">Equity &amp; Assessment</span>
-          <span style="font-size:0.8rem;font-weight:600;color:#e2e8f0">02</span>
+          <span style="font-size:0.8rem;font-weight:600;color:#e2e8f0">03</span>
         </div>
         <h3 style="font-size:1rem;font-weight:700;color:#1a1a2e;margin:0 0 0.4rem;line-height:1.3">Authenticity, Assessment &amp; Judgment</h3>
         <p style="font-size:0.8rem;color:#64748b;line-height:1.6;margin:0 0 0.7rem">I investigate how AI changes what counts as authentic work, authorship, and evaluative judgment across educational settings.</p>
@@ -37,23 +54,6 @@ author_profile: false
           <a href="/publication/2026-aera-meta-analysis" style="font-size:0.68rem;padding:0.2rem 0.55rem;border-radius:20px;border:1px solid #fed7aa;color:#c2410c;text-decoration:none;font-weight:500;transition:all 0.2s;background:#fff" onmouseover="this.style.background='#fef3c7';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='#fff';this.style.transform=''">Meta-analysis · AERA '26</a>
           <a href="/publication/2025-aect-authenticity" style="font-size:0.68rem;padding:0.2rem 0.55rem;border-radius:20px;border:1px solid #fed7aa;color:#c2410c;text-decoration:none;font-weight:500;transition:all 0.2s;background:#fff" onmouseover="this.style.background='#fef3c7';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='#fff';this.style.transform=''">Authenticity · AECT '25</a>
           <a href="/publication/ur-authorship-agency-ai" style="font-size:0.68rem;padding:0.2rem 0.55rem;border-radius:20px;border:1px solid #fed7aa;color:#c2410c;text-decoration:none;font-weight:500;transition:all 0.2s;background:#fff" onmouseover="this.style.background='#fef3c7';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='#fff';this.style.transform=''">Authorship &amp; AI &#8594;</a>
-        </div>
-      </div>
-    </div>
-    <!-- Bottom row -->
-    <div style="display:grid;grid-template-columns:1fr 1fr">
-      <!-- Q3: Literacy -->
-      <div style="padding:1.6rem;border-right:1px solid #f0f0f5;background:linear-gradient(45deg,#fff 60%,#ecfdf5);transition:background 0.4s" onmouseover="this.style.background='linear-gradient(45deg,#fff 30%,#d1fae5)'" onmouseout="this.style.background='linear-gradient(45deg,#fff 60%,#ecfdf5)'">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.6rem">
-          <span style="font-size:0.6rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#047857;background:#ecfdf5;padding:0.18rem 0.55rem;border-radius:20px">Literacy &amp; Design</span>
-          <span style="font-size:0.8rem;font-weight:600;color:#e2e8f0">03</span>
-        </div>
-        <h3 style="font-size:1rem;font-weight:700;color:#1a1a2e;margin:0 0 0.4rem;line-height:1.3">AI Literacy &amp; Learning Design</h3>
-        <p style="font-size:0.8rem;color:#64748b;line-height:1.6;margin:0 0 0.7rem">I translate research on agency, authenticity, and equity into AI literacy concepts, design principles, and practical learning environments.</p>
-        <div style="display:flex;flex-wrap:wrap;gap:0.35rem">
-          <a href="/publication/2025-two-years-innovation" style="font-size:0.68rem;padding:0.2rem 0.55rem;border-radius:20px;border:1px solid #a7f3d0;color:#047857;text-decoration:none;font-weight:500;transition:all 0.2s;background:#fff" onmouseover="this.style.background='#d1fae5';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='#fff';this.style.transform=''">2yr GenAI Review · CAEAI '25</a>
-          <a href="/publication/ur-tutor-not-solver" style="font-size:0.68rem;padding:0.2rem 0.55rem;border-radius:20px;border:1px solid #a7f3d0;color:#047857;text-decoration:none;font-weight:500;transition:all 0.2s;background:#fff" onmouseover="this.style.background='#d1fae5';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='#fff';this.style.transform=''">PeteChat Design Case &#8594;</a>
-          <a href="/publication/2026-clawdbot-unboxed" style="font-size:0.68rem;padding:0.2rem 0.55rem;border-radius:20px;border:1px solid #a7f3d0;color:#047857;text-decoration:none;font-weight:500;transition:all 0.2s;background:#fff" onmouseover="this.style.background='#d1fae5';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='#fff';this.style.transform=''">Clawdbot · Talk '26</a>
         </div>
       </div>
       <!-- Q4: TPACK -->
