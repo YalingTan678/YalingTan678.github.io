@@ -76,6 +76,7 @@ author_profile: false
 <!-- ========== METHODOLOGY (interactive pipeline) ========== -->
 <section class="lt-section lt-fade-in">
   <h2 class="lt-section__title">Methodology</h2>
+  <p style="font-size:0.88rem;color:#4a5568;line-height:1.7;margin-bottom:1rem">I combine large-scale evidence synthesis with in-depth qualitative inquiry and iterative design. Each method feeds the next: reviews surface gaps, mixed methods explore them, statistics test claims, and design-based research translates findings into tools educators can actually use.</p>
   <div style="display:flex;align-items:stretch;gap:0;background:#0f172a;border-radius:16px;overflow:hidden;position:relative">
     <!-- Connecting line -->
     <div style="position:absolute;top:50%;left:0;right:0;height:2px;background:linear-gradient(90deg,#3b82f6,#8b5cf6,#22c55e,#f59e0b);z-index:1;opacity:0.3"></div>
