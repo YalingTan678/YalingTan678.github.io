@@ -75,5 +75,7 @@ The talk included a hands-on workshop segment where attendees:
 
 ## Resources
 
-- [Download Presentation Slides (PPTX)](/files/clawdbot-slides.pptx)
-- [Watch Recording (Zoom)](https://purdue-edu.zoom.us/rec/share/zsYwqkKqPnDXAYdZWcfFF-MA9vEN0ZJluSVeucFsQC5-xm8u8KBl0NW4yK9Qq1JA.jRD32DqZkMxWRcdH) — Passcode: `64drqp6%`
+| | |
+|:--|:--|
+| **Slides** | [Download Presentation (PPTX)](/files/clawdbot-slides.pptx) — 21 slides, 12 MB |
+| **Recording** | [Watch on Zoom](https://purdue-edu.zoom.us/rec/share/zsYwqkKqPnDXAYdZWcfFF-MA9vEN0ZJluSVeucFsQC5-xm8u8KBl0NW4yK9Qq1JA.jRD32DqZkMxWRcdH) — Passcode: `64drqp6%` |
