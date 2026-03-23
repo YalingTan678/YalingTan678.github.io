@@ -1,14 +1,18 @@
 ---
-title: "Gao, L., & <strong>Tan, Y. L.</strong> (2023). Study on Master of Translation and Interpreting Talent Cultivation Mode from the Perspective of CLIL. <i>Advances in Education</i>, 13(12), 10029-10034."
+title: "Study on MTI Talent Cultivation Mode from the Perspective of CLIL"
 collection: publications
-permalink: /publication/2023-12-01-clil-translation
+permalink: /publication/2023-clil-translation
+excerpt: 'This study proposes CLIL-inspired reforms for Master of Translation and Interpreting programs.'
 date: 2023-12-01
+venue: 'Education Advances'
 publication_type: "journal"
 paperurl: 'https://doi.org/10.12677/AE.2023.13121549'
+authors: 'Gao, L. & <strong>*Tan, Y.</strong>'
+citation: 'Gao, L., & *Tan, Y. (2023). Study on master of translation and interpreting talent cultivation mode from the perspective of CLIL. <i>Education Advances, 13</i>(12), 10029–10034.'
 ---
 
 ## Abstract
 
-The development of Master of Translation and Interpreting (MTI) has witnessed a vigorous growth in recent years. Whereas there are still some outstanding problems in discipline orientation, cur-riculum setting, teaching methods and practice base construction, which are important aspects of talent cultivation. Through reviewing the problems and suggested reform methods in the cultiva-tion of MTI majors, this study points out that the most fundamental problem of MTI is the insuffi-cient understanding about the nature and orientation of the discipline. Enlightened by Content and Language Integrated Learning (CLIL), this study proposes that the training and cultivation of MTI majors should carry out more indepth innovations in the aspects of curriculum reform, field training enhancement, teaching methods innovation, and rational establishment and utilization of training bases.
+The development of Master of Translation and Interpreting (MTI) has witnessed vigorous growth in recent years, yet outstanding problems remain in discipline orientation, curriculum setting, teaching methods, and practice base construction. Through reviewing the problems and suggested reform methods, this study points out that the most fundamental problem of MTI is the insufficient understanding about the nature and orientation of the discipline. Enlightened by Content and Language Integrated Learning (CLIL), this study proposes innovations in curriculum reform, field training enhancement, teaching methods, and training base utilization.
 
-[Download paper here](https://doi.org/10.12677/AE.2023.13121549)
+[Download paper](https://doi.org/10.12677/AE.2023.13121549)
