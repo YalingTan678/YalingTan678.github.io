@@ -10,76 +10,64 @@ authors: 'Liu, H. & <strong>*Tan, L.</strong>'
 badge: 'Under Review'
 ---
 
+## What This Paper Is About
+
+In **Xinjiang** — one of China's most culturally and linguistically diverse regions — pre-service teachers must integrate technology into classrooms where students come from vastly different cultural backgrounds. This paper examines how that **cultural diversity shapes their TPACK** (Technological Pedagogical Content Knowledge), rather than treating culture as a background variable.
+
+---
+
 ## The TPACK Framework
 
 ```
-            ┌─────────────────────────────┐
-            │    Technological Knowledge  │
-            │           (TK)              │
-            └──────────┬──────────────────┘
-                       │
-          ┌────────────┼────────────┐
-          │            │            │
-   ┌──────▼──────┐  ┌─▼──────────┐ │
-   │   TPK       │  │    TCK     │ │
-   │ Tech +      │  │  Tech +    │ │
-   │ Pedagogy    │  │  Content   │ │
-   └──────┬──────┘  └─┬──────────┘ │
-          │   ┌───────▼──┐         │
-          └──►│  TPACK   │◄────────┘
-              │ (Center) │
-          ┌──►│          │◄────────┐
-          │   └───────┬──┘         │
-   ┌──────┴──────┐    │    ┌──────┴──────┐
-   │ Pedagogical │    │    │  Content    │
-   │ Knowledge   │    │    │  Knowledge  │
-   │   (PK)      │    │    │   (CK)     │
-   └─────────────┘    │    └─────────────┘
-                      │
-              ┌───────▼──────────┐
-              │     PCK          │
-              │ Pedagogy +       │
-              │ Content          │
-              └──────────────────┘
-                      │
-              ┌───────▼──────────┐
-              │    CONTEXT       │
-              │ Cultural Diversity│
-              │   in Xinjiang    │
-              └──────────────────┘
+         ┌──── TK ────┐
+         │  Technology │
+         │  Knowledge  │
+    ┌────┴──┐     ┌──┴────┐
+    │  TPK  │     │  TCK  │
+    └───┬───┘     └──┬────┘
+   ┌────▼─────────────▼────┐
+   │       T P A C K       │
+   │   All three integrated │
+   └────▲─────────────▲────┘
+    ┌───┴───┐     ┌──┴────┐
+    │  PCK  │     │       │
+    └───┬───┘     │       │
+   ┌────┴──┐     ┌┴──────┐
+   │  PK   │     │  CK   │
+   │Pedagogy│     │Content│
+   └───────┘     └───────┘
+         ▼
+   ┌─────────────────┐
+   │    CONTEXT:      │
+   │  Cultural Diversity │
+   │   in Xinjiang    │
+   └─────────────────┘
 ```
 
-## Study Overview
+---
 
-This paper examines pre-service teachers' **Technological Pedagogical Content Knowledge (TPACK)** in the culturally diverse context of **Xinjiang, China**. The study investigates how cultural diversity serves as a contextual factor influencing the development and application of TPACK among future educators.
+## Core Argument
+
+Most TPACK research treats context as static — a school type, a subject area. This paper treats **cultural diversity as a dynamic contextual force** that actively reshapes how each TPACK component develops. Pre-service teachers in Xinjiang don't just "add technology" to teaching; they must negotiate between:
+
+- Multiple languages and scripts in a single classroom
+- Different cultural norms around technology use and authority
+- Content knowledge that may carry different cultural meanings
+- Pedagogical approaches that resonate differently across cultural groups
 
 ---
 
-## TPACK Components in This Study
+## What We Found
 
-| Component | Description | Cultural Dimension |
-|:----------|:-----------|:-------------------|
-| **TK** | Technology Knowledge | Digital tools available in multilingual settings |
-| **PK** | Pedagogical Knowledge | Teaching strategies for diverse learners |
-| **CK** | Content Knowledge | Subject expertise across cultural contexts |
-| **TPK** | Tech + Pedagogy | Using technology for culturally responsive teaching |
-| **TCK** | Tech + Content | Technology-mediated content delivery |
-| **PCK** | Pedagogy + Content | Culturally adapted instruction |
-| **TPACK** | All three integrated | Holistic competence in diverse settings |
+| TPACK Component | Impact of Cultural Diversity |
+|:----------------|:---------------------------|
+| **TK** | Digital tools must support multilingual input and interfaces |
+| **PK** | Teaching strategies must accommodate different communication norms |
+| **CK** | Subject content sometimes carries culturally-specific interpretations |
+| **TPACK** | Integration is most challenging — requires simultaneous cultural sensitivity across all three domains |
 
 ---
 
-## Research Context: Xinjiang
+## Why It Matters
 
-| Aspect | Detail |
-|:-------|:-------|
-| **Location** | Xinjiang Uyghur Autonomous Region, China |
-| **Cultural context** | Multi-ethnic region with significant linguistic diversity |
-| **Participants** | Pre-service teachers in teacher education programs |
-| **Focus** | How cultural diversity shapes TPACK development |
-
-## Key Research Questions
-
-- How do pre-service teachers in Xinjiang develop and demonstrate TPACK?
-- What role does cultural diversity play as a contextual factor?
-- What implications emerge for teacher education programs serving diverse populations?
+Teacher education programs typically train TPACK as **culturally neutral** — "here's how to use technology in teaching." This paper shows that in diverse settings like Xinjiang, **TPACK development is inseparable from cultural competence**. Programs serving diverse populations need to embed cultural awareness directly into technology integration training, not treat it as a separate module.

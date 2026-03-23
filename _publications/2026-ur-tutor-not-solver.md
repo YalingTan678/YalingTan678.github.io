@@ -10,54 +10,66 @@ authors: 'Li, B., <strong>*Tan, L.</strong>, & Zakharov, W.'
 badge: 'Under Review'
 ---
 
-## PeteChat Interface
+## What This Paper Is About
+
+Most AI chatbots give students **answers**. PeteChat is designed to give them **guidance**. This design case documents how we built an LLM-powered AI tutor at Purdue University that teaches students *how to think*, not *what to answer* — and what we learned along the way.
+
+---
+
+## PeteChat Interface Evolution
 
 | Phase 1: Initial UI | Phase 2: Redesigned with SRL |
 |:---:|:---:|
 | ![PeteChat V1](/images/pubs/petechat-v1.png) | ![PeteChat V2](/images/pubs/petechat-v2.png) |
 | *Identified critical UX issues* | *Added learning goals & scaffolding* |
 
-## Overview
+---
 
-This design case documents the development and implementation of **PeteChat**, an LLM-powered learning assistant at Purdue University that serves as a "virtual teaching assistant" — designed to teach students *how to think*, not *what to answer*. The project follows a **design-based research (DBR)** approach with iterative refinement across multiple semesters.
+## How PeteChat Works
 
-## Research Questions
+PeteChat is **not ChatGPT in a Purdue wrapper**. It's a purpose-built system with three layers:
 
-1. What design principles emerge for AI tutors that scaffold learning without undermining academic integrity?
-2. How can **self-regulated learning (SRL) theory** be operationalized in AI-mediated dialogue?
-3. What institutional constraints shape AI tutor design in practice?
+**1. Course-Specific Knowledge (RAG Pipeline)**
+The AI retrieves answers from verified course materials first — not from general internet knowledge. This means when a student asks about Python data structures in ECE 20875, PeteChat responds with content aligned to what their professor actually taught.
 
-## The PeteChat System
+**2. Guardrails That Protect Learning**
+When a student pastes a homework problem, PeteChat doesn't solve it. Instead, it asks: *"What have you tried so far?"* and *"Which part is confusing?"* — guiding them through the problem-solving process.
 
-PeteChat is a course-aware AI assistant fine-tuned on curated Purdue course materials and aligned with instructional goals. Unlike generic AI tools, PeteChat incorporates:
+**3. Instructor Dashboard**
+Faculty can see what students are asking — not individual conversations, but patterns. If 40 students ask about recursion in the same week, the professor knows to revisit it in class.
 
-- **Retrieval-Augmented Generation (RAG)** — grounding responses in verified course-specific content
-- **Built-in guardrails** — prompting the model to refrain from giving away homework answers
-- **Instructor-facing dashboard** — allowing faculty to monitor student questions and adjust teaching
-- **Foldered chats by course topic** — mirroring syllabus structure for easy navigation
+---
 
-## Design-Based Research Phases
+## Design-Based Research: Four Phases
 
-| Phase | Timeline | Focus |
-|-------|----------|-------|
-| **Phase 0** | Summer–Fall 2024 | Data collection, baseline tutor construction, fine-tuning Llama-3 on Purdue's Gilbreth cluster |
-| **Phase 1** | Fall 2024–Spring 2025 | First large-scale deployment in ECE 20875 (undergraduate programming) |
-| **Phase 2** | Spring–Summer 2025 | Direct Preference Optimization (DPO) to align with student preferences |
-| **Phase 3** | Spring 2026 | Extension to additional large undergraduate Python courses |
+| Phase | What Happened | What We Learned |
+|:------|:-------------|:----------------|
+| **Phase 0** (Summer '24) | Built baseline tutor, fine-tuned Llama-3 on Purdue's cluster | Generic LLMs need heavy customization for education |
+| **Phase 1** (Fall '24) | Deployed to 200+ students in ECE 20875 | Students wanted explanations, not answers — validating our approach |
+| **Phase 2** (Spring '25) | Applied Direct Preference Optimization | Student feedback dramatically improved response quality |
+| **Phase 3** (Spring '26) | Expanded to multiple Python courses | Moving from pilot to campus-wide integration |
 
-## Key Design Principles
+---
 
-- **Scaffolding over answering**: The AI provides hints, asks guiding questions, and breaks down complex problems
-- **Course-specific grounding**: Fine-tuned on institutional materials for accuracy and relevance
-- **Privacy and integrity**: Institutional AI addresses student concerns about data privacy vs. public tools
-- **Faculty oversight**: Instructor tools enable monitoring and curriculum adjustment based on student AI interactions
+## The "Tutor, Not Solver" Principle in Action
 
-## Institutional Context
+| Student asks... | ChatGPT would say... | PeteChat says... |
+|:---------------|:---------------------|:-----------------|
+| "Write a for loop that sums a list" | `sum = 0; for x in lst: sum += x` | "What do you know about for loops? Let's start with the structure." |
+| "What's the answer to Q3?" | [provides full solution] | "I can help you work through Q3. What's the first step you'd take?" |
+| "Fix my code" | [rewrites the code] | "I see an issue on line 5. What do you think `range()` returns here?" |
 
-Supported by **Purdue's Innovation Hub Funding Program** ($84,787), in consultation with the Center for Instructional Excellence (CIE), Purdue Libraries, and RCAC (Rosen Center for Advanced Computing). The project reflects a "channel, don't ban" philosophy toward AI in higher education.
+---
 
-## Stakeholder Insights
+## What Made This Work
 
-- **Students** expressed frustration with generic AI answers and desired explanations over direct answers
-- **Faculty** wanted visibility into student questions to preempt misconceptions and adjust teaching
-- These inputs directly shaped PeteChat's design: course-scoped responses, explanation-focused dialogue, and instructor dashboards
+- **$84,787 funding** from Purdue's Innovation Hub
+- Collaboration with CIE, Purdue Libraries, and RCAC
+- A "channel, don't ban" philosophy — students will use AI regardless; better to shape how
+- Students told us they actually *preferred* guided help over direct answers — it reduced anxiety about "not really learning"
+
+---
+
+## Why It Matters
+
+Universities face a choice: ban AI tools (and lose) or integrate them thoughtfully. PeteChat demonstrates that **AI can enhance learning without replacing it** — but only when the design explicitly prioritizes pedagogy over convenience.
