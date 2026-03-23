@@ -12,74 +12,95 @@ author_profile: false
   </div>
 </section>
 
-<!-- ========== UNIFIED RESEARCH MAP ========== -->
+<!-- ========== RESEARCH STRANDS VENN ========== -->
 <section class="lt-section lt-fade-in" style="padding-top:0">
   <h2 class="lt-section__title">Research Strands</h2>
-  <p style="font-size:0.92rem;color:#4a5568;line-height:1.7;margin-bottom:1.2rem">My work moves across four connected strands:</p>
-  <!-- Single unified container -->
-  <div style="border:1px solid #e2e8f0;border-radius:20px;overflow:hidden;background:#fff;box-shadow:0 4px 24px rgba(0,0,0,0.03)">
-    <!-- Top row -->
-    <div style="display:grid;grid-template-columns:1fr 1fr">
-      <!-- Q1: Literacy (was Q3) -->
-      <div style="padding:1.6rem;border-right:1px solid #f0f0f5;border-bottom:1px solid #f0f0f5;background:linear-gradient(135deg,#fff 60%,#ecfdf5);transition:background 0.4s" onmouseover="this.style.background='linear-gradient(135deg,#fff 30%,#d1fae5)'" onmouseout="this.style.background='linear-gradient(135deg,#fff 60%,#ecfdf5)'">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.6rem">
-          <span style="font-size:0.6rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#047857;background:#ecfdf5;padding:0.18rem 0.55rem;border-radius:20px">Literacy &amp; Design</span>
-          <span style="font-size:0.8rem;font-weight:600;color:#e2e8f0">01</span>
-        </div>
-        <h3 style="font-size:1rem;font-weight:700;color:#1a1a2e;margin:0 0 0.4rem;line-height:1.3">AI Literacy &amp; Learning Design</h3>
-        <p style="font-size:0.8rem;color:#64748b;line-height:1.6;margin:0 0 0.7rem">I translate research on agency, authenticity, and equity into AI literacy concepts, design principles, and practical learning environments.</p>
-        <div style="display:flex;flex-wrap:wrap;gap:0.35rem">
-          <a href="/publication/2025-two-years-innovation" style="font-size:0.68rem;padding:0.2rem 0.55rem;border-radius:20px;border:1px solid #a7f3d0;color:#047857;text-decoration:none;font-weight:500;transition:all 0.2s;background:#fff" onmouseover="this.style.background='#d1fae5';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='#fff';this.style.transform=''">2yr GenAI Review · CAEAI '25</a>
-          <a href="/publication/ur-tutor-not-solver" style="font-size:0.68rem;padding:0.2rem 0.55rem;border-radius:20px;border:1px solid #a7f3d0;color:#047857;text-decoration:none;font-weight:500;transition:all 0.2s;background:#fff" onmouseover="this.style.background='#d1fae5';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='#fff';this.style.transform=''">PeteChat Design Case &#8594;</a>
-          <a href="/publication/2026-clawdbot-unboxed" style="font-size:0.68rem;padding:0.2rem 0.55rem;border-radius:20px;border:1px solid #a7f3d0;color:#047857;text-decoration:none;font-weight:500;transition:all 0.2s;background:#fff" onmouseover="this.style.background='#d1fae5';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='#fff';this.style.transform=''">Clawdbot · Talk '26</a>
-        </div>
-      </div>
-      <!-- Q2: IDLE (was Q1) -->
-      <div style="padding:1.6rem;border-bottom:1px solid #f0f0f5;background:linear-gradient(225deg,#fff 60%,#eff6ff);transition:background 0.4s" onmouseover="this.style.background='linear-gradient(225deg,#fff 30%,#dbeafe)'" onmouseout="this.style.background='linear-gradient(225deg,#fff 60%,#eff6ff)'">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.6rem">
-          <span style="font-size:0.6rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#2563eb;background:#eff6ff;padding:0.18rem 0.55rem;border-radius:20px">IDLE &amp; Pragmatics</span>
-          <span style="font-size:0.8rem;font-weight:600;color:#e2e8f0">02</span>
-        </div>
-        <h3 style="font-size:1rem;font-weight:700;color:#1a1a2e;margin:0 0 0.4rem;line-height:1.3">AI-Mediated Informal Digital Learning</h3>
-        <p style="font-size:0.8rem;color:#64748b;line-height:1.6;margin:0 0 0.7rem">I study how learners engage with AI chatbots, podcasts, and self-directed tasks outside the classroom to develop pragmatic competence.</p>
-        <div style="display:flex;flex-wrap:wrap;gap:0.35rem">
-          <a href="/publication/2026-doubao-genai-efl" style="font-size:0.68rem;padding:0.2rem 0.55rem;border-radius:20px;border:1px solid #bfdbfe;color:#2563eb;text-decoration:none;font-weight:500;transition:all 0.2s;background:#fff" onmouseover="this.style.background='#dbeafe';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='#fff';this.style.transform=''">Doubao EFL · PE '26</a>
-          <a href="/publication/2025-pointing-to-context" style="font-size:0.68rem;padding:0.2rem 0.55rem;border-radius:20px;border:1px solid #bfdbfe;color:#2563eb;text-decoration:none;font-weight:500;transition:all 0.2s;background:#fff" onmouseover="this.style.background='#dbeafe';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='#fff';this.style.transform=''">Context · MJSS '25</a>
-          <a href="/publication/2024-call-context" style="font-size:0.68rem;padding:0.2rem 0.55rem;border-radius:20px;border:1px solid #bfdbfe;color:#2563eb;text-decoration:none;font-weight:500;transition:all 0.2s;background:#fff" onmouseover="this.style.background='#dbeafe';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='#fff';this.style.transform=''">CALL Tokyo '24</a>
-        </div>
-      </div>
-    </div>
-    <!-- Bottom row -->
-    <div style="display:grid;grid-template-columns:1fr 1fr">
-      <!-- Q3: Equity (was Q2) -->
-      <div style="padding:1.6rem;border-right:1px solid #f0f0f5;background:linear-gradient(45deg,#fff 60%,#fff7ed);transition:background 0.4s" onmouseover="this.style.background='linear-gradient(45deg,#fff 30%,#fef3c7)'" onmouseout="this.style.background='linear-gradient(45deg,#fff 60%,#fff7ed)'">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.6rem">
-          <span style="font-size:0.6rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#c2410c;background:#fff7ed;padding:0.18rem 0.55rem;border-radius:20px">Equity &amp; Assessment</span>
-          <span style="font-size:0.8rem;font-weight:600;color:#e2e8f0">03</span>
-        </div>
-        <h3 style="font-size:1rem;font-weight:700;color:#1a1a2e;margin:0 0 0.4rem;line-height:1.3">Authenticity, Assessment &amp; Judgment</h3>
-        <p style="font-size:0.8rem;color:#64748b;line-height:1.6;margin:0 0 0.7rem">I investigate how AI changes what counts as authentic work, authorship, and evaluative judgment across educational settings.</p>
-        <div style="display:flex;flex-wrap:wrap;gap:0.35rem">
-          <a href="/publication/2026-aera-meta-analysis" style="font-size:0.68rem;padding:0.2rem 0.55rem;border-radius:20px;border:1px solid #fed7aa;color:#c2410c;text-decoration:none;font-weight:500;transition:all 0.2s;background:#fff" onmouseover="this.style.background='#fef3c7';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='#fff';this.style.transform=''">Meta-analysis · AERA '26</a>
-          <a href="/publication/2025-aect-authenticity" style="font-size:0.68rem;padding:0.2rem 0.55rem;border-radius:20px;border:1px solid #fed7aa;color:#c2410c;text-decoration:none;font-weight:500;transition:all 0.2s;background:#fff" onmouseover="this.style.background='#fef3c7';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='#fff';this.style.transform=''">Authenticity · AECT '25</a>
-          <a href="/publication/ur-authorship-agency-ai" style="font-size:0.68rem;padding:0.2rem 0.55rem;border-radius:20px;border:1px solid #fed7aa;color:#c2410c;text-decoration:none;font-weight:500;transition:all 0.2s;background:#fff" onmouseover="this.style.background='#fef3c7';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='#fff';this.style.transform=''">Authorship &amp; AI &#8594;</a>
-        </div>
-      </div>
-      <!-- Q4: TPACK -->
-      <div style="padding:1.6rem;background:linear-gradient(315deg,#fff 60%,#f5f3ff);transition:background 0.4s" onmouseover="this.style.background='linear-gradient(315deg,#fff 30%,#ede9fe)'" onmouseout="this.style.background='linear-gradient(315deg,#fff 60%,#f5f3ff)'">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.6rem">
-          <span style="font-size:0.6rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#6d28d9;background:#f5f3ff;padding:0.18rem 0.55rem;border-radius:20px">Cross-Cutting</span>
-          <span style="font-size:0.8rem;font-weight:600;color:#e2e8f0">04</span>
-        </div>
-        <h3 style="font-size:1rem;font-weight:700;color:#1a1a2e;margin:0 0 0.4rem;line-height:1.3">TPACK &amp; Teacher Education</h3>
-        <p style="font-size:0.8rem;color:#64748b;line-height:1.6;margin:0 0 0.7rem">Connecting technology integration with cultural diversity and pedagogical knowledge in teacher preparation across international contexts.</p>
-        <div style="display:flex;flex-wrap:wrap;gap:0.35rem">
-          <a href="/publication/ur-tpack-xinjiang" style="font-size:0.68rem;padding:0.2rem 0.55rem;border-radius:20px;border:1px solid #ddd6fe;color:#6d28d9;text-decoration:none;font-weight:500;transition:all 0.2s;background:#fff" onmouseover="this.style.background='#ede9fe';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='#fff';this.style.transform=''">TPACK Xinjiang &#8594;</a>
-          <a href="/publication/2025-purdue-ai-gai" style="font-size:0.68rem;padding:0.2rem 0.55rem;border-radius:20px;border:1px solid #ddd6fe;color:#6d28d9;text-decoration:none;font-weight:500;transition:all 0.2s;background:#fff" onmouseover="this.style.background='#ede9fe';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='#fff';this.style.transform=''">GAI-IDLE · P-12 '25</a>
-        </div>
-      </div>
-    </div>
+  <p style="font-size:0.92rem;color:#4a5568;line-height:1.7;margin-bottom:1.5rem">My work moves across four interconnected strands. Hover over each area to see how they relate:</p>
+
+  <div style="position:relative;max-width:720px;margin:0 auto">
+    <!-- SVG Venn Diagram -->
+    <svg viewBox="0 0 720 520" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+      <defs>
+        <filter id="glow"><feGaussianBlur stdDeviation="3" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+      </defs>
+
+      <!-- Strand circles -->
+      <ellipse id="venn-literacy" cx="310" cy="200" rx="195" ry="145" fill="#047857" opacity="0.12" stroke="#047857" stroke-width="1.5" style="cursor:pointer;transition:opacity 0.4s"/>
+      <ellipse id="venn-idle" cx="210" cy="320" rx="175" ry="130" fill="#2563eb" opacity="0.12" stroke="#2563eb" stroke-width="1.5" style="cursor:pointer;transition:opacity 0.4s"/>
+      <ellipse id="venn-equity" cx="420" cy="320" rx="175" ry="130" fill="#c2410c" opacity="0.12" stroke="#c2410c" stroke-width="1.5" style="cursor:pointer;transition:opacity 0.4s"/>
+      <ellipse id="venn-tpack" cx="540" cy="200" rx="155" ry="120" fill="#6d28d9" opacity="0.10" stroke="#6d28d9" stroke-width="1.5" style="cursor:pointer;transition:opacity 0.4s"/>
+
+      <!-- Strand labels -->
+      <text x="240" y="115" font-size="14" font-weight="700" fill="#047857" text-anchor="middle">AI Literacy &amp;</text>
+      <text x="240" y="133" font-size="14" font-weight="700" fill="#047857" text-anchor="middle">Learning Design</text>
+      <text x="240" y="152" font-size="10" fill="#047857" opacity="0.7" text-anchor="middle" font-style="italic">Design principles &amp; environments</text>
+
+      <text x="120" y="440" font-size="14" font-weight="700" fill="#2563eb" text-anchor="middle">IDLE &amp;</text>
+      <text x="120" y="458" font-size="14" font-weight="700" fill="#2563eb" text-anchor="middle">Pragmatics</text>
+      <text x="120" y="475" font-size="10" fill="#2563eb" opacity="0.7" text-anchor="middle" font-style="italic">AI chatbots &amp; self-directed learning</text>
+
+      <text x="510" y="440" font-size="14" font-weight="700" fill="#c2410c" text-anchor="middle">Equity &amp;</text>
+      <text x="510" y="458" font-size="14" font-weight="700" fill="#c2410c" text-anchor="middle">Assessment</text>
+      <text x="510" y="475" font-size="10" fill="#c2410c" opacity="0.7" text-anchor="middle" font-style="italic">Authenticity &amp; evaluative judgment</text>
+
+      <text x="610" y="115" font-size="14" font-weight="700" fill="#6d28d9" text-anchor="middle">TPACK &amp;</text>
+      <text x="610" y="133" font-size="14" font-weight="700" fill="#6d28d9" text-anchor="middle">Teacher Ed</text>
+      <text x="610" y="152" font-size="10" fill="#6d28d9" opacity="0.7" text-anchor="middle" font-style="italic">Technology integration &amp; diversity</text>
+
+      <!-- Publications in strand zones -->
+      <!-- Literacy zone -->
+      <a href="/publication/2025-two-years-innovation"><text x="280" y="180" font-size="9" fill="#047857" font-weight="600" text-anchor="middle" style="cursor:pointer" opacity="0.8">GenAI Review · CAEAI '25</text></a>
+      <a href="/publication/ur-tutor-not-solver"><text x="280" y="198" font-size="9" fill="#047857" font-weight="600" text-anchor="middle" style="cursor:pointer" opacity="0.8">PeteChat Design Case →</text></a>
+      <a href="/publication/2026-clawdbot-unboxed"><text x="280" y="216" font-size="9" fill="#047857" font-weight="600" text-anchor="middle" style="cursor:pointer" opacity="0.8">Clawdbot · Talk '26</text></a>
+
+      <!-- IDLE zone -->
+      <a href="/publication/2026-doubao-genai-efl"><text x="150" y="340" font-size="9" fill="#2563eb" font-weight="600" text-anchor="middle" style="cursor:pointer" opacity="0.8">Doubao EFL · PE '26</text></a>
+      <a href="/publication/2025-pointing-to-context"><text x="150" y="358" font-size="9" fill="#2563eb" font-weight="600" text-anchor="middle" style="cursor:pointer" opacity="0.8">Context · MJSS '25</text></a>
+      <a href="/publication/2024-call-context"><text x="150" y="376" font-size="9" fill="#2563eb" font-weight="600" text-anchor="middle" style="cursor:pointer" opacity="0.8">CALL Tokyo '24</text></a>
+
+      <!-- Equity zone -->
+      <a href="/publication/2026-aera-meta-analysis"><text x="490" y="340" font-size="9" fill="#c2410c" font-weight="600" text-anchor="middle" style="cursor:pointer" opacity="0.8">Meta-analysis · AERA '26</text></a>
+      <a href="/publication/2025-aect-authenticity"><text x="490" y="358" font-size="9" fill="#c2410c" font-weight="600" text-anchor="middle" style="cursor:pointer" opacity="0.8">Authenticity · AECT '25</text></a>
+      <a href="/publication/ur-authorship-agency-ai"><text x="490" y="376" font-size="9" fill="#c2410c" font-weight="600" text-anchor="middle" style="cursor:pointer" opacity="0.8">Authorship &amp; AI →</text></a>
+
+      <!-- TPACK zone -->
+      <a href="/publication/ur-tpack-xinjiang"><text x="580" y="200" font-size="9" fill="#6d28d9" font-weight="600" text-anchor="middle" style="cursor:pointer" opacity="0.8">TPACK Xinjiang →</text></a>
+      <a href="/publication/2025-purdue-ai-gai"><text x="580" y="218" font-size="9" fill="#6d28d9" font-weight="600" text-anchor="middle" style="cursor:pointer" opacity="0.8">GAI-IDLE · P-12 '25</text></a>
+
+      <!-- Center overlap label -->
+      <text x="350" y="275" font-size="10" fill="#1e1b4b" font-weight="700" text-anchor="middle" opacity="0.5">AI × Education</text>
+      <text x="350" y="290" font-size="8" fill="#64748b" text-anchor="middle" opacity="0.5">Shared foundation</text>
+
+      <!-- Overlap: Literacy ∩ IDLE -->
+      <text x="235" y="260" font-size="8" fill="#0f766e" text-anchor="middle" opacity="0.6" font-style="italic">Design for</text>
+      <text x="235" y="272" font-size="8" fill="#0f766e" text-anchor="middle" opacity="0.6" font-style="italic">informal learning</text>
+
+      <!-- Overlap: Literacy ∩ Equity -->
+      <text x="400" y="230" font-size="8" fill="#92400e" text-anchor="middle" opacity="0.6" font-style="italic">Authentic</text>
+      <text x="400" y="242" font-size="8" fill="#92400e" text-anchor="middle" opacity="0.6" font-style="italic">AI integration</text>
+
+      <!-- Overlap: IDLE ∩ Equity -->
+      <text x="320" y="360" font-size="8" fill="#7c2d12" text-anchor="middle" opacity="0.6" font-style="italic">AI tools &amp;</text>
+      <text x="320" y="372" font-size="8" fill="#7c2d12" text-anchor="middle" opacity="0.6" font-style="italic">fair assessment</text>
+
+      <!-- Overlap: Literacy ∩ TPACK -->
+      <text x="460" y="175" font-size="8" fill="#4c1d95" text-anchor="middle" opacity="0.6" font-style="italic">Curriculum</text>
+      <text x="460" y="187" font-size="8" fill="#4c1d95" text-anchor="middle" opacity="0.6" font-style="italic">design</text>
+    </svg>
   </div>
+
+  <!-- Hover interaction -->
+  <script>
+  (function(){
+    var strands = ['literacy','idle','equity','tpack'];
+    strands.forEach(function(s){
+      var el = document.getElementById('venn-'+s);
+      if(!el) return;
+      el.addEventListener('mouseenter', function(){ el.setAttribute('opacity','0.28'); });
+      el.addEventListener('mouseleave', function(){ el.setAttribute('opacity', s==='tpack'?'0.10':'0.12'); });
+    });
+  })();
+  </script>
 </section>
 
 <!-- ========== METHODOLOGY (interactive pipeline) ========== -->
