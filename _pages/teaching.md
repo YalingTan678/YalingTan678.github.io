@@ -204,8 +204,8 @@ My teaching philosophy is grounded in the belief that language acquisition is mo
 
 <!-- University of Silesia -->
 <a class="teach-card" href="https://us.edu.pl/en/" target="_blank">
-  <div class="teach-card__img teach-card__img--icon">
-    🇵🇱
+  <div class="teach-card__img">
+    <img src="/images/teaching/univ-silesia.png" alt="University of Silesia, Wydział Humanistyczny">
   </div>
   <div class="teach-card__body">
     <div class="teach-card__header">
@@ -224,8 +224,8 @@ My teaching philosophy is grounded in the belief that language acquisition is mo
 
 <!-- Northeastern University -->
 <a class="teach-card" href="http://www.neu.edu.cn/" target="_blank">
-  <div class="teach-card__img teach-card__img--icon">
-    🇨🇳
+  <div class="teach-card__img">
+    <img src="/images/teaching/northeastern-univ.png" alt="Northeastern University, Shenyang">
   </div>
   <div class="teach-card__body">
     <div class="teach-card__header">
@@ -244,8 +244,8 @@ My teaching philosophy is grounded in the belief that language acquisition is mo
 
 <!-- TAL Education -->
 <a class="teach-card" href="https://en.100tal.com/" target="_blank">
-  <div class="teach-card__img teach-card__img--icon">
-    📚
+  <div class="teach-card__img">
+    <img src="/images/teaching/tal-education.png" alt="TAL Education Group">
   </div>
   <div class="teach-card__body">
     <div class="teach-card__header">
