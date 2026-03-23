@@ -1,8 +1,12 @@
-/* ===== Fix page content cutoff ===== */
+/* ===== Fix page content cutoff & footer overlap ===== */
 #main, .initial-content, .page, .page__inner-wrap,
 .archive, .page__content, .e-content {
   overflow: visible !important;
   max-height: none !important;
+}
+.page__footer {
+  position: relative !important;
+  bottom: auto !important;
 }
 
 /* ===== Publication Visualization Styles ===== */
