@@ -14,11 +14,37 @@ author_profile: true
     padding-bottom: 0.4rem; border-bottom: 2px solid #eef4ff;
   }
   .pub-page .research-stmt {
-    font-style: italic; color: #4a5568;
-    border-left: 3px solid #2a7ae2;
-    padding: 0.8rem 1.2rem;
-    margin-bottom: 2rem;
-    background: #f8fafc; border-radius: 0 10px 10px 0;
+    position: relative;
+    color: #2d3748;
+    padding: 1.5rem 1.8rem;
+    margin-bottom: 2.5rem;
+    background: linear-gradient(135deg, #f0f4ff 0%, #e8f4f8 40%, #fdf2f8 100%);
+    border-radius: 16px;
+    line-height: 1.8;
+    font-size: 0.95rem;
+    border: 1px solid rgba(99, 102, 241, 0.08);
+    box-shadow: 0 4px 24px rgba(99, 102, 241, 0.06), 0 1px 4px rgba(0, 0, 0, 0.03);
+    overflow: hidden;
+  }
+  .pub-page .research-stmt::before {
+    content: "\201C";
+    position: absolute;
+    top: -0.15rem; left: 1rem;
+    font-size: 4.5rem;
+    font-family: Georgia, serif;
+    background: linear-gradient(135deg, #6366f1, #8b5cf6, #ec4899);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    opacity: 0.25;
+    line-height: 1;
+  }
+  .pub-page .research-stmt::after {
+    content: "";
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #6366f1, #8b5cf6, #ec4899, #f59e0b);
+    border-radius: 0 0 16px 16px;
   }
   .pub-page .stats {
     font-size: 0.85rem; color: #718096; margin-bottom: 1.5rem;
