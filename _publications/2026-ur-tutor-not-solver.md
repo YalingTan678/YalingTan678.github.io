@@ -10,6 +10,19 @@ authors: 'Li, B., <strong>*Tan, L.</strong>, & Zakharov, W.'
 badge: 'Under Review'
 ---
 
+## PeteChat Interface
+
+<div class="fig-gallery">
+  <div>
+    <img src="/images/pubs/petechat-v1.png" alt="PeteChat Version 1 — initial interface with critical issues" onclick="window.open(this.src)">
+    <div class="fig-caption">Phase 1: Initial interface — identified critical UX issues</div>
+  </div>
+  <div>
+    <img src="/images/pubs/petechat-v2.png" alt="PeteChat Version 2 — redesigned with SRL features" onclick="window.open(this.src)">
+    <div class="fig-caption">Phase 2: Redesigned with SRL scaffolding &amp; learning goals</div>
+  </div>
+</div>
+
 ## Overview
 
 This design case documents the development and implementation of **PeteChat**, an LLM-powered learning assistant at Purdue University that serves as a "virtual teaching assistant" — designed to teach students *how to think*, not *what to answer*. The project follows a **design-based research (DBR)** approach with iterative refinement across multiple semesters.
