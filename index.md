@@ -3,6 +3,15 @@ layout: home
 author_profile: false
 ---
 
+<!-- ========== MISSION STATEMENT ========== -->
+<section class="lt-section lt-fade-in" style="padding-top:0;padding-bottom:0;margin-bottom:-0.5rem">
+  <div style="position:relative;padding:1.5rem 2rem;border-radius:16px;background:linear-gradient(135deg,#f5f3ff 0%,#ede9fe 40%,#fdf2f8 100%);border:1px solid rgba(124,58,237,0.08);overflow:hidden">
+    <div style="position:absolute;top:-0.2rem;left:1rem;font-size:3rem;font-family:Georgia,serif;background:linear-gradient(135deg,#7c3aed,#9f50d3,#f75092);-webkit-background-clip:text;-webkit-text-fill-color:transparent;opacity:0.15;line-height:1">&ldquo;</div>
+    <p style="font-size:1.05rem;color:#1e1b4b;line-height:1.8;margin:0;font-weight:500">My goal is to become an instructional designer who harnesses AI to create <strong style="color:#7c3aed">equitable, human-centered learning experiences</strong> at scale.</p>
+    <div style="position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#7c3aed,#9f50d3,#f75092,#f59e0b);border-radius:0 0 16px 16px"></div>
+  </div>
+</section>
+
 <!-- ========== UNIFIED RESEARCH MAP ========== -->
 <section class="lt-section lt-fade-in" style="padding-top:0">
   <h2 class="lt-section__title">Research Strands</h2>
@@ -394,7 +403,7 @@ function filterTL(cat) {
 
 <!-- ========== EXPERIENCE ========== -->
 <section class="lt-section lt-fade-in">
-  <h2 class="lt-section__title">Experience</h2>
+  <h2 class="lt-section__title">Professional Experience</h2>
   <div class="lt-exp__item">
     <div class="lt-exp__header">
       <div>

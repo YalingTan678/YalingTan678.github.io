@@ -306,17 +306,12 @@ My service philosophy is to strengthen academic communities through reliable and
 <h2>Honors, Awards &amp; Recognitions</h2>
 
 <div class="award-item">
-  <div style="flex:1"><strong>LDT Travel Support Program</strong><br><span style="font-size:0.85rem;color:#718096">Purdue University, Curriculum and Instruction &amp; LDT Programs</span></div>
-  <div class="award-right"><span class="award-amount">$250</span><br><span style="font-size:0.78rem;color:#718096">2025</span></div>
-</div>
-
-<div class="award-item">
   <div style="flex:1"><strong>National Academic Fellowship</strong><br><span style="font-size:0.85rem;color:#718096">Northeastern University, Department of Interpreting</span></div>
   <div class="award-right"><span class="award-amount">$2,000</span><br><span style="font-size:0.78rem;color:#718096">2023&ndash;2024</span></div>
 </div>
 
 <div class="award-item">
-  <div style="flex:1"><strong>Erasmus+ Fund</strong><br><span style="font-size:0.85rem;color:#718096">University of Silesia, Department of Linguistics</span></div>
+  <div style="flex:1"><strong>Erasmus+ Scholarship</strong><br><span style="font-size:0.85rem;color:#718096">University of Silesia, Department of Linguistics</span></div>
   <div class="award-right"><span class="award-amount">$5,000</span><br><span style="font-size:0.78rem;color:#718096">2024</span></div>
 </div>
 
