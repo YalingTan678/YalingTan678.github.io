@@ -102,8 +102,8 @@ author_profile: true
     opacity: 0.45;
   }
 
-  /* ===== Carousel (for PALDT scrollable images) ===== */
-  .svc-carousel {
+  /* ===== Hover-scroll long image (PALDT newsletter) ===== */
+  .svc-scroll-img {
     flex-shrink: 0;
     width: 280px;
     height: 200px;
@@ -111,67 +111,59 @@ author_profile: true
     overflow: hidden;
     box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
     position: relative;
-  }
-  .svc-carousel__track {
-    display: flex;
-    height: 100%;
-    transition: transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  }
-  .svc-carousel__slide {
-    min-width: 100%;
-    height: 100%;
-  }
-  .svc-carousel__slide img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  .svc-carousel__btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 28px; height: 28px;
-    border-radius: 50%;
-    border: none;
-    background: rgba(255,255,255,0.85);
-    color: #1a1a2e;
-    font-size: 0.85rem;
     cursor: pointer;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  }
+  .svc-scroll-img img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    object-position: top;
+    display: block;
+    transition: transform 3s ease-in-out;
+    transform: translateY(0);
+  }
+  .svc-scroll-img:hover img {
+    /* JS will handle the exact translateY based on image height */
+    transform: translateY(var(--scroll-y, -70%));
+  }
+  /* Fade hint at bottom to show it's scrollable */
+  .svc-scroll-img::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 40px;
+    background: linear-gradient(transparent, rgba(255,255,255,0.7));
+    pointer-events: none;
+    transition: opacity 0.3s;
+  }
+  .svc-scroll-img:hover::after {
+    opacity: 0;
+  }
+  /* Small scroll hint icon */
+  .svc-scroll-img::before {
+    content: '\2195';
+    position: absolute;
+    top: 8px; right: 8px;
+    width: 24px; height: 24px;
+    border-radius: 6px;
+    background: rgba(0,0,0,0.45);
+    color: #fff;
+    font-size: 0.7rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: background 0.2s;
     z-index: 2;
-    line-height: 1;
+    opacity: 0.8;
+    transition: opacity 0.3s;
   }
-  .svc-carousel__btn:hover { background: #fff; }
-  .svc-carousel__btn--prev { left: 6px; }
-  .svc-carousel__btn--next { right: 6px; }
-  .svc-carousel__dots {
-    position: absolute;
-    bottom: 8px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 5px;
-    z-index: 2;
+  .svc-scroll-img:hover::before {
+    opacity: 0;
   }
-  .svc-carousel__dot {
-    width: 6px; height: 6px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.5);
-    border: none;
-    padding: 0;
-    cursor: pointer;
-    transition: background 0.2s;
-  }
-  .svc-carousel__dot.active { background: #fff; }
 
   /* Responsive */
   @media (max-width: 640px) {
     .svc-card { flex-direction: column; }
-    .svc-card__img, .svc-carousel { width: 100%; height: 200px; }
+    .svc-card__img, .svc-scroll-img { width: 100%; height: 200px; }
     .svc-card__meta { text-align: left; }
   }
 
@@ -213,18 +205,10 @@ My service philosophy is to strengthen academic communities through reliable and
   </div>
 </div>
 
-<!-- PALDT (with carousel) -->
+<!-- PALDT (hover-scroll long newsletter) -->
 <div class="svc-card">
-  <div class="svc-carousel" id="paldt-carousel">
-    <div class="svc-carousel__track">
-      <!-- Add more slides here: copy a svc-carousel__slide div with a new image -->
-      <div class="svc-carousel__slide"><img src="/images/service/paldt.jpg" alt="PALDT Newsletter March 2026"></div>
-      <!-- <div class="svc-carousel__slide"><img src="/images/service/paldt-2.jpg" alt="PALDT event"></div> -->
-      <!-- <div class="svc-carousel__slide"><img src="/images/service/paldt-3.jpg" alt="PALDT workshop"></div> -->
-    </div>
-    <button class="svc-carousel__btn svc-carousel__btn--prev" aria-label="Previous">&lsaquo;</button>
-    <button class="svc-carousel__btn svc-carousel__btn--next" aria-label="Next">&rsaquo;</button>
-    <div class="svc-carousel__dots"></div>
+  <div class="svc-scroll-img" id="paldt-scroll">
+    <img src="/images/service/paldt.jpg" alt="PALDT Newsletter March 2026">
   </div>
   <div class="svc-card__body">
     <div class="svc-card__header">
@@ -312,48 +296,29 @@ My service philosophy is to strengthen academic communities through reliable and
 </div>
 
 <script>
-// Carousel functionality
-document.querySelectorAll('.svc-carousel').forEach(function(carousel) {
-  var track = carousel.querySelector('.svc-carousel__track');
-  var slides = carousel.querySelectorAll('.svc-carousel__slide');
-  var prevBtn = carousel.querySelector('.svc-carousel__btn--prev');
-  var nextBtn = carousel.querySelector('.svc-carousel__btn--next');
-  var dotsContainer = carousel.querySelector('.svc-carousel__dots');
-  var current = 0;
-  var total = slides.length;
+// Calculate scroll distance based on actual image height
+document.querySelectorAll('.svc-scroll-img').forEach(function(container) {
+  var img = container.querySelector('img');
 
-  // Hide controls if only 1 slide
-  if (total <= 1) {
-    prevBtn.style.display = 'none';
-    nextBtn.style.display = 'none';
-    return;
+  function calcScroll() {
+    if (!img.naturalHeight) return;
+    var containerH = container.offsetHeight;
+    var imgH = (img.naturalWidth > 0) ? (container.offsetWidth / img.naturalWidth) * img.naturalHeight : img.naturalHeight;
+    if (imgH > containerH) {
+      var scrollDist = imgH - containerH;
+      container.style.setProperty('--scroll-y', '-' + scrollDist + 'px');
+      // Adjust transition speed based on scroll distance (longer = slower)
+      var duration = Math.max(2, Math.min(6, scrollDist / 200));
+      img.style.transitionDuration = duration + 's';
+    }
   }
 
-  // Create dots
-  for (var i = 0; i < total; i++) {
-    var dot = document.createElement('button');
-    dot.className = 'svc-carousel__dot' + (i === 0 ? ' active' : '');
-    dot.setAttribute('aria-label', 'Slide ' + (i + 1));
-    dot.dataset.index = i;
-    dotsContainer.appendChild(dot);
+  if (img.complete) {
+    calcScroll();
+  } else {
+    img.addEventListener('load', calcScroll);
   }
-  var dots = dotsContainer.querySelectorAll('.svc-carousel__dot');
-
-  function goTo(index) {
-    current = (index + total) % total;
-    track.style.transform = 'translateX(-' + (current * 100) + '%)';
-    dots.forEach(function(d, j) {
-      d.classList.toggle('active', j === current);
-    });
-  }
-
-  prevBtn.addEventListener('click', function() { goTo(current - 1); });
-  nextBtn.addEventListener('click', function() { goTo(current + 1); });
-  dots.forEach(function(dot) {
-    dot.addEventListener('click', function() { goTo(parseInt(dot.dataset.index)); });
-  });
-
-  // Auto-play every 4 seconds
-  setInterval(function() { goTo(current + 1); }, 4000);
+  // Recalculate on resize
+  window.addEventListener('resize', calcScroll);
 });
 </script>
