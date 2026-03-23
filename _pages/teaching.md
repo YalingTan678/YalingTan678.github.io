@@ -185,7 +185,7 @@ My teaching philosophy is grounded in the belief that language acquisition is mo
 <h2>Teaching Experience</h2>
 
 <!-- EDCI 612 -->
-<a class="teach-card" href="https://www.purdue.edu/catalog/graduate/colleges-schools-programs/education/curriculum-instruction/edci.html" target="_blank">
+<a class="teach-card" href="/teaching/edci612/">
   <div class="teach-card__img">
     <img src="/images/teaching/edci612-speakers.png" alt="EDCI 612 Guest Lecture speakers">
   </div>
@@ -198,7 +198,7 @@ My teaching philosophy is grounded in the belief that language acquisition is mo
     <ul class="teach-card__desc">
       <li>Co-presented with Dr. Victoria Lowell and Belle Li on GenAI research and language education, covering learning analytics, AI tutors, and instructional design implications for multilingual learners.</li>
     </ul>
-    <span class="teach-card__link">View course details &rarr;</span>
+    <span class="teach-card__link">View slides & details &rarr;</span>
   </div>
 </a>
 
