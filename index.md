@@ -3,76 +3,66 @@ layout: home
 author_profile: false
 ---
 
-<!-- ========== RESEARCH CONSTELLATION MAP ========== -->
+<!-- ========== RESEARCH STRANDS (Belle numbered cards) ========== -->
 <section class="lt-section lt-fade-in" style="padding-top:0">
   <h2 class="lt-section__title">Research Strands</h2>
-  <div style="background:#0f172a;border-radius:20px;padding:2.5rem 2rem;position:relative;overflow:hidden;min-height:480px">
-    <!-- Animated background stars -->
-    <div style="position:absolute;inset:0;overflow:hidden;pointer-events:none">
-      <div style="position:absolute;width:2px;height:2px;background:#fff;border-radius:50%;top:12%;left:8%;animation:twinkle 3s infinite"></div>
-      <div style="position:absolute;width:1px;height:1px;background:#fff;border-radius:50%;top:25%;left:92%;animation:twinkle 4s infinite 1s"></div>
-      <div style="position:absolute;width:2px;height:2px;background:#fff;border-radius:50%;top:70%;left:15%;animation:twinkle 5s infinite 0.5s"></div>
-      <div style="position:absolute;width:1px;height:1px;background:#fff;border-radius:50%;top:85%;left:75%;animation:twinkle 3.5s infinite 2s"></div>
-      <div style="position:absolute;width:2px;height:2px;background:#fff;border-radius:50%;top:45%;left:50%;animation:twinkle 4s infinite 1.5s"></div>
-      <div style="position:absolute;width:1px;height:1px;background:#fff;border-radius:50%;top:60%;left:30%;animation:twinkle 3s infinite 0.8s"></div>
-      <div style="position:absolute;width:1px;height:1px;background:#fff;border-radius:50%;top:15%;left:65%;animation:twinkle 5s infinite 2.5s"></div>
-      <div style="position:absolute;width:2px;height:2px;background:#fff;border-radius:50%;top:90%;left:45%;animation:twinkle 4s infinite 0.3s"></div>
-    </div>
-    <style>@keyframes twinkle{0%,100%{opacity:0.3}50%{opacity:1}}@keyframes glow-pulse{0%,100%{box-shadow:0 0 15px currentColor,0 0 30px currentColor}50%{box-shadow:0 0 25px currentColor,0 0 50px currentColor}}</style>
-    <!-- Center node: Dissertation -->
-    <div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:20;text-align:center">
-      <div style="width:100px;height:100px;border-radius:50%;background:radial-gradient(circle,#1e293b,#0f172a);border:2px solid rgba(255,255,255,0.3);display:flex;flex-direction:column;align-items:center;justify-content:center;color:#e2e8f0;animation:glow-pulse 4s infinite;box-shadow:0 0 20px rgba(148,163,184,0.3)">
-        <div style="font-size:0.55rem;text-transform:uppercase;letter-spacing:0.15em;color:#94a3b8;margin-bottom:0.15rem">Dissertation</div>
-        <div style="font-size:0.8rem;font-weight:700">AI &amp;<br>Learning</div>
+  <p style="font-size:0.92rem;color:#4a5568;line-height:1.7;margin-bottom:1.5rem">My work moves across three connected strands: AI-mediated self-directed learning, learner equity and assessment, and the design principles that translate these findings into practice.</p>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.2rem">
+    <!-- Card 01 -->
+    <div style="background:#fff;border:1px solid #e8edf5;border-radius:14px;padding:1.6rem;position:relative;transition:transform 0.3s,box-shadow 0.3s;border-left:3px solid #3b82f6" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 32px rgba(0,0,0,0.06)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.8rem">
+        <span style="font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#2563eb;background:#eff6ff;padding:0.2rem 0.6rem;border-radius:20px">IDLE &amp; Pragmatics</span>
+        <span style="font-size:0.85rem;font-weight:600;color:#cbd5e1">01</span>
+      </div>
+      <h3 style="font-size:1.1rem;font-weight:700;color:#1a1a2e;margin:0 0 0.5rem;line-height:1.35">AI-Mediated Informal Digital Learning</h3>
+      <p style="font-size:0.85rem;color:#64748b;line-height:1.65;margin:0 0 0.8rem">I study how learners engage with AI chatbots, podcasts, and self-directed tasks outside the classroom to develop pragmatic and communicative competence in English.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:0.4rem">
+        <a href="/publication/2026-doubao-genai-efl" style="font-size:0.7rem;padding:0.22rem 0.6rem;border-radius:20px;border:1px solid #bfdbfe;color:#2563eb;text-decoration:none;font-weight:500;transition:all 0.2s;background:#fff" onmouseover="this.style.background='#eff6ff';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='#fff';this.style.transform=''">Doubao EFL · PE '26</a>
+        <a href="/publication/2025-pointing-to-context" style="font-size:0.7rem;padding:0.22rem 0.6rem;border-radius:20px;border:1px solid #bfdbfe;color:#2563eb;text-decoration:none;font-weight:500;transition:all 0.2s;background:#fff" onmouseover="this.style.background='#eff6ff';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='#fff';this.style.transform=''">Context · MJSS '25</a>
+        <a href="/publication/2024-call-context" style="font-size:0.7rem;padding:0.22rem 0.6rem;border-radius:20px;border:1px solid #bfdbfe;color:#2563eb;text-decoration:none;font-weight:500;transition:all 0.2s;background:#fff" onmouseover="this.style.background='#eff6ff';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='#fff';this.style.transform=''">CALL Tokyo '24</a>
       </div>
     </div>
-    <!-- ===== IDLE CLUSTER (top-left, blue) ===== -->
-    <div style="position:absolute;left:12%;top:8%;z-index:10">
-      <div style="display:flex;align-items:center;gap:0.6rem;margin-bottom:1rem">
-        <div style="width:14px;height:14px;border-radius:50%;background:#3b82f6;box-shadow:0 0 12px #3b82f6,0 0 24px rgba(59,130,246,0.4);flex-shrink:0"></div>
-        <span style="color:#93c5fd;font-size:0.95rem;font-weight:700;letter-spacing:0.02em">IDLE &amp; Pragmatics</span>
+    <!-- Card 02 -->
+    <div style="background:#fff;border:1px solid #e8edf5;border-radius:14px;padding:1.6rem;position:relative;transition:transform 0.3s,box-shadow 0.3s;border-left:3px solid #e05a2b" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 32px rgba(0,0,0,0.06)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.8rem">
+        <span style="font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#c2410c;background:#fff7ed;padding:0.2rem 0.6rem;border-radius:20px">Equity &amp; Assessment</span>
+        <span style="font-size:0.85rem;font-weight:600;color:#cbd5e1">02</span>
       </div>
-      <div style="display:flex;flex-direction:column;gap:0.45rem;padding-left:1.8rem">
-        <a href="/publication/2026-doubao-genai-efl" style="color:#bfdbfe;font-size:0.75rem;text-decoration:none;padding:0.3rem 0.7rem;background:rgba(59,130,246,0.15);border:1px solid rgba(59,130,246,0.3);border-radius:8px;transition:all 0.25s;display:inline-block;width:fit-content" onmouseover="this.style.background='rgba(59,130,246,0.3)';this.style.boxShadow='0 0 15px rgba(59,130,246,0.3)';this.style.transform='translateX(4px)'" onmouseout="this.style.background='rgba(59,130,246,0.15)';this.style.boxShadow='';this.style.transform=''">Doubao EFL · PE '26</a>
-        <a href="/publication/2025-pointing-to-context" style="color:#bfdbfe;font-size:0.75rem;text-decoration:none;padding:0.3rem 0.7rem;background:rgba(59,130,246,0.15);border:1px solid rgba(59,130,246,0.3);border-radius:8px;transition:all 0.25s;display:inline-block;width:fit-content" onmouseover="this.style.background='rgba(59,130,246,0.3)';this.style.boxShadow='0 0 15px rgba(59,130,246,0.3)';this.style.transform='translateX(4px)'" onmouseout="this.style.background='rgba(59,130,246,0.15)';this.style.boxShadow='';this.style.transform=''">Context · MJSS '25</a>
-        <a href="/publication/2024-call-context" style="color:#bfdbfe;font-size:0.75rem;text-decoration:none;padding:0.3rem 0.7rem;background:rgba(59,130,246,0.15);border:1px solid rgba(59,130,246,0.3);border-radius:8px;transition:all 0.25s;display:inline-block;width:fit-content" onmouseover="this.style.background='rgba(59,130,246,0.3)';this.style.boxShadow='0 0 15px rgba(59,130,246,0.3)';this.style.transform='translateX(4px)'" onmouseout="this.style.background='rgba(59,130,246,0.15)';this.style.boxShadow='';this.style.transform=''">CALL Tokyo '24</a>
-      </div>
-    </div>
-    <!-- SVG connecting lines -->
-    <svg style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:5" viewBox="0 0 680 480">
-      <line x1="160" y1="105" x2="310" y2="230" stroke="rgba(59,130,246,0.2)" stroke-width="1" stroke-dasharray="4,4"/>
-      <line x1="560" y1="105" x2="370" y2="230" stroke="rgba(245,158,11,0.2)" stroke-width="1" stroke-dasharray="4,4"/>
-      <line x1="340" y1="380" x2="340" y2="270" stroke="rgba(34,197,94,0.2)" stroke-width="1" stroke-dasharray="4,4"/>
-      <line x1="200" y1="340" x2="310" y2="250" stroke="rgba(139,92,246,0.15)" stroke-width="1" stroke-dasharray="4,4"/>
-      <line x1="500" y1="340" x2="370" y2="250" stroke="rgba(236,72,153,0.15)" stroke-width="1" stroke-dasharray="4,4"/>
-    </svg>
-    <!-- ===== EQUITY CLUSTER (top-right, amber) ===== -->
-    <div style="position:absolute;right:8%;top:8%;z-index:10;text-align:right">
-      <div style="display:flex;align-items:center;gap:0.6rem;margin-bottom:1rem;justify-content:flex-end">
-        <span style="color:#fcd34d;font-size:0.95rem;font-weight:700;letter-spacing:0.02em">Authenticity &amp; Equity</span>
-        <div style="width:14px;height:14px;border-radius:50%;background:#f59e0b;box-shadow:0 0 12px #f59e0b,0 0 24px rgba(245,158,11,0.4);flex-shrink:0"></div>
-      </div>
-      <div style="display:flex;flex-direction:column;gap:0.45rem;align-items:flex-end;padding-right:1.8rem">
-        <a href="/publication/2026-aera-meta-analysis" style="color:#fde68a;font-size:0.75rem;text-decoration:none;padding:0.3rem 0.7rem;background:rgba(245,158,11,0.15);border:1px solid rgba(245,158,11,0.3);border-radius:8px;transition:all 0.25s;display:inline-block" onmouseover="this.style.background='rgba(245,158,11,0.3)';this.style.boxShadow='0 0 15px rgba(245,158,11,0.3)';this.style.transform='translateX(-4px)'" onmouseout="this.style.background='rgba(245,158,11,0.15)';this.style.boxShadow='';this.style.transform=''">Meta-analysis · AERA '26</a>
-        <a href="/publication/2025-aect-authenticity" style="color:#fde68a;font-size:0.75rem;text-decoration:none;padding:0.3rem 0.7rem;background:rgba(245,158,11,0.15);border:1px solid rgba(245,158,11,0.3);border-radius:8px;transition:all 0.25s;display:inline-block" onmouseover="this.style.background='rgba(245,158,11,0.3)';this.style.boxShadow='0 0 15px rgba(245,158,11,0.3)';this.style.transform='translateX(-4px)'" onmouseout="this.style.background='rgba(245,158,11,0.15)';this.style.boxShadow='';this.style.transform=''">Authenticity · AECT '25</a>
-        <a href="/publication/ur-authorship-agency-ai" style="color:#fde68a;font-size:0.75rem;text-decoration:none;padding:0.3rem 0.7rem;background:rgba(245,158,11,0.15);border:1px solid rgba(245,158,11,0.3);border-radius:8px;transition:all 0.25s;display:inline-block" onmouseover="this.style.background='rgba(245,158,11,0.3)';this.style.boxShadow='0 0 15px rgba(245,158,11,0.3)';this.style.transform='translateX(-4px)'" onmouseout="this.style.background='rgba(245,158,11,0.15)';this.style.boxShadow='';this.style.transform=''">Authorship &amp; AI &#8594;</a>
+      <h3 style="font-size:1.1rem;font-weight:700;color:#1a1a2e;margin:0 0 0.5rem;line-height:1.35">Authenticity, Assessment &amp; Judgment</h3>
+      <p style="font-size:0.85rem;color:#64748b;line-height:1.65;margin:0 0 0.8rem">I investigate how AI changes what counts as authentic work, authorship, and evaluative judgment in educational settings across socioeconomic contexts.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:0.4rem">
+        <a href="/publication/2026-aera-meta-analysis" style="font-size:0.7rem;padding:0.22rem 0.6rem;border-radius:20px;border:1px solid #fed7aa;color:#c2410c;text-decoration:none;font-weight:500;transition:all 0.2s;background:#fff" onmouseover="this.style.background='#fff7ed';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='#fff';this.style.transform=''">Meta-analysis · AERA '26</a>
+        <a href="/publication/2025-aect-authenticity" style="font-size:0.7rem;padding:0.22rem 0.6rem;border-radius:20px;border:1px solid #fed7aa;color:#c2410c;text-decoration:none;font-weight:500;transition:all 0.2s;background:#fff" onmouseover="this.style.background='#fff7ed';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='#fff';this.style.transform=''">Authenticity · AECT '25</a>
+        <a href="/publication/ur-authorship-agency-ai" style="font-size:0.7rem;padding:0.22rem 0.6rem;border-radius:20px;border:1px solid #fed7aa;color:#c2410c;text-decoration:none;font-weight:500;transition:all 0.2s;background:#fff" onmouseover="this.style.background='#fff7ed';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='#fff';this.style.transform=''">Authorship &amp; AI &#8594;</a>
       </div>
     </div>
-    <!-- ===== AI/DESIGN CLUSTER (bottom-center, green) ===== -->
-    <div style="position:absolute;left:50%;transform:translateX(-50%);bottom:12%;z-index:10;text-align:center">
-      <div style="display:flex;flex-direction:column;gap:0.45rem;align-items:center;margin-bottom:0.8rem">
-        <a href="/publication/ur-tutor-not-solver" style="color:#bbf7d0;font-size:0.75rem;text-decoration:none;padding:0.3rem 0.7rem;background:rgba(34,197,94,0.15);border:1px solid rgba(34,197,94,0.3);border-radius:8px;transition:all 0.25s;display:inline-block" onmouseover="this.style.background='rgba(34,197,94,0.3)';this.style.boxShadow='0 0 15px rgba(34,197,94,0.3)';this.style.transform='translateY(-3px)'" onmouseout="this.style.background='rgba(34,197,94,0.15)';this.style.boxShadow='';this.style.transform=''">PeteChat Design Case &#8594;</a>
-        <a href="/publication/2025-two-years-innovation" style="color:#bbf7d0;font-size:0.75rem;text-decoration:none;padding:0.3rem 0.7rem;background:rgba(34,197,94,0.15);border:1px solid rgba(34,197,94,0.3);border-radius:8px;transition:all 0.25s;display:inline-block" onmouseover="this.style.background='rgba(34,197,94,0.3)';this.style.boxShadow='0 0 15px rgba(34,197,94,0.3)';this.style.transform='translateY(-3px)'" onmouseout="this.style.background='rgba(34,197,94,0.15)';this.style.boxShadow='';this.style.transform=''">2yr GenAI Review · CAEAI '25</a>
-        <a href="/publication/2026-clawdbot-unboxed" style="color:#bbf7d0;font-size:0.75rem;text-decoration:none;padding:0.3rem 0.7rem;background:rgba(34,197,94,0.15);border:1px solid rgba(34,197,94,0.3);border-radius:8px;transition:all 0.25s;display:inline-block" onmouseover="this.style.background='rgba(34,197,94,0.3)';this.style.boxShadow='0 0 15px rgba(34,197,94,0.3)';this.style.transform='translateY(-3px)'" onmouseout="this.style.background='rgba(34,197,94,0.15)';this.style.boxShadow='';this.style.transform=''">Clawdbot · Talk '26</a>
+    <!-- Card 03 -->
+    <div style="background:#fff;border:1px solid #e8edf5;border-radius:14px;padding:1.6rem;position:relative;transition:transform 0.3s,box-shadow 0.3s;border-left:3px solid #059669" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 32px rgba(0,0,0,0.06)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.8rem">
+        <span style="font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#047857;background:#ecfdf5;padding:0.2rem 0.6rem;border-radius:20px">Literacy &amp; Design</span>
+        <span style="font-size:0.85rem;font-weight:600;color:#cbd5e1">03</span>
       </div>
-      <div style="display:flex;align-items:center;gap:0.6rem;justify-content:center">
-        <div style="width:14px;height:14px;border-radius:50%;background:#22c55e;box-shadow:0 0 12px #22c55e,0 0 24px rgba(34,197,94,0.4);flex-shrink:0"></div>
-        <span style="color:#86efac;font-size:0.95rem;font-weight:700;letter-spacing:0.02em">AI Literacy &amp; Design</span>
+      <h3 style="font-size:1.1rem;font-weight:700;color:#1a1a2e;margin:0 0 0.5rem;line-height:1.35">AI Literacy &amp; Learning Design</h3>
+      <p style="font-size:0.85rem;color:#64748b;line-height:1.65;margin:0 0 0.8rem">I translate research on agency, authenticity, and equity into AI literacy concepts, design principles, and practical learning environments.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:0.4rem">
+        <a href="/publication/2025-two-years-innovation" style="font-size:0.7rem;padding:0.22rem 0.6rem;border-radius:20px;border:1px solid #a7f3d0;color:#047857;text-decoration:none;font-weight:500;transition:all 0.2s;background:#fff" onmouseover="this.style.background='#ecfdf5';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='#fff';this.style.transform=''">2yr GenAI Review · CAEAI '25</a>
+        <a href="/publication/ur-tutor-not-solver" style="font-size:0.7rem;padding:0.22rem 0.6rem;border-radius:20px;border:1px solid #a7f3d0;color:#047857;text-decoration:none;font-weight:500;transition:all 0.2s;background:#fff" onmouseover="this.style.background='#ecfdf5';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='#fff';this.style.transform=''">PeteChat Design Case &#8594;</a>
+        <a href="/publication/2026-clawdbot-unboxed" style="font-size:0.7rem;padding:0.22rem 0.6rem;border-radius:20px;border:1px solid #a7f3d0;color:#047857;text-decoration:none;font-weight:500;transition:all 0.2s;background:#fff" onmouseover="this.style.background='#ecfdf5';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='#fff';this.style.transform=''">Clawdbot · Talk '26</a>
       </div>
     </div>
-    <!-- Cross-area nodes -->
-    <a href="/publication/2025-purdue-ai-gai" style="position:absolute;left:18%;bottom:28%;z-index:10;color:#c4b5fd;font-size:0.7rem;text-decoration:none;padding:0.25rem 0.6rem;background:rgba(139,92,246,0.15);border:1px solid rgba(139,92,246,0.3);border-radius:8px;transition:all 0.25s" onmouseover="this.style.background='rgba(139,92,246,0.3)';this.style.boxShadow='0 0 15px rgba(139,92,246,0.3)'" onmouseout="this.style.background='rgba(139,92,246,0.15)';this.style.boxShadow=''">GAI-IDLE · P-12 '25</a>
-    <a href="/publication/ur-tpack-xinjiang" style="position:absolute;right:16%;bottom:28%;z-index:10;color:#fbcfe8;font-size:0.7rem;text-decoration:none;padding:0.25rem 0.6rem;background:rgba(236,72,153,0.15);border:1px solid rgba(236,72,153,0.3);border-radius:8px;transition:all 0.25s" onmouseover="this.style.background='rgba(236,72,153,0.3)';this.style.boxShadow='0 0 15px rgba(236,72,153,0.3)'" onmouseout="this.style.background='rgba(236,72,153,0.15)';this.style.boxShadow=''">TPACK Xinjiang &#8594;</a>
+    <!-- Card 04 -->
+    <div style="background:#fff;border:1px solid #e8edf5;border-radius:14px;padding:1.6rem;position:relative;transition:transform 0.3s,box-shadow 0.3s;border-left:3px solid #7c3aed" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 32px rgba(0,0,0,0.06)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.8rem">
+        <span style="font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#6d28d9;background:#f5f3ff;padding:0.2rem 0.6rem;border-radius:20px">Cross-Cutting</span>
+        <span style="font-size:0.85rem;font-weight:600;color:#cbd5e1">04</span>
+      </div>
+      <h3 style="font-size:1.1rem;font-weight:700;color:#1a1a2e;margin:0 0 0.5rem;line-height:1.35">TPACK &amp; Teacher Education</h3>
+      <p style="font-size:0.85rem;color:#64748b;line-height:1.65;margin:0 0 0.8rem">Connecting technology integration with cultural diversity and pedagogical knowledge in teacher preparation across international contexts.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:0.4rem">
+        <a href="/publication/ur-tpack-xinjiang" style="font-size:0.7rem;padding:0.22rem 0.6rem;border-radius:20px;border:1px solid #ddd6fe;color:#6d28d9;text-decoration:none;font-weight:500;transition:all 0.2s;background:#fff" onmouseover="this.style.background='#f5f3ff';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='#fff';this.style.transform=''">TPACK Xinjiang &#8594;</a>
+        <a href="/publication/2025-purdue-ai-gai" style="font-size:0.7rem;padding:0.22rem 0.6rem;border-radius:20px;border:1px solid #ddd6fe;color:#6d28d9;text-decoration:none;font-weight:500;transition:all 0.2s;background:#fff" onmouseover="this.style.background='#f5f3ff';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='#fff';this.style.transform=''">GAI-IDLE · P-12 '25</a>
+      </div>
+    </div>
   </div>
 </section>
 
