@@ -24,7 +24,8 @@
         --color-card-shadow: rgba(15, 23, 42, 0.04);
         --font-stack: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
         --radius: 16px;
-        --max-width: 960px;
+        --sidebar-width: 260px;
+        --max-width: 1100px;
       }
 
       body {
@@ -106,79 +107,121 @@
         .lt-nav__links.open { display: flex; }
       }
 
-      /* ========== HERO ========== */
-      .lt-hero {
+      /* ========== TWO-COLUMN LAYOUT ========== */
+      .lt-page {
         max-width: var(--max-width);
         margin: 0 auto;
-        padding: 4rem 2rem 2.5rem;
         display: flex;
-        align-items: center;
         gap: 3rem;
-      }
-      .lt-hero__photo {
-        width: 150px; height: 150px;
-        border-radius: 50%;
-        object-fit: cover;
-        flex-shrink: 0;
-        box-shadow: 0 8px 30px rgba(0,0,0,0.08);
-      }
-      .lt-hero__info { flex: 1; }
-      .lt-hero__name {
-        font-size: 2rem;
-        font-weight: 700;
-        color: var(--color-heading);
-        letter-spacing: -0.03em;
-        margin-bottom: 0.25rem;
-      }
-      .lt-hero__title {
-        font-size: 1rem;
-        color: var(--color-text-light);
-        margin-bottom: 0.8rem;
-      }
-      .lt-hero__links {
-        display: flex;
-        gap: 1rem;
-        flex-wrap: wrap;
-        list-style: none;
-      }
-      .lt-hero__links a {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.35rem;
-        font-size: 0.85rem;
-        color: var(--color-text-light);
-        padding: 0.3rem 0.7rem;
-        border: 1px solid var(--color-border);
-        border-radius: 8px;
-        transition: all 0.2s;
-      }
-      .lt-hero__links a:hover {
-        color: var(--color-primary);
-        border-color: var(--color-primary);
-        background: rgba(42,122,226,0.04);
+        padding: 2.5rem 2rem 0;
+        align-items: flex-start;
       }
 
-      @media (max-width: 640px) {
-        .lt-hero { flex-direction: column; text-align: center; padding-top: 2.5rem; gap: 1.5rem; }
-        .lt-hero__links { justify-content: center; }
+      /* ========== SIDEBAR (Belle / Young-Ho Kim style) ========== */
+      .lt-sidebar {
+        width: var(--sidebar-width);
+        flex-shrink: 0;
+        position: sticky;
+        top: 80px;
+      }
+      .lt-sidebar__photo {
+        width: 160px; height: 160px;
+        border-radius: 50%;
+        object-fit: cover;
+        display: block;
+        margin-bottom: 1rem;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+      }
+      .lt-sidebar__name {
+        font-size: 1.35rem;
+        font-weight: 700;
+        color: var(--color-heading);
+        margin-bottom: 0.2rem;
+      }
+      .lt-sidebar__title {
+        font-size: 0.85rem;
+        color: var(--color-text-light);
+        line-height: 1.5;
+        margin-bottom: 1rem;
+      }
+      .lt-sidebar__contact {
+        list-style: none;
+        margin-bottom: 1.5rem;
+      }
+      .lt-sidebar__contact li {
+        margin-bottom: 0.4rem;
+      }
+      .lt-sidebar__contact a {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.85rem;
+        color: var(--color-text);
+        transition: color 0.2s;
+      }
+      .lt-sidebar__contact a:hover { color: var(--color-primary); }
+      .lt-sidebar__contact i {
+        width: 16px;
+        text-align: center;
+        color: var(--color-text-light);
+        font-size: 0.85rem;
+      }
+
+      /* Short Bio / Education table (Young-Ho Kim style) */
+      .lt-sidebar__section-title {
+        font-size: 0.78rem;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--color-text-light);
+        margin-bottom: 0.6rem;
+        padding-bottom: 0.35rem;
+        border-bottom: 1px solid var(--color-border);
+      }
+      .lt-bio-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 1.5rem;
+      }
+      .lt-bio-table td {
+        font-size: 0.78rem;
+        color: var(--color-text);
+        padding: 0.3rem 0;
+        vertical-align: top;
+        line-height: 1.45;
+      }
+      .lt-bio-table td:first-child {
+        font-weight: 600;
+        color: var(--color-text-light);
+        white-space: nowrap;
+        padding-right: 0.6rem;
+        width: 72px;
+      }
+      .lt-bio-table tr {
+        border-bottom: 1px solid #f0f0f0;
+      }
+      .lt-bio-table tr:last-child { border-bottom: none; }
+
+      /* ========== MAIN CONTENT ========== */
+      .lt-main {
+        flex: 1;
+        min-width: 0;
       }
 
       /* ========== TYPEWRITER ========== */
       .lt-typewriter {
-        max-width: var(--max-width);
-        margin: 0 auto;
-        padding: 0 2rem 3rem;
+        margin-bottom: 2.5rem;
       }
       .lt-typewriter__text {
-        font-size: 1.35rem;
+        font-size: 1.25rem;
         font-weight: 500;
         color: var(--color-heading);
         line-height: 1.6;
-        min-height: 2.8em;
+        min-height: 2.6em;
       }
       .lt-typewriter__cursor {
         display: inline-block;
-        width: 2px; height: 1.3em;
+        width: 2px; height: 1.2em;
         background: var(--color-accent);
         margin-left: 2px;
         vertical-align: text-bottom;
@@ -191,9 +234,15 @@
 
       /* ========== SECTIONS ========== */
       .lt-section {
-        max-width: var(--max-width);
-        margin: 0 auto;
-        padding: 2.5rem 2rem;
+        margin-bottom: 2rem;
+        padding: 2rem 0;
+      }
+      .lt-section--shaded {
+        background: var(--color-bg-soft);
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius);
+        padding: 1.8rem;
+        margin-bottom: 2rem;
       }
       .lt-section__title {
         font-size: 0.8rem;
@@ -205,14 +254,9 @@
       }
 
       /* ========== RESEARCH BLOBS ========== */
-      .lt-research {
-        background: var(--color-bg-soft);
-        border-top: 1px solid var(--color-border);
-        border-bottom: 1px solid var(--color-border);
-      }
       .lt-blobs {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2, 1fr);
         gap: 1.2rem;
       }
       .lt-blob {
@@ -268,8 +312,7 @@
         box-shadow: 0 3px 8px rgba(42,122,226,0.12);
       }
 
-      @media (max-width: 800px) { .lt-blobs { grid-template-columns: repeat(2, 1fr); } }
-      @media (max-width: 520px) { .lt-blobs { grid-template-columns: 1fr; } }
+      @media (max-width: 600px) { .lt-blobs { grid-template-columns: 1fr; } }
 
       /* Blob icon colors */
       .lt-blob--idle .lt-blob__icon { background: #eef4ff; color: #3b82f6; }
@@ -279,7 +322,7 @@
       /* ========== METHODOLOGY CARDS ========== */
       .lt-methods {
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(2, 1fr);
         gap: 1rem;
       }
       .lt-method {
@@ -300,8 +343,6 @@
         font-weight: 600;
         color: var(--color-heading);
       }
-      @media (max-width: 800px) { .lt-methods { grid-template-columns: repeat(2, 1fr); } }
-      @media (max-width: 520px) { .lt-methods { grid-template-columns: 1fr; } }
 
       /* ========== NEWS FEED ========== */
       .lt-news__filters {
@@ -366,51 +407,6 @@
 
       .lt-news__item.hidden { display: none; }
 
-      /* ========== EDUCATION ========== */
-      .lt-edu__list { list-style: none; }
-      .lt-edu__item {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-        padding: 0.9rem 0;
-        border-bottom: 1px solid var(--color-border);
-      }
-      .lt-edu__item:last-child { border-bottom: none; }
-      .lt-edu__school {
-        font-weight: 600;
-        color: var(--color-heading);
-        font-size: 0.92rem;
-      }
-      .lt-edu__degree {
-        font-size: 0.85rem;
-        color: var(--color-text);
-        margin-top: 0.1rem;
-      }
-      .lt-edu__advisor {
-        font-size: 0.8rem;
-        color: var(--color-text-light);
-        margin-top: 0.1rem;
-      }
-      .lt-edu__meta {
-        text-align: right;
-        flex-shrink: 0;
-        margin-left: 1.5rem;
-      }
-      .lt-edu__year {
-        font-size: 0.8rem;
-        font-weight: 600;
-        color: var(--color-primary);
-      }
-      .lt-edu__loc {
-        font-size: 0.75rem;
-        color: var(--color-text-light);
-      }
-
-      @media (max-width: 520px) {
-        .lt-edu__item { flex-direction: column; gap: 0.3rem; }
-        .lt-edu__meta { text-align: left; margin-left: 0; }
-      }
-
       /* ========== EXPERIENCE ========== */
       .lt-exp__item {
         padding: 1.2rem 0;
@@ -464,11 +460,6 @@
         border-radius: 50%;
         background: var(--color-primary);
         opacity: 0.5;
-      }
-
-      @media (max-width: 520px) {
-        .lt-exp__header { flex-direction: column; gap: 0.2rem; }
-        .lt-exp__date-loc { text-align: left; margin-left: 0; }
       }
 
       /* ========== AWARDS ========== */
@@ -528,6 +519,41 @@
       @media (prefers-reduced-motion: reduce) {
         .lt-fade-in { opacity: 1; transform: none; transition: none; }
       }
+
+      /* ========== RESPONSIVE: collapse sidebar on mobile ========== */
+      @media (max-width: 800px) {
+        .lt-page {
+          flex-direction: column;
+          gap: 2rem;
+        }
+        .lt-sidebar {
+          width: 100%;
+          position: static;
+          display: flex;
+          flex-wrap: wrap;
+          gap: 1.5rem;
+          align-items: flex-start;
+          padding-bottom: 1.5rem;
+          border-bottom: 1px solid var(--color-border);
+        }
+        .lt-sidebar__profile {
+          display: flex;
+          align-items: center;
+          gap: 1.2rem;
+          width: 100%;
+        }
+        .lt-sidebar__photo {
+          width: 100px; height: 100px;
+          margin-bottom: 0;
+        }
+        .lt-sidebar__edu {
+          width: 100%;
+        }
+        .lt-blobs { grid-template-columns: 1fr; }
+        .lt-methods { grid-template-columns: repeat(2, 1fr); }
+        .lt-exp__header { flex-direction: column; gap: 0.2rem; }
+        .lt-exp__date-loc { text-align: left; margin-left: 0; }
+      }
     </style>
   </head>
 
@@ -547,30 +573,74 @@
       </div>
     </nav>
 
-    <!-- HERO -->
-    <header class="lt-hero">
-      <img src="{{ base_path }}/images/profile.png" alt="Lily Tan" class="lt-hero__photo">
-      <div class="lt-hero__info">
-        <h1 class="lt-hero__name">Lily Tan</h1>
-        <p class="lt-hero__title">Ph.D. Student &middot; Learning Design &amp; Technology &middot; Purdue University</p>
-        <ul class="lt-hero__links">
+    <!-- TWO-COLUMN LAYOUT -->
+    <div class="lt-page">
+
+      <!-- ===== LEFT SIDEBAR ===== -->
+      <aside class="lt-sidebar">
+        <div class="lt-sidebar__profile">
+          <img src="{{ base_path }}/images/profile.png" alt="Lily Tan" class="lt-sidebar__photo">
+          <div>
+            <h1 class="lt-sidebar__name">Lily Tan</h1>
+            <p class="lt-sidebar__title">
+              Ph.D. Student<br>
+              Learning Design &amp; Technology<br>
+              Purdue University
+            </p>
+          </div>
+        </div>
+
+        <!-- Contact links (Belle Li style) -->
+        <ul class="lt-sidebar__contact">
           <li><a href="mailto:tyaling@purdue.edu"><i class="fas fa-envelope"></i> Email</a></li>
-          <li><a href="{{ site.author.googlescholar }}"><i class="ai ai-google-scholar"></i> Scholar</a></li>
+          <li><a href="{{ site.author.googlescholar }}"><i class="ai ai-google-scholar"></i> Google Scholar</a></li>
           <li><a href="{{ site.author.orcid }}"><i class="ai ai-orcid"></i> ORCID</a></li>
           <li><a href="https://www.linkedin.com/in/{{ site.author.linkedin }}"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
           <li><a href="{{ site.author.researchgate }}"><i class="fab fa-researchgate"></i> ResearchGate</a></li>
+          <li><a href="{{ base_path }}/cv/"><i class="fas fa-file-alt"></i> CV</a></li>
         </ul>
-      </div>
-    </header>
 
-    <!-- TYPEWRITER -->
-    <div class="lt-typewriter">
-      <p class="lt-typewriter__text">
-        <span id="typewriter-target"></span><span class="lt-typewriter__cursor"></span>
-      </p>
+        <!-- Short Bio / Education (Young-Ho Kim style) -->
+        <div class="lt-sidebar__edu">
+          <div class="lt-sidebar__section-title">Short Bio</div>
+          <table class="lt-bio-table">
+            <tr>
+              <td>2025 &ndash;</td>
+              <td>Ph.D. in LDT</td>
+              <td style="font-size:0.72rem;color:var(--color-text-light)">Purdue Univ.</td>
+            </tr>
+            <tr>
+              <td>2024</td>
+              <td>M.A. Interpreting</td>
+              <td style="font-size:0.72rem;color:var(--color-text-light)">Northeastern Univ.</td>
+            </tr>
+            <tr>
+              <td>2024</td>
+              <td>M.A. Philology</td>
+              <td style="font-size:0.72rem;color:var(--color-text-light)">Univ. of Silesia</td>
+            </tr>
+            <tr>
+              <td>2022</td>
+              <td>B.A. Translation</td>
+              <td style="font-size:0.72rem;color:var(--color-text-light)">SWUST</td>
+            </tr>
+          </table>
+        </div>
+      </aside>
+
+      <!-- ===== RIGHT MAIN CONTENT ===== -->
+      <main class="lt-main">
+        <!-- TYPEWRITER -->
+        <div class="lt-typewriter">
+          <p class="lt-typewriter__text">
+            <span id="typewriter-target"></span><span class="lt-typewriter__cursor"></span>
+          </p>
+        </div>
+
+        {{ content }}
+      </main>
+
     </div>
-
-    {{ content }}
 
     <!-- FOOTER -->
     <footer class="lt-footer">
@@ -582,7 +652,7 @@
     <script>
       /* Typewriter */
       (function() {
-        var text = "Exploring how AI transforms learning beyond the classroom — designing authentic pathways that bridge theory and real-world practice.";
+        var text = "Exploring how AI transforms learning beyond the classroom \u2014 designing authentic pathways that bridge theory and real-world practice.";
         var target = document.getElementById('typewriter-target');
         if (!target) return;
         if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {

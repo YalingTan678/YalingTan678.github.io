@@ -4,7 +4,7 @@ author_profile: false
 ---
 
 <!-- ========== RESEARCH INTERESTS ========== -->
-<section class="lt-section lt-research lt-fade-in">
+<section class="lt-section lt-section--shaded lt-fade-in">
   <h2 class="lt-section__title">Research Strands</h2>
   <div class="lt-blobs">
     <div class="lt-blob lt-blob--idle">
@@ -179,56 +179,6 @@ author_profile: false
       </div>
     </li>
 
-  </ul>
-</section>
-
-<!-- ========== EDUCATION ========== -->
-<section class="lt-section lt-fade-in">
-  <h2 class="lt-section__title">Education</h2>
-  <ul class="lt-edu__list">
-    <li class="lt-edu__item">
-      <div>
-        <div class="lt-edu__school">Purdue University</div>
-        <div class="lt-edu__degree">Ph.D. in Learning Design and Technology</div>
-        <div class="lt-edu__advisor">Advisor: Dr. Victoria Lowell</div>
-      </div>
-      <div class="lt-edu__meta">
-        <div class="lt-edu__year">2025 &ndash; Present</div>
-        <div class="lt-edu__loc">West Lafayette, IN</div>
-      </div>
-    </li>
-    <li class="lt-edu__item">
-      <div>
-        <div class="lt-edu__school">Northeastern University</div>
-        <div class="lt-edu__degree">M.A. in Interpreting</div>
-        <div class="lt-edu__advisor">Advisor: Dr. Lulu Gao</div>
-      </div>
-      <div class="lt-edu__meta">
-        <div class="lt-edu__year">2024</div>
-        <div class="lt-edu__loc">Shenyang, China</div>
-      </div>
-    </li>
-    <li class="lt-edu__item">
-      <div>
-        <div class="lt-edu__school">University of Silesia <span style="font-weight:400;font-size:0.82rem;color:var(--color-text-light)">(Double-Degree)</span></div>
-        <div class="lt-edu__degree">M.A. in Philology</div>
-        <div class="lt-edu__advisor">Advisor: Dr. Adam Wojtaszek</div>
-      </div>
-      <div class="lt-edu__meta">
-        <div class="lt-edu__year">2024</div>
-        <div class="lt-edu__loc">Katowice, Poland</div>
-      </div>
-    </li>
-    <li class="lt-edu__item">
-      <div>
-        <div class="lt-edu__school">Southwest University of Science and Technology</div>
-        <div class="lt-edu__degree">B.A. in Translation</div>
-      </div>
-      <div class="lt-edu__meta">
-        <div class="lt-edu__year">2022</div>
-        <div class="lt-edu__loc">Mianyang, China</div>
-      </div>
-    </li>
   </ul>
 </section>
 
