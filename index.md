@@ -3,62 +3,66 @@ layout: home
 author_profile: false
 ---
 
-<!-- ========== RESEARCH INTERESTS ========== -->
-<section class="lt-section lt-section--shaded lt-fade-in">
+<!-- ========== RESEARCH INTERESTS (Belle-style interactive blobs) ========== -->
+<section class="lt-section lt-fade-in" style="padding-top:0">
   <h2 class="lt-section__title">Research Strands</h2>
-  <div class="lt-blobs">
-    <div class="lt-blob lt-blob--idle">
-      <div class="lt-blob__icon">&#127891;</div>
-      <h3 class="lt-blob__title">Informal Digital Learning of English (IDLE)</h3>
-      <p class="lt-blob__desc">Designing and studying AI-mediated extramural learning experiences that enhance learners' pragmatic and communicative competence through generative AI chatbots, podcasts, and self-directed tasks.</p>
-      <div class="lt-blob__tags">
-        <span class="lt-blob__tag">Pragmatics</span>
-        <span class="lt-blob__tag">L2 Agency</span>
-        <span class="lt-blob__tag">Digital Literacy</span>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.2rem">
+
+    <div style="background:linear-gradient(135deg,#eef4ff,#dbeafe);border:1px solid #bfdbfe;border-radius:18px;padding:1.8rem;transition:transform 0.35s cubic-bezier(0.34,1.56,0.64,1),box-shadow 0.35s;cursor:default" onmouseover="this.style.transform='translateY(-6px) scale(1.02)';this.style.boxShadow='0 16px 40px rgba(59,130,246,0.15)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+      <div style="width:48px;height:48px;border-radius:14px;background:#3b82f6;color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:1rem">&#127891;</div>
+      <h3 style="font-size:1.05rem;font-weight:700;color:#1e3a5f;margin:0 0 0.6rem">Informal Digital Learning of English (IDLE)</h3>
+      <p style="font-size:0.85rem;color:#475569;line-height:1.65;margin:0 0 0.8rem">Designing AI-mediated extramural learning that enhances pragmatic and communicative competence through chatbots, podcasts, and self-directed tasks.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:0.4rem">
+        <span style="font-size:0.72rem;padding:0.22rem 0.6rem;border-radius:6px;background:rgba(59,130,246,0.15);color:#2563eb;font-weight:600">Pragmatics</span>
+        <span style="font-size:0.72rem;padding:0.22rem 0.6rem;border-radius:6px;background:rgba(59,130,246,0.15);color:#2563eb;font-weight:600">L2 Agency</span>
+        <span style="font-size:0.72rem;padding:0.22rem 0.6rem;border-radius:6px;background:rgba(59,130,246,0.15);color:#2563eb;font-weight:600">Digital Literacy</span>
       </div>
     </div>
-    <div class="lt-blob lt-blob--equity">
-      <div class="lt-blob__icon">&#9878;&#65039;</div>
-      <h3 class="lt-blob__title">Technology, Equity &amp; Instructional Design</h3>
-      <p class="lt-blob__desc">Examining how digital technologies shape learning opportunities across socioeconomic backgrounds, including meta-analyses of technology interventions and AI-supported academic integrity.</p>
-      <div class="lt-blob__tags">
-        <span class="lt-blob__tag">Meta-analysis</span>
-        <span class="lt-blob__tag">Low-income Students</span>
-        <span class="lt-blob__tag">Academic Integrity</span>
+
+    <div style="background:linear-gradient(135deg,#fef3e2,#fde68a40);border:1px solid #fcd34d;border-radius:18px;padding:1.8rem;transition:transform 0.35s cubic-bezier(0.34,1.56,0.64,1),box-shadow 0.35s;cursor:default" onmouseover="this.style.transform='translateY(-6px) scale(1.02)';this.style.boxShadow='0 16px 40px rgba(245,158,11,0.15)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+      <div style="width:48px;height:48px;border-radius:14px;background:#f59e0b;color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:1rem">&#9878;&#65039;</div>
+      <h3 style="font-size:1.05rem;font-weight:700;color:#78350f;margin:0 0 0.6rem">Technology, Equity &amp; Instructional Design</h3>
+      <p style="font-size:0.85rem;color:#475569;line-height:1.65;margin:0 0 0.8rem">Examining how digital technologies shape learning across socioeconomic backgrounds, including meta-analyses and AI-supported academic integrity.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:0.4rem">
+        <span style="font-size:0.72rem;padding:0.22rem 0.6rem;border-radius:6px;background:rgba(245,158,11,0.15);color:#b45309;font-weight:600">Meta-analysis</span>
+        <span style="font-size:0.72rem;padding:0.22rem 0.6rem;border-radius:6px;background:rgba(245,158,11,0.15);color:#b45309;font-weight:600">Low-income Students</span>
+        <span style="font-size:0.72rem;padding:0.22rem 0.6rem;border-radius:6px;background:rgba(245,158,11,0.15);color:#b45309;font-weight:600">Academic Integrity</span>
       </div>
     </div>
-    <div class="lt-blob lt-blob--ai">
-      <div class="lt-blob__icon">&#129302;</div>
-      <h3 class="lt-blob__title">AI-Assisted Self-Directed Learning</h3>
-      <p class="lt-blob__desc">Investigating how AI tools can scaffold autonomous learning, focusing on authentic learning design and the intersection of AI literacy and real-world application in educational contexts.</p>
-      <div class="lt-blob__tags">
-        <span class="lt-blob__tag">GenAI</span>
-        <span class="lt-blob__tag">Authentic Learning</span>
-        <span class="lt-blob__tag">AI Literacy</span>
+
+    <div style="background:linear-gradient(135deg,#f0fdf4,#bbf7d0);border:1px solid #86efac;border-radius:18px;padding:1.8rem;transition:transform 0.35s cubic-bezier(0.34,1.56,0.64,1),box-shadow 0.35s;cursor:default;grid-column:1/3" onmouseover="this.style.transform='translateY(-6px) scale(1.02)';this.style.boxShadow='0 16px 40px rgba(34,197,94,0.15)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+      <div style="width:48px;height:48px;border-radius:14px;background:#22c55e;color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:1rem">&#129302;</div>
+      <h3 style="font-size:1.05rem;font-weight:700;color:#14532d;margin:0 0 0.6rem">AI-Assisted Self-Directed Learning</h3>
+      <p style="font-size:0.85rem;color:#475569;line-height:1.65;margin:0 0 0.8rem">Investigating how AI tools scaffold autonomous learning, focusing on authentic learning design and the intersection of AI literacy and real-world application in educational contexts.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:0.4rem">
+        <span style="font-size:0.72rem;padding:0.22rem 0.6rem;border-radius:6px;background:rgba(34,197,94,0.15);color:#166534;font-weight:600">GenAI</span>
+        <span style="font-size:0.72rem;padding:0.22rem 0.6rem;border-radius:6px;background:rgba(34,197,94,0.15);color:#166534;font-weight:600">Authentic Learning</span>
+        <span style="font-size:0.72rem;padding:0.22rem 0.6rem;border-radius:6px;background:rgba(34,197,94,0.15);color:#166534;font-weight:600">AI Literacy</span>
       </div>
     </div>
+
   </div>
 </section>
 
 <!-- ========== METHODOLOGY ========== -->
 <section class="lt-section lt-fade-in">
   <h2 class="lt-section__title">Methodology</h2>
-  <div class="lt-methods">
-    <div class="lt-method">
-      <div class="lt-method__icon">&#128218;</div>
-      <div class="lt-method__name">Systematic Reviews &amp; Meta-Analyses</div>
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1rem">
+    <div style="background:#fff;border:1px solid #e8edf5;border-radius:14px;padding:1.3rem;text-align:center;transition:transform 0.25s,box-shadow 0.25s" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 8px 24px rgba(0,0,0,0.04)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+      <div style="font-size:1.6rem;margin-bottom:0.5rem">&#128218;</div>
+      <div style="font-size:0.85rem;font-weight:600;color:#1a1a2e">Systematic Reviews &amp; Meta-Analyses</div>
     </div>
-    <div class="lt-method">
-      <div class="lt-method__icon">&#128300;</div>
-      <div class="lt-method__name">Mixed-Methods Studies</div>
+    <div style="background:#fff;border:1px solid #e8edf5;border-radius:14px;padding:1.3rem;text-align:center;transition:transform 0.25s,box-shadow 0.25s" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 8px 24px rgba(0,0,0,0.04)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+      <div style="font-size:1.6rem;margin-bottom:0.5rem">&#128300;</div>
+      <div style="font-size:0.85rem;font-weight:600;color:#1a1a2e">Mixed-Methods Studies</div>
     </div>
-    <div class="lt-method">
-      <div class="lt-method__icon">&#128202;</div>
-      <div class="lt-method__name">Statistical Analysis (SPSS, Prism)</div>
+    <div style="background:#fff;border:1px solid #e8edf5;border-radius:14px;padding:1.3rem;text-align:center;transition:transform 0.25s,box-shadow 0.25s" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 8px 24px rgba(0,0,0,0.04)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+      <div style="font-size:1.6rem;margin-bottom:0.5rem">&#128202;</div>
+      <div style="font-size:0.85rem;font-weight:600;color:#1a1a2e">Statistical Analysis (SPSS, Prism)</div>
     </div>
-    <div class="lt-method">
-      <div class="lt-method__icon">&#127919;</div>
-      <div class="lt-method__name">Design-Based Research</div>
+    <div style="background:#fff;border:1px solid #e8edf5;border-radius:14px;padding:1.3rem;text-align:center;transition:transform 0.25s,box-shadow 0.25s" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 8px 24px rgba(0,0,0,0.04)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+      <div style="font-size:1.6rem;margin-bottom:0.5rem">&#127919;</div>
+      <div style="font-size:0.85rem;font-weight:600;color:#1a1a2e">Design-Based Research</div>
     </div>
   </div>
 </section>
@@ -103,7 +107,7 @@ author_profile: false
       <div class="lt-news__badge lt-news__badge--talk">&#127908;</div>
       <div class="lt-news__body">
         <div class="lt-news__date">Feb 2026</div>
-        <div class="lt-news__text">Presented <em>Clawdbot Unboxed: What It Does, Why It's Hot, and Where It Breaks</em> at <strong>AI Lunch and Learn Series</strong>, Purdue College of Education.</div>
+        <div class="lt-news__text">Presented <em>Clawdbot Unboxed</em> at <strong>AI Lunch and Learn Series</strong>, Purdue College of Education.</div>
       </div>
     </li>
 
@@ -111,7 +115,7 @@ author_profile: false
       <div class="lt-news__badge lt-news__badge--paper">&#128220;</div>
       <div class="lt-news__body">
         <div class="lt-news__date">2025</div>
-        <div class="lt-news__text">Li, B., <strong>Tan, L.Y.</strong>, et al. published in <em>Computers and Education: AI</em> (Q1, IF &asymp; 10.5) &mdash; systematic review of GenAI in language learning.</div>
+        <div class="lt-news__text">Li, B., <strong>Tan, L.Y.</strong>, et al. published in <em>Computers and Education: AI</em> (Q1, IF &asymp; 10.5).</div>
       </div>
     </li>
 
@@ -119,7 +123,7 @@ author_profile: false
       <div class="lt-news__badge lt-news__badge--paper">&#128220;</div>
       <div class="lt-news__body">
         <div class="lt-news__date">2025</div>
-        <div class="lt-news__text"><strong>Tan, L.Y.</strong> &amp; Gao, L. published in <em>Mediterranean Journal of Social Sciences</em> on human vs. machine interpreting.</div>
+        <div class="lt-news__text"><strong>Tan, L.Y.</strong> &amp; Gao, L. published in <em>Mediterranean Journal of Social Sciences</em>.</div>
       </div>
     </li>
 
@@ -127,15 +131,7 @@ author_profile: false
       <div class="lt-news__badge lt-news__badge--talk">&#127908;</div>
       <div class="lt-news__body">
         <div class="lt-news__date">Nov 2025</div>
-        <div class="lt-news__text">Presented at <strong>Purdue AI in P-12 Conference</strong> on GAI-mediated IDLE and pragmatic competence.</div>
-      </div>
-    </li>
-
-    <li class="lt-news__item" data-cat="talk">
-      <div class="lt-news__badge lt-news__badge--talk">&#127908;</div>
-      <div class="lt-news__body">
-        <div class="lt-news__date">Oct 2025</div>
-        <div class="lt-news__text">Li, B., Wang, J., &amp; <strong>Tan, L.</strong> presented at <strong>AECT International Convention</strong>, Las Vegas on AI and academic integrity.</div>
+        <div class="lt-news__text">Presented at <strong>Purdue AI in P-12 Conference</strong> on GAI-mediated IDLE.</div>
       </div>
     </li>
 
@@ -143,15 +139,7 @@ author_profile: false
       <div class="lt-news__badge lt-news__badge--service">&#127793;</div>
       <div class="lt-news__body">
         <div class="lt-news__date">Sep 2025</div>
-        <div class="lt-news__text">Joined <strong>PALDT</strong> as Marketing &amp; Design Officer and <strong>GESC</strong> as Committee Member at Purdue.</div>
-      </div>
-    </li>
-
-    <li class="lt-news__item" data-cat="award">
-      <div class="lt-news__badge lt-news__badge--award">&#127942;</div>
-      <div class="lt-news__body">
-        <div class="lt-news__date">2025</div>
-        <div class="lt-news__text">Received <strong>LDT Travel Support Program</strong> ($250) from Purdue University.</div>
+        <div class="lt-news__text">Joined <strong>PALDT</strong> as Marketing &amp; Design Officer and <strong>GESC</strong> as Committee Member.</div>
       </div>
     </li>
 
@@ -160,22 +148,6 @@ author_profile: false
       <div class="lt-news__body">
         <div class="lt-news__date">2024</div>
         <div class="lt-news__text">Awarded <strong>Erasmus+ Fund</strong> ($5,000) at University of Silesia, Poland.</div>
-      </div>
-    </li>
-
-    <li class="lt-news__item" data-cat="talk">
-      <div class="lt-news__badge lt-news__badge--talk">&#127908;</div>
-      <div class="lt-news__body">
-        <div class="lt-news__date">Sep 2024</div>
-        <div class="lt-news__text">Presented at <strong>XXIInd International CALL Conference</strong>, Tokyo, Japan.</div>
-      </div>
-    </li>
-
-    <li class="lt-news__item" data-cat="award">
-      <div class="lt-news__badge lt-news__badge--award">&#127942;</div>
-      <div class="lt-news__body">
-        <div class="lt-news__date">2023&ndash;2024</div>
-        <div class="lt-news__text">Received <strong>National Academic Fellowship</strong> ($2,000) from Northeastern University.</div>
       </div>
     </li>
 
@@ -198,9 +170,8 @@ author_profile: false
       </div>
     </div>
     <ul class="lt-exp__bullets">
-      <li>Participating in three research projects, including a scoping review, a study on AI-assisted learning in students' research projects, and an investigation of audio and video effects in librarians' teaching.</li>
+      <li>Participating in three research projects, including a scoping review, AI-assisted learning, and audio/video effects in librarians' teaching.</li>
       <li>Screened, coded, and synthesized data for a scoping review encompassing over 20,000 articles.</li>
-      <li>Conducted literature searches and provided statistical analysis support for selected research projects.</li>
     </ul>
   </div>
 
@@ -216,9 +187,8 @@ author_profile: false
       </div>
     </div>
     <ul class="lt-exp__bullets">
-      <li>Assessed over 300 students' academic backgrounds and aspirations to create tailored education roadmaps.</li>
-      <li>Revised and edited over 100 CVs; coached students on interview strategies, achieving a 100% success rate.</li>
-      <li>Collaborated to design a comprehensive SOP that reduced onboarding time and enhanced team efficiency.</li>
+      <li>Assessed 300+ students' backgrounds; revised 100+ CVs with 100% placement success rate.</li>
+      <li>Designed SOP that reduced onboarding time and enhanced team efficiency.</li>
     </ul>
   </div>
 </section>
