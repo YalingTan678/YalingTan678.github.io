@@ -186,10 +186,26 @@ author_profile: true
   }
 
   /* Responsive */
-  @media (max-width: 640px) {
+  @media (max-width: 768px) {
+    .svc-content { font-size: 0.9rem; }
+    .svc-content .philosophy { padding: 1.2rem 1.3rem; font-size: 0.9rem; }
+    .svc-content .philosophy::before { font-size: 3.5rem; }
+    .svc-card__img, .svc-scroll-img { width: 200px; height: 150px; }
+    .svc-card { gap: 1rem; }
+  }
+  @media (max-width: 600px) {
     .svc-card { flex-direction: column; }
     .svc-card__img, .svc-scroll-img { width: 100%; height: 200px; }
-    .svc-card__meta { text-align: left; }
+    .svc-card__header { flex-direction: column; }
+    .svc-card__meta { text-align: left; white-space: normal; }
+    .svc-content .award-item { flex-direction: column; align-items: flex-start; gap: 0.3rem; }
+    .svc-content .award-right { text-align: left; min-width: auto; }
+  }
+  @media (max-width: 400px) {
+    .svc-content .philosophy { padding: 1rem; margin-bottom: 1.5rem; }
+    .svc-card__img, .svc-scroll-img { height: 160px; }
+    .svc-card__org { font-size: 0.9rem; }
+    .svc-card__desc li { font-size: 0.82rem; }
   }
 
   /* ===== Awards ===== */

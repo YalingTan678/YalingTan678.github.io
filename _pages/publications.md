@@ -151,9 +151,25 @@ author_profile: true
   }
 
   /* Responsive */
+  @media (max-width: 768px) {
+    .pub-page { font-size: 0.9rem; }
+    .pub-page .research-stmt { padding: 1.2rem 1.3rem; font-size: 0.9rem; }
+    .pub-page .research-stmt::before { font-size: 3.5rem; }
+    .pub-card { padding: 0.9rem; }
+    .pub-card__top { flex-wrap: wrap; }
+    .pub-card__badges { flex-wrap: wrap; }
+  }
   @media (max-width: 600px) {
     .pub-card { flex-direction: column; }
     .pub-card__thumb { width: 100%; height: 140px; }
+    .pub-card__top { flex-direction: column; gap: 0.4rem; }
+    .pub-card__badges { justify-content: flex-start; }
+  }
+  @media (max-width: 400px) {
+    .pub-page .research-stmt { padding: 1rem; margin-bottom: 1.5rem; }
+    .pub-card { padding: 0.7rem; gap: 0.8rem; }
+    .pub-card__title { font-size: 0.85rem; }
+    .pub-card__authors, .pub-card__venue { font-size: 0.75rem; }
   }
 </style>
 

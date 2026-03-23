@@ -61,6 +61,22 @@ author_profile: true
   .teach-content .pos-meta { font-size: 0.83rem; color: #718096; text-align: right; }
   .teach-content .pos-role { color: #2a7ae2; font-weight: 500; font-size: 0.9rem; margin-bottom: 0.4rem; }
   .teach-content li { margin-bottom: 0.35rem; }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .teach-content { font-size: 0.9rem; }
+    .teach-content .philosophy { padding: 1.2rem 1.3rem; font-size: 0.9rem; }
+    .teach-content .philosophy::before { font-size: 3.5rem; }
+  }
+  @media (max-width: 600px) {
+    .teach-content .pos-header { flex-direction: column; gap: 0.2rem; }
+    .teach-content .pos-meta { text-align: left; font-size: 0.8rem; }
+  }
+  @media (max-width: 400px) {
+    .teach-content .philosophy { padding: 1rem; margin-bottom: 1.5rem; }
+    .teach-content .pos-org { font-size: 0.9rem; }
+    .teach-content .pos-role { font-size: 0.85rem; }
+  }
 </style>
 
 <div class="teach-content" markdown="1">
