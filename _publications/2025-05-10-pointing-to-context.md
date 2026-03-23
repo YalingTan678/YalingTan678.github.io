@@ -13,30 +13,53 @@ citation: '*Tan, L.Y., & Gao, L. (2025). Pointing to context from a relevance th
 
 ## Abstract
 
-With the prevalence of machine translation devices, their performance has been assessed from multiple points, particularly focusing on linguistic features. However, few studies have probed context-awareness capabilities of both humans and machines to determine whether machines can fully or partially assist or replace human interpreters. To address the gap, this comparative study employed a **quantitative quasi-experimental research design** to investigate the linguistic differences arising from the adaptive expertise of human interpreters versus machine devices in **simultaneous interpreting**.
+This study investigates whether machines can fully or partially replace human interpreters by comparing their **context-awareness capabilities** in simultaneous interpreting. Using a quantitative quasi-experimental design with **Coh-Metrix** analysis across **108 linguistic indices**.
 
-## Method
+---
 
-- **Data collection**: Outputs from 3 human interpreters, Google Speech Translation (GST), and iFlytek
-- **Analysis**: One-way ANOVA to identify significant differences across **108 linguistic indices** using the corpus-based tool **Coh-Metrix**
-- **Framework**: 10 linguistic indices with significant differences were categorized into lexical, syntactic, and textual levels in accordance with **Relevance Theory** (Sperber & Wilson, 1986)
+## Research Design
+
+| Component | Detail |
+|:----------|:-------|
+| **Design** | Quantitative quasi-experimental |
+| **Human Interpreters** | 3 professional interpreters |
+| **Machine Devices** | Google Speech Translation (GST) + iFlytek |
+| **Analysis Tool** | Coh-Metrix (108 linguistic indices) |
+| **Statistical Test** | One-way ANOVA |
+| **Framework** | Relevance Theory (Sperber & Wilson, 1986) |
+
+---
+
+## Results & Analysis
+
+![Results Page 1](/images/pubs/mjss-results-1.jpg)
+*ANOVA results showing significant differences across lexical, syntactic, and textual indices*
+
+---
+
+![Results Page 2](/images/pubs/mjss-results-2.jpg)
+*Detailed comparison of human vs. machine performance on context-aware linguistic features*
+
+---
+
+![Results Page 3](/images/pubs/mjss-results-3.jpg)
+*Discussion of findings through the lens of Relevance Theory*
+
+---
 
 ## Key Findings
 
-- **Human interpreters** showcase a superior ability to maintain **context awareness** when addressing challenges in simultaneous interpreting
-- Human capacity to foster **emergent common ground** enables better performance in finding **optimal relevance** between speakers and hearers
-- In contrast, **machines are too "naive" to perform** — lacking the ability to contextually adapt in real-time interpreting scenarios
-- The study demonstrates the critical importance of **context-awareness capabilities** for accurate interpreting
+| Level | Human Interpreters | Machine Devices |
+|:------|:-------------------|:----------------|
+| **Lexical** | Rich vocabulary, context-appropriate word choice | Limited, often literal translation |
+| **Syntactic** | Flexible sentence restructuring | Rigid, source-language dependent |
+| **Textual** | Maintains coherence & common ground | Lacks cross-sentence context awareness |
 
-## Theoretical Framework: Relevance Theory
+## Implications
 
-The study draws on the **Relevance Theory** framework (Sperber & Wilson, 1986), which posits that communication operates as an ostensive-inferential process. RT offers a theoretical basis for understanding relevance at both the individual level and within context, corresponding to the cognitive principle and communicative principle of relevance respectively. The framework allows analysis of how interpreters (both human and machine) negotiate meaning through context awareness.
-
-## Practical Implications
-
-- Greater training is needed to enhance **human interpreters' skills** in context adaptation
-- Development efforts should focus on improving **MT systems' context-awareness capabilities**
-- The findings inform criteria for interpreting competence evaluation and highlight the gap between human and machine context processing
+- Greater training needed to enhance **human interpreters' context adaptation skills**
+- MT systems need improved **context-awareness capabilities**
+- **Relevance Theory** provides a powerful framework for evaluating interpreting quality
 
 **Keywords**: Machine interpreting, Comparative study, Relevance theory, Context awareness
 

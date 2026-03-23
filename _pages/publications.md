@@ -216,7 +216,7 @@ I study how emerging technologies transform education beyond the classroom. My w
 <h2>Under Review</h2>
 
 <a class="pub-card" href="/publication/ur-tutor-not-solver">
-  <div class="pub-card__thumb pub-card__thumb--icon">&#129302;</div>
+  <div class="pub-card__thumb"><img src="/images/pubs/petechat-v2.png" alt="PeteChat interface"></div>
   <div class="pub-card__body">
     <div class="pub-card__top">
       <span class="pub-card__title">Tutor, Not Solver: Designing a Guardrailed AI Assistant for Learning in Higher Education</span>
