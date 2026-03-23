@@ -260,7 +260,7 @@ I study how emerging technologies transform education beyond the classroom. My w
 <h2>Conference Presentations</h2>
 
 <a class="pub-card" href="/publication/2026-aera-meta-analysis">
-  <div class="pub-card__thumb pub-card__thumb--icon">&#128202;</div>
+  <div class="pub-card__thumb"><img src="/images/pubs/meta-analysis-cover.png" alt="Meta-analysis cover slide"></div>
   <div class="pub-card__body">
     <div class="pub-card__top">
       <span class="pub-card__title">A Meta-analysis on the Achievement of Technology on Students from Low-income Families</span>
