@@ -274,7 +274,7 @@ I study how emerging technologies transform education beyond the classroom. My w
 </a>
 
 <a class="pub-card" href="/publication/2026-clawdbot-unboxed">
-  <div class="pub-card__thumb pub-card__thumb--icon">&#129302;</div>
+  <div class="pub-card__thumb"><img src="/images/pubs/clawdbot-poster.jpg" alt="Clawdbot Unboxed poster"></div>
   <div class="pub-card__body">
     <div class="pub-card__top">
       <span class="pub-card__title">Clawdbot Unboxed: What It Does, Why It's Hot, and Where It Breaks</span>

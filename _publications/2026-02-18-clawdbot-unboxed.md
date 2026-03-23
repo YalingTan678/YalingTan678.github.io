@@ -10,9 +10,12 @@ publication_type: "talk"
 authors: '<strong>Tan, L.</strong>'
 ---
 
-## Event Poster
+## Event Poster & Slides
 
-![Clawdbot Unboxed — AI Lunch and Learn Series poster](/images/pubs/clawdbot-poster.jpg)
+| Poster | Slide Preview |
+|:---:|:---:|
+| ![Poster](/images/pubs/clawdbot-poster.jpg) | ![Slides](/images/pubs/clawdbot-slide-preview.png) |
+| *AI Lunch & Learn Series, Feb 18 2026* | *[Download full slides (PPTX)](/files/clawdbot-slides.pptx)* |
 
 ---
 
