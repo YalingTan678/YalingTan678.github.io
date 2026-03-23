@@ -64,6 +64,46 @@
       overflow: visible !important;
     }
   }
+  /* Masthead mesh gradient */
+  @property --g1 { syntax: '<percentage>'; initial-value: 0%; inherits: false; }
+  @property --g2 { syntax: '<percentage>'; initial-value: 100%; inherits: false; }
+  @property --g3 { syntax: '<percentage>'; initial-value: 50%; inherits: false; }
+
+  .masthead {
+    background:
+      radial-gradient(ellipse at var(--g1) 50%, #9E48A6cc 0%, transparent 50%),
+      radial-gradient(ellipse at var(--g2) 30%, #B850A6bb 0%, transparent 55%),
+      radial-gradient(ellipse at var(--g3) 80%, #B68AD2cc 0%, transparent 50%),
+      radial-gradient(ellipse at 80% var(--g1), #BE9EDEbb 0%, transparent 55%),
+      linear-gradient(135deg, #D2CCF2, #BE9EDE, #B68AD2, #B850A6, #9E48A6) !important;
+    animation: meshFlow 8s ease-in-out infinite !important;
+    border-bottom: none !important;
+  }
+  .masthead::after {
+    display: none !important;
+  }
+  @keyframes meshFlow {
+    0%   { --g1: 10%; --g2: 90%; --g3: 40%; }
+    33%  { --g1: 60%; --g2: 30%; --g3: 80%; }
+    66%  { --g1: 85%; --g2: 55%; --g3: 15%; }
+    100% { --g1: 10%; --g2: 90%; --g3: 40%; }
+  }
+  .masthead .greedy-nav a,
+  .masthead .greedy-nav button {
+    color: #fff !important;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.15);
+  }
+  .masthead .greedy-nav a:hover {
+    color: #f0e6ff !important;
+  }
+  .masthead__menu-item {
+    background-color: transparent !important;
+  }
+  /* Theme toggle icon in masthead */
+  #theme-toggle i {
+    color: #fff !important;
+  }
+
   /* Sidebar icon brand colors (fix specificity for single-layout pages) */
   .author__urls.social-icons .fa-envelope { color: #b91c1c !important; }
   .author__urls.social-icons .fa-location-dot { color: #16a34a !important; }
