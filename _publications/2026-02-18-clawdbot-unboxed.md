@@ -10,12 +10,67 @@ publication_type: "talk"
 authors: '<strong>Tan, L.</strong>'
 ---
 
-## Event Poster & Slides
+## Event Poster
 
-| Poster | Slide Preview |
-|:---:|:---:|
-| ![Poster](/images/pubs/clawdbot-poster.jpg) | ![Slides](/images/pubs/clawdbot-slide-preview.png) |
-| *AI Lunch & Learn Series, Feb 18 2026* | *[Download full slides (PPTX)](/files/clawdbot-slides.pptx)* |
+![Clawdbot Unboxed poster](/images/pubs/clawdbot-poster.jpg)
+
+---
+
+## Presentation Slides (21 slides)
+
+<div id="slide-viewer" style="position:relative;max-width:100%;background:#0f172a;border-radius:12px;overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,0.15)">
+  <div style="position:relative;overflow:hidden">
+    <img id="slide-img" src="/images/pubs/slides/slide-01-01.jpg" alt="Slide 1 of 21" style="width:100%;display:block;transition:opacity 0.3s">
+  </div>
+  <div style="display:flex;align-items:center;justify-content:space-between;padding:0.6rem 1rem;background:#1e293b">
+    <button onclick="prevSlide()" style="border:none;background:#334155;color:#e2e8f0;width:32px;height:32px;border-radius:8px;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:background 0.2s" onmouseover="this.style.background='#475569'" onmouseout="this.style.background='#334155'">&#9664;</button>
+    <span id="slide-counter" style="color:#94a3b8;font-size:0.8rem;font-weight:600">1 / 21</span>
+    <button onclick="nextSlide()" style="border:none;background:#334155;color:#e2e8f0;width:32px;height:32px;border-radius:8px;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:background 0.2s" onmouseover="this.style.background='#475569'" onmouseout="this.style.background='#334155'">&#9654;</button>
+  </div>
+  <div style="display:flex;gap:3px;padding:0 1rem 0.6rem;background:#1e293b;overflow-x:auto">
+    <div id="slide-dots" style="display:flex;gap:3px;margin:0 auto"></div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var current = 1, total = 21;
+  var img = document.getElementById('slide-img');
+  var counter = document.getElementById('slide-counter');
+  var dotsC = document.getElementById('slide-dots');
+  for(var i=1;i<=total;i++){
+    var d=document.createElement('button');
+    d.style.cssText='width:8px;height:8px;border-radius:50%;border:none;padding:0;cursor:pointer;transition:all 0.2s;'+(i===1?'background:#60a5fa;transform:scale(1.3)':'background:#475569');
+    d.dataset.i=i;
+    d.onclick=function(){goTo(parseInt(this.dataset.i))};
+    dotsC.appendChild(d);
+  }
+  function pad(n){return n<10?'0'+n:''+n}
+  function goTo(n){
+    current=n;
+    img.style.opacity='0.5';
+    setTimeout(function(){
+      img.src='/images/pubs/slides/slide-'+pad(n)+'-'+pad(n)+'.jpg';
+      img.alt='Slide '+n+' of '+total;
+      img.style.opacity='1';
+    },150);
+    counter.textContent=n+' / '+total;
+    var dots=dotsC.children;
+    for(var j=0;j<dots.length;j++){
+      dots[j].style.background=j===n-1?'#60a5fa':'#475569';
+      dots[j].style.transform=j===n-1?'scale(1.3)':'scale(1)';
+    }
+  }
+  window.prevSlide=function(){goTo(current<=1?total:current-1)};
+  window.nextSlide=function(){goTo(current>=total?1:current+1)};
+  document.addEventListener('keydown',function(e){
+    if(e.key==='ArrowRight')nextSlide();
+    if(e.key==='ArrowLeft')prevSlide();
+  });
+})();
+</script>
+
+*[Download full slides (PPTX)](/files/clawdbot-slides.pptx)*
 
 ---
 
