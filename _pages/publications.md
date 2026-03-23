@@ -199,7 +199,7 @@ I study how emerging technologies transform education beyond the classroom. My w
 </a>
 
 <a class="pub-card" href="/publication/2023-clil-translation">
-  <div class="pub-card__thumb pub-card__thumb--icon">&#128218;</div>
+  <div class="pub-card__thumb"><img src="/images/pubs/clil-cover.png" alt="CLIL paper"></div>
   <div class="pub-card__body">
     <div class="pub-card__top">
       <span class="pub-card__title">Study on MTI Talent Cultivation Mode from the Perspective of CLIL</span>
