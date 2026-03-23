@@ -230,7 +230,7 @@ I study how emerging technologies transform education beyond the classroom. My w
 </a>
 
 <a class="pub-card" href="/publication/ur-tpack-xinjiang">
-  <div class="pub-card__thumb pub-card__thumb--icon">&#127758;</div>
+  <div class="pub-card__thumb"><img src="/images/pubs/tpack-model.png" alt="TPACK Framework"></div>
   <div class="pub-card__body">
     <div class="pub-card__top">
       <span class="pub-card__title">Pre-service Teachers' TPACK in Xinjiang: Examining Culture Diversity as Context</span>

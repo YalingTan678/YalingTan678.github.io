@@ -10,6 +10,12 @@ authors: 'Liu, H. & <strong>*Tan, L.</strong>'
 badge: 'Under Review'
 ---
 
+## The TPACK Model
+
+![TPACK Framework — Technological Pedagogical Content Knowledge](/images/pubs/tpack-model.png)
+
+---
+
 ## What This Paper Is About
 
 In **Xinjiang** — one of China's most culturally and linguistically diverse regions — pre-service teachers must integrate technology into classrooms where students come from vastly different cultural backgrounds. This paper examines how that **cultural diversity shapes their TPACK** (Technological Pedagogical Content Knowledge), rather than treating culture as a background variable.
