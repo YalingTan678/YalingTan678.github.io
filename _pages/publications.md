@@ -340,7 +340,7 @@ I study how emerging technologies transform education beyond the classroom. My w
 </a>
 
 <a class="pub-card" href="/publication/2025-aect-authenticity">
-  <div class="pub-card__thumb pub-card__thumb--icon">&#127891;</div>
+  <div class="pub-card__thumb"><img src="/images/pubs/aect-authenticity.png" alt="AI vs. Authenticity"></div>
   <div class="pub-card__body">
     <div class="pub-card__top">
       <span class="pub-card__title">Artificial Authenticity and Academic Integrity in an Age of Generative AI</span>
@@ -351,7 +351,7 @@ I study how emerging technologies transform education beyond the classroom. My w
 </a>
 
 <a class="pub-card" href="/publication/2024-call-context">
-  <div class="pub-card__thumb pub-card__thumb--icon">&#127471;&#127477;</div>
+  <div class="pub-card__thumb"><img src="/images/pubs/call-tokyo.png" alt="CALL Conference Tokyo"></div>
   <div class="pub-card__body">
     <div class="pub-card__top">
       <span class="pub-card__title">Pointing to Context (CALL Conference, Tokyo)</span>
@@ -362,7 +362,7 @@ I study how emerging technologies transform education beyond the classroom. My w
 </a>
 
 <a class="pub-card" href="/publication/2024-sociocultural-ai">
-  <div class="pub-card__thumb pub-card__thumb--icon">&#127467;&#127479;</div>
+  <div class="pub-card__thumb"><img src="/images/pubs/sociocultural-zpd.png" alt="ZPD diagram"></div>
   <div class="pub-card__body">
     <div class="pub-card__top">
       <span class="pub-card__title">Exploring the Extracurricular Development of AI-Assisted English Learners</span>
@@ -373,7 +373,7 @@ I study how emerging technologies transform education beyond the classroom. My w
 </a>
 
 <a class="pub-card" href="/publication/2024-intercultural-pragmatics">
-  <div class="pub-card__thumb pub-card__thumb--icon">&#127470;&#127481;</div>
+  <div class="pub-card__thumb"><img src="/images/pubs/intercultural-pisa.png" alt="Intercultural Pragmatics Conference group photo"></div>
   <div class="pub-card__body">
     <div class="pub-card__top">
       <span class="pub-card__title">10th International Conference on Intercultural Pragmatics and Communication</span>
