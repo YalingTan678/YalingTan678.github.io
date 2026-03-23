@@ -286,7 +286,7 @@ I study how emerging technologies transform education beyond the classroom. My w
 </a>
 
 <a class="pub-card" href="/publication/ur-authorship-agency-ai">
-  <div class="pub-card__thumb pub-card__thumb--icon">&#9997;&#65039;</div>
+  <div class="pub-card__thumb"><img src="/images/pubs/authorship-ai-loop.png" alt="AI Authenticity Loop diagram"></div>
   <div class="pub-card__body">
     <div class="pub-card__top">
       <span class="pub-card__title">Authorship, Agency, and AI: How Higher Education Instructors Navigate Authenticity in Student Writing</span>
