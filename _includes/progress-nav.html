@@ -1,7 +1,7 @@
 <style>
 .progress-nav {
   position: fixed;
-  right: 6px;
+  right: 28px;
   top: 50%;
   transform: translateY(-50%);
   z-index: 50;
@@ -9,62 +9,67 @@
   flex-direction: column;
   align-items: center;
   gap: 0;
-  padding: 8px 0;
+  padding: 12px 0;
 }
 .progress-nav::before {
   content: '';
   position: absolute;
   top: 0; bottom: 0;
   left: 50%;
-  width: 1.5px;
-  background: #e2e8f0;
-  border-radius: 1px;
+  width: 2px;
+  background: linear-gradient(180deg, transparent, #c4b5fd 20%, #a78bfa 50%, #c4b5fd 80%, transparent);
+  border-radius: 2px;
   transform: translateX(-50%);
 }
 .progress-nav__dot {
   position: relative;
-  width: 7px;
-  height: 7px;
+  width: 9px;
+  height: 9px;
   border-radius: 50%;
-  background: #cbd5e1;
-  border: none;
+  background: #a78bfa;
+  border: 1.5px solid #fff;
   padding: 0;
   cursor: pointer;
   transition: all 0.3s ease;
   z-index: 1;
   text-decoration: none;
-  margin: 10px 0;
+  margin: 12px 0;
   flex-shrink: 0;
+  box-shadow: 0 0 4px rgba(167,139,250,0.3);
 }
 .progress-nav__dot:hover {
-  background: #9F50D3;
-  transform: scale(1.6);
+  background: #7c3aed;
+  transform: scale(1.8);
+  box-shadow: 0 0 10px rgba(124,58,237,0.5);
 }
 .progress-nav__dot.active {
-  background: #9F50D3;
-  transform: scale(1.5);
-  box-shadow: 0 0 6px rgba(159,80,211,0.4);
+  background: #7c3aed;
+  transform: scale(1.7);
+  box-shadow: 0 0 12px rgba(124,58,237,0.6);
+  border-color: #ede9fe;
 }
 /* Tooltip */
 .progress-nav__dot::after {
   content: attr(data-label);
   position: absolute;
-  right: 18px;
+  right: 22px;
   top: 50%;
-  transform: translateY(-50%);
-  background: #1e293b;
-  color: #fff;
-  font-size: 0.68rem;
+  transform: translateY(-50%) translateX(4px);
+  background: #1e1b4b;
+  color: #e9e5ff;
+  font-size: 0.7rem;
   font-weight: 500;
-  padding: 3px 8px;
-  border-radius: 5px;
+  padding: 4px 10px;
+  border-radius: 6px;
   white-space: nowrap;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.2s;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 .progress-nav__dot:hover::after {
   opacity: 1;
+  transform: translateY(-50%) translateX(0);
 }
 @media (max-width: 900px) {
   .progress-nav { display: none; }
