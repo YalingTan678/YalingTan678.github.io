@@ -170,13 +170,17 @@ author_profile: true
   /* ===== Awards ===== */
   .svc-content .award-item {
     display: flex; justify-content: space-between;
-    align-items: flex-start; flex-wrap: wrap; gap: 0.5rem;
+    align-items: center; gap: 0.5rem;
     padding: 0.7rem 0; border-bottom: 1px solid #e8edf5;
   }
   .svc-content .award-item:last-child { border-bottom: none; }
+  .svc-content .award-right {
+    text-align: right; flex-shrink: 0; min-width: 90px;
+  }
   .svc-content .award-amount {
     font-size: 0.83rem; color: #22c55e; font-weight: 600;
     background: #f0fdf4; padding: 0.15rem 0.5rem; border-radius: 6px;
+    display: inline-block;
   }
 </style>
 
@@ -261,23 +265,23 @@ My service philosophy is to strengthen academic communities through reliable and
 <h2>Honors, Awards &amp; Recognitions</h2>
 
 <div class="award-item">
-  <div><strong>LDT Travel Support Program</strong><br><span style="font-size:0.85rem;color:#718096">Purdue University, Curriculum and Instruction &amp; LDT Programs</span></div>
-  <div><span class="award-amount">$250</span><br><span style="font-size:0.78rem;color:#718096">2025</span></div>
+  <div style="flex:1"><strong>LDT Travel Support Program</strong><br><span style="font-size:0.85rem;color:#718096">Purdue University, Curriculum and Instruction &amp; LDT Programs</span></div>
+  <div class="award-right"><span class="award-amount">$250</span><br><span style="font-size:0.78rem;color:#718096">2025</span></div>
 </div>
 
 <div class="award-item">
-  <div><strong>National Academic Fellowship</strong><br><span style="font-size:0.85rem;color:#718096">Northeastern University, Department of Interpreting</span></div>
-  <div><span class="award-amount">$2,000</span><br><span style="font-size:0.78rem;color:#718096">2023&ndash;2024</span></div>
+  <div style="flex:1"><strong>National Academic Fellowship</strong><br><span style="font-size:0.85rem;color:#718096">Northeastern University, Department of Interpreting</span></div>
+  <div class="award-right"><span class="award-amount">$2,000</span><br><span style="font-size:0.78rem;color:#718096">2023&ndash;2024</span></div>
 </div>
 
 <div class="award-item">
-  <div><strong>Erasmus+ Fund</strong><br><span style="font-size:0.85rem;color:#718096">University of Silesia, Department of Linguistics</span></div>
-  <div><span class="award-amount">$5,000</span><br><span style="font-size:0.78rem;color:#718096">2024</span></div>
+  <div style="flex:1"><strong>Erasmus+ Fund</strong><br><span style="font-size:0.85rem;color:#718096">University of Silesia, Department of Linguistics</span></div>
+  <div class="award-right"><span class="award-amount">$5,000</span><br><span style="font-size:0.78rem;color:#718096">2024</span></div>
 </div>
 
 <div class="award-item">
-  <div><strong>National Undergraduate Award</strong><br><span style="font-size:0.85rem;color:#718096">Southwest University of Science and Technology, Department of Translation</span></div>
-  <div><span class="award-amount">$750</span><br><span style="font-size:0.78rem;color:#718096">2019</span></div>
+  <div style="flex:1"><strong>National Undergraduate Award</strong><br><span style="font-size:0.85rem;color:#718096">Southwest University of Science and Technology, Department of Translation</span></div>
+  <div class="award-right"><span class="award-amount">$750</span><br><span style="font-size:0.78rem;color:#718096">2019</span></div>
 </div>
 
 <h2>Certifications</h2>
