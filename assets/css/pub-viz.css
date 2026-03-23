@@ -1,3 +1,10 @@
+/* ===== Fix page content cutoff ===== */
+#main, .initial-content, .page, .page__inner-wrap,
+.archive, .page__content, .e-content {
+  overflow: visible !important;
+  max-height: none !important;
+}
+
 /* ===== Publication Visualization Styles ===== */
 
 /* Stat cards */
