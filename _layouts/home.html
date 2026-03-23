@@ -45,26 +45,32 @@
       .author__content, .author__urls-wrapper { display: none !important; }
 
       /* ========== NAV ========== */
-      @property --g1 { syntax: '<percentage>'; initial-value: 0%; inherits: false; }
-      @property --g2 { syntax: '<percentage>'; initial-value: 100%; inherits: false; }
-      @property --g3 { syntax: '<percentage>'; initial-value: 50%; inherits: false; }
+      @property --m1 { syntax: '<percentage>'; initial-value: 10%; inherits: false; }
+      @property --m2 { syntax: '<percentage>'; initial-value: 90%; inherits: false; }
+      @property --m3 { syntax: '<percentage>'; initial-value: 50%; inherits: false; }
+      @property --m4 { syntax: '<percentage>'; initial-value: 30%; inherits: false; }
+      @property --m5 { syntax: '<percentage>'; initial-value: 70%; inherits: false; }
       .lt-nav {
         position: sticky; top: 0; z-index: 100;
         background:
-          radial-gradient(ellipse at var(--g1) 50%, #9E48A6cc 0%, transparent 50%),
-          radial-gradient(ellipse at var(--g2) 30%, #B850A6bb 0%, transparent 55%),
-          radial-gradient(ellipse at var(--g3) 80%, #B68AD2cc 0%, transparent 50%),
-          radial-gradient(ellipse at 80% var(--g1), #BE9EDEbb 0%, transparent 55%),
-          linear-gradient(135deg, #D2CCF2, #BE9EDE, #B68AD2, #B850A6, #9E48A6);
-        animation: meshFlow 8s ease-in-out infinite;
+          radial-gradient(circle at var(--m1) 20%, #241D9Aee 0%, transparent 40%),
+          radial-gradient(circle at var(--m2) 80%, #F75092dd 0%, transparent 45%),
+          radial-gradient(ellipse at var(--m3) 50%, #9F50D3cc 0%, transparent 50%),
+          radial-gradient(circle at var(--m4) 70%, #F75092bb 0%, transparent 35%),
+          radial-gradient(ellipse at var(--m5) 30%, #241D9Abb 0%, transparent 40%),
+          radial-gradient(circle at 50% 50%, #9F50D3aa 0%, transparent 60%),
+          linear-gradient(120deg, #241D9A, #9F50D3, #F75092, #E0EAFF, #9F50D3, #241D9A);
+        animation: meshFlow 5s ease-in-out infinite;
         border-bottom: none;
         padding: 0 2rem;
       }
       @keyframes meshFlow {
-        0%   { --g1: 10%; --g2: 90%; --g3: 40%; }
-        33%  { --g1: 60%; --g2: 30%; --g3: 80%; }
-        66%  { --g1: 85%; --g2: 55%; --g3: 15%; }
-        100% { --g1: 10%; --g2: 90%; --g3: 40%; }
+        0%   { --m1: 5%;  --m2: 95%; --m3: 40%; --m4: 20%; --m5: 75%; }
+        20%  { --m1: 35%; --m2: 65%; --m3: 70%; --m4: 50%; --m5: 15%; }
+        40%  { --m1: 70%; --m2: 25%; --m3: 15%; --m4: 80%; --m5: 45%; }
+        60%  { --m1: 90%; --m2: 45%; --m3: 60%; --m4: 10%; --m5: 85%; }
+        80%  { --m1: 50%; --m2: 80%; --m3: 25%; --m4: 65%; --m5: 30%; }
+        100% { --m1: 5%;  --m2: 95%; --m3: 40%; --m4: 20%; --m5: 75%; }
       }
       .lt-nav__inner {
         max-width: var(--max-width);
