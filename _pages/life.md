@@ -85,15 +85,27 @@ permalink: /life/
     .story__text{font-size:.92rem;font-weight:300;line-height:1.85;color:rgba(255,255,255,.5);max-width:400px}
     .story--center .story__text{max-width:480px;margin:0 auto}
 
-    /* Photo containers */
-    .photos{display:flex;gap:1rem}
+    /* Photo containers — 3D parallax floating */
+    .photos{display:flex;gap:1.5rem;perspective:800px}
     .photos--single{display:block}
-    .photo{width:260px;height:340px;border-radius:6px;overflow:hidden;border:1px solid rgba(255,255,255,.08);
-      background:rgba(255,255,255,.03);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .photo{
+      width:260px;height:340px;border-radius:8px;overflow:hidden;
+      border:1px solid rgba(255,255,255,.1);
+      background:rgba(255,255,255,.04);
+      display:flex;align-items:center;justify-content:center;flex-shrink:0;
+      box-shadow:0 8px 40px rgba(0,0,0,.4);
+      transition:transform .6s cubic-bezier(.4,0,.2,1),box-shadow .6s ease;
+      will-change:transform;
+    }
+    .photo:hover{transform:scale(1.04) rotateY(-2deg)!important;box-shadow:0 16px 60px rgba(124,58,237,.25)}
     .photo--wide{width:100%;max-width:420px;height:260px}
-    .photos .photo:nth-child(2){margin-top:3rem}
+    /* Staggered depth: front and back layers */
+    .photos .photo:nth-child(1){transform:translateZ(30px) rotateY(3deg)}
+    .photos .photo:nth-child(2){transform:translateZ(-20px) rotateY(-3deg);margin-top:3rem}
     .photo img{width:100%;height:100%;object-fit:cover}
     .photo__empty{color:rgba(255,255,255,.15);font-size:.72rem;text-align:center;display:flex;flex-direction:column;align-items:center;gap:.5rem}
+    /* Parallax data attributes for JS */
+    [data-speed]{will-change:transform}
 
     /* Reveal animation */
     .reveal-item{opacity:0;transform:translateY(40px);transition:opacity .8s cubic-bezier(.4,0,.2,1),transform .8s cubic-bezier(.4,0,.2,1)}
@@ -157,14 +169,14 @@ permalink: /life/
 <section class="scene" data-idx="1">
   <div class="scene__content">
     <div class="story">
-      <div class="reveal-item">
+      <div class="reveal-item" data-speed="0.8">
         <div class="story__label">01 &mdash; Origin</div>
         <div class="story__title">Where It<br>All <em>Began</em></div>
         <div class="story__divider"></div>
         <div class="story__text">Every story has a beginning. Mine starts with curiosity, family, and the places that first made me wonder about the world.</div>
       </div>
-      <div class="reveal-item">
-        <div class="photo">
+      <div class="reveal-item" data-speed="1.3">
+        <div class="photo" data-speed="1.5" data-tilt="3">
           <div class="photo__empty">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
             Add photo
@@ -179,21 +191,21 @@ permalink: /life/
 <section class="scene" data-idx="2">
   <div class="scene__content">
     <div class="story story--reverse">
-      <div class="reveal-item">
+      <div class="reveal-item" data-speed="0.7">
         <div class="story__label">02 &mdash; Journey</div>
         <div class="story__title">The Academic<br><em>Path</em></div>
         <div class="story__divider"></div>
         <div class="story__text">From classrooms to conferences, from late-night coding to early-morning writing. The path of a researcher is never straight, but always meaningful.</div>
       </div>
-      <div class="reveal-item">
+      <div class="reveal-item" data-speed="1.2">
         <div class="photos">
-          <div class="photo">
+          <div class="photo" data-speed="1.6" data-tilt="-4">
             <div class="photo__empty">
               <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
               Add photo
             </div>
           </div>
-          <div class="photo">
+          <div class="photo" data-speed="0.6" data-tilt="5">
             <div class="photo__empty">
               <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
               Add photo
@@ -209,14 +221,14 @@ permalink: /life/
 <section class="scene" data-idx="3">
   <div class="scene__content">
     <div class="story">
-      <div class="reveal-item">
+      <div class="reveal-item" data-speed="0.9">
         <div class="story__label">03 &mdash; Explore</div>
         <div class="story__title">Exploring<br>the <em>World</em></div>
         <div class="story__divider"></div>
         <div class="story__text">Travel broadens the mind and feeds the soul. Every new place brings fresh perspectives that find their way back into my work.</div>
       </div>
-      <div class="reveal-item">
-        <div class="photo photo--wide">
+      <div class="reveal-item" data-speed="1.4">
+        <div class="photo photo--wide" data-speed="1.3" data-tilt="-2">
           <div class="photo__empty">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
             Add photo
@@ -231,21 +243,21 @@ permalink: /life/
 <section class="scene" data-idx="4">
   <div class="scene__content">
     <div class="story story--reverse">
-      <div class="reveal-item">
+      <div class="reveal-item" data-speed="0.75">
         <div class="story__label">04 &mdash; Connect</div>
         <div class="story__title">People &amp;<br><em>Connection</em></div>
         <div class="story__divider"></div>
         <div class="story__text">The mentors who guided me, the friends who supported me, and the communities that inspired me. Research is never a solo endeavor.</div>
       </div>
-      <div class="reveal-item">
+      <div class="reveal-item" data-speed="1.3">
         <div class="photos">
-          <div class="photo">
+          <div class="photo" data-speed="1.7" data-tilt="4">
             <div class="photo__empty">
               <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
               Add photo
             </div>
           </div>
-          <div class="photo">
+          <div class="photo" data-speed="0.5" data-tilt="-5">
             <div class="photo__empty">
               <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
               Add photo
@@ -363,11 +375,13 @@ permalink: /life/
 
     geo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
 
+    // Site palette colors for each ribbon
+    var ribbonColors = [0x7c3aed, 0xf75092, 0x3b82f6, 0x047857, 0xf59e0b];
     var mat = new THREE.PointsMaterial({
-      color: 0xffffff,
-      size: 0.04,
+      color: ribbonColors[ri % ribbonColors.length],
+      size: 0.05,
       transparent: true,
-      opacity: 0.6,
+      opacity: 0.65,
       sizeAttenuation: true
     });
 
@@ -415,6 +429,18 @@ permalink: /life/
 
   window.addEventListener('scroll',function(){
     scrollProg = totalH > 0 ? window.pageYOffset / totalH : 0;
+    // Parallax: move elements at different speeds
+    var scrollY = window.pageYOffset;
+    var parallaxEls = document.querySelectorAll('[data-speed]');
+    parallaxEls.forEach(function(el){
+      var speed = parseFloat(el.getAttribute('data-speed'));
+      var tilt = parseFloat(el.getAttribute('data-tilt')) || 0;
+      var rect = el.getBoundingClientRect();
+      var center = rect.top + rect.height/2;
+      var offset = (center - H/2) * (speed - 1) * 0.3;
+      var rotY = tilt * Math.sin(scrollY * 0.002);
+      el.style.transform = 'translateY('+offset+'px) rotateY('+rotY+'deg)';
+    });
   },{passive:true});
 
   /* ===== Intersection Observer for reveal ===== */
