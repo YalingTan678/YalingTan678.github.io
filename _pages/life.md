@@ -10,467 +10,698 @@ permalink: /life/
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
   <title>Life | Lily Tan</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@200;300;400;500;600;700&display=swap" rel="stylesheet"/>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
     *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-    html{scroll-behavior:auto}
-    body{font-family:'Inter',system-ui,sans-serif;background:#faf8ff;color:#1e1b4b;overflow-x:hidden}
+    html,body{width:100%;overflow-x:hidden;font-family:'Inter',system-ui,sans-serif;background:#0a0a0a;color:#e0e0e0}
+    body.layer2-active{overflow-y:auto}
+    body:not(.layer2-active){overflow-y:hidden;height:100vh}
+
+    canvas#mainCanvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:1;pointer-events:none}
+
+    /* Film grain overlay */
+    .film-grain{position:fixed;top:0;left:0;width:100%;height:100%;z-index:9998;pointer-events:none;opacity:0.04;
+      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size:128px 128px}
+
+    /* ====== LAYER 1: Card Landing ====== */
+    #layer1{position:fixed;top:0;left:0;width:100%;height:100%;z-index:10;display:flex;align-items:center;justify-content:center}
+    #layer1 .title-text{position:absolute;bottom:8%;left:50%;transform:translateX(-50%);text-align:center;z-index:12;pointer-events:none}
+    #layer1 .title-text h1{font-family:'Playfair Display',serif;font-size:clamp(1.5rem,3vw,2.5rem);font-weight:400;color:rgba(255,255,255,0.6);letter-spacing:0.05em}
+    #layer1 .title-text p{font-size:0.75rem;color:rgba(255,255,255,0.25);margin-top:0.5rem;letter-spacing:0.15em;text-transform:uppercase}
+
+    /* ====== LAYER 2: Detail Page ====== */
+    #layer2{display:none;position:relative;z-index:10;width:100%;height:600vh}
+
+    /* Back button */
+    .back-btn{position:fixed;top:2rem;left:2rem;z-index:100;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);
+      color:rgba(255,255,255,0.6);padding:0.5rem 1.2rem;border-radius:30px;font-size:0.75rem;font-family:'Inter',sans-serif;
+      letter-spacing:0.1em;cursor:pointer;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);transition:all 0.3s;display:none}
+    .back-btn:hover{background:rgba(255,255,255,0.1);color:#fff}
+
+    /* Content panels */
+    .panel{position:fixed;top:0;left:0;width:100%;height:100vh;z-index:50;display:none;align-items:center;justify-content:center;
+      pointer-events:none;opacity:0;transform:translateY(30px)}
+    .panel.visible{display:flex}
+    .panel-inner{max-width:600px;width:90%;padding:2rem;pointer-events:auto}
+    .panel-number{font-size:0.7rem;letter-spacing:0.2em;color:rgba(255,255,255,0.2);margin-bottom:1rem;font-weight:300}
+    .panel-title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,3rem);font-weight:400;line-height:1.2;
+      color:rgba(255,255,255,0.9);margin-bottom:1rem;letter-spacing:-0.01em}
+    .panel-text{font-size:0.9rem;font-weight:300;line-height:1.8;color:rgba(255,255,255,0.45);margin-bottom:1.5rem}
+    .panel-photo{width:100%;height:200px;border:1px dashed rgba(255,255,255,0.15);border-radius:8px;display:flex;align-items:center;
+      justify-content:center;color:rgba(255,255,255,0.2);font-size:0.75rem;letter-spacing:0.1em;background:rgba(255,255,255,0.02)}
+
+    /* Right dot nav */
+    .dot-nav{position:fixed;right:2rem;top:50%;transform:translateY(-50%);z-index:100;display:none;flex-direction:column;gap:1rem}
+    .dot-nav .dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.15);cursor:pointer;transition:all 0.3s;position:relative}
+    .dot-nav .dot.active{background:rgba(255,255,255,0.8);transform:scale(1.5)}
+    .dot-nav .dot::after{content:attr(data-label);position:absolute;right:16px;top:50%;transform:translateY(-50%);font-size:0.6rem;
+      letter-spacing:0.1em;text-transform:uppercase;white-space:nowrap;opacity:0;transition:opacity 0.3s;color:rgba(255,255,255,0.5)}
+    .dot-nav .dot:hover::after{opacity:1}
 
     /* Progress bar */
-    #progress{position:fixed;top:0;left:0;height:2px;z-index:9999;
-      background:linear-gradient(90deg,#7c3aed,#f75092);width:0%;pointer-events:none}
-
-    /* Top bar */
-    .topbar{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;
-      padding:1.5rem 3rem;background:rgba(250,248,255,.8);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
-      border-bottom:1px solid rgba(124,58,237,.06);pointer-events:none}
-    .topbar a{color:#1e1b4b;text-decoration:none;font-size:.75rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;
-      pointer-events:auto;transition:color .3s}
-    .topbar a:hover{color:#7c3aed}
-    .topbar__logo{font-size:.85rem;font-weight:700;letter-spacing:.05em}
-    .topbar__logo span{background:linear-gradient(135deg,#7c3aed,#f75092);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+    .progress-bar{position:fixed;top:0;left:0;height:2px;z-index:200;background:linear-gradient(90deg,#7c3aed,#f75092);width:0%;
+      pointer-events:none;display:none}
 
     /* Section counter */
-    .counter{position:fixed;right:3rem;bottom:3rem;z-index:100;font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;
-      color:rgba(124,58,237,.35);pointer-events:none}
-    .counter span{color:#7c3aed;font-weight:600;font-size:1rem}
+    .section-counter{position:fixed;right:2rem;bottom:2rem;z-index:100;font-size:0.7rem;letter-spacing:0.15em;
+      color:rgba(255,255,255,0.2);pointer-events:none;display:none}
+    .section-counter span{color:rgba(255,255,255,0.6);font-weight:600;font-size:0.9rem}
 
-    /* Right dots */
-    .dots{position:fixed;right:2.5rem;top:50%;transform:translateY(-50%);z-index:100;display:flex;flex-direction:column;gap:1.2rem}
-    .dots__item{width:6px;height:6px;border-radius:50%;background:rgba(124,58,237,.2);cursor:pointer;transition:all .4s;position:relative}
-    .dots__item.active{background:#7c3aed;transform:scale(1.6)}
-    .dots__item::after{content:attr(data-label);position:absolute;right:18px;top:50%;transform:translateY(-50%);font-size:.6rem;
-      letter-spacing:.1em;text-transform:uppercase;white-space:nowrap;opacity:0;transition:opacity .3s;color:#7c3aed}
-    .dots__item:hover::after{opacity:1}
-
-    /* ===== SECTIONS ===== */
-    .scene{position:relative;z-index:1;width:100%;min-height:100vh;display:flex;align-items:center;justify-content:center}
-    .scene__content{position:relative;max-width:1100px;width:100%;padding:4rem 3rem}
-
-    /* ===== HERO with 3D particle canvas ===== */
-    .scene--hero{height:100vh;text-align:center;flex-direction:column;
-      background:linear-gradient(160deg,#f5f3ff 0%,#fdf2f8 40%,#ede9fe 100%);position:relative;overflow:hidden}
-    #c{position:absolute;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none}
-    .hero-content{position:relative;z-index:2}
-    .hero__title{font-family:'Playfair Display',serif;font-size:clamp(3rem,8vw,6.5rem);font-weight:400;letter-spacing:-.03em;line-height:1.05;
-      color:#1e1b4b;opacity:0;transform:translateY(30px);transition:opacity 1s ease,transform 1s ease}
-    .hero__title em{font-style:italic;background:linear-gradient(135deg,#7c3aed,#f75092);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-    .hero__sub{margin-top:1.5rem;font-size:.9rem;font-weight:300;color:rgba(30,27,75,.4);letter-spacing:.05em;
-      opacity:0;transform:translateY(20px);transition:opacity 1s ease .3s,transform 1s ease .3s}
-    .hero__scroll{position:absolute;bottom:3rem;left:50%;transform:translateX(-50%);font-size:.65rem;letter-spacing:.2em;
-      text-transform:uppercase;color:rgba(124,58,237,.3);opacity:0;transition:opacity 1s ease .6s;z-index:2}
-    .hero__scroll::after{content:'';display:block;width:1px;height:40px;background:linear-gradient(rgba(124,58,237,.3),transparent);margin:.8rem auto 0}
-    .scene--hero.in-view .hero__title,.scene--hero.in-view .hero__sub,.scene--hero.in-view .hero__scroll{opacity:1;transform:translateY(0)}
-    .scene--hero.in-view .hero__scroll{transform:translateX(-50%)}
-
-    /* ===== Story sections — light backgrounds ===== */
-    .scene--light{background:#faf8ff}
-    .scene--soft{background:linear-gradient(160deg,#f5f3ff,#fdf2f8)}
-    .scene--white{background:#fff}
-
-    .story{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
-    .story--reverse{direction:rtl}
-    .story--reverse>*{direction:ltr}
-    .story--center{grid-template-columns:1fr;text-align:center;justify-items:center}
-
-    .story__label{font-size:.65rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;
-      background:linear-gradient(135deg,#7c3aed,#f75092);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:1.2rem}
-    .story__title{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:400;line-height:1.15;
-      letter-spacing:-.02em;margin-bottom:1rem;color:#1e1b4b}
-    .story__title em{font-style:italic;color:#7c3aed}
-    .story__divider{width:40px;height:2px;background:linear-gradient(90deg,#7c3aed,#f75092);margin:1.5rem 0;border-radius:1px}
-    .story--center .story__divider{margin:1.5rem auto}
-    .story__text{font-size:.92rem;font-weight:300;line-height:1.85;color:rgba(30,27,75,.5);max-width:400px}
-    .story--center .story__text{max-width:480px;margin:0 auto}
-
-    /* Photo containers */
-    .photos{display:flex;gap:1.5rem;perspective:800px}
-    .photo{
-      width:260px;height:340px;border-radius:12px;overflow:hidden;
-      border:1px solid rgba(124,58,237,.08);
-      background:linear-gradient(135deg,#f5f3ff,#fdf2f8);
-      display:flex;align-items:center;justify-content:center;flex-shrink:0;
-      box-shadow:0 8px 40px rgba(124,58,237,.08);
-      transition:transform .6s cubic-bezier(.4,0,.2,1),box-shadow .6s ease;will-change:transform}
-    .photo:hover{transform:scale(1.04) rotateY(-2deg)!important;box-shadow:0 16px 60px rgba(124,58,237,.18)}
-    .photo--wide{width:100%;max-width:420px;height:260px}
-    .photos .photo:nth-child(1){transform:translateZ(30px) rotateY(3deg)}
-    .photos .photo:nth-child(2){transform:translateZ(-20px) rotateY(-3deg);margin-top:3rem}
-    .photo img{width:100%;height:100%;object-fit:cover}
-    .photo__empty{color:rgba(124,58,237,.2);font-size:.72rem;text-align:center;display:flex;flex-direction:column;align-items:center;gap:.5rem}
-    [data-speed]{will-change:transform}
-
-    /* Reveal animation */
-    .reveal-item{opacity:0;transform:translateY(40px);transition:opacity .8s cubic-bezier(.4,0,.2,1),transform .8s cubic-bezier(.4,0,.2,1)}
-    .in-view .reveal-item{opacity:1;transform:translateY(0)}
-    .in-view .reveal-item:nth-child(2){transition-delay:.15s}
-
-    /* Ending */
-    .scene--ending{background:linear-gradient(160deg,#ede9fe,#fdf2f8,#f5f3ff);text-align:center;flex-direction:column}
-    .scene--ending .story__title{font-size:clamp(1.8rem,4vw,3rem)}
-    .ending__btn{display:inline-block;margin-top:1.5rem;padding:.7rem 2rem;border-radius:30px;font-size:.78rem;font-weight:600;
-      letter-spacing:.08em;text-decoration:none;color:#fff;
-      background:linear-gradient(135deg,#7c3aed,#f75092);
-      box-shadow:0 4px 20px rgba(124,58,237,.25);transition:all .3s}
-    .ending__btn:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(124,58,237,.4)}
+    /* Panel CTA button */
+    .panel-cta{display:inline-block;padding:0.6rem 1.8rem;border-radius:30px;font-size:0.75rem;font-weight:500;letter-spacing:0.1em;
+      cursor:pointer;color:#fff;background:linear-gradient(135deg,#7c3aed,#f75092);border:none;font-family:'Inter',sans-serif;
+      transition:all 0.3s;pointer-events:auto}
+    .panel-cta:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(124,58,237,0.4)}
 
     /* Mobile */
     @media(max-width:768px){
-      .topbar{padding:1.2rem 1.5rem}
-      .story{grid-template-columns:1fr;gap:2rem}
-      .story--reverse{direction:ltr}
-      .photos{flex-direction:column;align-items:center}
-      .photos .photo:nth-child(2){margin-top:0}
-      .photo{width:220px!important;height:280px!important}
-      .dots{right:1rem}
-      .counter{right:1.5rem;bottom:1.5rem}
-      .scene__content{padding:3rem 1.5rem}
+      .dot-nav{right:0.8rem}
+      .section-counter{right:1rem;bottom:1rem}
+      .back-btn{top:1rem;left:1rem;padding:0.4rem 0.8rem;font-size:0.65rem}
+      .panel-inner{padding:1.5rem}
     }
   </style>
 </head>
 <body>
+  <canvas id="mainCanvas"></canvas>
+  <div class="film-grain"></div>
 
-<div id="progress"></div>
-
-<nav class="topbar">
-  <a href="/">&larr; Home</a>
-  <a href="/" class="topbar__logo">LILY <span>TAN</span></a>
-  <a href="/cv/">CV &rarr;</a>
-</nav>
-
-<div class="counter"><span id="secNum">01</span> / 05</div>
-
-<div class="dots" id="dots">
-  <div class="dots__item active" data-label="Intro" data-idx="0"></div>
-  <div class="dots__item" data-label="Pets" data-idx="1"></div>
-  <div class="dots__item" data-label="Flowers" data-idx="2"></div>
-  <div class="dots__item" data-label="Travel" data-idx="3"></div>
-  <div class="dots__item" data-label="End" data-idx="4"></div>
-</div>
-
-<!-- ===== 0: Hero — with 3D particle ribbons ===== -->
-<section class="scene scene--hero" data-idx="0">
-  <canvas id="c"></canvas>
-  <div class="hero-content">
-    <div class="hero__title">Beyond the<br><em>Research</em></div>
-    <div class="hero__sub">A personal story told through light, space, and memory</div>
-  </div>
-  <div class="hero__scroll">Scroll to begin</div>
-</section>
-
-<!-- 1: Pet Lover -->
-<section class="scene scene--white" data-idx="1">
-  <div class="scene__content">
-    <div class="story">
-      <div class="reveal-item" data-speed="0.8">
-        <div class="story__label">01 &mdash; Pet Lover</div>
-        <div class="story__title">My Furry<br><em>Companions</em></div>
-        <div class="story__divider"></div>
-        <div class="story__text">They don't care about publications or deadlines. They remind me what unconditional love looks like, every single day.</div>
-      </div>
-      <div class="reveal-item" data-speed="1.3">
-        <div class="photos">
-          <div class="photo" data-speed="1.5" data-tilt="3">
-            <div class="photo__empty">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-              Add photo
-            </div>
-          </div>
-          <div class="photo" data-speed="0.6" data-tilt="-4">
-            <div class="photo__empty">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-              Add photo
-            </div>
-          </div>
-        </div>
-      </div>
+  <!-- LAYER 1: 3D Card Landing -->
+  <div id="layer1">
+    <div class="title-text">
+      <h1>Beyond the Research</h1>
+      <p>Click a card to explore</p>
     </div>
   </div>
-</section>
 
-<!-- 2: Florist -->
-<section class="scene scene--soft" data-idx="2">
-  <div class="scene__content">
-    <div class="story story--reverse">
-      <div class="reveal-item" data-speed="0.7">
-        <div class="story__label">02 &mdash; Florist</div>
-        <div class="story__title">Blooming<br>with <em>Flowers</em></div>
-        <div class="story__divider"></div>
-        <div class="story__text">Arranging flowers is my meditation. Each bouquet is a small design challenge — color, form, balance. It is research for the soul.</div>
-      </div>
-      <div class="reveal-item" data-speed="1.2">
-        <div class="photos">
-          <div class="photo" data-speed="1.6" data-tilt="-3">
-            <div class="photo__empty">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-              Add photo
-            </div>
-          </div>
-          <div class="photo" data-speed="0.5" data-tilt="5">
-            <div class="photo__empty">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-              Add photo
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+  <!-- LAYER 2: Detail Page -->
+  <div id="layer2"></div>
 
-<!-- 3: Travel & Grow -->
-<section class="scene scene--white" data-idx="3">
-  <div class="scene__content">
-    <div class="story">
-      <div class="reveal-item" data-speed="0.9">
-        <div class="story__label">03 &mdash; Travel &amp; Grow</div>
-        <div class="story__title">Exploring<br>the <em>World</em></div>
-        <div class="story__divider"></div>
-        <div class="story__text">Travel broadens the mind and feeds the soul. Every new place brings fresh perspectives that find their way back into my work and thinking.</div>
-      </div>
-      <div class="reveal-item" data-speed="1.4">
-        <div class="photo photo--wide" data-speed="1.3" data-tilt="-2">
-          <div class="photo__empty">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-            Add photo
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+  <button class="back-btn" id="backBtn">&larr; Back</button>
 
-<!-- 6: Ending -->
-<section class="scene scene--ending" data-idx="4">
-  <div class="scene__content" style="text-align:center">
-    <div class="reveal-item">
-      <div class="story__title">The Story<br><em>Continues</em>...</div>
-      <div class="story__text" style="max-width:450px;margin:0 auto">Thank you for taking a moment to know me beyond the publications.</div>
-      <a href="/" class="ending__btn">Back to Home &rarr;</a>
-    </div>
-  </div>
-</section>
+  <div class="progress-bar" id="progressBar"></div>
 
-<!-- ===== ENGINE ===== -->
+  <div class="dot-nav" id="dotNav"></div>
+
+  <div class="section-counter" id="sectionCounter"><span id="secNum">01</span> / 06</div>
+
+  <!-- 6 panels -->
+  <div class="panel" id="panel0"><div class="panel-inner"><div class="panel-number">01</div><div class="panel-title" id="pt0"></div><div class="panel-text" id="px0"></div></div></div>
+  <div class="panel" id="panel1"><div class="panel-inner"><div class="panel-number">02</div><div class="panel-title" id="pt1"></div><div class="panel-text" id="px1"></div><div class="panel-photo">Add photo</div></div></div>
+  <div class="panel" id="panel2"><div class="panel-inner"><div class="panel-number">03</div><div class="panel-title" id="pt2"></div><div class="panel-text" id="px2"></div></div></div>
+  <div class="panel" id="panel3"><div class="panel-inner"><div class="panel-number">04</div><div class="panel-title" id="pt3"></div><div class="panel-text" id="px3"></div><div class="panel-photo">Add photo</div></div></div>
+  <div class="panel" id="panel4"><div class="panel-inner"><div class="panel-number">05</div><div class="panel-title" id="pt4"></div><div class="panel-text" id="px4"></div><div class="panel-photo">Add photo</div></div></div>
+  <div class="panel" id="panel5"><div class="panel-inner"><div class="panel-number">06</div><div class="panel-title" id="pt5"></div><div class="panel-text" id="px5"></div><button class="panel-cta" id="panelCta">Return to Cards</button></div></div>
+
 <script>
 (function(){
-  /* ===== Three.js — ONLY in hero section ===== */
-  var canvas = document.getElementById('c');
-  var heroSection = document.querySelector('.scene--hero');
-  var W = heroSection.offsetWidth, H = heroSection.offsetHeight;
 
-  var renderer = new THREE.WebGLRenderer({canvas:canvas, antialias:true, alpha:true});
-  renderer.setSize(W, H);
-  renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
-  renderer.setClearColor(0x000000, 0); // transparent
+/* ====== CONTENT DATA ====== */
+var THEMES = {
+  pet: {
+    panels: [
+      { title: "A Life with Paws", text: "Some of the purest joys in life come from the companionship of animals. They teach patience, unconditional love, and the art of living in the present moment." },
+      { title: "My Furry Family", text: "Every pet has a personality as unique as any person. They greet you at the door, curl up beside you while you work, and remind you that the simplest pleasures are the deepest.", photo: true },
+      { title: "Daily Joy", text: "Morning walks, afternoon naps in sunbeams, evening play sessions. The rhythm of life with pets is a gentle, grounding cadence that keeps everything in perspective." },
+      { title: "Grooming Love", text: "There is something meditative about caring for another living being. Brushing fur, trimming nails, preparing their favorite meals \u2014 these small acts of care are acts of love.", photo: true },
+      { title: "Captured Moments", text: "Every photo tells a story. A mid-yawn portrait, a blurry action shot of zoomies, a peaceful sleeping pose. These are the moments worth preserving.", photo: true },
+      { title: "Back to Cards", text: "Thank you for sharing this journey through my life with paws. There is always more to discover." }
+    ]
+  },
+  florist: {
+    panels: [
+      { title: "Bloom & Craft", text: "Flowers speak a language older than words. Arranging them is my way of creating small moments of beauty in an otherwise busy world." },
+      { title: "My Arrangements", text: "Each bouquet begins with intuition \u2014 a color that calls, a texture that intrigues. The arrangement grows organically, guided by an eye for balance and harmony.", photo: true },
+      { title: "The Creative Process", text: "Selecting stems at the market, conditioning flowers in water, experimenting with vase shapes. The process is as rewarding as the final result." },
+      { title: "Styles & Seasons", text: "Spring pastels, summer wildflowers, autumn warmth, winter minimalism. Each season brings its own palette and mood, and I love adapting to nature's rhythm.", photo: true },
+      { title: "Gallery", text: "A curated collection of arrangements \u2014 from everyday table settings to special occasion centerpieces. Each one is a unique expression.", photo: true },
+      { title: "Back to Cards", text: "Thank you for wandering through my floral world. Every bloom has a story." }
+    ]
+  },
+  travel: {
+    panels: [
+      { title: "Wander & Wonder", text: "Travel is not just about the places you visit, but the perspectives you gain. Every journey reshapes the way I see the world and my place in it." },
+      { title: "Places I've Been", text: "From bustling cities to quiet countryside, each destination leaves its mark. The architecture, the food, the light at golden hour \u2014 these details stay with me.", photo: true },
+      { title: "Favorite Memories", text: "A spontaneous conversation with a stranger in a caf\u00e9. Getting lost in a neighborhood and finding the best meal of the trip. These unplanned moments are the ones I treasure most." },
+      { title: "People Along the Way", text: "Travel connects you with people whose lives are beautifully different from your own. These brief encounters leave lasting impressions and broaden understanding.", photo: true },
+      { title: "Postcards", text: "Snapshots from the road \u2014 sunsets, street scenes, market stalls, mountain vistas. Each image is a postcard from a moment in time.", photo: true },
+      { title: "Back to Cards", text: "Thank you for traveling with me. The journey never truly ends." }
+    ]
+  }
+};
 
-  var scene = new THREE.Scene();
-  var camera = new THREE.PerspectiveCamera(60, W/H, 0.1, 100);
-  camera.position.set(0, 0, 15);
+var CARD_DATA = [
+  { key: "pet",     emoji: "\uD83D\uDC3E", label: "Pet Lover" },
+  { key: "florist", emoji: "\uD83C\uDF38", label: "Florist" },
+  { key: "travel",  emoji: "\u2708\uFE0F",  label: "Travel" }
+];
+
+/* ====== GLOBALS ====== */
+var canvas = document.getElementById('mainCanvas');
+var layer1 = document.getElementById('layer1');
+var layer2 = document.getElementById('layer2');
+var backBtn = document.getElementById('backBtn');
+var progressBar = document.getElementById('progressBar');
+var dotNav = document.getElementById('dotNav');
+var sectionCounter = document.getElementById('sectionCounter');
+var secNum = document.getElementById('secNum');
+var panelCta = document.getElementById('panelCta');
+
+var renderer, camera, currentScene;
+var currentLayer = 1;
+var animId;
+var activeTheme = null;
+
+/* ====== RENDERER SETUP ====== */
+renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: false });
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setClearColor(0x0a0a0a, 1);
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1.0;
+
+/* ====== LAYER 1: CARD SCENE ====== */
+var cardScene, cardCamera, cardClock, cards3D = [], cardMeshes = [];
+var raycaster = new THREE.Raycaster();
+var mouse2 = new THREE.Vector2(-999, -999);
+var mouseRaw = { x: 0, y: 0 };
+var hoveredCard = null;
+var starPoints;
+
+function createCardTexture(emoji, label) {
+  var c = document.createElement('canvas');
+  c.width = 512; c.height = 720;
+  var ctx = c.getContext('2d');
+
+  // Background with gradient
+  ctx.fillStyle = 'rgba(255,255,255,0.03)';
+  ctx.fillRect(0, 0, 512, 720);
+
+  // Subtle border
+  ctx.strokeStyle = 'rgba(255,255,255,0.12)';
+  ctx.lineWidth = 2;
+  ctx.strokeRect(4, 4, 504, 712);
+
+  // Inner subtle line
+  ctx.strokeStyle = 'rgba(255,255,255,0.04)';
+  ctx.lineWidth = 1;
+  ctx.strokeRect(20, 20, 472, 680);
+
+  // Emoji
+  ctx.font = '120px serif';
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.fillText(emoji, 256, 280);
+
+  // Label
+  ctx.font = '600 32px Inter, sans-serif';
+  ctx.fillStyle = 'rgba(255,255,255,0.8)';
+  ctx.fillText(label, 256, 460);
+
+  // Subtitle
+  ctx.font = '300 18px Inter, sans-serif';
+  ctx.fillStyle = 'rgba(255,255,255,0.3)';
+  ctx.fillText('Click to explore', 256, 510);
+
+  var tex = new THREE.CanvasTexture(c);
+  tex.needsUpdate = true;
+  return tex;
+}
+
+function initCardScene() {
+  cardScene = new THREE.Scene();
+  cardCamera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 100);
+  cardCamera.position.set(0, 0, 10);
+  cardClock = new THREE.Clock();
 
   // Lights
-  scene.add(new THREE.AmbientLight(0xffffff, 0.4));
-  var ptLight = new THREE.PointLight(0xffffff, 0.8, 40);
+  cardScene.add(new THREE.AmbientLight(0xffffff, 0.3));
+  var ptLight = new THREE.PointLight(0x7c3aed, 0.6, 30);
   ptLight.position.set(5, 5, 10);
-  scene.add(ptLight);
+  cardScene.add(ptLight);
+  var ptLight2 = new THREE.PointLight(0xf75092, 0.4, 30);
+  ptLight2.position.set(-5, -3, 8);
+  cardScene.add(ptLight2);
 
-  /* ===== Simple noise function ===== */
-  function noise(x,y,z){
-    var n=x*12.9898+y*78.233+z*37.719;
-    n=Math.sin(n)*43758.5453;
-    return n-Math.floor(n);
-  }
-  function smoothNoise(x,y,z){
-    return (Math.sin(x*1.1+y*0.7)*0.5+Math.sin(y*1.3+z*0.9)*0.3+Math.sin(z*0.8+x*1.5)*0.2);
-  }
-
-  /* ===== Flowing Particle Ribbons — 3 strands ===== */
-  var ribbonCurves = [
-    new THREE.CatmullRomCurve3([
-      new THREE.Vector3(-22,3,0), new THREE.Vector3(-10,6,-2), new THREE.Vector3(0,0,-4),
-      new THREE.Vector3(10,-4,-3), new THREE.Vector3(18,2,-1), new THREE.Vector3(28,1,0)
-    ], false, 'catmullrom', 0.3),
-    new THREE.CatmullRomCurve3([
-      new THREE.Vector3(-20,-3,1), new THREE.Vector3(-8,2,-2), new THREE.Vector3(2,5,-4),
-      new THREE.Vector3(12,-2,-3), new THREE.Vector3(22,-1,-1), new THREE.Vector3(30,3,1)
-    ], false, 'catmullrom', 0.3),
-    new THREE.CatmullRomCurve3([
-      new THREE.Vector3(-24,-1,-1), new THREE.Vector3(-12,4,-3), new THREE.Vector3(-2,-3,-5),
-      new THREE.Vector3(8,3,-4), new THREE.Vector3(20,0,-2), new THREE.Vector3(26,-2,0)
-    ], false, 'catmullrom', 0.3)
+  // Cards
+  cards3D = [];
+  cardMeshes = [];
+  var positions = [
+    new THREE.Vector3(-4.5, 0, 0),
+    new THREE.Vector3(0, 0.3, 0.5),
+    new THREE.Vector3(4.5, 0, 0)
   ];
+  var rotations = [-0.15, 0, 0.15];
 
-  var ribbons = [];
-  var PER_RIBBON = 2500;
-  var ribbonColors = [0x7c3aed, 0x9f50d3, 0xf75092];
-
-  ribbonCurves.forEach(function(curve, ri){
-    var geo = new THREE.BufferGeometry();
-    var pos = new Float32Array(PER_RIBBON * 3);
-    var sizes = new Float32Array(PER_RIBBON);
-
-    var particleData = [];
-    for(var i = 0; i < PER_RIBBON; i++){
-      var t = Math.random();
-      var speed = 0.004 + Math.random() * 0.008; // SLOW base flow
-      var spreadR = 0.05 + Math.random() * 0.5;
-      var spreadAngle = Math.random() * Math.PI * 2;
-      var sz = 0.04 + Math.random() * Math.random() * 0.28;
-      sizes[i] = sz;
-      particleData.push({ t:t, speed:speed, spreadR:spreadR, spreadAngle:spreadAngle, noiseOffset:Math.random()*100 });
-
-      var pt = curve.getPointAt(t);
-      pos[i*3] = pt.x; pos[i*3+1] = pt.y; pos[i*3+2] = pt.z;
-    }
-
-    geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
-    geo.setAttribute('size', new THREE.BufferAttribute(sizes, 1));
-
-    var points = new THREE.Points(geo, new THREE.PointsMaterial({
-      color: ribbonColors[ri],
-      size: 0.14,
+  for (var i = 0; i < 3; i++) {
+    var tex = createCardTexture(CARD_DATA[i].emoji, CARD_DATA[i].label);
+    var geo = new THREE.PlaneGeometry(3.5, 5);
+    var mat = new THREE.MeshPhysicalMaterial({
+      map: tex,
       transparent: true,
-      opacity: 0.75,
-      sizeAttenuation: true
-    }));
-    scene.add(points);
-    ribbons.push({ points:points, geo:geo, curve:curve, data:particleData });
-  });
-
-  /* ===== Scroll & Parallax ===== */
-  var sections = document.querySelectorAll('.scene');
-  var totalH, scrollProg = 0;
-  var heroH = heroSection.offsetHeight;
-
-  function measure(){
-    totalH = document.documentElement.scrollHeight - window.innerHeight;
-    heroH = heroSection.offsetHeight;
-  }
-  measure();
-
-  window.addEventListener('resize', function(){
-    W = heroSection.offsetWidth; H = heroSection.offsetHeight;
-    camera.aspect = W/H; camera.updateProjectionMatrix();
-    renderer.setSize(W, H);
-    measure();
-  });
-
-  window.addEventListener('scroll', function(){
-    scrollProg = totalH > 0 ? window.pageYOffset / totalH : 0;
-    var scrollY = window.pageYOffset;
-
-    // Parallax for photos
-    var parallaxEls = document.querySelectorAll('[data-speed]');
-    parallaxEls.forEach(function(el){
-      var speed = parseFloat(el.getAttribute('data-speed'));
-      var tilt = parseFloat(el.getAttribute('data-tilt')) || 0;
-      var rect = el.getBoundingClientRect();
-      var center = rect.top + rect.height/2;
-      var offset = (center - window.innerHeight/2) * (speed - 1) * 0.3;
-      var rotY = tilt * Math.sin(scrollY * 0.002);
-      el.style.transform = 'translateY('+offset+'px) rotateY('+rotY+'deg)';
+      opacity: 0.85,
+      roughness: 0.1,
+      metalness: 0.3,
+      side: THREE.DoubleSide,
+      color: 0x222233,
+      emissive: 0x111122,
+      emissiveIntensity: 0.1
     });
-  }, {passive:true});
+    var mesh = new THREE.Mesh(geo, mat);
+    mesh.position.copy(positions[i]);
+    mesh.rotation.y = rotations[i];
+    mesh.userData = { idx: i, basePos: positions[i].clone(), baseRot: rotations[i], floatOffset: i * 2.1 };
+    cardScene.add(mesh);
+    cards3D.push(mesh);
+    cardMeshes.push(mesh);
+  }
 
-  /* ===== Intersection Observer ===== */
-  var observer = new IntersectionObserver(function(entries){
-    entries.forEach(function(e){ if(e.isIntersecting) e.target.classList.add('in-view'); });
-  }, {threshold:0.25});
-  sections.forEach(function(s){ observer.observe(s); });
+  // 500 particle starfield
+  var starGeo = new THREE.BufferGeometry();
+  var starPos = new Float32Array(500 * 3);
+  for (var i = 0; i < 500; i++) {
+    starPos[i * 3] = (Math.random() - 0.5) * 40;
+    starPos[i * 3 + 1] = (Math.random() - 0.5) * 30;
+    starPos[i * 3 + 2] = (Math.random() - 0.5) * 20 - 5;
+  }
+  starGeo.setAttribute('position', new THREE.BufferAttribute(starPos, 3));
+  starPoints = new THREE.Points(starGeo, new THREE.PointsMaterial({
+    color: 0xffffff, size: 0.05, transparent: true, opacity: 0.5, sizeAttenuation: true
+  }));
+  cardScene.add(starPoints);
 
-  /* ===== UI refs ===== */
-  var dots = document.querySelectorAll('.dots__item');
-  var secNum = document.getElementById('secNum');
-  var progBar = document.getElementById('progress');
+  currentScene = cardScene;
+  camera = cardCamera;
+}
 
-  /* ===== Mouse tracking for speed boost ===== */
-  var mouse = {x:0, y:0, speed:0, prevX:0, prevY:0, isOver:false};
+/* ====== LAYER 1 RENDER ====== */
+function renderCardScene() {
+  if (currentLayer !== 1) return;
+  animId = requestAnimationFrame(renderCardScene);
 
-  heroSection.addEventListener('mousemove', function(e){
-    var dx = e.clientX - mouse.prevX;
-    var dy = e.clientY - mouse.prevY;
-    mouse.speed = Math.min(Math.sqrt(dx*dx + dy*dy), 80); // cap
-    mouse.prevX = e.clientX;
-    mouse.prevY = e.clientY;
-    // Normalized -1 to 1
-    mouse.x = (e.clientX / W) * 2 - 1;
-    mouse.y = -((e.clientY / H) * 2 - 1);
-    mouse.isOver = true;
-  });
-  heroSection.addEventListener('mouseleave', function(){ mouse.isOver = false; });
+  var el = cardClock.getElapsedTime();
 
-  /* ===== Render — only animates hero particles ===== */
-  var clock = new THREE.Clock();
-  var smoothMouseSpeed = 0;
+  // Float animation
+  for (var i = 0; i < cards3D.length; i++) {
+    var card = cards3D[i];
+    var bp = card.userData.basePos;
+    var fo = card.userData.floatOffset;
+    card.position.y = bp.y + Math.sin(el * 0.8 + fo) * 0.15;
+    card.position.x = bp.x + Math.sin(el * 0.5 + fo + 1) * 0.03;
+  }
 
-  function render(){
-    requestAnimationFrame(render);
-    var el = clock.getElapsedTime();
-    var scrollY = window.pageYOffset;
+  // Raycaster hover
+  raycaster.setFromCamera(mouse2, cardCamera);
+  var intersects = raycaster.intersectObjects(cardMeshes);
 
-    // Smooth mouse speed (decays when not moving)
-    var targetSpeed = mouse.isOver ? mouse.speed : 0;
-    smoothMouseSpeed += (targetSpeed - smoothMouseSpeed) * 0.08;
-    mouse.speed *= 0.9; // decay between moves
+  if (intersects.length > 0) {
+    var hit = intersects[0].object;
+    hoveredCard = hit;
+    canvas.style.cursor = 'pointer';
 
-    // Speed multiplier: 1x idle, up to 10x when mouse moves fast
-    var speedMult = 1 + smoothMouseSpeed * 0.12;
-
-    // Scroll-driven rotation of entire scene in hero
-    var heroProgress = Math.min(1, scrollY / heroH);
-    scene.rotation.y = heroProgress * 0.4 + mouse.x * 0.05;
-    scene.position.y = heroProgress * 3;
-
-    // Animate ribbons — particles FLOW along curves like water
-    for(var ri = 0; ri < ribbons.length; ri++){
-      var rb = ribbons[ri];
-      var positions = rb.geo.attributes.position.array;
-      var curve = rb.curve;
-
-      for(var i = 0; i < PER_RIBBON; i++){
-        var pd = rb.data[i];
-
-        // Advance particle along curve (actual flowing!)
-        pd.t += pd.speed * speedMult * 0.016;
-        if(pd.t > 1) pd.t -= 1;
-
-        var t = pd.t;
-        var pt = curve.getPointAt(t);
-        var tangent = curve.getTangentAt(t);
-
-        // Perpendicular spread with organic noise
-        var perpX = -tangent.y, perpY = tangent.x;
-        var n1 = smoothNoise(t*5+pd.noiseOffset, el*0.3+ri, ri*7);
-        var n2 = smoothNoise(t*4+pd.noiseOffset+50, el*0.25, ri*3+20);
-        var dSpread = pd.spreadR * (0.7 + n1*0.5);
-
-        positions[i*3]   = pt.x + perpX*dSpread*Math.cos(pd.spreadAngle+el*0.2+n1*0.5) + n2*0.15;
-        positions[i*3+1] = pt.y + perpY*dSpread*Math.sin(pd.spreadAngle+el*0.15) + n1*0.12;
-        positions[i*3+2] = pt.z + Math.sin(t*8+el*0.3+pd.noiseOffset)*0.15*pd.spreadR;
+    for (var i = 0; i < cards3D.length; i++) {
+      var card = cards3D[i];
+      if (card === hit) {
+        // Scale up, tilt toward mouse, glow
+        card.scale.lerp(new THREE.Vector3(1.15, 1.15, 1.15), 0.08);
+        card.rotation.y = card.userData.baseRot + (mouseRaw.x - 0.5) * 0.15;
+        card.rotation.x = (mouseRaw.y - 0.5) * -0.1;
+        card.material.emissiveIntensity = 0.4;
+      } else {
+        // Dim + push back
+        card.scale.lerp(new THREE.Vector3(0.92, 0.92, 0.92), 0.06);
+        card.material.emissiveIntensity = 0.02;
+        card.rotation.y += (card.userData.baseRot - card.rotation.y) * 0.05;
+        card.rotation.x *= 0.95;
       }
-      rb.geo.attributes.position.needsUpdate = true;
     }
-
-    // Fade particles as user scrolls past hero
-    var fadeOut = Math.max(0, 1 - heroProgress * 1.5);
-    ribbons.forEach(function(rb){ rb.points.material.opacity = 0.7 * fadeOut; });
-
-    // UI updates
-    var idx = Math.min(Math.floor(scrollProg * sections.length), sections.length - 1);
-    secNum.textContent = ('0' + (idx+1)).slice(-2);
-    progBar.style.width = (scrollProg * 100) + '%';
-    dots.forEach(function(d,i){ d.classList.toggle('active', i === idx); });
-
-    renderer.render(scene, camera);
+  } else {
+    hoveredCard = null;
+    canvas.style.cursor = 'default';
+    for (var i = 0; i < cards3D.length; i++) {
+      var card = cards3D[i];
+      card.scale.lerp(new THREE.Vector3(1, 1, 1), 0.06);
+      card.material.emissiveIntensity = 0.1;
+      card.rotation.y += (card.userData.baseRot - card.rotation.y) * 0.05;
+      card.rotation.x *= 0.95;
+    }
   }
-  render();
 
-  /* ===== Dots nav ===== */
-  dots.forEach(function(d){
-    d.addEventListener('click', function(){
-      sections[parseInt(d.getAttribute('data-idx'))].scrollIntoView({behavior:'smooth'});
-    });
+  // Subtle star twinkle
+  if (starPoints) {
+    starPoints.rotation.y = el * 0.01;
+    starPoints.rotation.x = Math.sin(el * 0.005) * 0.02;
+  }
+
+  renderer.render(cardScene, cardCamera);
+}
+
+/* ====== MOUSE EVENTS (LAYER 1) ====== */
+window.addEventListener('mousemove', function(e) {
+  mouse2.x = (e.clientX / window.innerWidth) * 2 - 1;
+  mouse2.y = -(e.clientY / window.innerHeight) * 2 + 1;
+  mouseRaw.x = e.clientX / window.innerWidth;
+  mouseRaw.y = e.clientY / window.innerHeight;
+});
+
+window.addEventListener('click', function(e) {
+  if (currentLayer !== 1 || !hoveredCard) return;
+  var idx = hoveredCard.userData.idx;
+  transitionToDetail(idx);
+});
+
+/* ====== TRANSITION: CARD -> DETAIL ====== */
+function transitionToDetail(cardIdx) {
+  activeTheme = CARD_DATA[cardIdx].key;
+  populatePanels(activeTheme);
+
+  var card = cards3D[cardIdx];
+
+  // GSAP timeline: card zooms to fill screen
+  var tl = gsap.timeline({
+    onComplete: function() {
+      showDetailLayer();
+    }
   });
+
+  // Zoom card forward
+  tl.to(card.position, { z: 8, duration: 0.6, ease: 'power2.in' }, 0);
+  tl.to(card.scale, { x: 4, y: 4, z: 4, duration: 0.6, ease: 'power2.in' }, 0);
+  tl.to(card.material, { opacity: 0, duration: 0.3, ease: 'power1.in' }, 0.3);
+
+  // Fade out other cards
+  for (var i = 0; i < cards3D.length; i++) {
+    if (i !== cardIdx) {
+      tl.to(cards3D[i].material, { opacity: 0, duration: 0.3 }, 0);
+      tl.to(cards3D[i].position, { z: -3, duration: 0.4 }, 0);
+    }
+  }
+
+  // Fade out title text
+  tl.to(layer1.querySelector('.title-text'), { opacity: 0, duration: 0.3 }, 0);
+}
+
+function populatePanels(themeKey) {
+  var panels = THEMES[themeKey].panels;
+  for (var i = 0; i < 6; i++) {
+    document.getElementById('pt' + i).textContent = panels[i].title;
+    document.getElementById('px' + i).textContent = panels[i].text;
+  }
+}
+
+/* ====== SHOW DETAIL LAYER ====== */
+function showDetailLayer() {
+  currentLayer = 2;
+  cancelAnimationFrame(animId);
+
+  layer1.style.display = 'none';
+  layer2.style.display = 'block';
+  backBtn.style.display = 'block';
+  progressBar.style.display = 'block';
+  dotNav.style.display = 'flex';
+  sectionCounter.style.display = 'block';
+  document.body.classList.add('layer2-active');
+
+  window.scrollTo(0, 0);
+
+  // Build dot nav
+  dotNav.innerHTML = '';
+  var panelData = THEMES[activeTheme].panels;
+  for (var i = 0; i < 6; i++) {
+    var dot = document.createElement('div');
+    dot.className = 'dot' + (i === 0 ? ' active' : '');
+    dot.setAttribute('data-label', panelData[i].title);
+    dot.setAttribute('data-idx', i);
+    dot.addEventListener('click', (function(idx) {
+      return function() {
+        var targetScroll = (idx / 6) * (document.documentElement.scrollHeight - window.innerHeight);
+        window.scrollTo({ top: targetScroll, behavior: 'smooth' });
+      };
+    })(i));
+    dotNav.appendChild(dot);
+  }
+
+  initDetailScene();
+  renderDetailScene();
+}
+
+/* ====== LAYER 2: DETAIL SCENE ====== */
+var detailScene, detailCamera, detailClock;
+var cameraPath, lookAtPath;
+var detailParticles;
+
+function initDetailScene() {
+  detailScene = new THREE.Scene();
+  detailScene.fog = new THREE.FogExp2(0x0a0a0a, 0.04);
+
+  detailCamera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 200);
+
+  detailScene.add(new THREE.AmbientLight(0xffffff, 0.15));
+  var dl = new THREE.DirectionalLight(0x7c3aed, 0.3);
+  dl.position.set(5, 10, 5);
+  detailScene.add(dl);
+  var dl2 = new THREE.DirectionalLight(0xf75092, 0.2);
+  dl2.position.set(-5, -5, -10);
+  detailScene.add(dl2);
+
+  // Camera path
+  cameraPath = new THREE.CatmullRomCurve3([
+    new THREE.Vector3(0, 0, 12),
+    new THREE.Vector3(3, 1, 8),
+    new THREE.Vector3(-2, 2, 4),
+    new THREE.Vector3(4, -1, 0),
+    new THREE.Vector3(-3, 0, -4),
+    new THREE.Vector3(0, 3, -8),
+    new THREE.Vector3(2, -1, -12),
+    new THREE.Vector3(0, 0, -16)
+  ]);
+
+  // LookAt path (offset from camera path)
+  lookAtPath = new THREE.CatmullRomCurve3([
+    new THREE.Vector3(1, 0.5, 8),
+    new THREE.Vector3(-1, 1.5, 5),
+    new THREE.Vector3(2, 1, 1),
+    new THREE.Vector3(-2, 0, -3),
+    new THREE.Vector3(1, 1, -7),
+    new THREE.Vector3(-1, 2, -11),
+    new THREE.Vector3(0, 0.5, -15),
+    new THREE.Vector3(1, 0, -20)
+  ]);
+
+  // 40 wireframe objects along path
+  var wireGeos = [
+    new THREE.IcosahedronGeometry(0.5, 0),
+    new THREE.OctahedronGeometry(0.5, 0),
+    new THREE.TetrahedronGeometry(0.5, 0),
+    new THREE.BoxGeometry(0.7, 0.7, 0.7)
+  ];
+  for (var i = 0; i < 40; i++) {
+    var t = i / 40;
+    var pt = cameraPath.getPointAt(t);
+    var geo = wireGeos[i % wireGeos.length];
+    var mat = new THREE.MeshPhongMaterial({
+      color: i % 2 === 0 ? 0x7c3aed : 0xf75092,
+      wireframe: true,
+      transparent: true,
+      opacity: 0.15
+    });
+    var mesh = new THREE.Mesh(geo, mat);
+    mesh.position.set(
+      pt.x + (Math.random() - 0.5) * 8,
+      pt.y + (Math.random() - 0.5) * 6,
+      pt.z + (Math.random() - 0.5) * 4
+    );
+    mesh.rotation.set(Math.random() * Math.PI, Math.random() * Math.PI, 0);
+    mesh.userData.rotSpeed = { x: (Math.random() - 0.5) * 0.01, y: (Math.random() - 0.5) * 0.01 };
+    detailScene.add(mesh);
+  }
+
+  // 60 metallic small objects
+  for (var i = 0; i < 60; i++) {
+    var t = i / 60;
+    var pt = cameraPath.getPointAt(t);
+    var geo = new THREE.SphereGeometry(0.08 + Math.random() * 0.12, 8, 8);
+    var mat = new THREE.MeshPhongMaterial({
+      color: 0xaaaacc,
+      shininess: 100,
+      transparent: true,
+      opacity: 0.3
+    });
+    var mesh = new THREE.Mesh(geo, mat);
+    mesh.position.set(
+      pt.x + (Math.random() - 0.5) * 10,
+      pt.y + (Math.random() - 0.5) * 8,
+      pt.z + (Math.random() - 0.5) * 6
+    );
+    detailScene.add(mesh);
+  }
+
+  // 600 particles along path
+  var pGeo = new THREE.BufferGeometry();
+  var pPos = new Float32Array(600 * 3);
+  for (var i = 0; i < 600; i++) {
+    var t = Math.random();
+    var pt = cameraPath.getPointAt(t);
+    pPos[i * 3] = pt.x + (Math.random() - 0.5) * 12;
+    pPos[i * 3 + 1] = pt.y + (Math.random() - 0.5) * 10;
+    pPos[i * 3 + 2] = pt.z + (Math.random() - 0.5) * 8;
+  }
+  pGeo.setAttribute('position', new THREE.BufferAttribute(pPos, 3));
+  detailParticles = new THREE.Points(pGeo, new THREE.PointsMaterial({
+    color: 0xffffff, size: 0.04, transparent: true, opacity: 0.3, sizeAttenuation: true
+  }));
+  detailScene.add(detailParticles);
+
+  detailClock = new THREE.Clock();
+  currentScene = detailScene;
+  camera = detailCamera;
+
+  // Set up ScrollTrigger
+  gsap.registerPlugin(ScrollTrigger);
+  ScrollTrigger.getAll().forEach(function(st) { st.kill(); });
+
+  ScrollTrigger.create({
+    trigger: layer2,
+    start: 'top top',
+    end: 'bottom bottom',
+    scrub: 0.8,
+    onUpdate: function(self) {
+      detailProgress = self.progress;
+    }
+  });
+}
+
+var detailProgress = 0;
+
+/* ====== LAYER 2 RENDER ====== */
+function renderDetailScene() {
+  if (currentLayer !== 2) return;
+  animId = requestAnimationFrame(renderDetailScene);
+
+  var el = detailClock.getElapsedTime();
+  var prog = Math.max(0, Math.min(detailProgress, 0.999));
+
+  // Camera on path
+  var camPos = cameraPath.getPointAt(prog);
+  var lookPos = lookAtPath.getPointAt(Math.min(prog + 0.05, 0.999));
+  detailCamera.position.copy(camPos);
+  detailCamera.lookAt(lookPos);
+
+  // Fog and exposure driven by scroll
+  detailScene.fog.density = 0.04 + prog * 0.02;
+  renderer.toneMappingExposure = 1.0 + Math.sin(prog * Math.PI) * 0.3;
+
+  // Rotate wireframe objects
+  detailScene.children.forEach(function(child) {
+    if (child.userData.rotSpeed) {
+      child.rotation.x += child.userData.rotSpeed.x;
+      child.rotation.y += child.userData.rotSpeed.y;
+    }
+  });
+
+  // Particle subtle drift
+  if (detailParticles) {
+    detailParticles.rotation.y = el * 0.005;
+  }
+
+  // Panel visibility
+  var sectionSize = 1 / 6;
+  var currentIdx = Math.min(Math.floor(prog / sectionSize), 5);
+  var localT = (prog - currentIdx * sectionSize) / sectionSize;
+
+  for (var i = 0; i < 6; i++) {
+    var panel = document.getElementById('panel' + i);
+    if (i === currentIdx) {
+      panel.classList.add('visible');
+      // Fade in first 15%, hold, fade out last 15%
+      var opacity, ty;
+      if (localT < 0.15) {
+        opacity = localT / 0.15;
+        ty = 30 * (1 - localT / 0.15);
+      } else if (localT > 0.85) {
+        opacity = (1 - localT) / 0.15;
+        ty = -30 * (1 - (1 - localT) / 0.15);
+      } else {
+        opacity = 1;
+        ty = 0;
+      }
+      panel.style.opacity = Math.max(0, Math.min(1, opacity));
+      panel.style.transform = 'translateY(' + ty + 'px)';
+    } else {
+      panel.classList.remove('visible');
+      panel.style.opacity = 0;
+    }
+  }
+
+  // Update UI
+  secNum.textContent = ('0' + (currentIdx + 1)).slice(-2);
+  progressBar.style.width = (prog * 100) + '%';
+
+  // Update dots
+  var dots = dotNav.querySelectorAll('.dot');
+  dots.forEach(function(d, i) { d.classList.toggle('active', i === currentIdx); });
+
+  renderer.render(detailScene, detailCamera);
+}
+
+/* ====== TRANSITION: DETAIL -> CARDS ====== */
+function transitionToCards() {
+  currentLayer = 0; // prevent rendering
+  cancelAnimationFrame(animId);
+
+  // Kill ScrollTrigger
+  ScrollTrigger.getAll().forEach(function(st) { st.kill(); });
+
+  // Hide detail UI
+  layer2.style.display = 'none';
+  backBtn.style.display = 'none';
+  progressBar.style.display = 'none';
+  dotNav.style.display = 'none';
+  sectionCounter.style.display = 'none';
+  document.body.classList.remove('layer2-active');
+
+  // Hide all panels
+  for (var i = 0; i < 6; i++) {
+    var panel = document.getElementById('panel' + i);
+    panel.classList.remove('visible');
+    panel.style.opacity = 0;
+  }
+
+  window.scrollTo(0, 0);
+
+  // Re-show layer 1
+  layer1.style.display = 'flex';
+  layer1.querySelector('.title-text').style.opacity = '1';
+
+  // Re-init card scene
+  initCardScene();
+  currentLayer = 1;
+  renderCardScene();
+}
+
+backBtn.addEventListener('click', transitionToCards);
+panelCta.addEventListener('click', transitionToCards);
+
+/* ====== RESIZE ====== */
+window.addEventListener('resize', function() {
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  if (currentLayer === 1 && cardCamera) {
+    cardCamera.aspect = window.innerWidth / window.innerHeight;
+    cardCamera.updateProjectionMatrix();
+  }
+  if (currentLayer === 2 && detailCamera) {
+    detailCamera.aspect = window.innerWidth / window.innerHeight;
+    detailCamera.updateProjectionMatrix();
+  }
+});
+
+/* ====== INIT ====== */
+initCardScene();
+renderCardScene();
+
 })();
 </script>
 </body>
