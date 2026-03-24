@@ -62,7 +62,8 @@ permalink: /life/
     .counter span { color:#fff; font-weight:600; font-size:1rem; }
 
     /* ===== Scroll spacer — each section = 100vh of scroll ===== */
-    .scroll-space { height:600vh; position:relative; z-index:1; }
+    .scroll-space { height:600vh; position:relative; z-index:1; width:100%; }
+    .sec-marker { width:100%; pointer-events:none; }
 
     /* ===== Fixed UI overlay panels ===== */
     .panels { position:fixed; inset:0; z-index:10; pointer-events:none; }
@@ -329,8 +330,16 @@ permalink: /life/
 
 </div>
 
-<!-- ===== Scroll spacer ===== -->
-<div class="scroll-space"></div>
+<!-- ===== Scroll spacer with section markers ===== -->
+<div class="scroll-space">
+  <div class="sec-marker" data-panel="0" style="position:absolute;top:0;height:14.28%"></div>
+  <div class="sec-marker" data-panel="1" style="position:absolute;top:14.28%;height:14.28%"></div>
+  <div class="sec-marker" data-panel="2" style="position:absolute;top:28.57%;height:14.28%"></div>
+  <div class="sec-marker" data-panel="3" style="position:absolute;top:42.85%;height:14.28%"></div>
+  <div class="sec-marker" data-panel="4" style="position:absolute;top:57.14%;height:14.28%"></div>
+  <div class="sec-marker" data-panel="5" style="position:absolute;top:71.42%;height:14.28%"></div>
+  <div class="sec-marker" data-panel="6" style="position:absolute;top:85.71%;height:14.29%"></div>
+</div>
 
 <!-- ===== ENGINE ===== -->
 <script>
@@ -339,15 +348,14 @@ permalink: /life/
 
   /* ---------- Lenis smooth scroll ---------- */
   var lenis = new Lenis({
-    duration: 1.4,
+    duration: 1.6,
     easing: function(t){ return Math.min(1, 1.001 - Math.pow(2, -10 * t)); },
-    orientation: 'vertical',
-    smoothWheel: true
+    smoothWheel: true,
+    wheelMultiplier: 1.0,
+    touchMultiplier: 2.0
   });
-  function raf(time){ lenis.raf(time); requestAnimationFrame(raf); }
-  requestAnimationFrame(raf);
 
-  // Connect Lenis to GSAP ScrollTrigger
+  // Only use GSAP ticker to drive Lenis (no double RAF)
   lenis.on('scroll', ScrollTrigger.update);
   gsap.ticker.add(function(time){ lenis.raf(time * 1000); });
   gsap.ticker.lagSmoothing(0);
@@ -518,58 +526,49 @@ permalink: /life/
   });
 
   /* ---------- Panel animations (GSAP ScrollTrigger) ---------- */
-  var totalSections = 7; // 0-6
+  var totalSections = 7;
   var panels = [];
   for (var i = 0; i <= 6; i++) { panels.push(document.getElementById('p' + i)); }
   var dots = document.querySelectorAll('.dots__item');
   var secNum = document.getElementById('secNum');
   var progressBar = document.getElementById('progress');
+  var markers = document.querySelectorAll('.sec-marker');
 
-  function sectionStart(idx) { return idx / totalSections; }
-  function sectionEnd(idx) { return (idx + 1) / totalSections; }
+  // Each marker drives its panel
+  markers.forEach(function(marker){
+    var idx = parseInt(marker.getAttribute('data-panel'));
+    var panel = panels[idx];
+    if (!panel) return;
 
-  // Create ScrollTrigger for each panel
-  for (var i = 0; i < totalSections; i++) {
-    (function(idx){
-      var startPct = (idx / totalSections) * 100;
-      var endPct = ((idx + 1) / totalSections) * 100;
-
-      // Fade in
-      ScrollTrigger.create({
-        trigger: '.scroll-space',
-        start: startPct + '% top',
-        end: (startPct + (100/totalSections)*0.15) + '% top',
-        scrub: 0.5,
-        onUpdate: function(self) {
-          var p = self.progress;
-          if (panels[idx]) {
-            panels[idx].style.opacity = p;
-            panels[idx].style.visibility = p > 0.01 ? 'visible' : 'hidden';
-            // slight upward motion
-            var children = panels[idx].querySelectorAll('.panel__inner,.panel__photo,.panel__photos,.hero__title,.hero__sub,.hero__scroll');
-            children.forEach(function(c){
-              c.style.transform = 'translateY(' + (30 * (1 - p)) + 'px)';
-            });
-          }
+    // Main visibility: fade in during first 20%, hold, fade out during last 20%
+    ScrollTrigger.create({
+      trigger: marker,
+      start: 'top 80%',
+      end: 'bottom 20%',
+      scrub: true,
+      onUpdate: function(self) {
+        var p = self.progress; // 0→1 across this marker
+        // Fade in 0→0.2, hold 0.2→0.8, fade out 0.8→1
+        var opacity;
+        if (p < 0.2) {
+          opacity = p / 0.2;
+        } else if (p > 0.8 && idx < totalSections - 1) {
+          opacity = (1 - p) / 0.2;
+        } else {
+          opacity = 1;
         }
-      });
+        panel.style.opacity = opacity;
+        panel.style.visibility = opacity > 0.01 ? 'visible' : 'hidden';
 
-      // Fade out
-      ScrollTrigger.create({
-        trigger: '.scroll-space',
-        start: (endPct - (100/totalSections)*0.15) + '% top',
-        end: endPct + '% top',
-        scrub: 0.5,
-        onUpdate: function(self) {
-          var p = self.progress;
-          if (idx < totalSections - 1 && panels[idx]) {
-            panels[idx].style.opacity = 1 - p;
-            if (p > 0.99) panels[idx].style.visibility = 'hidden';
-          }
-        }
-      });
-    })(i);
-  }
+        // Slide up on enter
+        var yShift = p < 0.2 ? 40 * (1 - p / 0.2) : 0;
+        var children = panel.querySelectorAll('.panel__inner,.panel__photo,.panel__photos,.hero__title,.hero__sub,.hero__scroll');
+        children.forEach(function(c){
+          c.style.transform = 'translateY(' + yShift + 'px)';
+        });
+      }
+    });
+  });
 
   /* ---------- Render loop ---------- */
   var clock = new THREE.Clock();
