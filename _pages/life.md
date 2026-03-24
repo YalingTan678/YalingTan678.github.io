@@ -196,35 +196,45 @@ function createCardTexture(emoji, label) {
   c.width = 512; c.height = 720;
   var ctx = c.getContext('2d');
 
-  // Background with gradient
-  ctx.fillStyle = 'rgba(255,255,255,0.03)';
+  // Background gradient — visible card surface
+  var grad = ctx.createLinearGradient(0, 0, 512, 720);
+  grad.addColorStop(0, 'rgba(30,20,50,0.95)');
+  grad.addColorStop(0.5, 'rgba(45,30,70,0.9)');
+  grad.addColorStop(1, 'rgba(25,15,45,0.95)');
+  ctx.fillStyle = grad;
   ctx.fillRect(0, 0, 512, 720);
 
-  // Subtle border
-  ctx.strokeStyle = 'rgba(255,255,255,0.12)';
-  ctx.lineWidth = 2;
+  // Glowing border
+  ctx.strokeStyle = 'rgba(124,58,237,0.4)';
+  ctx.lineWidth = 3;
   ctx.strokeRect(4, 4, 504, 712);
 
   // Inner subtle line
-  ctx.strokeStyle = 'rgba(255,255,255,0.04)';
+  ctx.strokeStyle = 'rgba(255,255,255,0.08)';
   ctx.lineWidth = 1;
-  ctx.strokeRect(20, 20, 472, 680);
+  ctx.strokeRect(24, 24, 464, 672);
 
   // Emoji
-  ctx.font = '120px serif';
+  ctx.font = '100px serif';
   ctx.textAlign = 'center';
   ctx.textBaseline = 'middle';
-  ctx.fillText(emoji, 256, 280);
+  ctx.fillStyle = '#ffffff';
+  ctx.fillText(emoji, 256, 260);
 
   // Label
-  ctx.font = '600 32px Inter, sans-serif';
-  ctx.fillStyle = 'rgba(255,255,255,0.8)';
-  ctx.fillText(label, 256, 460);
+  ctx.font = '700 36px Inter, sans-serif';
+  ctx.fillStyle = 'rgba(255,255,255,0.9)';
+  ctx.fillText(label, 256, 440);
+
+  // Divider line
+  ctx.strokeStyle = 'rgba(124,58,237,0.5)';
+  ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(180, 480); ctx.lineTo(332, 480); ctx.stroke();
 
   // Subtitle
   ctx.font = '300 18px Inter, sans-serif';
-  ctx.fillStyle = 'rgba(255,255,255,0.3)';
-  ctx.fillText('Click to explore', 256, 510);
+  ctx.fillStyle = 'rgba(255,255,255,0.4)';
+  ctx.fillText('Click to explore', 256, 520);
 
   var tex = new THREE.CanvasTexture(c);
   tex.needsUpdate = true;
@@ -237,12 +247,15 @@ function initCardScene() {
   cardCamera.position.set(0, 0, 10);
   cardClock = new THREE.Clock();
 
-  // Lights
-  cardScene.add(new THREE.AmbientLight(0xffffff, 0.3));
-  var ptLight = new THREE.PointLight(0x7c3aed, 0.6, 30);
+  // Lights — bright enough to see cards
+  cardScene.add(new THREE.AmbientLight(0xffffff, 0.8));
+  var dirLight = new THREE.DirectionalLight(0xffffff, 0.6);
+  dirLight.position.set(0, 2, 10);
+  cardScene.add(dirLight);
+  var ptLight = new THREE.PointLight(0x7c3aed, 1.0, 30);
   ptLight.position.set(5, 5, 10);
   cardScene.add(ptLight);
-  var ptLight2 = new THREE.PointLight(0xf75092, 0.4, 30);
+  var ptLight2 = new THREE.PointLight(0xf75092, 0.7, 30);
   ptLight2.position.set(-5, -3, 8);
   cardScene.add(ptLight2);
 
@@ -259,16 +272,16 @@ function initCardScene() {
   for (var i = 0; i < 3; i++) {
     var tex = createCardTexture(CARD_DATA[i].emoji, CARD_DATA[i].label);
     var geo = new THREE.PlaneGeometry(3.5, 5);
-    var mat = new THREE.MeshPhysicalMaterial({
+    var mat = new THREE.MeshStandardMaterial({
       map: tex,
       transparent: true,
-      opacity: 0.85,
-      roughness: 0.1,
-      metalness: 0.3,
+      opacity: 0.92,
+      roughness: 0.3,
+      metalness: 0.1,
       side: THREE.DoubleSide,
-      color: 0x222233,
-      emissive: 0x111122,
-      emissiveIntensity: 0.1
+      color: 0xffffff,
+      emissive: 0x333344,
+      emissiveIntensity: 0.3
     });
     var mesh = new THREE.Mesh(geo, mat);
     mesh.position.copy(positions[i]);
