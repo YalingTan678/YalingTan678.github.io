@@ -556,6 +556,8 @@ function showDetailLayer() {
 var detailScene, detailCamera, detailClock;
 var cameraPath, lookAtPath;
 var detailParticles;
+var detailStreams = [];
+var prevDetailProgress = 0;
 
 function initDetailScene() {
   detailScene = new THREE.Scene();
@@ -659,6 +661,69 @@ function initDetailScene() {
   }));
   detailScene.add(detailParticles);
 
+  // ===== PARTICLE STREAMS (Aramco-style flowing ribbons) =====
+  var streamCurves = [
+    new THREE.CatmullRomCurve3([
+      new THREE.Vector3(-6,3,14), new THREE.Vector3(-2,5,8), new THREE.Vector3(3,1,3),
+      new THREE.Vector3(-1,-2,-2), new THREE.Vector3(4,2,-7), new THREE.Vector3(-3,4,-12),
+      new THREE.Vector3(2,0,-17)
+    ], false, 'catmullrom', 0.3),
+    new THREE.CatmullRomCurve3([
+      new THREE.Vector3(5,-2,13), new THREE.Vector3(1,3,7), new THREE.Vector3(-4,0,2),
+      new THREE.Vector3(2,-3,-3), new THREE.Vector3(-2,1,-8), new THREE.Vector3(5,-1,-13),
+      new THREE.Vector3(-1,3,-18)
+    ], false, 'catmullrom', 0.3),
+    new THREE.CatmullRomCurve3([
+      new THREE.Vector3(-3,-4,15), new THREE.Vector3(4,1,9), new THREE.Vector3(-1,4,4),
+      new THREE.Vector3(3,-1,-1), new THREE.Vector3(-4,-2,-6), new THREE.Vector3(1,3,-11),
+      new THREE.Vector3(-2,-1,-16)
+    ], false, 'catmullrom', 0.3),
+    new THREE.CatmullRomCurve3([
+      new THREE.Vector3(2,5,12), new THREE.Vector3(-3,-1,6), new THREE.Vector3(5,2,1),
+      new THREE.Vector3(-2,4,-4), new THREE.Vector3(3,-3,-9), new THREE.Vector3(-4,0,-14),
+      new THREE.Vector3(0,2,-19)
+    ], false, 'catmullrom', 0.3)
+  ];
+
+  var STREAM_COUNT = 400; // particles per stream
+  detailStreams = [];
+
+  function smoothNoise(x,y,z){
+    return Math.sin(x*1.1+y*0.7)*0.5+Math.sin(y*1.3+z*0.9)*0.3+Math.sin(z*0.8+x*1.5)*0.2;
+  }
+
+  streamCurves.forEach(function(curve, si){
+    var geo = new THREE.BufferGeometry();
+    var pos = new Float32Array(STREAM_COUNT * 3);
+    var pData = [];
+
+    for(var i = 0; i < STREAM_COUNT; i++){
+      var t = Math.random();
+      var pt = curve.getPointAt(t);
+      pos[i*3] = pt.x; pos[i*3+1] = pt.y; pos[i*3+2] = pt.z;
+      pData.push({
+        t: t,
+        speed: 0.003 + Math.random() * 0.006,
+        spreadR: 0.05 + Math.random() * 0.4,
+        spreadAngle: Math.random() * Math.PI * 2,
+        noiseOff: Math.random() * 100
+      });
+    }
+    geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+
+    // White/silver with faint color tint
+    var streamColors = [0xddddee, 0xccccdd, 0xbbbbcc, 0xd0d0e0];
+    var pts = new THREE.Points(geo, new THREE.PointsMaterial({
+      color: streamColors[si],
+      size: 0.06,
+      transparent: true,
+      opacity: 0.55,
+      sizeAttenuation: true
+    }));
+    detailScene.add(pts);
+    detailStreams.push({ points:pts, geo:geo, curve:curve, data:pData });
+  });
+
   detailClock = new THREE.Clock();
   currentScene = detailScene;
   camera = detailCamera;
@@ -709,6 +774,40 @@ function renderDetailScene() {
   // Particle subtle drift
   if (detailParticles) {
     detailParticles.rotation.y = el * 0.005;
+  }
+
+  // Animate flowing particle streams
+  var scrollSpeed = Math.abs(prog - prevDetailProgress) * 60; // approx scroll velocity
+  prevDetailProgress = prog;
+  var speedBoost = 1 + scrollSpeed * 80; // scroll makes particles rush
+
+  for (var si = 0; si < detailStreams.length; si++) {
+    var stream = detailStreams[si];
+    var positions = stream.geo.attributes.position.array;
+    var curve = stream.curve;
+
+    // Density fade: sparse at start/end, dense in middle
+    var densityFade = prog < 0.15 ? prog / 0.15 : (prog > 0.85 ? (1 - prog) / 0.15 : 1);
+    stream.points.material.opacity = 0.55 * densityFade;
+
+    for (var pi = 0; pi < 400; pi++) {
+      var pd = stream.data[pi];
+      pd.t += pd.speed * speedBoost * 0.016;
+      if (pd.t > 1) pd.t -= 1;
+
+      var t = pd.t;
+      var pt = curve.getPointAt(t);
+      var tangent = curve.getTangentAt(t);
+      var perpX = -tangent.y, perpY = tangent.x;
+
+      var n1 = smoothNoise(t*5+pd.noiseOff, el*0.3+si, si*7);
+      var dSpread = pd.spreadR * (0.7 + n1*0.5);
+
+      positions[pi*3]   = pt.x + perpX*dSpread*Math.cos(pd.spreadAngle+el*0.15+n1*0.4);
+      positions[pi*3+1] = pt.y + perpY*dSpread*Math.sin(pd.spreadAngle+el*0.12);
+      positions[pi*3+2] = pt.z + Math.sin(t*6+el*0.2+pd.noiseOff)*0.12*pd.spreadR;
+    }
+    stream.geo.attributes.position.needsUpdate = true;
   }
 
   // Panel visibility
