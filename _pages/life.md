@@ -243,8 +243,8 @@ function createCardTexture(emoji, label) {
 
 function initCardScene() {
   cardScene = new THREE.Scene();
-  cardCamera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 100);
-  cardCamera.position.set(0, 0, 10);
+  cardCamera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 100);
+  cardCamera.position.set(0, 0, 12);
   cardClock = new THREE.Clock();
 
   // Lights — bright enough to see cards
@@ -272,16 +272,11 @@ function initCardScene() {
   for (var i = 0; i < 3; i++) {
     var tex = createCardTexture(CARD_DATA[i].emoji, CARD_DATA[i].label);
     var geo = new THREE.PlaneGeometry(3.5, 5);
-    var mat = new THREE.MeshStandardMaterial({
+    var mat = new THREE.MeshBasicMaterial({
       map: tex,
       transparent: true,
-      opacity: 0.92,
-      roughness: 0.3,
-      metalness: 0.1,
-      side: THREE.DoubleSide,
-      color: 0xffffff,
-      emissive: 0x333344,
-      emissiveIntensity: 0.3
+      opacity: 0.95,
+      side: THREE.DoubleSide
     });
     var mesh = new THREE.Mesh(geo, mat);
     mesh.position.copy(positions[i]);
