@@ -71,10 +71,10 @@ author_profile: false
       </defs>
 
       <!-- Strand ellipses with gradient fills -->
-      <ellipse id="venn-literacy" cx="340" cy="240" rx="240" ry="185" fill="url(#grad-literacy)" stroke="#047857" stroke-width="2.5" stroke-opacity="0.5" filter="url(#shadow-green)" style="cursor:pointer;transition:all 0.5s ease"/>
-      <ellipse id="venn-idle" cx="230" cy="410" rx="220" ry="175" fill="url(#grad-idle)" stroke="#2563eb" stroke-width="2.5" stroke-opacity="0.5" filter="url(#shadow-blue)" style="cursor:pointer;transition:all 0.5s ease"/>
-      <ellipse id="venn-equity" cx="530" cy="410" rx="220" ry="175" fill="url(#grad-equity)" stroke="#c2410c" stroke-width="2.5" stroke-opacity="0.5" filter="url(#shadow-orange)" style="cursor:pointer;transition:all 0.5s ease"/>
-      <ellipse id="venn-tpack" cx="650" cy="240" rx="210" ry="170" fill="url(#grad-tpack)" stroke="#6d28d9" stroke-width="2.5" stroke-opacity="0.5" filter="url(#shadow-purple)" style="cursor:pointer;transition:all 0.5s ease"/>
+      <ellipse id="venn-literacy" cx="340" cy="240" rx="240" ry="185" fill="url(#grad-literacy)" stroke="#047857" stroke-width="2.5" stroke-opacity="0" filter="url(#shadow-green)" style="cursor:pointer;transition:all 0.5s ease"/>
+      <ellipse id="venn-idle" cx="230" cy="410" rx="220" ry="175" fill="url(#grad-idle)" stroke="#2563eb" stroke-width="2.5" stroke-opacity="0" filter="url(#shadow-blue)" style="cursor:pointer;transition:all 0.5s ease"/>
+      <ellipse id="venn-equity" cx="530" cy="410" rx="220" ry="175" fill="url(#grad-equity)" stroke="#c2410c" stroke-width="2.5" stroke-opacity="0" filter="url(#shadow-orange)" style="cursor:pointer;transition:all 0.5s ease"/>
+      <ellipse id="venn-tpack" cx="650" cy="240" rx="210" ry="170" fill="url(#grad-tpack)" stroke="#6d28d9" stroke-width="2.5" stroke-opacity="0" filter="url(#shadow-purple)" style="cursor:pointer;transition:all 0.5s ease"/>
 
       <!-- ===== AI Literacy & Learning Design (top-left green) ===== -->
       <g class="strand-group" data-strand="literacy">
@@ -249,8 +249,8 @@ author_profile: false
         var el = document.getElementById('venn-'+id);
         if (el) {
           el.style.opacity = '';
-          el.setAttribute('stroke-width','2');
-          el.setAttribute('stroke-opacity','0.4');
+          el.setAttribute('stroke-width','2.5');
+          el.setAttribute('stroke-opacity','0');
           el.style.animation = '';
         }
         var grp = document.querySelector('[data-strand="'+id+'"]');
@@ -296,8 +296,8 @@ author_profile: false
           }
         } else {
           el.style.opacity = '0.35';
-          el.setAttribute('stroke-width','1.5');
-          el.setAttribute('stroke-opacity','0.15');
+          el.setAttribute('stroke-width','2.5');
+          el.setAttribute('stroke-opacity','0');
           el.style.animation = '';
           if (grp) {
             grp.querySelector('.strand-title').style.opacity = '0.3';
