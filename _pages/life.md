@@ -274,61 +274,77 @@ permalink: /life/
   ptLight.position.set(5, 5, 10);
   scene.add(ptLight);
 
+  /* ===== Simple noise function ===== */
+  function noise(x,y,z){
+    var n=x*12.9898+y*78.233+z*37.719;
+    n=Math.sin(n)*43758.5453;
+    return n-Math.floor(n);
+  }
+  function smoothNoise(x,y,z){
+    return (Math.sin(x*1.1+y*0.7)*0.5+Math.sin(y*1.3+z*0.9)*0.3+Math.sin(z*0.8+x*1.5)*0.2);
+  }
+
   /* ===== Flowing Particle Ribbons ===== */
   var ribbonCurves = [
     new THREE.CatmullRomCurve3([
-      new THREE.Vector3(-18,3,0), new THREE.Vector3(-8,5,-3), new THREE.Vector3(0,1,-5),
-      new THREE.Vector3(8,-3,-4), new THREE.Vector3(16,0,-2), new THREE.Vector3(22,4,0)
+      new THREE.Vector3(-22,2,0), new THREE.Vector3(-12,6,-2), new THREE.Vector3(-4,0,-4),
+      new THREE.Vector3(4,-4,-3), new THREE.Vector3(12,2,-1), new THREE.Vector3(20,5,0), new THREE.Vector3(28,0,1)
     ], false, 'catmullrom', 0.3),
     new THREE.CatmullRomCurve3([
-      new THREE.Vector3(-16,-4,1), new THREE.Vector3(-6,-1,-2), new THREE.Vector3(2,3,-4),
-      new THREE.Vector3(10,0,-3), new THREE.Vector3(18,-4,-1), new THREE.Vector3(24,1,1)
+      new THREE.Vector3(-20,-5,1), new THREE.Vector3(-10,-1,-1), new THREE.Vector3(0,4,-3),
+      new THREE.Vector3(8,-2,-4), new THREE.Vector3(16,1,-2), new THREE.Vector3(24,-3,0), new THREE.Vector3(30,2,1)
     ], false, 'catmullrom', 0.3),
     new THREE.CatmullRomCurve3([
-      new THREE.Vector3(-20,0,-1), new THREE.Vector3(-10,4,-4), new THREE.Vector3(-2,-2,-6),
-      new THREE.Vector3(6,5,-5), new THREE.Vector3(14,-2,-3), new THREE.Vector3(20,2,-1)
+      new THREE.Vector3(-24,0,-1), new THREE.Vector3(-14,5,-3), new THREE.Vector3(-6,-3,-5),
+      new THREE.Vector3(2,6,-4), new THREE.Vector3(10,-1,-2), new THREE.Vector3(18,3,-1), new THREE.Vector3(26,-2,0)
     ], false, 'catmullrom', 0.3),
     new THREE.CatmullRomCurve3([
-      new THREE.Vector3(-14,-6,2), new THREE.Vector3(-4,2,-1), new THREE.Vector3(4,-4,-3),
-      new THREE.Vector3(12,3,-5), new THREE.Vector3(18,-1,-2), new THREE.Vector3(22,-3,0)
+      new THREE.Vector3(-18,-7,2), new THREE.Vector3(-8,3,0), new THREE.Vector3(2,-5,-2),
+      new THREE.Vector3(10,4,-4), new THREE.Vector3(16,-3,-3), new THREE.Vector3(22,1,-1), new THREE.Vector3(28,-4,0)
     ], false, 'catmullrom', 0.3),
     new THREE.CatmullRomCurve3([
-      new THREE.Vector3(-17,6,-2), new THREE.Vector3(-7,-3,-3), new THREE.Vector3(3,4,-5),
-      new THREE.Vector3(11,-5,-4), new THREE.Vector3(16,3,-2), new THREE.Vector3(21,0,1)
+      new THREE.Vector3(-21,7,-1), new THREE.Vector3(-11,-4,-2), new THREE.Vector3(-1,5,-4),
+      new THREE.Vector3(7,-6,-3), new THREE.Vector3(15,4,-2), new THREE.Vector3(23,-1,0), new THREE.Vector3(29,3,1)
     ], false, 'catmullrom', 0.3)
   ];
 
   var ribbons = [];
-  var PER_RIBBON = 1500;
+  var PER_RIBBON = 2000;
   var ribbonColors = [0x7c3aed, 0xf75092, 0x9f50d3, 0xa78bfa, 0xf9a8d4];
 
   ribbonCurves.forEach(function(curve, ri){
     var geo = new THREE.BufferGeometry();
     var pos = new Float32Array(PER_RIBBON * 3);
-    var basePos = new Float32Array(PER_RIBBON * 3);
+    var sizes = new Float32Array(PER_RIBBON);
 
+    // Each particle has: its own t-position on curve, speed, spread offset
+    var particleData = [];
     for(var i = 0; i < PER_RIBBON; i++){
-      var t = i / PER_RIBBON;
+      var t = Math.random(); // random start position along curve
+      var speed = 0.02 + Math.random() * 0.04; // varying flow speeds
+      var spreadR = 0.05 + Math.random() * 0.4; // distance from center
+      var spreadAngle = Math.random() * Math.PI * 2;
+      var sz = 0.04 + Math.random() * Math.random() * 0.25; // few big, many small
+      sizes[i] = sz;
+      particleData.push({ t:t, speed:speed, spreadR:spreadR, spreadAngle:spreadAngle, noiseOffset: Math.random()*100 });
+
       var pt = curve.getPointAt(t);
-      var spread = 0.1 + Math.random() * 0.25;
-      var angle = Math.random() * Math.PI * 2;
-      pos[i*3]   = pt.x + Math.cos(angle) * spread;
-      pos[i*3+1] = pt.y + Math.sin(angle) * spread;
-      pos[i*3+2] = pt.z + (Math.random() - 0.5) * 0.2;
-      basePos[i*3] = pos[i*3]; basePos[i*3+1] = pos[i*3+1]; basePos[i*3+2] = pos[i*3+2];
+      pos[i*3] = pt.x; pos[i*3+1] = pt.y; pos[i*3+2] = pt.z;
     }
+
     geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+    geo.setAttribute('size', new THREE.BufferAttribute(sizes, 1));
 
     var points = new THREE.Points(geo, new THREE.PointsMaterial({
       color: ribbonColors[ri],
-      size: 0.14,
+      size: 0.12,
       transparent: true,
-      opacity: 0.7,
+      opacity: 0.75,
       sizeAttenuation: true
     }));
     scene.add(points);
-    ribbons.push({ points:points, geo:geo, base:basePos, curve:curve,
-      speed: 0.12 + ri * 0.04, waveAmp: 0.06 + ri * 0.025, waveFreq: 1.2 + ri * 0.35 });
+    ribbons.push({ points:points, geo:geo, curve:curve, data:particleData,
+      baseSpeed: 0.015 + ri * 0.005 });
   });
 
   /* ===== Scroll & Parallax ===== */
@@ -415,21 +431,32 @@ permalink: /life/
     scene.rotation.y = heroProgress * 0.4 + mouse.x * 0.05;
     scene.position.y = heroProgress * 3;
 
-    // Animate ribbons with mouse-driven speed
+    // Animate ribbons — particles FLOW along curves like water
     for(var ri = 0; ri < ribbons.length; ri++){
       var rb = ribbons[ri];
       var positions = rb.geo.attributes.position.array;
-      var base = rb.base;
-      var spd = rb.speed * speedMult;
-      var amp = rb.waveAmp * (1 + smoothMouseSpeed * 0.01);
+      var curve = rb.curve;
 
       for(var i = 0; i < PER_RIBBON; i++){
-        var along = i / PER_RIBBON;
-        var wave = Math.sin(along * rb.waveFreq * 6.28 + el * spd * 3 + heroProgress * 5 + ri) * amp;
-        var wave2 = Math.cos(along * rb.waveFreq * 4 + el * spd * 2 + heroProgress * 3) * amp * 0.5;
-        positions[i*3]   = base[i*3]   + wave;
-        positions[i*3+1] = base[i*3+1] + wave2;
-        positions[i*3+2] = base[i*3+2] + Math.sin(along * 3 + el * spd) * 0.04;
+        var pd = rb.data[i];
+
+        // Advance particle along curve (actual flowing!)
+        pd.t += pd.speed * speedMult * 0.016;
+        if(pd.t > 1) pd.t -= 1;
+
+        var t = pd.t;
+        var pt = curve.getPointAt(t);
+        var tangent = curve.getTangentAt(t);
+
+        // Perpendicular spread with organic noise
+        var perpX = -tangent.y, perpY = tangent.x;
+        var n1 = smoothNoise(t*5+pd.noiseOffset, el*0.3+ri, ri*7);
+        var n2 = smoothNoise(t*4+pd.noiseOffset+50, el*0.25, ri*3+20);
+        var dSpread = pd.spreadR * (0.7 + n1*0.5);
+
+        positions[i*3]   = pt.x + perpX*dSpread*Math.cos(pd.spreadAngle+el*0.2+n1*0.5) + n2*0.15;
+        positions[i*3+1] = pt.y + perpY*dSpread*Math.sin(pd.spreadAngle+el*0.15) + n1*0.12;
+        positions[i*3+2] = pt.z + Math.sin(t*8+el*0.3+pd.noiseOffset)*0.15*pd.spreadR;
       }
       rb.geo.attributes.position.needsUpdate = true;
     }
