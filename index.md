@@ -271,7 +271,7 @@ author_profile: false
     }
 
     function activateStrand(strand) {
-      if (active === strand) { resetAll(); return; }
+      if (active === strand) return;
       active = strand;
       var data = strandData[strand];
 
@@ -323,23 +323,33 @@ author_profile: false
       panel.style.opacity = '1';
     }
 
-    // Attach click to titles and ellipses
+    // Attach hover to ellipses and strand groups
     ids.forEach(function(id) {
       var ellipse = document.getElementById('venn-'+id);
       var grp = document.querySelector('[data-strand="'+id+'"]');
-      if (ellipse) ellipse.addEventListener('click', function(e) { e.stopPropagation(); activateStrand(id); });
+      function enter() { activateStrand(id); }
+      function leave() { resetAll(); }
+      if (ellipse) {
+        ellipse.addEventListener('mouseenter', enter);
+        ellipse.addEventListener('mouseleave', function(e) {
+          var rel = e.relatedTarget;
+          if (rel && (rel.closest('[data-strand="'+id+'"]') || rel.closest('#venn-desc-panel'))) return;
+          leave();
+        });
+      }
       if (grp) {
-        var title = grp.querySelector('.strand-title');
-        if (title) title.addEventListener('click', function(e) { e.stopPropagation(); activateStrand(id); });
+        grp.addEventListener('mouseenter', enter);
+        grp.addEventListener('mouseleave', function(e) {
+          var rel = e.relatedTarget;
+          if (rel && (rel === ellipse || rel.closest('#venn-desc-panel'))) return;
+          leave();
+        });
       }
     });
 
-    // Click outside to reset
-    document.addEventListener('click', function(e) {
-      if (active && !e.target.closest('.strand-group') && !e.target.closest('[id^="venn-"]') && !e.target.closest('#venn-desc-panel')) {
-        resetAll();
-      }
-    });
+    // Also keep panel visible while hovering it
+    panel.addEventListener('mouseenter', function() {});
+    panel.addEventListener('mouseleave', function() { resetAll(); });
   })();
   </script>
 </section>
