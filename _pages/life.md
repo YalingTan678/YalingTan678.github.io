@@ -15,7 +15,7 @@ permalink: /life/
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@200;300;400;500;600;700&display=swap" rel="stylesheet"/>
   <style>
     *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-    html,body{width:100%;overflow-x:hidden;font-family:'Inter',system-ui,sans-serif;background:#0c0a12;color:#e0e0e0}
+    html,body{width:100%;overflow-x:hidden;font-family:'Inter',system-ui,sans-serif;background:#faf8ff;color:#1e1b4b}
     body.layer2-active{overflow-y:auto}
     body:not(.layer2-active){overflow-y:hidden;height:100vh}
 
@@ -29,8 +29,8 @@ permalink: /life/
     /* ====== LAYER 1: Card Landing ====== */
     #layer1{position:fixed;top:0;left:0;width:100%;height:100%;z-index:10;display:flex;align-items:center;justify-content:center}
     #layer1 .title-text{position:absolute;bottom:8%;left:50%;transform:translateX(-50%);text-align:center;z-index:12;pointer-events:none}
-    #layer1 .title-text h1{font-family:'Playfair Display',serif;font-size:clamp(1.5rem,3vw,2.5rem);font-weight:400;color:rgba(255,255,255,0.6);letter-spacing:0.05em}
-    #layer1 .title-text p{font-size:0.75rem;color:rgba(255,255,255,0.25);margin-top:0.5rem;letter-spacing:0.15em;text-transform:uppercase}
+    #layer1 .title-text h1{font-family:'Playfair Display',serif;font-size:clamp(1.5rem,3vw,2.5rem);font-weight:400;color:rgba(30,27,75,0.6);letter-spacing:0.05em}
+    #layer1 .title-text p{font-size:0.75rem;color:rgba(30,27,75,0.3);margin-top:0.5rem;letter-spacing:0.15em;text-transform:uppercase}
 
     /* ====== LAYER 2: Detail Page ====== */
     #layer2{display:none;position:relative;z-index:10;width:100%;height:600vh}
@@ -154,9 +154,9 @@ var THEMES = {
 };
 
 var CARD_DATA = [
-  { key: "pet",     emoji: "\uD83D\uDC3E", label: "Pet Lover" },
-  { key: "florist", emoji: "\uD83C\uDF38", label: "Florist" },
-  { key: "travel",  emoji: "\u2708\uFE0F",  label: "Travel" }
+  { key: "pet",     label: "Pet Lover", img: "/images/life/pet.jpg" },
+  { key: "florist", label: "Florist",   img: "/images/life/florist.jpg" },
+  { key: "travel",  label: "Travel",    img: "/images/life/travel.jpg" }
 ];
 
 /* ====== GLOBALS ====== */
@@ -181,7 +181,7 @@ var entrancePlayed = false;
 renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: false });
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 renderer.setSize(window.innerWidth, window.innerHeight);
-renderer.setClearColor(0x0c0a12, 1);
+renderer.setClearColor(0xfaf8ff, 1);
 renderer.toneMapping = THREE.ACESFilmicToneMapping;
 renderer.toneMappingExposure = 1.0;
 
@@ -192,55 +192,68 @@ var mouse2 = new THREE.Vector2(-999, -999);
 var mouseRaw = { x: 0, y: 0 };
 var hoveredCard = null;
 var starPoints;
+var starBasePos;
 
-function createCardTexture(emoji, label) {
+function createCardTexture(label, imgSrc) {
   var c = document.createElement('canvas');
   c.width = 512; c.height = 720;
   var ctx = c.getContext('2d');
 
-  // Background gradient — visible card surface
-  var grad = ctx.createLinearGradient(0, 0, 512, 720);
-  grad.addColorStop(0, 'rgba(60,40,80,0.95)');
-  grad.addColorStop(0.3, 'rgba(80,50,100,0.85)');
-  grad.addColorStop(0.7, 'rgba(100,60,120,0.8)');
-  grad.addColorStop(1, 'rgba(70,35,90,0.9)');
-  ctx.fillStyle = grad;
+  // Solid dark base while image loads
+  ctx.fillStyle = '#1e1b4b';
   ctx.fillRect(0, 0, 512, 720);
 
-  // Glowing border
-  ctx.strokeStyle = 'rgba(124,58,237,0.4)';
-  ctx.lineWidth = 3;
-  ctx.strokeRect(4, 4, 504, 712);
+  // Label text at bottom with gradient overlay
+  ctx.fillStyle = 'rgba(0,0,0,0.5)';
+  ctx.fillRect(0, 560, 512, 160);
+  var grad = ctx.createLinearGradient(0, 520, 0, 720);
+  grad.addColorStop(0, 'rgba(0,0,0,0)');
+  grad.addColorStop(0.3, 'rgba(0,0,0,0.6)');
+  grad.addColorStop(1, 'rgba(0,0,0,0.8)');
+  ctx.fillStyle = grad;
+  ctx.fillRect(0, 520, 512, 200);
 
-  // Inner subtle line
-  ctx.strokeStyle = 'rgba(255,255,255,0.08)';
-  ctx.lineWidth = 1;
-  ctx.strokeRect(24, 24, 464, 672);
-
-  // Emoji
-  ctx.font = '100px serif';
+  ctx.font = '700 42px Playfair Display, serif';
   ctx.textAlign = 'center';
-  ctx.textBaseline = 'middle';
   ctx.fillStyle = '#ffffff';
-  ctx.fillText(emoji, 256, 260);
-
-  // Label
-  ctx.font = '700 36px Inter, sans-serif';
-  ctx.fillStyle = 'rgba(255,255,255,0.9)';
-  ctx.fillText(label, 256, 440);
-
-  // Divider line
-  ctx.strokeStyle = 'rgba(124,58,237,0.5)';
-  ctx.lineWidth = 2;
-  ctx.beginPath(); ctx.moveTo(180, 480); ctx.lineTo(332, 480); ctx.stroke();
-
-  // Subtitle
-  ctx.font = '300 18px Inter, sans-serif';
-  ctx.fillStyle = 'rgba(255,255,255,0.4)';
-  ctx.fillText('Click to explore', 256, 520);
+  ctx.fillText(label, 256, 660);
 
   var tex = new THREE.CanvasTexture(c);
   tex.needsUpdate = true;
+
+  // Load photo and redraw
+  var img = new Image();
+  img.crossOrigin = 'anonymous';
+  img.onload = function() {
+    // Cover-fit the image
+    var iw = img.width, ih = img.height;
+    var cw = 512, ch = 720;
+    var scale = Math.max(cw/iw, ch/ih);
+    var sw = iw * scale, sh = ih * scale;
+    var sx = (cw - sw) / 2, sy = (ch - sh) / 2;
+    ctx.drawImage(img, sx, sy, sw, sh);
+
+    // Bottom gradient overlay for text
+    var grad2 = ctx.createLinearGradient(0, 480, 0, 720);
+    grad2.addColorStop(0, 'rgba(0,0,0,0)');
+    grad2.addColorStop(0.4, 'rgba(0,0,0,0.5)');
+    grad2.addColorStop(1, 'rgba(0,0,0,0.75)');
+    ctx.fillStyle = grad2;
+    ctx.fillRect(0, 480, 512, 240);
+
+    // Label
+    ctx.font = '700 42px Playfair Display, serif';
+    ctx.textAlign = 'center';
+    ctx.fillStyle = '#ffffff';
+    ctx.shadowColor = 'rgba(0,0,0,0.5)';
+    ctx.shadowBlur = 8;
+    ctx.fillText(label, 256, 660);
+    ctx.shadowBlur = 0;
+
+    tex.needsUpdate = true;
+  };
+  img.src = imgSrc;
+
   return tex;
 }
 
@@ -273,7 +286,7 @@ function initCardScene() {
   var rotations = [-0.15, 0, 0.15];
 
   for (var i = 0; i < 3; i++) {
-    var tex = createCardTexture(CARD_DATA[i].emoji, CARD_DATA[i].label);
+    var tex = createCardTexture(CARD_DATA[i].label, CARD_DATA[i].img);
     var geo = new THREE.PlaneGeometry(3.5, 5);
     var mat = new THREE.MeshBasicMaterial({
       map: tex,
@@ -290,19 +303,30 @@ function initCardScene() {
     cardMeshes.push(mesh);
   }
 
-  // 500 particle starfield
+  // Colored flowing particles (site palette)
+  var particleColors = [0x7c3aed, 0x9f50d3, 0xf75092, 0xa78bfa, 0xf9a8d4];
+  var totalParticles = 600;
   var starGeo = new THREE.BufferGeometry();
-  var starPos = new Float32Array(500 * 3);
-  for (var i = 0; i < 500; i++) {
-    starPos[i * 3] = (Math.random() - 0.5) * 40;
-    starPos[i * 3 + 1] = (Math.random() - 0.5) * 30;
-    starPos[i * 3 + 2] = (Math.random() - 0.5) * 20 - 5;
+  var starPos = new Float32Array(totalParticles * 3);
+  var starColors = new Float32Array(totalParticles * 3);
+  for (var i = 0; i < totalParticles; i++) {
+    starPos[i * 3] = (Math.random() - 0.5) * 35;
+    starPos[i * 3 + 1] = (Math.random() - 0.5) * 25;
+    starPos[i * 3 + 2] = (Math.random() - 0.5) * 15 - 3;
+    var col = new THREE.Color(particleColors[i % particleColors.length]);
+    starColors[i * 3] = col.r;
+    starColors[i * 3 + 1] = col.g;
+    starColors[i * 3 + 2] = col.b;
   }
   starGeo.setAttribute('position', new THREE.BufferAttribute(starPos, 3));
+  starGeo.setAttribute('color', new THREE.BufferAttribute(starColors, 3));
   starPoints = new THREE.Points(starGeo, new THREE.PointsMaterial({
-    color: 0xffffff, size: 0.05, transparent: true, opacity: 0.5, sizeAttenuation: true
+    size: 0.08, transparent: true, opacity: 0.6, sizeAttenuation: true, vertexColors: true
   }));
   cardScene.add(starPoints);
+
+  // Store base positions for mouse-driven flow
+  starBasePos = new Float32Array(starPos);
 
   currentScene = cardScene;
   camera = cardCamera;
@@ -412,10 +436,16 @@ function renderCardScene() {
     }
   }
 
-  // Subtle star twinkle
-  if (starPoints) {
-    starPoints.rotation.y = el * 0.01;
-    starPoints.rotation.x = Math.sin(el * 0.005) * 0.02;
+  // Animate particles — mouse-driven flow
+  if (starPoints && starBasePos) {
+    var positions = starPoints.geometry.attributes.position.array;
+    for (var i = 0; i < 600; i++) {
+      var bx = starBasePos[i*3], by = starBasePos[i*3+1], bz = starBasePos[i*3+2];
+      positions[i*3] = bx + Math.sin(el * 0.3 + i * 0.1) * 0.15 + mouseRaw.x * 0.5;
+      positions[i*3+1] = by + Math.cos(el * 0.25 + i * 0.13) * 0.12 + mouseRaw.y * 0.3;
+      positions[i*3+2] = bz + Math.sin(el * 0.2 + i * 0.07) * 0.1;
+    }
+    starPoints.geometry.attributes.position.needsUpdate = true;
   }
 
   renderer.render(cardScene, cardCamera);
@@ -468,10 +498,10 @@ function transitionToDetail(cardIdx) {
 
   // Flash white on renderer
   tl.to({}, { duration: 0.1, onComplete: function() {
-    renderer.setClearColor(0x222222, 1);
+    renderer.setClearColor(0xcccccc, 1);
   }}, 0.7);
   tl.to({}, { duration: 0.3, onComplete: function() {
-    renderer.setClearColor(0x0c0a12, 1);
+    renderer.setClearColor(0x0a0a0a, 1);
   }}, 0.9);
 
   // Hide title text
