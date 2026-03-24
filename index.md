@@ -50,117 +50,274 @@ author_profile: false
       </defs>
 
       <!-- Strand ellipses with gradient fills -->
-      <ellipse id="venn-literacy" cx="340" cy="240" rx="240" ry="185" fill="url(#grad-literacy)" stroke="#047857" stroke-width="2" stroke-opacity="0.4" filter="url(#shadow)" style="cursor:pointer;transition:all 0.4s"/>
-      <ellipse id="venn-idle" cx="230" cy="410" rx="220" ry="175" fill="url(#grad-idle)" stroke="#2563eb" stroke-width="2" stroke-opacity="0.4" filter="url(#shadow)" style="cursor:pointer;transition:all 0.4s"/>
-      <ellipse id="venn-equity" cx="530" cy="410" rx="220" ry="175" fill="url(#grad-equity)" stroke="#c2410c" stroke-width="2" stroke-opacity="0.4" filter="url(#shadow)" style="cursor:pointer;transition:all 0.4s"/>
-      <ellipse id="venn-tpack" cx="650" cy="240" rx="210" ry="170" fill="url(#grad-tpack)" stroke="#6d28d9" stroke-width="2" stroke-opacity="0.4" filter="url(#shadow)" style="cursor:pointer;transition:all 0.4s"/>
+      <ellipse id="venn-literacy" cx="340" cy="240" rx="240" ry="185" fill="url(#grad-literacy)" stroke="#047857" stroke-width="2" stroke-opacity="0.4" filter="url(#shadow)" style="cursor:pointer;transition:all 0.5s ease"/>
+      <ellipse id="venn-idle" cx="230" cy="410" rx="220" ry="175" fill="url(#grad-idle)" stroke="#2563eb" stroke-width="2" stroke-opacity="0.4" filter="url(#shadow)" style="cursor:pointer;transition:all 0.5s ease"/>
+      <ellipse id="venn-equity" cx="530" cy="410" rx="220" ry="175" fill="url(#grad-equity)" stroke="#c2410c" stroke-width="2" stroke-opacity="0.4" filter="url(#shadow)" style="cursor:pointer;transition:all 0.5s ease"/>
+      <ellipse id="venn-tpack" cx="650" cy="240" rx="210" ry="170" fill="url(#grad-tpack)" stroke="#6d28d9" stroke-width="2" stroke-opacity="0.4" filter="url(#shadow)" style="cursor:pointer;transition:all 0.5s ease"/>
 
       <!-- ===== AI Literacy & Learning Design (top-left green) ===== -->
-      <text x="250" y="105" font-size="19" font-weight="800" fill="#047857" text-anchor="middle">AI Literacy &amp;</text>
-      <text x="250" y="130" font-size="19" font-weight="800" fill="#047857" text-anchor="middle">Learning Design</text>
-      <text x="250" y="150" font-size="11" fill="#047857" opacity="0.6" text-anchor="middle" font-style="italic">Design principles &amp; environments</text>
-
-      <a href="/publication/2025-two-years-innovation">
-        <rect x="185" y="170" width="180" height="26" rx="13" fill="url(#pill-green)" stroke="#047857" stroke-opacity="0.25" stroke-width="1" filter="url(#pill-shadow)"/>
-        <text x="275" y="188" font-size="11.5" fill="#047857" font-weight="600" text-anchor="middle" style="cursor:pointer">GenAI Review · CAEAI '25</text>
-      </a>
-      <a href="/publication/ur-tutor-not-solver">
-        <rect x="185" y="202" width="180" height="26" rx="13" fill="url(#pill-green)" stroke="#047857" stroke-opacity="0.25" stroke-width="1" filter="url(#pill-shadow)"/>
-        <text x="275" y="220" font-size="11.5" fill="#047857" font-weight="600" text-anchor="middle" style="cursor:pointer">PeteChat Design Case →</text>
-      </a>
-      <a href="/publication/2026-clawdbot-unboxed">
-        <rect x="200" y="234" width="150" height="26" rx="13" fill="url(#pill-green)" stroke="#047857" stroke-opacity="0.25" stroke-width="1" filter="url(#pill-shadow)"/>
-        <text x="275" y="252" font-size="11.5" fill="#047857" font-weight="600" text-anchor="middle" style="cursor:pointer">Clawdbot · Talk '26</text>
-      </a>
+      <g class="strand-group" data-strand="literacy">
+        <g class="strand-title" style="cursor:pointer">
+          <text x="250" y="105" font-size="19" font-weight="800" fill="#047857" text-anchor="middle">AI Literacy &amp;</text>
+          <text x="250" y="130" font-size="19" font-weight="800" fill="#047857" text-anchor="middle">Learning Design</text>
+          <text x="250" y="150" font-size="11" fill="#047857" opacity="0.6" text-anchor="middle" font-style="italic">Design principles &amp; environments</text>
+        </g>
+        <g class="strand-pills">
+          <a href="/publication/2025-two-years-innovation" class="strand-pill" style="opacity:0;transform:translateY(8px)">
+            <rect x="185" y="170" width="180" height="26" rx="13" fill="url(#pill-green)" stroke="#047857" stroke-opacity="0.25" stroke-width="1" filter="url(#pill-shadow)"/>
+            <text x="275" y="188" font-size="11.5" fill="#047857" font-weight="600" text-anchor="middle" style="cursor:pointer">GenAI Review · CAEAI '25</text>
+          </a>
+          <a href="/publication/ur-tutor-not-solver" class="strand-pill" style="opacity:0;transform:translateY(8px)">
+            <rect x="185" y="202" width="180" height="26" rx="13" fill="url(#pill-green)" stroke="#047857" stroke-opacity="0.25" stroke-width="1" filter="url(#pill-shadow)"/>
+            <text x="275" y="220" font-size="11.5" fill="#047857" font-weight="600" text-anchor="middle" style="cursor:pointer">PeteChat Design Case →</text>
+          </a>
+          <a href="/publication/2026-clawdbot-unboxed" class="strand-pill" style="opacity:0;transform:translateY(8px)">
+            <rect x="200" y="234" width="150" height="26" rx="13" fill="url(#pill-green)" stroke="#047857" stroke-opacity="0.25" stroke-width="1" filter="url(#pill-shadow)"/>
+            <text x="275" y="252" font-size="11.5" fill="#047857" font-weight="600" text-anchor="middle" style="cursor:pointer">Clawdbot · Talk '26</text>
+          </a>
+        </g>
+      </g>
 
       <!-- ===== TPACK & Teacher Ed (top-right purple) ===== -->
-      <text x="720" y="115" font-size="19" font-weight="800" fill="#6d28d9" text-anchor="middle">TPACK &amp;</text>
-      <text x="720" y="140" font-size="19" font-weight="800" fill="#6d28d9" text-anchor="middle">Teacher Ed</text>
-      <text x="720" y="160" font-size="11" fill="#6d28d9" opacity="0.6" text-anchor="middle" font-style="italic">Technology integration &amp; diversity</text>
-
-      <a href="/publication/ur-tpack-xinjiang">
-        <rect x="640" y="180" width="160" height="26" rx="13" fill="url(#pill-purple)" stroke="#6d28d9" stroke-opacity="0.25" stroke-width="1" filter="url(#pill-shadow)"/>
-        <text x="720" y="198" font-size="11.5" fill="#6d28d9" font-weight="600" text-anchor="middle" style="cursor:pointer">TPACK Xinjiang →</text>
-      </a>
-      <a href="/publication/2025-purdue-ai-gai">
-        <rect x="640" y="212" width="160" height="26" rx="13" fill="url(#pill-purple)" stroke="#6d28d9" stroke-opacity="0.25" stroke-width="1" filter="url(#pill-shadow)"/>
-        <text x="720" y="230" font-size="11.5" fill="#6d28d9" font-weight="600" text-anchor="middle" style="cursor:pointer">GAI-IDLE · P-12 '25</text>
-      </a>
+      <g class="strand-group" data-strand="tpack">
+        <g class="strand-title" style="cursor:pointer">
+          <text x="720" y="115" font-size="19" font-weight="800" fill="#6d28d9" text-anchor="middle">TPACK &amp;</text>
+          <text x="720" y="140" font-size="19" font-weight="800" fill="#6d28d9" text-anchor="middle">Teacher Ed</text>
+          <text x="720" y="160" font-size="11" fill="#6d28d9" opacity="0.6" text-anchor="middle" font-style="italic">Technology integration &amp; diversity</text>
+        </g>
+        <g class="strand-pills">
+          <a href="/publication/ur-tpack-xinjiang" class="strand-pill" style="opacity:0;transform:translateY(8px)">
+            <rect x="640" y="180" width="160" height="26" rx="13" fill="url(#pill-purple)" stroke="#6d28d9" stroke-opacity="0.25" stroke-width="1" filter="url(#pill-shadow)"/>
+            <text x="720" y="198" font-size="11.5" fill="#6d28d9" font-weight="600" text-anchor="middle" style="cursor:pointer">TPACK Xinjiang →</text>
+          </a>
+          <a href="/publication/2025-purdue-ai-gai" class="strand-pill" style="opacity:0;transform:translateY(8px)">
+            <rect x="640" y="212" width="160" height="26" rx="13" fill="url(#pill-purple)" stroke="#6d28d9" stroke-opacity="0.25" stroke-width="1" filter="url(#pill-shadow)"/>
+            <text x="720" y="230" font-size="11.5" fill="#6d28d9" font-weight="600" text-anchor="middle" style="cursor:pointer">GAI-IDLE · P-12 '25</text>
+          </a>
+        </g>
+      </g>
 
       <!-- ===== IDLE & Pragmatics (bottom-left blue) ===== -->
-      <text x="140" y="360" font-size="19" font-weight="800" fill="#2563eb" text-anchor="middle">IDLE &amp;</text>
-      <text x="140" y="385" font-size="19" font-weight="800" fill="#2563eb" text-anchor="middle">Pragmatics</text>
-      <text x="140" y="405" font-size="11" fill="#2563eb" opacity="0.6" text-anchor="middle" font-style="italic">AI chatbots &amp; self-directed learning</text>
-
-      <a href="/publication/2026-doubao-genai-efl">
-        <rect x="55" y="420" width="170" height="26" rx="13" fill="url(#pill-blue)" stroke="#2563eb" stroke-opacity="0.25" stroke-width="1" filter="url(#pill-shadow)"/>
-        <text x="140" y="438" font-size="11.5" fill="#2563eb" font-weight="600" text-anchor="middle" style="cursor:pointer">Doubao EFL · PE '26</text>
-      </a>
-      <a href="/publication/2025-pointing-to-context">
-        <rect x="55" y="452" width="170" height="26" rx="13" fill="url(#pill-blue)" stroke="#2563eb" stroke-opacity="0.25" stroke-width="1" filter="url(#pill-shadow)"/>
-        <text x="140" y="470" font-size="11.5" fill="#2563eb" font-weight="600" text-anchor="middle" style="cursor:pointer">Context · MJSS '25</text>
-      </a>
-      <a href="/publication/2024-call-context">
-        <rect x="70" y="484" width="140" height="26" rx="13" fill="url(#pill-blue)" stroke="#2563eb" stroke-opacity="0.25" stroke-width="1" filter="url(#pill-shadow)"/>
-        <text x="140" y="502" font-size="11.5" fill="#2563eb" font-weight="600" text-anchor="middle" style="cursor:pointer">CALL Tokyo '24</text>
-      </a>
+      <g class="strand-group" data-strand="idle">
+        <g class="strand-title" style="cursor:pointer">
+          <text x="140" y="360" font-size="19" font-weight="800" fill="#2563eb" text-anchor="middle">IDLE &amp;</text>
+          <text x="140" y="385" font-size="19" font-weight="800" fill="#2563eb" text-anchor="middle">Pragmatics</text>
+          <text x="140" y="405" font-size="11" fill="#2563eb" opacity="0.6" text-anchor="middle" font-style="italic">AI chatbots &amp; self-directed learning</text>
+        </g>
+        <g class="strand-pills">
+          <a href="/publication/2026-doubao-genai-efl" class="strand-pill" style="opacity:0;transform:translateY(8px)">
+            <rect x="55" y="420" width="170" height="26" rx="13" fill="url(#pill-blue)" stroke="#2563eb" stroke-opacity="0.25" stroke-width="1" filter="url(#pill-shadow)"/>
+            <text x="140" y="438" font-size="11.5" fill="#2563eb" font-weight="600" text-anchor="middle" style="cursor:pointer">Doubao EFL · PE '26</text>
+          </a>
+          <a href="/publication/2025-pointing-to-context" class="strand-pill" style="opacity:0;transform:translateY(8px)">
+            <rect x="55" y="452" width="170" height="26" rx="13" fill="url(#pill-blue)" stroke="#2563eb" stroke-opacity="0.25" stroke-width="1" filter="url(#pill-shadow)"/>
+            <text x="140" y="470" font-size="11.5" fill="#2563eb" font-weight="600" text-anchor="middle" style="cursor:pointer">Context · MJSS '25</text>
+          </a>
+          <a href="/publication/2024-call-context" class="strand-pill" style="opacity:0;transform:translateY(8px)">
+            <rect x="70" y="484" width="140" height="26" rx="13" fill="url(#pill-blue)" stroke="#2563eb" stroke-opacity="0.25" stroke-width="1" filter="url(#pill-shadow)"/>
+            <text x="140" y="502" font-size="11.5" fill="#2563eb" font-weight="600" text-anchor="middle" style="cursor:pointer">CALL Tokyo '24</text>
+          </a>
+        </g>
+      </g>
 
       <!-- ===== Equity & Assessment (bottom-right orange) ===== -->
-      <text x="620" y="360" font-size="19" font-weight="800" fill="#c2410c" text-anchor="middle">Equity &amp;</text>
-      <text x="620" y="385" font-size="19" font-weight="800" fill="#c2410c" text-anchor="middle">Assessment</text>
-      <text x="620" y="405" font-size="11" fill="#c2410c" opacity="0.6" text-anchor="middle" font-style="italic">Authenticity &amp; evaluative judgment</text>
-
-      <a href="/publication/2026-aera-meta-analysis">
-        <rect x="520" y="420" width="200" height="26" rx="13" fill="url(#pill-orange)" stroke="#c2410c" stroke-opacity="0.25" stroke-width="1" filter="url(#pill-shadow)"/>
-        <text x="620" y="438" font-size="11.5" fill="#c2410c" font-weight="600" text-anchor="middle" style="cursor:pointer">Meta-analysis · AERA '26</text>
-      </a>
-      <a href="/publication/2025-aect-authenticity">
-        <rect x="530" y="452" width="180" height="26" rx="13" fill="url(#pill-orange)" stroke="#c2410c" stroke-opacity="0.25" stroke-width="1" filter="url(#pill-shadow)"/>
-        <text x="620" y="470" font-size="11.5" fill="#c2410c" font-weight="600" text-anchor="middle" style="cursor:pointer">Authenticity · AECT '25</text>
-      </a>
-      <a href="/publication/ur-authorship-agency-ai">
-        <rect x="545" y="484" width="150" height="26" rx="13" fill="url(#pill-orange)" stroke="#c2410c" stroke-opacity="0.25" stroke-width="1" filter="url(#pill-shadow)"/>
-        <text x="620" y="502" font-size="11.5" fill="#c2410c" font-weight="600" text-anchor="middle" style="cursor:pointer">Authorship &amp; AI →</text>
-      </a>
+      <g class="strand-group" data-strand="equity">
+        <g class="strand-title" style="cursor:pointer">
+          <text x="620" y="360" font-size="19" font-weight="800" fill="#c2410c" text-anchor="middle">Equity &amp;</text>
+          <text x="620" y="385" font-size="19" font-weight="800" fill="#c2410c" text-anchor="middle">Assessment</text>
+          <text x="620" y="405" font-size="11" fill="#c2410c" opacity="0.6" text-anchor="middle" font-style="italic">Authenticity &amp; evaluative judgment</text>
+        </g>
+        <g class="strand-pills">
+          <a href="/publication/2026-aera-meta-analysis" class="strand-pill" style="opacity:0;transform:translateY(8px)">
+            <rect x="520" y="420" width="200" height="26" rx="13" fill="url(#pill-orange)" stroke="#c2410c" stroke-opacity="0.25" stroke-width="1" filter="url(#pill-shadow)"/>
+            <text x="620" y="438" font-size="11.5" fill="#c2410c" font-weight="600" text-anchor="middle" style="cursor:pointer">Meta-analysis · AERA '26</text>
+          </a>
+          <a href="/publication/2025-aect-authenticity" class="strand-pill" style="opacity:0;transform:translateY(8px)">
+            <rect x="530" y="452" width="180" height="26" rx="13" fill="url(#pill-orange)" stroke="#c2410c" stroke-opacity="0.25" stroke-width="1" filter="url(#pill-shadow)"/>
+            <text x="620" y="470" font-size="11.5" fill="#c2410c" font-weight="600" text-anchor="middle" style="cursor:pointer">Authenticity · AECT '25</text>
+          </a>
+          <a href="/publication/ur-authorship-agency-ai" class="strand-pill" style="opacity:0;transform:translateY(8px)">
+            <rect x="545" y="484" width="150" height="26" rx="13" fill="url(#pill-orange)" stroke="#c2410c" stroke-opacity="0.25" stroke-width="1" filter="url(#pill-shadow)"/>
+            <text x="620" y="502" font-size="11.5" fill="#c2410c" font-weight="600" text-anchor="middle" style="cursor:pointer">Authorship &amp; AI →</text>
+          </a>
+        </g>
+      </g>
 
       <!-- ===== Center overlap ===== -->
-      <rect x="340" y="335" width="130" height="40" rx="20" fill="url(#pill-center)" stroke="#64748b" stroke-opacity="0.2" stroke-width="1" filter="url(#pill-shadow)"/>
-      <text x="405" y="353" font-size="13" fill="#1e1b4b" font-weight="700" text-anchor="middle" opacity="0.7">AI × Education</text>
-      <text x="405" y="368" font-size="10" fill="#64748b" text-anchor="middle" opacity="0.6">Shared foundation</text>
+      <g class="overlap-labels">
+        <rect x="340" y="335" width="130" height="40" rx="20" fill="url(#pill-center)" stroke="#64748b" stroke-opacity="0.2" stroke-width="1" filter="url(#pill-shadow)"/>
+        <text x="405" y="353" font-size="13" fill="#1e1b4b" font-weight="700" text-anchor="middle" opacity="0.7">AI × Education</text>
+        <text x="405" y="368" font-size="10" fill="#64748b" text-anchor="middle" opacity="0.6">Shared foundation</text>
 
-      <!-- Overlap: Literacy ∩ IDLE -->
-      <text x="250" y="310" font-size="10.5" fill="#0f766e" text-anchor="middle" opacity="0.6" font-style="italic">Design for</text>
-      <text x="250" y="324" font-size="10.5" fill="#0f766e" text-anchor="middle" opacity="0.6" font-style="italic">informal learning</text>
+        <!-- Overlap: Literacy ∩ IDLE -->
+        <text x="250" y="310" font-size="10.5" fill="#0f766e" text-anchor="middle" opacity="0.6" font-style="italic">Design for</text>
+        <text x="250" y="324" font-size="10.5" fill="#0f766e" text-anchor="middle" opacity="0.6" font-style="italic">informal learning</text>
 
-      <!-- Overlap: Literacy ∩ Equity / center-top -->
-      <text x="470" y="280" font-size="10.5" fill="#92400e" text-anchor="middle" opacity="0.6" font-style="italic">Authentic</text>
-      <text x="470" y="294" font-size="10.5" fill="#92400e" text-anchor="middle" opacity="0.6" font-style="italic">AI integration</text>
+        <!-- Overlap: Literacy ∩ Equity / center-top -->
+        <text x="470" y="280" font-size="10.5" fill="#92400e" text-anchor="middle" opacity="0.6" font-style="italic">Authentic</text>
+        <text x="470" y="294" font-size="10.5" fill="#92400e" text-anchor="middle" opacity="0.6" font-style="italic">AI integration</text>
 
-      <!-- Overlap: IDLE ∩ Equity -->
-      <text x="385" y="460" font-size="10.5" fill="#7c2d12" text-anchor="middle" opacity="0.6" font-style="italic">AI tools &amp;</text>
-      <text x="385" y="474" font-size="10.5" fill="#7c2d12" text-anchor="middle" opacity="0.6" font-style="italic">fair assessment</text>
+        <!-- Overlap: IDLE ∩ Equity -->
+        <text x="385" y="460" font-size="10.5" fill="#7c2d12" text-anchor="middle" opacity="0.6" font-style="italic">AI tools &amp;</text>
+        <text x="385" y="474" font-size="10.5" fill="#7c2d12" text-anchor="middle" opacity="0.6" font-style="italic">fair assessment</text>
 
-      <!-- Overlap: Literacy ∩ TPACK -->
-      <text x="540" y="195" font-size="10.5" fill="#4c1d95" text-anchor="middle" opacity="0.6" font-style="italic">Curriculum</text>
-      <text x="540" y="209" font-size="10.5" fill="#4c1d95" text-anchor="middle" opacity="0.6" font-style="italic">design</text>
+        <!-- Overlap: Literacy ∩ TPACK -->
+        <text x="540" y="195" font-size="10.5" fill="#4c1d95" text-anchor="middle" opacity="0.6" font-style="italic">Curriculum</text>
+        <text x="540" y="209" font-size="10.5" fill="#4c1d95" text-anchor="middle" opacity="0.6" font-style="italic">design</text>
+      </g>
+
+      <!-- Pulse animation for active ellipse -->
+      <style>
+        @keyframes venn-pulse {
+          0%, 100% { stroke-width: 3; }
+          50% { stroke-width: 5; }
+        }
+        .strand-pill { transition: opacity 0.4s ease, transform 0.4s ease; }
+        .strand-title { transition: opacity 0.3s ease; }
+        .strand-title:hover text { font-size: 20px; }
+        .overlap-labels { transition: opacity 0.4s ease; }
+      </style>
     </svg>
   </div>
 
-  <!-- Hover interaction -->
+  <!-- Description panel (appears on click) -->
+  <div id="venn-desc-panel" style="max-width:660px;margin:1rem auto 0;padding:0;overflow:hidden;transition:all 0.5s cubic-bezier(0.4,0,0.2,1);max-height:0;opacity:0">
+    <div style="padding:1.2rem 1.5rem;border-radius:14px;border:1px solid rgba(100,100,200,0.12);background:linear-gradient(135deg,#f8fafc,#f1f5f9);box-shadow:0 2px 12px rgba(0,0,0,0.06)">
+      <div style="display:flex;align-items:center;gap:0.6rem;margin-bottom:0.5rem">
+        <div id="venn-desc-dot" style="width:10px;height:10px;border-radius:50%;background:#047857"></div>
+        <strong id="venn-desc-title" style="font-size:1.05rem;color:#1e1b4b"></strong>
+      </div>
+      <p id="venn-desc-text" style="font-size:0.92rem;color:#475569;line-height:1.7;margin:0"></p>
+    </div>
+  </div>
+
+  <!-- Click interaction -->
   <script>
   (function(){
+    var active = null;
+    var strandData = {
+      literacy: {
+        color: '#047857',
+        title: 'AI Literacy & Learning Design',
+        desc: 'Exploring how to design learning environments that build AI literacy through hands-on, principle-driven experiences. Projects include GenAI curriculum reviews, the PeteChat AI tutor, and the Clawdbot tangible learning kit.'
+      },
+      tpack: {
+        color: '#6d28d9',
+        title: 'TPACK & Teacher Ed',
+        desc: 'Investigating how teachers integrate technology into diverse classrooms using the TPACK framework. Research spans Xinjiang teacher education contexts and P-12 generative AI readiness.'
+      },
+      idle: {
+        color: '#2563eb',
+        title: 'IDLE & Pragmatics',
+        desc: 'Studying informal and self-directed language learning with AI chatbots. Research includes Doubao-powered EFL practice, pragmatic context awareness, and CALL methodologies.'
+      },
+      equity: {
+        color: '#c2410c',
+        title: 'Equity & Assessment',
+        desc: 'Examining how AI reshapes assessment authenticity and academic authorship. Work includes meta-analyses of AI in education, evaluative judgment frameworks, and equity-centered design.'
+      }
+    };
     var ids = ['literacy','idle','equity','tpack'];
-    ids.forEach(function(s){
-      var el = document.getElementById('venn-'+s);
-      if(!el) return;
-      el.addEventListener('mouseenter', function(){
-        el.style.filter = 'url(#shadow) brightness(1.08)';
-        el.setAttribute('stroke-opacity','0.7');
+    var panel = document.getElementById('venn-desc-panel');
+    var descTitle = document.getElementById('venn-desc-title');
+    var descText = document.getElementById('venn-desc-text');
+    var descDot = document.getElementById('venn-desc-dot');
+
+    function resetAll() {
+      ids.forEach(function(id) {
+        var el = document.getElementById('venn-'+id);
+        if (el) {
+          el.style.opacity = '';
+          el.setAttribute('stroke-width','2');
+          el.setAttribute('stroke-opacity','0.4');
+          el.style.animation = '';
+        }
+        var grp = document.querySelector('[data-strand="'+id+'"]');
+        if (grp) {
+          grp.querySelector('.strand-title').style.opacity = '';
+          var pills = grp.querySelectorAll('.strand-pill');
+          pills.forEach(function(p) {
+            p.style.opacity = '0';
+            p.style.transform = 'translateY(8px)';
+          });
+        }
       });
-      el.addEventListener('mouseleave', function(){
-        el.style.filter = 'url(#shadow)';
-        el.setAttribute('stroke-opacity','0.4');
+      var overlaps = document.querySelector('.overlap-labels');
+      if (overlaps) overlaps.style.opacity = '';
+      panel.style.maxHeight = '0';
+      panel.style.opacity = '0';
+      active = null;
+    }
+
+    function activateStrand(strand) {
+      if (active === strand) { resetAll(); return; }
+      active = strand;
+      var data = strandData[strand];
+
+      // Dim all ellipses and titles, then highlight selected
+      ids.forEach(function(id) {
+        var el = document.getElementById('venn-'+id);
+        var grp = document.querySelector('[data-strand="'+id+'"]');
+        if (id === strand) {
+          el.style.opacity = '1';
+          el.setAttribute('stroke-width','3');
+          el.setAttribute('stroke-opacity','0.8');
+          el.style.animation = 'venn-pulse 2s ease-in-out infinite';
+          if (grp) {
+            grp.querySelector('.strand-title').style.opacity = '1';
+            var pills = grp.querySelectorAll('.strand-pill');
+            pills.forEach(function(p, i) {
+              setTimeout(function() {
+                p.style.opacity = '1';
+                p.style.transform = 'translateY(0)';
+              }, 100 + i * 120);
+            });
+          }
+        } else {
+          el.style.opacity = '0.35';
+          el.setAttribute('stroke-width','1.5');
+          el.setAttribute('stroke-opacity','0.15');
+          el.style.animation = '';
+          if (grp) {
+            grp.querySelector('.strand-title').style.opacity = '0.3';
+            var pills = grp.querySelectorAll('.strand-pill');
+            pills.forEach(function(p) {
+              p.style.opacity = '0';
+              p.style.transform = 'translateY(8px)';
+            });
+          }
+        }
       });
+
+      // Dim overlaps
+      var overlaps = document.querySelector('.overlap-labels');
+      if (overlaps) overlaps.style.opacity = '0.2';
+
+      // Show description panel
+      descTitle.textContent = data.title;
+      descText.textContent = data.desc;
+      descDot.style.background = data.color;
+      descTitle.style.color = data.color;
+      panel.style.maxHeight = '200px';
+      panel.style.opacity = '1';
+    }
+
+    // Attach click to titles and ellipses
+    ids.forEach(function(id) {
+      var ellipse = document.getElementById('venn-'+id);
+      var grp = document.querySelector('[data-strand="'+id+'"]');
+      if (ellipse) ellipse.addEventListener('click', function(e) { e.stopPropagation(); activateStrand(id); });
+      if (grp) {
+        var title = grp.querySelector('.strand-title');
+        if (title) title.addEventListener('click', function(e) { e.stopPropagation(); activateStrand(id); });
+      }
+    });
+
+    // Click outside to reset
+    document.addEventListener('click', function(e) {
+      if (active && !e.target.closest('.strand-group') && !e.target.closest('[id^="venn-"]') && !e.target.closest('#venn-desc-panel')) {
+        resetAll();
+      }
     });
   })();
   </script>
