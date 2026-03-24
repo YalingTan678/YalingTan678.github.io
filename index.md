@@ -12,8 +12,25 @@ author_profile: false
     <!-- SVG Venn Diagram -->
     <svg viewBox="0 0 900 680" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
       <defs>
-        <filter id="shadow"><feDropShadow dx="0" dy="2" stdDeviation="6" flood-opacity="0.10"/></filter>
-        <filter id="pill-shadow"><feDropShadow dx="0" dy="1" stdDeviation="2" flood-opacity="0.12"/></filter>
+        <filter id="shadow-green" x="-20%" y="-20%" width="140%" height="140%">
+          <feDropShadow dx="0" dy="4" stdDeviation="10" flood-color="#047857" flood-opacity="0.25"/>
+        </filter>
+        <filter id="shadow-blue" x="-20%" y="-20%" width="140%" height="140%">
+          <feDropShadow dx="0" dy="4" stdDeviation="10" flood-color="#2563eb" flood-opacity="0.25"/>
+        </filter>
+        <filter id="shadow-orange" x="-20%" y="-20%" width="140%" height="140%">
+          <feDropShadow dx="0" dy="4" stdDeviation="10" flood-color="#c2410c" flood-opacity="0.25"/>
+        </filter>
+        <filter id="shadow-purple" x="-20%" y="-20%" width="140%" height="140%">
+          <feDropShadow dx="0" dy="4" stdDeviation="10" flood-color="#6d28d9" flood-opacity="0.25"/>
+        </filter>
+        <filter id="pill-shadow" x="-15%" y="-40%" width="130%" height="200%">
+          <feGaussianBlur in="SourceAlpha" stdDeviation="3" result="blur"/>
+          <feOffset dy="2" result="shifted"/>
+          <feFlood flood-opacity="0.15" result="color"/>
+          <feComposite in="color" in2="shifted" operator="in" result="shadow"/>
+          <feMerge><feMergeNode in="shadow"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
         <!-- Gradient fills for ellipses -->
         <radialGradient id="grad-literacy" cx="35%" cy="30%" r="70%">
           <stop offset="0%" stop-color="#6ee7b7" stop-opacity="0.55"/>
@@ -37,16 +54,16 @@ author_profile: false
         </radialGradient>
         <!-- Pill gradient backgrounds -->
         <linearGradient id="pill-green" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stop-color="#ecfdf5"/><stop offset="100%" stop-color="#d1fae5"/>
+          <stop offset="0%" stop-color="#ffffff"/><stop offset="40%" stop-color="#ecfdf5"/><stop offset="100%" stop-color="#a7f3d0"/>
         </linearGradient>
         <linearGradient id="pill-blue" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stop-color="#eff6ff"/><stop offset="100%" stop-color="#dbeafe"/>
+          <stop offset="0%" stop-color="#ffffff"/><stop offset="40%" stop-color="#eff6ff"/><stop offset="100%" stop-color="#bfdbfe"/>
         </linearGradient>
         <linearGradient id="pill-orange" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stop-color="#fff7ed"/><stop offset="100%" stop-color="#ffedd5"/>
+          <stop offset="0%" stop-color="#ffffff"/><stop offset="40%" stop-color="#fff7ed"/><stop offset="100%" stop-color="#fed7aa"/>
         </linearGradient>
         <linearGradient id="pill-purple" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stop-color="#f5f3ff"/><stop offset="100%" stop-color="#ede9fe"/>
+          <stop offset="0%" stop-color="#ffffff"/><stop offset="40%" stop-color="#f5f3ff"/><stop offset="100%" stop-color="#ddd6fe"/>
         </linearGradient>
         <linearGradient id="pill-center" x1="0" y1="0" x2="1" y2="1">
           <stop offset="0%" stop-color="#f8fafc"/><stop offset="100%" stop-color="#e2e8f0"/>
@@ -54,10 +71,10 @@ author_profile: false
       </defs>
 
       <!-- Strand ellipses with gradient fills -->
-      <ellipse id="venn-literacy" cx="340" cy="240" rx="240" ry="185" fill="url(#grad-literacy)" stroke="#047857" stroke-width="2" stroke-opacity="0.4" filter="url(#shadow)" style="cursor:pointer;transition:all 0.5s ease"/>
-      <ellipse id="venn-idle" cx="230" cy="410" rx="220" ry="175" fill="url(#grad-idle)" stroke="#2563eb" stroke-width="2" stroke-opacity="0.4" filter="url(#shadow)" style="cursor:pointer;transition:all 0.5s ease"/>
-      <ellipse id="venn-equity" cx="530" cy="410" rx="220" ry="175" fill="url(#grad-equity)" stroke="#c2410c" stroke-width="2" stroke-opacity="0.4" filter="url(#shadow)" style="cursor:pointer;transition:all 0.5s ease"/>
-      <ellipse id="venn-tpack" cx="650" cy="240" rx="210" ry="170" fill="url(#grad-tpack)" stroke="#6d28d9" stroke-width="2" stroke-opacity="0.4" filter="url(#shadow)" style="cursor:pointer;transition:all 0.5s ease"/>
+      <ellipse id="venn-literacy" cx="340" cy="240" rx="240" ry="185" fill="url(#grad-literacy)" stroke="#047857" stroke-width="2.5" stroke-opacity="0.5" filter="url(#shadow-green)" style="cursor:pointer;transition:all 0.5s ease"/>
+      <ellipse id="venn-idle" cx="230" cy="410" rx="220" ry="175" fill="url(#grad-idle)" stroke="#2563eb" stroke-width="2.5" stroke-opacity="0.5" filter="url(#shadow-blue)" style="cursor:pointer;transition:all 0.5s ease"/>
+      <ellipse id="venn-equity" cx="530" cy="410" rx="220" ry="175" fill="url(#grad-equity)" stroke="#c2410c" stroke-width="2.5" stroke-opacity="0.5" filter="url(#shadow-orange)" style="cursor:pointer;transition:all 0.5s ease"/>
+      <ellipse id="venn-tpack" cx="650" cy="240" rx="210" ry="170" fill="url(#grad-tpack)" stroke="#6d28d9" stroke-width="2.5" stroke-opacity="0.5" filter="url(#shadow-purple)" style="cursor:pointer;transition:all 0.5s ease"/>
 
       <!-- ===== AI Literacy & Learning Design (top-left green) ===== -->
       <g class="strand-group" data-strand="literacy">
@@ -68,15 +85,15 @@ author_profile: false
         </g>
         <g class="strand-pills">
           <a href="/publication/2025-two-years-innovation" class="strand-pill" style="opacity:0;transform:translateY(8px)">
-            <rect x="185" y="170" width="180" height="26" rx="13" fill="url(#pill-green)" stroke="#047857" stroke-opacity="0.25" stroke-width="1" filter="url(#pill-shadow)"/>
+            <rect x="185" y="170" width="180" height="26" rx="13" fill="url(#pill-green)" stroke="#047857" stroke-opacity="0.4" stroke-width="1.2" filter="url(#pill-shadow)"/>
             <text x="275" y="188" font-size="11.5" fill="#047857" font-weight="600" text-anchor="middle" style="cursor:pointer">GenAI Review · CAEAI '25</text>
           </a>
           <a href="/publication/ur-tutor-not-solver" class="strand-pill" style="opacity:0;transform:translateY(8px)">
-            <rect x="185" y="202" width="180" height="26" rx="13" fill="url(#pill-green)" stroke="#047857" stroke-opacity="0.25" stroke-width="1" filter="url(#pill-shadow)"/>
+            <rect x="185" y="202" width="180" height="26" rx="13" fill="url(#pill-green)" stroke="#047857" stroke-opacity="0.4" stroke-width="1.2" filter="url(#pill-shadow)"/>
             <text x="275" y="220" font-size="11.5" fill="#047857" font-weight="600" text-anchor="middle" style="cursor:pointer">PeteChat Design Case →</text>
           </a>
           <a href="/publication/2026-clawdbot-unboxed" class="strand-pill" style="opacity:0;transform:translateY(8px)">
-            <rect x="200" y="234" width="150" height="26" rx="13" fill="url(#pill-green)" stroke="#047857" stroke-opacity="0.25" stroke-width="1" filter="url(#pill-shadow)"/>
+            <rect x="200" y="234" width="150" height="26" rx="13" fill="url(#pill-green)" stroke="#047857" stroke-opacity="0.4" stroke-width="1.2" filter="url(#pill-shadow)"/>
             <text x="275" y="252" font-size="11.5" fill="#047857" font-weight="600" text-anchor="middle" style="cursor:pointer">Clawdbot · Talk '26</text>
           </a>
         </g>
@@ -91,11 +108,11 @@ author_profile: false
         </g>
         <g class="strand-pills">
           <a href="/publication/ur-tpack-xinjiang" class="strand-pill" style="opacity:0;transform:translateY(8px)">
-            <rect x="640" y="180" width="160" height="26" rx="13" fill="url(#pill-purple)" stroke="#6d28d9" stroke-opacity="0.25" stroke-width="1" filter="url(#pill-shadow)"/>
+            <rect x="640" y="180" width="160" height="26" rx="13" fill="url(#pill-purple)" stroke="#6d28d9" stroke-opacity="0.4" stroke-width="1.2" filter="url(#pill-shadow)"/>
             <text x="720" y="198" font-size="11.5" fill="#6d28d9" font-weight="600" text-anchor="middle" style="cursor:pointer">TPACK Xinjiang →</text>
           </a>
           <a href="/publication/2025-purdue-ai-gai" class="strand-pill" style="opacity:0;transform:translateY(8px)">
-            <rect x="640" y="212" width="160" height="26" rx="13" fill="url(#pill-purple)" stroke="#6d28d9" stroke-opacity="0.25" stroke-width="1" filter="url(#pill-shadow)"/>
+            <rect x="640" y="212" width="160" height="26" rx="13" fill="url(#pill-purple)" stroke="#6d28d9" stroke-opacity="0.4" stroke-width="1.2" filter="url(#pill-shadow)"/>
             <text x="720" y="230" font-size="11.5" fill="#6d28d9" font-weight="600" text-anchor="middle" style="cursor:pointer">GAI-IDLE · P-12 '25</text>
           </a>
         </g>
@@ -110,15 +127,15 @@ author_profile: false
         </g>
         <g class="strand-pills">
           <a href="/publication/2026-doubao-genai-efl" class="strand-pill" style="opacity:0;transform:translateY(8px)">
-            <rect x="55" y="420" width="170" height="26" rx="13" fill="url(#pill-blue)" stroke="#2563eb" stroke-opacity="0.25" stroke-width="1" filter="url(#pill-shadow)"/>
+            <rect x="55" y="420" width="170" height="26" rx="13" fill="url(#pill-blue)" stroke="#2563eb" stroke-opacity="0.4" stroke-width="1.2" filter="url(#pill-shadow)"/>
             <text x="140" y="438" font-size="11.5" fill="#2563eb" font-weight="600" text-anchor="middle" style="cursor:pointer">Doubao EFL · PE '26</text>
           </a>
           <a href="/publication/2025-pointing-to-context" class="strand-pill" style="opacity:0;transform:translateY(8px)">
-            <rect x="55" y="452" width="170" height="26" rx="13" fill="url(#pill-blue)" stroke="#2563eb" stroke-opacity="0.25" stroke-width="1" filter="url(#pill-shadow)"/>
+            <rect x="55" y="452" width="170" height="26" rx="13" fill="url(#pill-blue)" stroke="#2563eb" stroke-opacity="0.4" stroke-width="1.2" filter="url(#pill-shadow)"/>
             <text x="140" y="470" font-size="11.5" fill="#2563eb" font-weight="600" text-anchor="middle" style="cursor:pointer">Context · MJSS '25</text>
           </a>
           <a href="/publication/2024-call-context" class="strand-pill" style="opacity:0;transform:translateY(8px)">
-            <rect x="70" y="484" width="140" height="26" rx="13" fill="url(#pill-blue)" stroke="#2563eb" stroke-opacity="0.25" stroke-width="1" filter="url(#pill-shadow)"/>
+            <rect x="70" y="484" width="140" height="26" rx="13" fill="url(#pill-blue)" stroke="#2563eb" stroke-opacity="0.4" stroke-width="1.2" filter="url(#pill-shadow)"/>
             <text x="140" y="502" font-size="11.5" fill="#2563eb" font-weight="600" text-anchor="middle" style="cursor:pointer">CALL Tokyo '24</text>
           </a>
         </g>
@@ -133,15 +150,15 @@ author_profile: false
         </g>
         <g class="strand-pills">
           <a href="/publication/2026-aera-meta-analysis" class="strand-pill" style="opacity:0;transform:translateY(8px)">
-            <rect x="520" y="420" width="200" height="26" rx="13" fill="url(#pill-orange)" stroke="#c2410c" stroke-opacity="0.25" stroke-width="1" filter="url(#pill-shadow)"/>
+            <rect x="520" y="420" width="200" height="26" rx="13" fill="url(#pill-orange)" stroke="#c2410c" stroke-opacity="0.4" stroke-width="1.2" filter="url(#pill-shadow)"/>
             <text x="620" y="438" font-size="11.5" fill="#c2410c" font-weight="600" text-anchor="middle" style="cursor:pointer">Meta-analysis · AERA '26</text>
           </a>
           <a href="/publication/2025-aect-authenticity" class="strand-pill" style="opacity:0;transform:translateY(8px)">
-            <rect x="530" y="452" width="180" height="26" rx="13" fill="url(#pill-orange)" stroke="#c2410c" stroke-opacity="0.25" stroke-width="1" filter="url(#pill-shadow)"/>
+            <rect x="530" y="452" width="180" height="26" rx="13" fill="url(#pill-orange)" stroke="#c2410c" stroke-opacity="0.4" stroke-width="1.2" filter="url(#pill-shadow)"/>
             <text x="620" y="470" font-size="11.5" fill="#c2410c" font-weight="600" text-anchor="middle" style="cursor:pointer">Authenticity · AECT '25</text>
           </a>
           <a href="/publication/ur-authorship-agency-ai" class="strand-pill" style="opacity:0;transform:translateY(8px)">
-            <rect x="545" y="484" width="150" height="26" rx="13" fill="url(#pill-orange)" stroke="#c2410c" stroke-opacity="0.25" stroke-width="1" filter="url(#pill-shadow)"/>
+            <rect x="545" y="484" width="150" height="26" rx="13" fill="url(#pill-orange)" stroke="#c2410c" stroke-opacity="0.4" stroke-width="1.2" filter="url(#pill-shadow)"/>
             <text x="620" y="502" font-size="11.5" fill="#c2410c" font-weight="600" text-anchor="middle" style="cursor:pointer">Authorship &amp; AI →</text>
           </a>
         </g>
