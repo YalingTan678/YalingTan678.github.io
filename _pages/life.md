@@ -290,81 +290,113 @@ permalink: /life/
   var renderer = new THREE.WebGLRenderer({canvas:document.getElementById('c'), antialias:true});
   renderer.setSize(W, H);
   renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
-  renderer.setClearColor(0x000000);
-  renderer.toneMapping = THREE.ACESFilmicToneMapping;
-  renderer.toneMappingExposure = 1.0;
+  renderer.setClearColor(0x050505);
 
   var scene = new THREE.Scene();
-  scene.fog = new THREE.FogExp2(0x000000, 0.032);
+  scene.fog = new THREE.FogExp2(0x050505, 0.06);
 
-  var camera = new THREE.PerspectiveCamera(50, W/H, 0.1, 200);
-  camera.position.set(0, 0, 12);
+  var camera = new THREE.PerspectiveCamera(60, W/H, 0.1, 100);
+  camera.position.set(0, 0, 20);
 
   // Lights
-  scene.add(new THREE.AmbientLight(0xffffff, 0.12));
-  var dirLight = new THREE.DirectionalLight(0xffffff, 0.5);
-  dirLight.position.set(5, 8, 5);
-  scene.add(dirLight);
-  var ptLight = new THREE.PointLight(0xffffff, 1.5, 30);
-  ptLight.position.set(0, 0, 8);
+  scene.add(new THREE.AmbientLight(0xffffff, 0.3));
+  var ptLight = new THREE.PointLight(0xffffff, 1.2, 50);
+  ptLight.position.set(0, 5, 15);
   scene.add(ptLight);
 
-  // Camera path
-  var camPath = new THREE.CatmullRomCurve3([
-    new THREE.Vector3(0,0,12), new THREE.Vector3(3,1,8), new THREE.Vector3(-2,2,4),
-    new THREE.Vector3(4,-1,0), new THREE.Vector3(-3,0,-4), new THREE.Vector3(0,3,-8),
-    new THREE.Vector3(0,0,-13)
-  ], false, 'catmullrom', 0.5);
-
-  var lookPath = new THREE.CatmullRomCurve3([
-    new THREE.Vector3(0,0,0), new THREE.Vector3(1,0,4), new THREE.Vector3(-1,1,0),
-    new THREE.Vector3(2,-1,-3), new THREE.Vector3(-1,0,-7), new THREE.Vector3(0,1,-11),
-    new THREE.Vector3(0,0,-18)
-  ], false, 'catmullrom', 0.5);
-
-  // Wireframe objects along path
-  var meshes = [];
-  var geoList = [
-    new THREE.IcosahedronGeometry(1,1), new THREE.TorusGeometry(.8,.25,16,40),
-    new THREE.OctahedronGeometry(.9,0), new THREE.TorusKnotGeometry(.6,.2,64,8,2,3),
-    new THREE.DodecahedronGeometry(.7,0), new THREE.IcosahedronGeometry(1.2,0)
+  /* ===== Flowing Particle Ribbons ===== */
+  // Define multiple ribbon curves that flow through the 3D space
+  var ribbonCurves = [
+    new THREE.CatmullRomCurve3([
+      new THREE.Vector3(-15,2,5), new THREE.Vector3(-5,4,0), new THREE.Vector3(0,1,-5),
+      new THREE.Vector3(8,-2,-10), new THREE.Vector3(15,0,-18), new THREE.Vector3(5,3,-25),
+      new THREE.Vector3(-10,1,-32), new THREE.Vector3(0,-1,-40)
+    ], false, 'catmullrom', 0.3),
+    new THREE.CatmullRomCurve3([
+      new THREE.Vector3(12,-3,8), new THREE.Vector3(4,-1,2), new THREE.Vector3(-3,2,-3),
+      new THREE.Vector3(-10,0,-8), new THREE.Vector3(-5,-3,-15), new THREE.Vector3(8,1,-22),
+      new THREE.Vector3(12,-2,-30), new THREE.Vector3(0,2,-38)
+    ], false, 'catmullrom', 0.3),
+    new THREE.CatmullRomCurve3([
+      new THREE.Vector3(-8,-4,6), new THREE.Vector3(2,-2,1), new THREE.Vector3(6,3,-4),
+      new THREE.Vector3(-2,5,-10), new THREE.Vector3(-8,-1,-16), new THREE.Vector3(3,-3,-24),
+      new THREE.Vector3(-5,4,-30), new THREE.Vector3(2,0,-38)
+    ], false, 'catmullrom', 0.3),
+    new THREE.CatmullRomCurve3([
+      new THREE.Vector3(5,5,7), new THREE.Vector3(-2,3,2), new THREE.Vector3(-7,-1,-4),
+      new THREE.Vector3(3,-4,-9), new THREE.Vector3(10,2,-14), new THREE.Vector3(-3,5,-20),
+      new THREE.Vector3(-8,-2,-28), new THREE.Vector3(4,1,-36)
+    ], false, 'catmullrom', 0.3),
+    new THREE.CatmullRomCurve3([
+      new THREE.Vector3(0,-5,9), new THREE.Vector3(7,0,3), new THREE.Vector3(-4,4,-2),
+      new THREE.Vector3(-12,-2,-8), new THREE.Vector3(2,3,-13), new THREE.Vector3(8,-4,-20),
+      new THREE.Vector3(-6,0,-27), new THREE.Vector3(-2,-3,-35)
+    ], false, 'catmullrom', 0.3)
   ];
-  for(var i=0;i<40;i++){
-    var pp=camPath.getPointAt(i/40);
-    var m=new THREE.Mesh(geoList[i%geoList.length],
-      new THREE.MeshPhongMaterial({color:0xffffff,wireframe:true,transparent:true,opacity:.06+Math.random()*.08}));
-    m.position.set(pp.x+(Math.random()-.5)*12, pp.y+(Math.random()-.5)*8, pp.z+(Math.random()-.5)*6);
-    var s=.3+Math.random()*1.5; m.scale.set(s,s,s);
-    m.rotation.set(Math.random()*Math.PI,Math.random()*Math.PI,0);
-    m.userData={rx:(Math.random()-.5)*.003,ry:(Math.random()-.5)*.003};
-    scene.add(m); meshes.push(m);
+
+  // Create particle systems for each ribbon
+  var ribbons = [];
+  var PARTICLES_PER_RIBBON = 1200;
+
+  ribbonCurves.forEach(function(curve, ri) {
+    var geo = new THREE.BufferGeometry();
+    var positions = new Float32Array(PARTICLES_PER_RIBBON * 3);
+    var basePositions = new Float32Array(PARTICLES_PER_RIBBON * 3); // store original positions
+    var sizes = new Float32Array(PARTICLES_PER_RIBBON);
+    var opacities = new Float32Array(PARTICLES_PER_RIBBON);
+
+    for (var i = 0; i < PARTICLES_PER_RIBBON; i++) {
+      var t = i / PARTICLES_PER_RIBBON;
+      var pt = curve.getPointAt(t);
+      // Add slight random spread perpendicular to the ribbon
+      var spread = 0.15 + Math.random() * 0.3;
+      var angle = Math.random() * Math.PI * 2;
+      positions[i*3]   = pt.x + Math.cos(angle) * spread;
+      positions[i*3+1] = pt.y + Math.sin(angle) * spread;
+      positions[i*3+2] = pt.z + (Math.random() - 0.5) * 0.3;
+      basePositions[i*3]   = positions[i*3];
+      basePositions[i*3+1] = positions[i*3+1];
+      basePositions[i*3+2] = positions[i*3+2];
+      sizes[i] = 0.02 + Math.random() * 0.04;
+      opacities[i] = 0.3 + Math.random() * 0.5;
+    }
+
+    geo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+
+    var mat = new THREE.PointsMaterial({
+      color: 0xffffff,
+      size: 0.04,
+      transparent: true,
+      opacity: 0.6,
+      sizeAttenuation: true
+    });
+
+    var points = new THREE.Points(geo, mat);
+    scene.add(points);
+    ribbons.push({
+      points: points,
+      geo: geo,
+      base: basePositions,
+      curve: curve,
+      speed: 0.15 + ri * 0.05,
+      waveAmp: 0.08 + ri * 0.03,
+      waveFreq: 1.5 + ri * 0.4
+    });
+  });
+
+  // Scattered dust particles
+  var dustGeo = new THREE.BufferGeometry();
+  var dustArr = new Float32Array(300 * 3);
+  for (var i = 0; i < 300; i++) {
+    dustArr[i*3]   = (Math.random() - 0.5) * 30;
+    dustArr[i*3+1] = (Math.random() - 0.5) * 20;
+    dustArr[i*3+2] = 10 - Math.random() * 50;
   }
-
-  // Solid accent objects
-  var sGeos=[new THREE.SphereGeometry(.15,32,32),new THREE.BoxGeometry(.2,.2,.2),new THREE.TetrahedronGeometry(.18)];
-  for(var i=0;i<50;i++){
-    var pp=camPath.getPointAt(Math.random());
-    var so=new THREE.Mesh(sGeos[i%sGeos.length],
-      new THREE.MeshStandardMaterial({color:0xffffff,metalness:.9,roughness:.1,transparent:true,opacity:.25+Math.random()*.3}));
-    so.position.set(pp.x+(Math.random()-.5)*14, pp.y+(Math.random()-.5)*10, pp.z+(Math.random()-.5)*8);
-    var ss=.3+Math.random()*.7; so.scale.set(ss,ss,ss);
-    so.userData={rx:(Math.random()-.5)*.005,ry:(Math.random()-.5)*.005,
-      fs:.5+Math.random(),fa:.2+Math.random()*.3,by:so.position.y};
-    scene.add(so); meshes.push(so);
-  }
-
-  // Particles
-  var pGeo=new THREE.BufferGeometry(),pArr=new Float32Array(500*3);
-  for(var i=0;i<500;i++){pArr[i*3]=(Math.random()-.5)*40;pArr[i*3+1]=(Math.random()-.5)*30;pArr[i*3+2]=15-Math.random()*40;}
-  pGeo.setAttribute('position',new THREE.BufferAttribute(pArr,3));
-  var pts=new THREE.Points(pGeo,new THREE.PointsMaterial({color:0xffffff,size:.02,transparent:true,opacity:.4}));
-  scene.add(pts);
-
-  // Path guide line
-  scene.add(new THREE.Line(
-    new THREE.BufferGeometry().setFromPoints(camPath.getPoints(200)),
-    new THREE.LineBasicMaterial({color:0xffffff,transparent:true,opacity:.025})
-  ));
+  dustGeo.setAttribute('position', new THREE.BufferAttribute(dustArr, 3));
+  var dust = new THREE.Points(dustGeo, new THREE.PointsMaterial({
+    color: 0xffffff, size: 0.015, transparent: true, opacity: 0.2
+  }));
+  scene.add(dust);
 
   /* ===== Scroll tracking ===== */
   var sections = document.querySelectorAll('.scene');
@@ -407,29 +439,49 @@ permalink: /life/
 
     // Smooth camera interpolation
     smoothProg += (scrollProg - smoothProg) * 0.05;
-    var t = Math.max(.001, Math.min(.999, smoothProg));
+    var t = smoothProg;
 
-    // Camera on path
-    camera.position.copy(camPath.getPointAt(t));
-    camera.lookAt(lookPath.getPointAt(t));
+    // Camera: scroll drives Z position through the ribbon world
+    var camZ = 20 - t * 55; // move from z=20 to z=-35
+    var camX = Math.sin(t * Math.PI * 2) * 3; // gentle sway
+    var camY = Math.cos(t * Math.PI * 1.5) * 2;
+    camera.position.set(camX, camY, camZ);
+    camera.lookAt(camX * 0.3, camY * 0.3, camZ - 8);
 
     // Light follows camera
-    ptLight.position.copy(camera.position);
-    ptLight.position.x+=2; ptLight.position.y+=1;
-    ptLight.intensity=1.2+Math.sin(el*.5)*.3;
+    ptLight.position.set(camX + 3, camY + 4, camZ + 3);
+    ptLight.intensity = 1.0 + Math.sin(el * 0.5) * 0.3;
 
-    // Dynamic fog & exposure
-    scene.fog.density=.028+t*.012;
-    renderer.toneMappingExposure=.8+Math.sin(t*Math.PI)*.4;
+    // Animate ribbon particles — flowing wave motion driven by scroll + time
+    for (var ri = 0; ri < ribbons.length; ri++) {
+      var rb = ribbons[ri];
+      var positions = rb.geo.attributes.position.array;
+      var base = rb.base;
+      var scrollWave = t * 10; // scroll drives wave phase
 
-    // Animate meshes
-    for(var i=0;i<meshes.length;i++){
-      var m=meshes[i];
-      m.rotation.x+=m.userData.rx||0;
-      m.rotation.y+=m.userData.ry||0;
-      if(m.userData.fs) m.position.y=m.userData.by+Math.sin(el*m.userData.fs+i)*m.userData.fa;
+      for (var i = 0; i < PARTICLES_PER_RIBBON; i++) {
+        var along = i / PARTICLES_PER_RIBBON;
+        // Wave displacement perpendicular to ribbon
+        var wave = Math.sin(along * rb.waveFreq * 6.28 + el * rb.speed * 3 + scrollWave + ri) * rb.waveAmp;
+        var wave2 = Math.cos(along * rb.waveFreq * 4 + el * rb.speed * 2 + scrollWave * 0.7) * rb.waveAmp * 0.6;
+
+        positions[i*3]   = base[i*3]   + wave;
+        positions[i*3+1] = base[i*3+1] + wave2;
+        positions[i*3+2] = base[i*3+2] + Math.sin(along * 3 + el * rb.speed) * 0.05;
+      }
+      rb.geo.attributes.position.needsUpdate = true;
+
+      // Vary opacity based on proximity to camera
+      var distZ = Math.abs(rb.curve.getPointAt(0.5).z - camZ);
+      rb.points.material.opacity = Math.max(0.15, Math.min(0.7, 1 - distZ * 0.03));
     }
-    pts.rotation.y=el*.008;
+
+    // Dust rotation
+    dust.rotation.y = el * 0.005;
+    dust.rotation.x = Math.sin(el * 0.003) * 0.05;
+
+    // Dynamic fog
+    scene.fog.density = 0.04 + t * 0.02;
 
     // UI updates
     var idx=Math.min(Math.floor(smoothProg*sections.length), sections.length-1);
