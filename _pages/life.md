@@ -711,13 +711,13 @@ function initDetailScene() {
     }
     geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
 
-    // White/silver with faint color tint
-    var streamColors = [0xddddee, 0xccccdd, 0xbbbbcc, 0xd0d0e0];
+    // Bright colored streams for visibility
+    var streamColors = [0x7c3aed, 0xf75092, 0x3b82f6, 0x22c55e];
     var pts = new THREE.Points(geo, new THREE.PointsMaterial({
       color: streamColors[si],
-      size: 0.06,
+      size: 0.15,
       transparent: true,
-      opacity: 0.55,
+      opacity: 0.8,
       sizeAttenuation: true
     }));
     detailScene.add(pts);
