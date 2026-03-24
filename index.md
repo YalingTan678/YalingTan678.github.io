@@ -15,21 +15,25 @@ author_profile: false
         <filter id="shadow"><feDropShadow dx="0" dy="2" stdDeviation="6" flood-opacity="0.10"/></filter>
         <filter id="pill-shadow"><feDropShadow dx="0" dy="1" stdDeviation="2" flood-opacity="0.12"/></filter>
         <!-- Gradient fills for ellipses -->
-        <radialGradient id="grad-literacy" cx="40%" cy="35%">
-          <stop offset="0%" stop-color="#34d399" stop-opacity="0.22"/>
-          <stop offset="100%" stop-color="#047857" stop-opacity="0.08"/>
+        <radialGradient id="grad-literacy" cx="35%" cy="30%" r="70%">
+          <stop offset="0%" stop-color="#6ee7b7" stop-opacity="0.55"/>
+          <stop offset="45%" stop-color="#34d399" stop-opacity="0.30"/>
+          <stop offset="100%" stop-color="#047857" stop-opacity="0.10"/>
         </radialGradient>
-        <radialGradient id="grad-idle" cx="40%" cy="35%">
-          <stop offset="0%" stop-color="#60a5fa" stop-opacity="0.22"/>
-          <stop offset="100%" stop-color="#2563eb" stop-opacity="0.08"/>
+        <radialGradient id="grad-idle" cx="35%" cy="30%" r="70%">
+          <stop offset="0%" stop-color="#93c5fd" stop-opacity="0.55"/>
+          <stop offset="45%" stop-color="#60a5fa" stop-opacity="0.30"/>
+          <stop offset="100%" stop-color="#2563eb" stop-opacity="0.10"/>
         </radialGradient>
-        <radialGradient id="grad-equity" cx="60%" cy="35%">
-          <stop offset="0%" stop-color="#fb923c" stop-opacity="0.22"/>
-          <stop offset="100%" stop-color="#c2410c" stop-opacity="0.08"/>
+        <radialGradient id="grad-equity" cx="65%" cy="30%" r="70%">
+          <stop offset="0%" stop-color="#fdba74" stop-opacity="0.55"/>
+          <stop offset="45%" stop-color="#fb923c" stop-opacity="0.30"/>
+          <stop offset="100%" stop-color="#c2410c" stop-opacity="0.10"/>
         </radialGradient>
-        <radialGradient id="grad-tpack" cx="60%" cy="35%">
-          <stop offset="0%" stop-color="#a78bfa" stop-opacity="0.22"/>
-          <stop offset="100%" stop-color="#6d28d9" stop-opacity="0.08"/>
+        <radialGradient id="grad-tpack" cx="65%" cy="30%" r="70%">
+          <stop offset="0%" stop-color="#c4b5fd" stop-opacity="0.55"/>
+          <stop offset="45%" stop-color="#a78bfa" stop-opacity="0.30"/>
+          <stop offset="100%" stop-color="#6d28d9" stop-opacity="0.10"/>
         </radialGradient>
         <!-- Pill gradient backgrounds -->
         <linearGradient id="pill-green" x1="0" y1="0" x2="1" y2="1">
