@@ -15,7 +15,7 @@ permalink: /life/
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@200;300;400;500;600;700&display=swap" rel="stylesheet"/>
   <style>
     *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-    html,body{width:100%;overflow-x:hidden;font-family:'Inter',system-ui,sans-serif;background:#0a0a0a;color:#e0e0e0}
+    html,body{width:100%;overflow-x:hidden;font-family:'Inter',system-ui,sans-serif;background:#0c0a12;color:#e0e0e0}
     body.layer2-active{overflow-y:auto}
     body:not(.layer2-active){overflow-y:hidden;height:100vh}
 
@@ -174,12 +174,14 @@ var renderer, camera, currentScene;
 var currentLayer = 1;
 var animId;
 var activeTheme = null;
+var transitioning = false;
+var entrancePlayed = false;
 
 /* ====== RENDERER SETUP ====== */
 renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: false });
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 renderer.setSize(window.innerWidth, window.innerHeight);
-renderer.setClearColor(0x0a0a0a, 1);
+renderer.setClearColor(0x0c0a12, 1);
 renderer.toneMapping = THREE.ACESFilmicToneMapping;
 renderer.toneMappingExposure = 1.0;
 
@@ -198,9 +200,10 @@ function createCardTexture(emoji, label) {
 
   // Background gradient — visible card surface
   var grad = ctx.createLinearGradient(0, 0, 512, 720);
-  grad.addColorStop(0, 'rgba(30,20,50,0.95)');
-  grad.addColorStop(0.5, 'rgba(45,30,70,0.9)');
-  grad.addColorStop(1, 'rgba(25,15,45,0.95)');
+  grad.addColorStop(0, 'rgba(60,40,80,0.95)');
+  grad.addColorStop(0.3, 'rgba(80,50,100,0.85)');
+  grad.addColorStop(0.7, 'rgba(100,60,120,0.8)');
+  grad.addColorStop(1, 'rgba(70,35,90,0.9)');
   ctx.fillStyle = grad;
   ctx.fillRect(0, 0, 512, 720);
 
@@ -305,6 +308,55 @@ function initCardScene() {
   camera = cardCamera;
 }
 
+function playEntranceAnimation() {
+  // Set initial state for entrance animation
+  for (var i = 0; i < cards3D.length; i++) {
+    cards3D[i].scale.set(0.3, 0.3, 0.3);
+    cards3D[i].material.opacity = 0;
+    cards3D[i].position.set(0, -1, 0);
+    cards3D[i].rotation.y = 0;
+  }
+
+  // Hide title text initially
+  var titleText = layer1.querySelector('.title-text');
+  gsap.set(titleText, { opacity: 0 });
+
+  var tl = gsap.timeline({
+    onComplete: function() {
+      entrancePlayed = true;
+    }
+  });
+
+  // Phase 1 (0-2s): Arc fan-out
+  var arcPositions = [
+    { x: -5, y: 0.5, z: 0.5 },
+    { x: 0, y: 1, z: 1 },
+    { x: 5, y: 0.5, z: 0.5 }
+  ];
+  var arcRotations = [-0.3, 0, 0.3];
+
+  for (var i = 0; i < cards3D.length; i++) {
+    tl.to(cards3D[i].position, { x: arcPositions[i].x, y: arcPositions[i].y, z: arcPositions[i].z, duration: 1.5, ease: 'power2.out' }, i * 0.15);
+    tl.to(cards3D[i].scale, { x: 1.0, y: 1.0, z: 1.0, duration: 1.5, ease: 'power2.out' }, i * 0.15);
+    tl.to(cards3D[i].material, { opacity: 0.95, duration: 1.2, ease: 'power1.out' }, i * 0.15);
+    tl.to(cards3D[i].rotation, { y: arcRotations[i], duration: 1.5, ease: 'power2.out' }, i * 0.15);
+  }
+
+  // Phase 2 (2-3.5s): Hold in arc + show text + breathing float
+  tl.to(titleText, { opacity: 1, duration: 1.0, ease: 'power1.out' }, 2);
+  for (var i = 0; i < cards3D.length; i++) {
+    tl.to(cards3D[i].position, { y: arcPositions[i].y + 0.2, duration: 0.8, ease: 'sine.inOut', yoyo: true, repeat: 1 }, 2);
+  }
+
+  // Phase 3 (3.5-5s): Settle to final positions
+  for (var i = 0; i < cards3D.length; i++) {
+    var bp = cards3D[i].userData.basePos;
+    var br = cards3D[i].userData.baseRot;
+    tl.to(cards3D[i].position, { x: bp.x, y: bp.y, z: bp.z, duration: 1.2, ease: 'power2.inOut' }, 3.5);
+    tl.to(cards3D[i].rotation, { y: br, duration: 1.2, ease: 'power2.inOut' }, 3.5);
+  }
+}
+
 /* ====== LAYER 1 RENDER ====== */
 function renderCardScene() {
   if (currentLayer !== 1) return;
@@ -312,13 +364,15 @@ function renderCardScene() {
 
   var el = cardClock.getElapsedTime();
 
-  // Float animation
-  for (var i = 0; i < cards3D.length; i++) {
-    var card = cards3D[i];
-    var bp = card.userData.basePos;
-    var fo = card.userData.floatOffset;
-    card.position.y = bp.y + Math.sin(el * 0.8 + fo) * 0.15;
-    card.position.x = bp.x + Math.sin(el * 0.5 + fo + 1) * 0.03;
+  // Float animation (only after entrance completes)
+  if (entrancePlayed) {
+    for (var i = 0; i < cards3D.length; i++) {
+      var card = cards3D[i];
+      var bp = card.userData.basePos;
+      var fo = card.userData.floatOffset;
+      card.position.y = bp.y + Math.sin(el * 0.8 + fo) * 0.15;
+      card.position.x = bp.x + Math.sin(el * 0.5 + fo + 1) * 0.03;
+    }
   }
 
   // Raycaster hover
@@ -376,39 +430,51 @@ window.addEventListener('mousemove', function(e) {
 });
 
 window.addEventListener('click', function(e) {
-  if (currentLayer !== 1 || !hoveredCard) return;
+  if (currentLayer !== 1 || !hoveredCard || transitioning) return;
   var idx = hoveredCard.userData.idx;
   transitionToDetail(idx);
 });
 
 /* ====== TRANSITION: CARD -> DETAIL ====== */
 function transitionToDetail(cardIdx) {
+  transitioning = true;
   activeTheme = CARD_DATA[cardIdx].key;
   populatePanels(activeTheme);
 
-  var card = cards3D[cardIdx];
+  var clicked = cards3D[cardIdx];
 
-  // GSAP timeline: card zooms to fill screen
   var tl = gsap.timeline({
     onComplete: function() {
       showDetailLayer();
+      transitioning = false;
     }
   });
 
-  // Zoom card forward
-  tl.to(card.position, { z: 8, duration: 0.6, ease: 'power2.in' }, 0);
-  tl.to(card.scale, { x: 4, y: 4, z: 4, duration: 0.6, ease: 'power2.in' }, 0);
-  tl.to(card.material, { opacity: 0, duration: 0.3, ease: 'power1.in' }, 0.3);
-
-  // Fade out other cards
+  // Other cards fly out to sides and fade
   for (var i = 0; i < cards3D.length; i++) {
     if (i !== cardIdx) {
-      tl.to(cards3D[i].material, { opacity: 0, duration: 0.3 }, 0);
-      tl.to(cards3D[i].position, { z: -3, duration: 0.4 }, 0);
+      var dir = i < cardIdx ? -1 : 1;
+      tl.to(cards3D[i].position, { x: dir * 12, duration: 0.6, ease: 'power2.in' }, 0);
+      tl.to(cards3D[i].scale, { x: 0.6, y: 0.6, z: 0.6, duration: 0.6, ease: 'power2.in' }, 0);
+      tl.to(cards3D[i].material, { opacity: 0, duration: 0.4 }, 0.2);
     }
   }
 
-  // Fade out title text
+  // Clicked card: move to center, scale up, flip on Y axis
+  tl.to(clicked.position, { x: 0, y: 0, z: 2, duration: 0.5, ease: 'power2.out' }, 0);
+  tl.to(clicked.scale, { x: 1.3, y: 1.3, z: 1.3, duration: 0.5, ease: 'power2.out' }, 0);
+  tl.to(clicked.rotation, { y: Math.PI, duration: 0.7, ease: 'power2.inOut' }, 0.3);
+  tl.to(clicked.material, { opacity: 0, duration: 0.3 }, 0.8);
+
+  // Flash white on renderer
+  tl.to({}, { duration: 0.1, onComplete: function() {
+    renderer.setClearColor(0x222222, 1);
+  }}, 0.7);
+  tl.to({}, { duration: 0.3, onComplete: function() {
+    renderer.setClearColor(0x0c0a12, 1);
+  }}, 0.9);
+
+  // Hide title text
   tl.to(layer1.querySelector('.title-text'), { opacity: 0, duration: 0.3 }, 0);
 }
 
@@ -463,7 +529,7 @@ var detailParticles;
 
 function initDetailScene() {
   detailScene = new THREE.Scene();
-  detailScene.fog = new THREE.FogExp2(0x0a0a0a, 0.04);
+  detailScene.fog = new THREE.FogExp2(0x0c0a12, 0.04);
 
   detailCamera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 200);
 
@@ -657,6 +723,7 @@ function renderDetailScene() {
 
 /* ====== TRANSITION: DETAIL -> CARDS ====== */
 function transitionToCards() {
+  transitioning = true;
   currentLayer = 0; // prevent rendering
   cancelAnimationFrame(animId);
 
@@ -686,8 +753,27 @@ function transitionToCards() {
 
   // Re-init card scene
   initCardScene();
+
+  // Place cards at final positions directly (no entrance replay)
+  for (var i = 0; i < cards3D.length; i++) {
+    var bp = cards3D[i].userData.basePos;
+    cards3D[i].position.copy(bp);
+    cards3D[i].scale.set(1, 1, 1);
+    cards3D[i].material.opacity = 0.95;
+    cards3D[i].rotation.y = cards3D[i].userData.baseRot;
+  }
+
+  // Reset hover state
+  hoveredCard = null;
+  mouse2.set(-999, -999);
+
   currentLayer = 1;
   renderCardScene();
+
+  // Delay clearing transitioning flag to prevent re-click
+  setTimeout(function() {
+    transitioning = false;
+  }, 500);
 }
 
 backBtn.addEventListener('click', transitionToCards);
@@ -709,6 +795,7 @@ window.addEventListener('resize', function() {
 /* ====== INIT ====== */
 initCardScene();
 renderCardScene();
+playEntranceAnimation();
 
 })();
 </script>
