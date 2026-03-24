@@ -284,49 +284,40 @@ permalink: /life/
     return (Math.sin(x*1.1+y*0.7)*0.5+Math.sin(y*1.3+z*0.9)*0.3+Math.sin(z*0.8+x*1.5)*0.2);
   }
 
-  /* ===== Flowing Particle Ribbons ===== */
+  /* ===== Flowing Particle Ribbons — 3 strands ===== */
   var ribbonCurves = [
     new THREE.CatmullRomCurve3([
-      new THREE.Vector3(-22,2,0), new THREE.Vector3(-12,6,-2), new THREE.Vector3(-4,0,-4),
-      new THREE.Vector3(4,-4,-3), new THREE.Vector3(12,2,-1), new THREE.Vector3(20,5,0), new THREE.Vector3(28,0,1)
+      new THREE.Vector3(-22,3,0), new THREE.Vector3(-10,6,-2), new THREE.Vector3(0,0,-4),
+      new THREE.Vector3(10,-4,-3), new THREE.Vector3(18,2,-1), new THREE.Vector3(28,1,0)
     ], false, 'catmullrom', 0.3),
     new THREE.CatmullRomCurve3([
-      new THREE.Vector3(-20,-5,1), new THREE.Vector3(-10,-1,-1), new THREE.Vector3(0,4,-3),
-      new THREE.Vector3(8,-2,-4), new THREE.Vector3(16,1,-2), new THREE.Vector3(24,-3,0), new THREE.Vector3(30,2,1)
+      new THREE.Vector3(-20,-3,1), new THREE.Vector3(-8,2,-2), new THREE.Vector3(2,5,-4),
+      new THREE.Vector3(12,-2,-3), new THREE.Vector3(22,-1,-1), new THREE.Vector3(30,3,1)
     ], false, 'catmullrom', 0.3),
     new THREE.CatmullRomCurve3([
-      new THREE.Vector3(-24,0,-1), new THREE.Vector3(-14,5,-3), new THREE.Vector3(-6,-3,-5),
-      new THREE.Vector3(2,6,-4), new THREE.Vector3(10,-1,-2), new THREE.Vector3(18,3,-1), new THREE.Vector3(26,-2,0)
-    ], false, 'catmullrom', 0.3),
-    new THREE.CatmullRomCurve3([
-      new THREE.Vector3(-18,-7,2), new THREE.Vector3(-8,3,0), new THREE.Vector3(2,-5,-2),
-      new THREE.Vector3(10,4,-4), new THREE.Vector3(16,-3,-3), new THREE.Vector3(22,1,-1), new THREE.Vector3(28,-4,0)
-    ], false, 'catmullrom', 0.3),
-    new THREE.CatmullRomCurve3([
-      new THREE.Vector3(-21,7,-1), new THREE.Vector3(-11,-4,-2), new THREE.Vector3(-1,5,-4),
-      new THREE.Vector3(7,-6,-3), new THREE.Vector3(15,4,-2), new THREE.Vector3(23,-1,0), new THREE.Vector3(29,3,1)
+      new THREE.Vector3(-24,-1,-1), new THREE.Vector3(-12,4,-3), new THREE.Vector3(-2,-3,-5),
+      new THREE.Vector3(8,3,-4), new THREE.Vector3(20,0,-2), new THREE.Vector3(26,-2,0)
     ], false, 'catmullrom', 0.3)
   ];
 
   var ribbons = [];
-  var PER_RIBBON = 2000;
-  var ribbonColors = [0x7c3aed, 0xf75092, 0x9f50d3, 0xa78bfa, 0xf9a8d4];
+  var PER_RIBBON = 2500;
+  var ribbonColors = [0x7c3aed, 0x9f50d3, 0xf75092];
 
   ribbonCurves.forEach(function(curve, ri){
     var geo = new THREE.BufferGeometry();
     var pos = new Float32Array(PER_RIBBON * 3);
     var sizes = new Float32Array(PER_RIBBON);
 
-    // Each particle has: its own t-position on curve, speed, spread offset
     var particleData = [];
     for(var i = 0; i < PER_RIBBON; i++){
-      var t = Math.random(); // random start position along curve
-      var speed = 0.02 + Math.random() * 0.04; // varying flow speeds
-      var spreadR = 0.05 + Math.random() * 0.4; // distance from center
+      var t = Math.random();
+      var speed = 0.004 + Math.random() * 0.008; // SLOW base flow
+      var spreadR = 0.05 + Math.random() * 0.5;
       var spreadAngle = Math.random() * Math.PI * 2;
-      var sz = 0.04 + Math.random() * Math.random() * 0.25; // few big, many small
+      var sz = 0.04 + Math.random() * Math.random() * 0.28;
       sizes[i] = sz;
-      particleData.push({ t:t, speed:speed, spreadR:spreadR, spreadAngle:spreadAngle, noiseOffset: Math.random()*100 });
+      particleData.push({ t:t, speed:speed, spreadR:spreadR, spreadAngle:spreadAngle, noiseOffset:Math.random()*100 });
 
       var pt = curve.getPointAt(t);
       pos[i*3] = pt.x; pos[i*3+1] = pt.y; pos[i*3+2] = pt.z;
@@ -337,14 +328,13 @@ permalink: /life/
 
     var points = new THREE.Points(geo, new THREE.PointsMaterial({
       color: ribbonColors[ri],
-      size: 0.12,
+      size: 0.14,
       transparent: true,
       opacity: 0.75,
       sizeAttenuation: true
     }));
     scene.add(points);
-    ribbons.push({ points:points, geo:geo, curve:curve, data:particleData,
-      baseSpeed: 0.015 + ri * 0.005 });
+    ribbons.push({ points:points, geo:geo, curve:curve, data:particleData });
   });
 
   /* ===== Scroll & Parallax ===== */
@@ -423,8 +413,8 @@ permalink: /life/
     smoothMouseSpeed += (targetSpeed - smoothMouseSpeed) * 0.08;
     mouse.speed *= 0.9; // decay between moves
 
-    // Speed multiplier: 1x base, up to 4x when mouse moves fast
-    var speedMult = 1 + smoothMouseSpeed * 0.04;
+    // Speed multiplier: 1x idle, up to 10x when mouse moves fast
+    var speedMult = 1 + smoothMouseSpeed * 0.12;
 
     // Scroll-driven rotation of entire scene in hero
     var heroProgress = Math.min(1, scrollY / heroH);
