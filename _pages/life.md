@@ -14,7 +14,6 @@ permalink: /life/
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
 
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
@@ -346,19 +345,8 @@ permalink: /life/
 (function(){
   'use strict';
 
-  /* ---------- Lenis smooth scroll ---------- */
-  var lenis = new Lenis({
-    duration: 1.6,
-    easing: function(t){ return Math.min(1, 1.001 - Math.pow(2, -10 * t)); },
-    smoothWheel: true,
-    wheelMultiplier: 1.0,
-    touchMultiplier: 2.0
-  });
-
-  // Only use GSAP ticker to drive Lenis (no double RAF)
-  lenis.on('scroll', ScrollTrigger.update);
-  gsap.ticker.add(function(time){ lenis.raf(time * 1000); });
-  gsap.ticker.lagSmoothing(0);
+  // Register GSAP plugin
+  gsap.registerPlugin(ScrollTrigger);
 
   /* ---------- Three.js Scene ---------- */
   var canvas = document.getElementById('c');
@@ -376,8 +364,7 @@ permalink: /life/
   camera.position.set(0, 0, 12);
 
   /* --- Lights --- */
-  var ambLight = new THREE.AmbientLight(0xffffff, 0.15);
-  scene.add(ambLight);
+  scene.add(new THREE.AmbientLight(0xffffff, 0.15));
 
   var keyLight = new THREE.DirectionalLight(0xffffff, 0.6);
   keyLight.position.set(5, 8, 5);
@@ -387,19 +374,17 @@ permalink: /life/
   pointA.position.set(0, 0, 8);
   scene.add(pointA);
 
-  var pointB = new THREE.PointLight(0x888899, 0.8, 25);
-  pointB.position.set(-5, 3, -5);
-  scene.add(pointB);
+  scene.add(new THREE.PointLight(0x888899, 0.8, 25).position.set(-5, 3, -5) || new THREE.PointLight(0x888899, 0.8, 25));
 
   /* --- Camera path (CatmullRom spline) --- */
   var cameraPath = new THREE.CatmullRomCurve3([
-    new THREE.Vector3(0, 0, 12),     // hero
-    new THREE.Vector3(3, 1, 8),      // origin
-    new THREE.Vector3(-2, 2, 4),     // journey
-    new THREE.Vector3(4, -1, 0),     // explore
-    new THREE.Vector3(-3, 0, -4),    // connect
-    new THREE.Vector3(0, 3, -8),     // moments
-    new THREE.Vector3(0, 0, -13)     // ending
+    new THREE.Vector3(0, 0, 12),
+    new THREE.Vector3(3, 1, 8),
+    new THREE.Vector3(-2, 2, 4),
+    new THREE.Vector3(4, -1, 0),
+    new THREE.Vector3(-3, 0, -4),
+    new THREE.Vector3(0, 3, -8),
+    new THREE.Vector3(0, 0, -13)
   ], false, 'catmullrom', 0.5);
 
   var lookAtPath = new THREE.CatmullRomCurve3([
@@ -412,7 +397,7 @@ permalink: /life/
     new THREE.Vector3(0, 0, -18)
   ], false, 'catmullrom', 0.5);
 
-  /* --- Floating wireframe objects along the path --- */
+  /* --- 3D Objects along path --- */
   var meshes = [];
   var geos = [
     new THREE.IcosahedronGeometry(1, 1),
@@ -420,215 +405,151 @@ permalink: /life/
     new THREE.OctahedronGeometry(0.9, 0),
     new THREE.TorusKnotGeometry(0.6, 0.2, 64, 8, 2, 3),
     new THREE.DodecahedronGeometry(0.7, 0),
-    new THREE.IcosahedronGeometry(1.2, 0),
+    new THREE.IcosahedronGeometry(1.2, 0)
   ];
 
-  // Place objects around the camera path
   for (var i = 0; i < 40; i++) {
-    var t = i / 40;
-    var pathPos = cameraPath.getPointAt(t);
-    var geo = geos[i % geos.length];
-    var mat = new THREE.MeshPhongMaterial({
-      color: 0xffffff,
-      wireframe: true,
-      transparent: true,
-      opacity: 0.06 + Math.random() * 0.08
-    });
-    var m = new THREE.Mesh(geo, mat);
-    // Offset from camera path
-    m.position.set(
-      pathPos.x + (Math.random() - 0.5) * 12,
-      pathPos.y + (Math.random() - 0.5) * 8,
-      pathPos.z + (Math.random() - 0.5) * 6
-    );
-    var s = 0.3 + Math.random() * 1.5;
-    m.scale.set(s, s, s);
+    var pathPos = cameraPath.getPointAt(i / 40);
+    var m = new THREE.Mesh(geos[i % geos.length],
+      new THREE.MeshPhongMaterial({ color:0xffffff, wireframe:true, transparent:true, opacity:0.06+Math.random()*0.08 }));
+    m.position.set(pathPos.x+(Math.random()-0.5)*12, pathPos.y+(Math.random()-0.5)*8, pathPos.z+(Math.random()-0.5)*6);
+    var s = 0.3+Math.random()*1.5; m.scale.set(s,s,s);
     m.rotation.set(Math.random()*Math.PI, Math.random()*Math.PI, 0);
-    m.userData = {
-      rotX: (Math.random()-0.5)*0.003,
-      rotY: (Math.random()-0.5)*0.003,
-      baseOpacity: mat.opacity
-    };
-    scene.add(m);
-    meshes.push(m);
+    m.userData = { rotX:(Math.random()-0.5)*0.003, rotY:(Math.random()-0.5)*0.003 };
+    scene.add(m); meshes.push(m);
   }
 
-  // A few solid objects (accent pieces)
-  var solidGeos = [
-    new THREE.SphereGeometry(0.15, 32, 32),
-    new THREE.BoxGeometry(0.2, 0.2, 0.2),
-    new THREE.TetrahedronGeometry(0.18)
-  ];
+  var solidGeos = [new THREE.SphereGeometry(0.15,32,32), new THREE.BoxGeometry(0.2,0.2,0.2), new THREE.TetrahedronGeometry(0.18)];
   for (var i = 0; i < 60; i++) {
-    var t = Math.random();
-    var pp = cameraPath.getPointAt(t);
-    var sg = solidGeos[i % solidGeos.length];
-    var sm = new THREE.MeshStandardMaterial({
-      color: 0xffffff,
-      metalness: 0.9,
-      roughness: 0.1,
-      transparent: true,
-      opacity: 0.3 + Math.random() * 0.3
-    });
-    var solid = new THREE.Mesh(sg, sm);
-    solid.position.set(
-      pp.x + (Math.random()-0.5)*16,
-      pp.y + (Math.random()-0.5)*10,
-      pp.z + (Math.random()-0.5)*8
-    );
-    var ss = 0.3 + Math.random() * 0.8;
-    solid.scale.set(ss, ss, ss);
-    solid.userData = {
-      rotX: (Math.random()-0.5)*0.005,
-      rotY: (Math.random()-0.5)*0.005,
-      floatSpeed: 0.5 + Math.random(),
-      floatAmp: 0.2 + Math.random()*0.3,
-      baseY: solid.position.y
-    };
-    scene.add(solid);
-    meshes.push(solid);
+    var pp = cameraPath.getPointAt(Math.random());
+    var solid = new THREE.Mesh(solidGeos[i%solidGeos.length],
+      new THREE.MeshStandardMaterial({ color:0xffffff, metalness:0.9, roughness:0.1, transparent:true, opacity:0.3+Math.random()*0.3 }));
+    solid.position.set(pp.x+(Math.random()-0.5)*16, pp.y+(Math.random()-0.5)*10, pp.z+(Math.random()-0.5)*8);
+    var ss = 0.3+Math.random()*0.8; solid.scale.set(ss,ss,ss);
+    solid.userData = { rotX:(Math.random()-0.5)*0.005, rotY:(Math.random()-0.5)*0.005, floatSpeed:0.5+Math.random(), floatAmp:0.2+Math.random()*0.3, baseY:solid.position.y };
+    scene.add(solid); meshes.push(solid);
   }
 
-  /* --- Particle field --- */
-  var pCount = 600;
+  /* --- Particles --- */
   var pGeo = new THREE.BufferGeometry();
-  var pPos = new Float32Array(pCount * 3);
-  for (var i = 0; i < pCount; i++) {
-    pPos[i*3]   = (Math.random()-0.5)*40;
-    pPos[i*3+1] = (Math.random()-0.5)*30;
-    pPos[i*3+2] = 15 - Math.random()*40; // spread along z
-  }
+  var pPos = new Float32Array(600*3);
+  for (var i = 0; i < 600; i++) { pPos[i*3]=(Math.random()-0.5)*40; pPos[i*3+1]=(Math.random()-0.5)*30; pPos[i*3+2]=15-Math.random()*40; }
   pGeo.setAttribute('position', new THREE.BufferAttribute(pPos, 3));
-  var pMat = new THREE.PointsMaterial({ color:0xffffff, size:0.02, transparent:true, opacity:0.5 });
-  var points = new THREE.Points(pGeo, pMat);
+  var points = new THREE.Points(pGeo, new THREE.PointsMaterial({ color:0xffffff, size:0.02, transparent:true, opacity:0.5 }));
   scene.add(points);
 
-  /* --- Thin line along camera path --- */
-  var pathLine = new THREE.Line(
+  /* --- Path line --- */
+  scene.add(new THREE.Line(
     new THREE.BufferGeometry().setFromPoints(cameraPath.getPoints(200)),
     new THREE.LineBasicMaterial({ color:0xffffff, transparent:true, opacity:0.03 })
-  );
-  scene.add(pathLine);
+  ));
 
-  /* ---------- Scroll-driven state ---------- */
-  var scrollData = { progress: 0 };
+  /* ---------- Scroll progress via native scroll listener ---------- */
+  var scrollProgress = 0;
+  var scrollSpace = document.querySelector('.scroll-space');
 
-  // Main scroll driver
-  gsap.to(scrollData, {
-    progress: 1,
-    ease: 'none',
-    scrollTrigger: {
-      trigger: '.scroll-space',
-      start: 'top top',
-      end: 'bottom bottom',
-      scrub: 0.8
-    }
-  });
+  function updateScrollProgress() {
+    var rect = scrollSpace.getBoundingClientRect();
+    var total = scrollSpace.offsetHeight - window.innerHeight;
+    var scrolled = -rect.top;
+    scrollProgress = Math.max(0, Math.min(1, scrolled / total));
+  }
 
-  /* ---------- Panel animations (GSAP ScrollTrigger) ---------- */
+  window.addEventListener('scroll', updateScrollProgress, { passive:true });
+  updateScrollProgress();
+
+  /* ---------- Panel visibility via scroll ---------- */
   var totalSections = 7;
   var panels = [];
-  for (var i = 0; i <= 6; i++) { panels.push(document.getElementById('p' + i)); }
+  for (var i = 0; i <= 6; i++) panels.push(document.getElementById('p'+i));
   var dots = document.querySelectorAll('.dots__item');
   var secNum = document.getElementById('secNum');
   var progressBar = document.getElementById('progress');
-  var markers = document.querySelectorAll('.sec-marker');
 
-  // Each marker drives its panel
-  markers.forEach(function(marker){
-    var idx = parseInt(marker.getAttribute('data-panel'));
-    var panel = panels[idx];
-    if (!panel) return;
+  function updatePanels(t) {
+    var sectionSize = 1 / totalSections;
+    var currentIdx = Math.min(Math.floor(t / sectionSize), totalSections - 1);
+    var localT = (t - currentIdx * sectionSize) / sectionSize; // 0→1 within section
 
-    // Main visibility: fade in during first 20%, hold, fade out during last 20%
-    ScrollTrigger.create({
-      trigger: marker,
-      start: 'top 80%',
-      end: 'bottom 20%',
-      scrub: true,
-      onUpdate: function(self) {
-        var p = self.progress; // 0→1 across this marker
-        // Fade in 0→0.2, hold 0.2→0.8, fade out 0.8→1
-        var opacity;
-        if (p < 0.2) {
-          opacity = p / 0.2;
-        } else if (p > 0.8 && idx < totalSections - 1) {
-          opacity = (1 - p) / 0.2;
-        } else {
-          opacity = 1;
-        }
-        panel.style.opacity = opacity;
-        panel.style.visibility = opacity > 0.01 ? 'visible' : 'hidden';
+    for (var i = 0; i < totalSections; i++) {
+      var panel = panels[i];
+      if (!panel) continue;
 
-        // Slide up on enter
-        var yShift = p < 0.2 ? 40 * (1 - p / 0.2) : 0;
-        var children = panel.querySelectorAll('.panel__inner,.panel__photo,.panel__photos,.hero__title,.hero__sub,.hero__scroll');
-        children.forEach(function(c){
-          c.style.transform = 'translateY(' + yShift + 'px)';
-        });
+      var opacity = 0;
+      if (i === currentIdx) {
+        // Current section: fade in first 15%, hold, fade out last 15%
+        if (localT < 0.15) opacity = localT / 0.15;
+        else if (localT > 0.85 && i < totalSections - 1) opacity = (1 - localT) / 0.15;
+        else opacity = 1;
       }
-    });
-  });
+
+      panel.style.opacity = opacity;
+      panel.style.visibility = opacity > 0.01 ? 'visible' : 'hidden';
+
+      // Slide up on enter
+      if (i === currentIdx && localT < 0.15) {
+        var yShift = 50 * (1 - localT / 0.15);
+        var els = panel.querySelectorAll('.panel__inner,.panel__photo,.panel__photos,.hero__title,.hero__sub,.hero__scroll');
+        els.forEach(function(c){ c.style.transform = 'translateY('+yShift+'px)'; });
+      } else if (i === currentIdx) {
+        var els = panel.querySelectorAll('.panel__inner,.panel__photo,.panel__photos,.hero__title,.hero__sub,.hero__scroll');
+        els.forEach(function(c){ c.style.transform = 'translateY(0)'; });
+      }
+    }
+
+    // Update UI
+    secNum.textContent = ('0' + (currentIdx + 1)).slice(-2);
+    progressBar.style.width = (t * 100) + '%';
+    dots.forEach(function(d, i){ d.classList.toggle('active', i === currentIdx); });
+  }
 
   /* ---------- Render loop ---------- */
   var clock = new THREE.Clock();
+  var smoothProgress = 0;
 
   function render() {
     requestAnimationFrame(render);
     var elapsed = clock.getElapsedTime();
-    var t = scrollData.progress;
+
+    // Smooth interpolation for buttery camera movement
+    smoothProgress += (scrollProgress - smoothProgress) * 0.06;
+    var t = smoothProgress;
 
     // Camera follows path
-    var camPos = cameraPath.getPointAt(Math.min(t, 0.999));
-    var lookPos = lookAtPath.getPointAt(Math.min(t, 0.999));
-    camera.position.copy(camPos);
-    camera.lookAt(lookPos);
+    camera.position.copy(cameraPath.getPointAt(Math.min(Math.max(t, 0.001), 0.999)));
+    camera.lookAt(lookAtPath.getPointAt(Math.min(Math.max(t, 0.001), 0.999)));
 
-    // Move key light with camera
-    pointA.position.copy(camPos);
-    pointA.position.x += 2;
-    pointA.position.y += 1;
-
-    // Subtle light intensity breathing
+    // Light follows camera
+    pointA.position.copy(camera.position);
+    pointA.position.x += 2; pointA.position.y += 1;
     pointA.intensity = 1.2 + Math.sin(elapsed * 0.5) * 0.3;
 
-    // Fog density changes
+    // Dynamic fog & exposure
     scene.fog.density = 0.03 + t * 0.015;
-
-    // Exposure shift (brighter in middle, darker at ends)
     renderer.toneMappingExposure = 0.8 + Math.sin(t * Math.PI) * 0.4;
 
-    // Animate meshes
+    // Animate objects
     for (var i = 0; i < meshes.length; i++) {
       var m = meshes[i];
       m.rotation.x += m.userData.rotX || 0;
       m.rotation.y += m.userData.rotY || 0;
-      if (m.userData.floatSpeed) {
-        m.position.y = m.userData.baseY + Math.sin(elapsed * m.userData.floatSpeed + i) * m.userData.floatAmp;
-      }
+      if (m.userData.floatSpeed) m.position.y = m.userData.baseY + Math.sin(elapsed * m.userData.floatSpeed + i) * m.userData.floatAmp;
     }
-
-    // Particles gentle rotation
     points.rotation.y = elapsed * 0.01;
 
-    // Update UI
-    var currentSection = Math.min(Math.floor(t * totalSections), totalSections - 1);
-    secNum.textContent = ('0' + (currentSection + 1)).slice(-2);
-    progressBar.style.width = (t * 100) + '%';
-    dots.forEach(function(d, i) {
-      d.classList.toggle('active', i === currentSection);
-    });
+    // Update panels
+    updatePanels(t);
 
     renderer.render(scene, camera);
   }
   render();
 
-  /* ---------- Dots click to scroll ---------- */
+  /* ---------- Dots click ---------- */
   dots.forEach(function(d){
     d.addEventListener('click', function(){
       var idx = parseInt(d.getAttribute('data-idx'));
-      var scrollTarget = (idx / totalSections) * document.querySelector('.scroll-space').offsetHeight;
-      lenis.scrollTo(scrollTarget, { duration: 2 });
+      var target = (idx / totalSections) * scrollSpace.offsetHeight;
+      window.scrollTo({ top:target, behavior:'smooth' });
     });
   });
 
