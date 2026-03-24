@@ -321,7 +321,7 @@ permalink: /life/
 
     var points = new THREE.Points(geo, new THREE.PointsMaterial({
       color: ribbonColors[ri],
-      size: 0.06,
+      size: 0.14,
       transparent: true,
       opacity: 0.7,
       sizeAttenuation: true
@@ -377,32 +377,59 @@ permalink: /life/
   var secNum = document.getElementById('secNum');
   var progBar = document.getElementById('progress');
 
+  /* ===== Mouse tracking for speed boost ===== */
+  var mouse = {x:0, y:0, speed:0, prevX:0, prevY:0, isOver:false};
+
+  heroSection.addEventListener('mousemove', function(e){
+    var dx = e.clientX - mouse.prevX;
+    var dy = e.clientY - mouse.prevY;
+    mouse.speed = Math.min(Math.sqrt(dx*dx + dy*dy), 80); // cap
+    mouse.prevX = e.clientX;
+    mouse.prevY = e.clientY;
+    // Normalized -1 to 1
+    mouse.x = (e.clientX / W) * 2 - 1;
+    mouse.y = -((e.clientY / H) * 2 - 1);
+    mouse.isOver = true;
+  });
+  heroSection.addEventListener('mouseleave', function(){ mouse.isOver = false; });
+
   /* ===== Render — only animates hero particles ===== */
   var clock = new THREE.Clock();
+  var smoothMouseSpeed = 0;
 
   function render(){
     requestAnimationFrame(render);
     var el = clock.getElapsedTime();
     var scrollY = window.pageYOffset;
 
+    // Smooth mouse speed (decays when not moving)
+    var targetSpeed = mouse.isOver ? mouse.speed : 0;
+    smoothMouseSpeed += (targetSpeed - smoothMouseSpeed) * 0.08;
+    mouse.speed *= 0.9; // decay between moves
+
+    // Speed multiplier: 1x base, up to 4x when mouse moves fast
+    var speedMult = 1 + smoothMouseSpeed * 0.04;
+
     // Scroll-driven rotation of entire scene in hero
     var heroProgress = Math.min(1, scrollY / heroH);
-    scene.rotation.y = heroProgress * 0.4;
-    scene.position.y = heroProgress * 3; // drift up as scroll
+    scene.rotation.y = heroProgress * 0.4 + mouse.x * 0.05;
+    scene.position.y = heroProgress * 3;
 
-    // Animate ribbons
+    // Animate ribbons with mouse-driven speed
     for(var ri = 0; ri < ribbons.length; ri++){
       var rb = ribbons[ri];
       var positions = rb.geo.attributes.position.array;
       var base = rb.base;
+      var spd = rb.speed * speedMult;
+      var amp = rb.waveAmp * (1 + smoothMouseSpeed * 0.01);
 
       for(var i = 0; i < PER_RIBBON; i++){
         var along = i / PER_RIBBON;
-        var wave = Math.sin(along * rb.waveFreq * 6.28 + el * rb.speed * 3 + heroProgress * 5 + ri) * rb.waveAmp;
-        var wave2 = Math.cos(along * rb.waveFreq * 4 + el * rb.speed * 2 + heroProgress * 3) * rb.waveAmp * 0.5;
+        var wave = Math.sin(along * rb.waveFreq * 6.28 + el * spd * 3 + heroProgress * 5 + ri) * amp;
+        var wave2 = Math.cos(along * rb.waveFreq * 4 + el * spd * 2 + heroProgress * 3) * amp * 0.5;
         positions[i*3]   = base[i*3]   + wave;
         positions[i*3+1] = base[i*3+1] + wave2;
-        positions[i*3+2] = base[i*3+2] + Math.sin(along * 3 + el * rb.speed) * 0.04;
+        positions[i*3+2] = base[i*3+2] + Math.sin(along * 3 + el * spd) * 0.04;
       }
       rb.geo.attributes.position.needsUpdate = true;
     }
