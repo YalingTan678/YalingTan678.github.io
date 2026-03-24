@@ -9,591 +9,639 @@ permalink: /life/
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
   <title>Life | Lily Tan</title>
+
+  <!-- Libs -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
+
     *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-    html { scroll-behavior: smooth; }
-    body { font-family:'Inter',system-ui,sans-serif; background:#0a0a1a; color:#e2e8f0; overflow-x:hidden; }
+    html, body { overscroll-behavior:none; }
+    body {
+      font-family:'Inter',system-ui,-apple-system,sans-serif;
+      background:#000; color:#fff; overflow-x:hidden;
+    }
 
-    /* ===== 3D Canvas (fixed background) ===== */
-    #scene-canvas { position:fixed; top:0; left:0; width:100%; height:100%; z-index:0; }
+    /* ===== 3D Canvas fixed background ===== */
+    #c { position:fixed; inset:0; z-index:0; pointer-events:none; }
 
-    /* ===== Top Nav ===== */
-    .life-nav {
+    /* ===== Global overlay grain ===== */
+    .grain {
+      position:fixed; inset:0; z-index:9999; pointer-events:none; opacity:0.04;
+      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size:128px 128px;
+    }
+
+    /* ===== Progress ===== */
+    #progress {
+      position:fixed; top:0; left:0; height:2px; z-index:200;
+      background:#fff; width:0%; transform-origin:left;
+    }
+
+    /* ===== Top Bar ===== */
+    .topbar {
       position:fixed; top:0; left:0; right:0; z-index:100;
-      display:flex; align-items:center; justify-content:space-between;
-      padding:1rem 2.5rem;
-      background:linear-gradient(180deg,rgba(10,10,26,0.85) 0%,transparent 100%);
-      backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px);
-      transition:background 0.4s;
+      display:flex; justify-content:space-between; align-items:center;
+      padding:1.8rem 3rem; mix-blend-mode:difference;
     }
-    .life-nav__logo { font-size:1.1rem; font-weight:700; color:#fff; text-decoration:none; letter-spacing:-0.02em; }
-    .life-nav__logo span { background:linear-gradient(135deg,#7c3aed,#f75092); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
-    .life-nav__links { display:flex; gap:0.3rem; }
-    .life-nav__links a {
-      padding:0.4rem 0.9rem; border-radius:20px; font-size:0.78rem; font-weight:500;
-      color:rgba(255,255,255,0.6); text-decoration:none; transition:all 0.3s;
-      border:1px solid transparent;
-    }
-    .life-nav__links a:hover, .life-nav__links a.active {
-      color:#fff; background:rgba(124,58,237,0.2); border-color:rgba(124,58,237,0.3);
-    }
-    .life-nav__back {
-      font-size:0.78rem; color:rgba(255,255,255,0.5); text-decoration:none;
-      transition:color 0.3s; display:flex; align-items:center; gap:0.4rem;
-    }
-    .life-nav__back:hover { color:#fff; }
+    .topbar a { color:#fff; text-decoration:none; font-size:0.75rem; font-weight:500;
+      letter-spacing:0.12em; text-transform:uppercase; transition:opacity 0.3s; }
+    .topbar a:hover { opacity:0.5; }
+    .topbar__logo { font-size:0.85rem; font-weight:700; letter-spacing:0.05em; }
 
-    /* ===== Scroll Container ===== */
-    .scroll-container { position:relative; z-index:1; }
+    /* ===== Side counter ===== */
+    .counter {
+      position:fixed; right:3rem; bottom:3rem; z-index:100;
+      font-size:0.7rem; letter-spacing:0.15em; text-transform:uppercase;
+      color:rgba(255,255,255,0.4); mix-blend-mode:difference;
+    }
+    .counter span { color:#fff; font-weight:600; font-size:1rem; }
 
-    /* ===== Hero ===== */
-    .life-hero {
-      height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center;
-      text-align:center; position:relative;
-    }
-    .life-hero h1 {
-      font-size:clamp(2.5rem,6vw,4.5rem); font-weight:800; letter-spacing:-0.03em;
-      background:linear-gradient(135deg,#fff 0%,#c4b5fd 50%,#f9a8d4 100%);
-      -webkit-background-clip:text; -webkit-text-fill-color:transparent;
-      margin-bottom:0.8rem; line-height:1.1;
-    }
-    .life-hero p { font-size:1.1rem; color:rgba(255,255,255,0.5); font-weight:300; max-width:500px; line-height:1.7; }
-    .scroll-hint {
-      position:absolute; bottom:2.5rem; display:flex; flex-direction:column; align-items:center; gap:0.5rem;
-      color:rgba(255,255,255,0.3); font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase;
-      animation: float 2.5s ease-in-out infinite;
-    }
-    .scroll-hint__arrow { width:20px; height:20px; border-right:2px solid rgba(255,255,255,0.3); border-bottom:2px solid rgba(255,255,255,0.3); transform:rotate(45deg); }
-    @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(8px)} }
+    /* ===== Scroll spacer — each section = 100vh of scroll ===== */
+    .scroll-space { height:600vh; position:relative; z-index:1; }
 
-    /* ===== Story Sections ===== */
-    .story-section {
-      min-height:100vh; display:flex; align-items:center; padding:6rem 2rem;
-      position:relative;
-    }
-    .story-section__inner {
-      max-width:1100px; margin:0 auto; width:100%;
-      display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center;
-    }
-    .story-section:nth-child(odd) .story-section__inner { direction:rtl; }
-    .story-section:nth-child(odd) .story-section__inner > * { direction:ltr; }
+    /* ===== Fixed UI overlay panels ===== */
+    .panels { position:fixed; inset:0; z-index:10; pointer-events:none; }
 
-    .story-content { position:relative; }
-    .story-content__label {
-      font-size:0.68rem; font-weight:600; letter-spacing:0.15em; text-transform:uppercase;
-      margin-bottom:0.8rem; display:inline-block; padding:0.3rem 0.8rem; border-radius:20px;
+    .panel {
+      position:absolute; inset:0;
+      display:flex; align-items:center; justify-content:center;
+      opacity:0; visibility:hidden;
+      transition:none; /* GSAP controls */
     }
-    .story-content h2 {
-      font-size:clamp(1.8rem,3.5vw,2.8rem); font-weight:800; letter-spacing:-0.02em;
-      line-height:1.15; margin-bottom:1rem;
-    }
-    .story-content p { font-size:0.95rem; color:rgba(255,255,255,0.55); line-height:1.8; }
 
-    /* Photo grid */
-    .photo-grid { display:grid; gap:0.8rem; }
-    .photo-grid--duo { grid-template-columns:1fr 1fr; }
-    .photo-grid--trio { grid-template-columns:1fr 1fr; grid-template-rows:1fr 1fr; }
-    .photo-grid--trio .photo-card:first-child { grid-row:1/3; }
-    .photo-grid--single { grid-template-columns:1fr; }
+    /* Panel layout variants */
+    .panel--hero { flex-direction:column; text-align:center; }
+    .panel--left .panel__inner { margin-right:auto; margin-left:8vw; max-width:480px; }
+    .panel--right .panel__inner { margin-left:auto; margin-right:8vw; max-width:480px; }
+    .panel--center .panel__inner { text-align:center; max-width:560px; }
 
-    .photo-card {
-      border-radius:16px; overflow:hidden; position:relative;
-      background:linear-gradient(135deg,rgba(124,58,237,0.1),rgba(247,80,146,0.1));
-      border:1px solid rgba(255,255,255,0.06);
-      aspect-ratio:4/3; transition:transform 0.5s cubic-bezier(0.4,0,0.2,1), box-shadow 0.5s;
+    .panel__label {
+      font-size:0.65rem; font-weight:600; letter-spacing:0.2em; text-transform:uppercase;
+      color:rgba(255,255,255,0.35); margin-bottom:1.2rem;
+      display:inline-block;
     }
-    .photo-card:hover { transform:scale(1.03) translateY(-4px); box-shadow:0 20px 60px rgba(124,58,237,0.2); }
-    .photo-card img { width:100%; height:100%; object-fit:cover; display:block; }
-    .photo-card__placeholder {
-      width:100%; height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center;
-      font-size:0.8rem; color:rgba(255,255,255,0.25); gap:0.5rem;
+    .panel__title {
+      font-family:'Playfair Display',serif; font-size:clamp(2.2rem,5vw,4rem);
+      font-weight:400; line-height:1.12; letter-spacing:-0.02em;
+      margin-bottom:1.2rem;
     }
-    .photo-card__placeholder svg { width:32px; height:32px; opacity:0.3; }
+    .panel__title em { font-style:italic; font-weight:400; }
+    .panel__text {
+      font-size:0.92rem; font-weight:300; line-height:1.85;
+      color:rgba(255,255,255,0.5); max-width:380px;
+    }
+    .panel__divider {
+      width:40px; height:1px; background:rgba(255,255,255,0.2);
+      margin:1.5rem 0;
+    }
 
-    /* Section color themes */
-    .theme-purple .story-content__label { color:#a78bfa; background:rgba(124,58,237,0.15); }
-    .theme-purple .story-content h2 { color:#e9e0ff; }
-    .theme-blue .story-content__label { color:#60a5fa; background:rgba(59,130,246,0.15); }
-    .theme-blue .story-content h2 { color:#dbeafe; }
-    .theme-green .story-content__label { color:#34d399; background:rgba(16,185,129,0.15); }
-    .theme-green .story-content h2 { color:#d1fae5; }
-    .theme-rose .story-content__label { color:#fb7185; background:rgba(244,63,94,0.15); }
-    .theme-rose .story-content h2 { color:#ffe4e6; }
-    .theme-amber .story-content__label { color:#fbbf24; background:rgba(245,158,11,0.15); }
-    .theme-amber .story-content h2 { color:#fef3c7; }
+    /* Hero specific */
+    .hero__title {
+      font-family:'Playfair Display',serif;
+      font-size:clamp(3rem,8vw,7rem); font-weight:400; letter-spacing:-0.03em;
+      line-height:1.05;
+    }
+    .hero__title em { font-style:italic; }
+    .hero__sub {
+      margin-top:1.5rem; font-size:0.85rem; font-weight:300;
+      color:rgba(255,255,255,0.35); letter-spacing:0.05em;
+    }
+    .hero__scroll {
+      position:absolute; bottom:3rem; left:50%; transform:translateX(-50%);
+      font-size:0.65rem; letter-spacing:0.2em; text-transform:uppercase;
+      color:rgba(255,255,255,0.3);
+    }
+    .hero__scroll::after {
+      content:''; display:block; width:1px; height:40px;
+      background:linear-gradient(rgba(255,255,255,0.3),transparent);
+      margin:0.8rem auto 0;
+    }
 
-    /* ===== Ending ===== */
-    .life-ending {
-      height:80vh; display:flex; flex-direction:column; align-items:center; justify-content:center;
-      text-align:center; padding:2rem;
+    /* Photo frames inside panels */
+    .panel__photo {
+      width:280px; height:360px; border-radius:6px; overflow:hidden;
+      border:1px solid rgba(255,255,255,0.08);
+      background:rgba(255,255,255,0.03);
+      display:flex; align-items:center; justify-content:center;
+      position:relative; pointer-events:auto;
     }
-    .life-ending h2 {
-      font-size:clamp(2rem,4vw,3rem); font-weight:800;
-      background:linear-gradient(135deg,#c4b5fd,#f9a8d4,#fcd34d);
-      -webkit-background-clip:text; -webkit-text-fill-color:transparent;
-      margin-bottom:1rem;
+    .panel__photo img { width:100%; height:100%; object-fit:cover; }
+    .panel__photo--wide { width:400px; height:260px; }
+    .panel__photo-placeholder {
+      color:rgba(255,255,255,0.15); font-size:0.72rem; text-align:center;
+      display:flex; flex-direction:column; align-items:center; gap:0.5rem;
     }
-    .life-ending p { color:rgba(255,255,255,0.4); font-size:1rem; max-width:450px; line-height:1.7; }
-    .life-ending__btn {
-      margin-top:2rem; display:inline-flex; align-items:center; gap:0.5rem;
-      padding:0.7rem 1.8rem; border-radius:30px; font-size:0.85rem; font-weight:600;
-      color:#fff; text-decoration:none;
-      background:linear-gradient(135deg,#7c3aed,#f75092);
-      box-shadow:0 4px 20px rgba(124,58,237,0.3);
-      transition:transform 0.3s, box-shadow 0.3s;
-    }
-    .life-ending__btn:hover { transform:translateY(-2px); box-shadow:0 8px 30px rgba(124,58,237,0.5); }
 
-    /* ===== Section reveal animation ===== */
-    .reveal { opacity:0; transform:translateY(40px); transition:opacity 0.8s ease, transform 0.8s ease; }
-    .reveal.visible { opacity:1; transform:translateY(0); }
+    /* Dual photo layout */
+    .panel__photos {
+      display:flex; gap:1rem; pointer-events:auto;
+    }
+    .panel__photos .panel__photo { width:220px; height:300px; }
+    .panel__photos .panel__photo:nth-child(2) { margin-top:3rem; }
 
-    /* ===== Side dots nav ===== */
-    .dot-nav {
-      position:fixed; right:1.5rem; top:50%; transform:translateY(-50%); z-index:90;
-      display:flex; flex-direction:column; gap:1rem; align-items:center;
+    /* Ending */
+    .panel--ending .panel__title {
+      font-size:clamp(1.8rem,4vw,3rem);
     }
-    .dot-nav__dot {
-      width:10px; height:10px; border-radius:50%; border:2px solid rgba(255,255,255,0.25);
-      background:transparent; cursor:pointer; transition:all 0.3s; position:relative;
+    .panel__btn {
+      display:inline-block; margin-top:1.5rem; padding:0.7rem 2rem;
+      border:1px solid rgba(255,255,255,0.2); border-radius:30px;
+      color:#fff; text-decoration:none; font-size:0.78rem; font-weight:500;
+      letter-spacing:0.08em; transition:all 0.3s; pointer-events:auto;
     }
-    .dot-nav__dot:hover { border-color:rgba(255,255,255,0.6); }
-    .dot-nav__dot.active { background:#7c3aed; border-color:#7c3aed; transform:scale(1.3); }
-    .dot-nav__dot::after {
-      content:attr(data-label); position:absolute; right:22px; top:50%; transform:translateY(-50%);
-      font-size:0.68rem; color:rgba(255,255,255,0.5); white-space:nowrap;
-      opacity:0; transition:opacity 0.3s; pointer-events:none;
-    }
-    .dot-nav__dot:hover::after { opacity:1; }
+    .panel__btn:hover { background:#fff; color:#000; }
 
-    /* ===== Progress bar ===== */
-    .life-progress { position:fixed; top:0; left:0; height:3px; z-index:110; border-radius:0 2px 2px 0;
-      background:linear-gradient(90deg,#7c3aed,#f75092,#fbbf24); width:0%; transition:width 0.1s; }
+    /* ===== Right nav dots ===== */
+    .dots {
+      position:fixed; right:2.5rem; top:50%; transform:translateY(-50%); z-index:100;
+      display:flex; flex-direction:column; gap:1.2rem;
+      mix-blend-mode:difference;
+    }
+    .dots__item {
+      width:6px; height:6px; border-radius:50%; background:rgba(255,255,255,0.25);
+      cursor:pointer; transition:all 0.4s; position:relative;
+    }
+    .dots__item.active { background:#fff; transform:scale(1.6); }
+    .dots__item::after {
+      content:attr(data-label); position:absolute; right:18px; top:50%;
+      transform:translateY(-50%); font-size:0.6rem; letter-spacing:0.1em;
+      text-transform:uppercase; white-space:nowrap; opacity:0; transition:opacity 0.3s;
+      color:rgba(255,255,255,0.5);
+    }
+    .dots__item:hover::after { opacity:1; }
 
     /* ===== Mobile ===== */
     @media(max-width:768px) {
-      .story-section__inner { grid-template-columns:1fr; gap:2rem; }
-      .story-section:nth-child(odd) .story-section__inner { direction:ltr; }
-      .life-nav__links { display:none; }
-      .dot-nav { right:0.8rem; }
-      .life-nav { padding:1rem 1.5rem; }
+      .topbar { padding:1.2rem 1.5rem; }
+      .panel--left .panel__inner, .panel--right .panel__inner { margin:0 auto; padding:0 1.5rem; text-align:center; }
+      .panel__photos { flex-direction:column; align-items:center; }
+      .panel__photos .panel__photo:nth-child(2) { margin-top:0; }
+      .panel__photo { width:220px!important; height:280px!important; }
+      .dots { right:1rem; }
+      .counter { right:1.5rem; bottom:1.5rem; }
     }
   </style>
 </head>
 <body>
-  <!-- Progress bar -->
-  <div class="life-progress" id="progress"></div>
 
-  <!-- 3D Background -->
-  <canvas id="scene-canvas"></canvas>
+<!-- Film grain overlay -->
+<div class="grain"></div>
 
-  <!-- Top nav -->
-  <nav class="life-nav">
-    <a href="/" class="life-nav__back">&larr; Back to Home</a>
-    <a href="/" class="life-nav__logo">Lily <span>Tan</span></a>
-    <div class="life-nav__links">
-      <a href="#origin" data-section="0">Origin</a>
-      <a href="#journey" data-section="1">Journey</a>
-      <a href="#explore" data-section="2">Explore</a>
-      <a href="#connect" data-section="3">Connect</a>
-      <a href="#moments" data-section="4">Moments</a>
+<!-- Progress bar -->
+<div id="progress"></div>
+
+<!-- 3D Canvas -->
+<canvas id="c"></canvas>
+
+<!-- Top bar -->
+<nav class="topbar">
+  <a href="/">&#8592; Home</a>
+  <a href="/" class="topbar__logo">LILY TAN</a>
+  <a href="/cv/">CV &#8594;</a>
+</nav>
+
+<!-- Section counter -->
+<div class="counter"><span id="secNum">01</span> / 06</div>
+
+<!-- Right dots -->
+<div class="dots" id="dots">
+  <div class="dots__item active" data-label="Intro" data-idx="0"></div>
+  <div class="dots__item" data-label="Origin" data-idx="1"></div>
+  <div class="dots__item" data-label="Journey" data-idx="2"></div>
+  <div class="dots__item" data-label="Explore" data-idx="3"></div>
+  <div class="dots__item" data-label="Connect" data-idx="4"></div>
+  <div class="dots__item" data-label="Moments" data-idx="5"></div>
+</div>
+
+<!-- ===== UI Panels (fixed, toggled by GSAP) ===== -->
+<div class="panels">
+
+  <!-- 0: Hero -->
+  <div class="panel panel--hero" id="p0" style="opacity:1;visibility:visible">
+    <div class="hero__title">Beyond the<br><em>Research</em></div>
+    <div class="hero__sub">A personal story told through light, space, and memory</div>
+    <div class="hero__scroll">Scroll to begin<span></span></div>
+  </div>
+
+  <!-- 1: Origin -->
+  <div class="panel panel--left" id="p1">
+    <div class="panel__inner">
+      <div class="panel__label">01 &mdash; Origin</div>
+      <div class="panel__title">Where It<br>All <em>Began</em></div>
+      <div class="panel__divider"></div>
+      <div class="panel__text">Every story has a beginning. Mine starts with curiosity, family, and the places that first made me wonder about the world.</div>
     </div>
-  </nav>
-
-  <!-- Side dot nav -->
-  <div class="dot-nav" id="dotNav">
-    <div class="dot-nav__dot active" data-section="0" data-label="Origin" onclick="scrollToSection(0)"></div>
-    <div class="dot-nav__dot" data-section="1" data-label="Journey" onclick="scrollToSection(1)"></div>
-    <div class="dot-nav__dot" data-section="2" data-label="Explore" onclick="scrollToSection(2)"></div>
-    <div class="dot-nav__dot" data-section="3" data-label="Connect" onclick="scrollToSection(3)"></div>
-    <div class="dot-nav__dot" data-section="4" data-label="Moments" onclick="scrollToSection(4)"></div>
+    <div class="panel__photo" style="position:absolute;right:8vw">
+      <div class="panel__photo-placeholder">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+        Add photo
+      </div>
+    </div>
   </div>
 
-  <!-- ===== SCROLL CONTENT ===== -->
-  <div class="scroll-container">
-
-    <!-- HERO -->
-    <section class="life-hero" id="hero" data-scene="hero">
-      <h1>Beyond the<br>Research</h1>
-      <p>A glimpse into the moments, places, and people that shape who I am outside the lab.</p>
-      <div class="scroll-hint">
-        <span>Scroll to explore</span>
-        <div class="scroll-hint__arrow"></div>
-      </div>
-    </section>
-
-    <!-- SECTION 1: Origin -->
-    <section class="story-section theme-purple" id="origin" data-scene="origin">
-      <div class="story-section__inner">
-        <div class="story-content reveal">
-          <div class="story-content__label">Chapter 01</div>
-          <h2>Where It All Began</h2>
-          <p>Every story has a beginning. Mine starts with curiosity, family, and the places that first made me wonder about the world.</p>
-        </div>
-        <div class="photo-grid photo-grid--duo reveal">
-          <div class="photo-card">
-            <div class="photo-card__placeholder">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-              <span>Add photo</span>
-            </div>
-          </div>
-          <div class="photo-card">
-            <div class="photo-card__placeholder">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-              <span>Add photo</span>
-            </div>
-          </div>
+  <!-- 2: Journey -->
+  <div class="panel panel--right" id="p2">
+    <div class="panel__photos" style="position:absolute;left:8vw">
+      <div class="panel__photo">
+        <div class="panel__photo-placeholder">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+          Add photo
         </div>
       </div>
-    </section>
-
-    <!-- SECTION 2: Journey -->
-    <section class="story-section theme-blue" id="journey" data-scene="journey">
-      <div class="story-section__inner">
-        <div class="story-content reveal">
-          <div class="story-content__label">Chapter 02</div>
-          <h2>The Academic Journey</h2>
-          <p>From classrooms to conferences, from late-night coding to early-morning writing sessions. The path of a researcher is never straight, but always meaningful.</p>
-        </div>
-        <div class="photo-grid photo-grid--trio reveal">
-          <div class="photo-card">
-            <div class="photo-card__placeholder">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-              <span>Add photo</span>
-            </div>
-          </div>
-          <div class="photo-card">
-            <div class="photo-card__placeholder">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-              <span>Add photo</span>
-            </div>
-          </div>
-          <div class="photo-card">
-            <div class="photo-card__placeholder">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-              <span>Add photo</span>
-            </div>
-          </div>
+      <div class="panel__photo">
+        <div class="panel__photo-placeholder">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+          Add photo
         </div>
       </div>
-    </section>
-
-    <!-- SECTION 3: Explore -->
-    <section class="story-section theme-green" id="explore" data-scene="explore">
-      <div class="story-section__inner">
-        <div class="story-content reveal">
-          <div class="story-content__label">Chapter 03</div>
-          <h2>Exploring the World</h2>
-          <p>Travel broadens the mind and feeds the soul. Every new place brings fresh perspectives that find their way back into my work and thinking.</p>
-        </div>
-        <div class="photo-grid photo-grid--duo reveal">
-          <div class="photo-card">
-            <div class="photo-card__placeholder">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-              <span>Add photo</span>
-            </div>
-          </div>
-          <div class="photo-card">
-            <div class="photo-card__placeholder">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-              <span>Add photo</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SECTION 4: Connect -->
-    <section class="story-section theme-rose" id="connect" data-scene="connect">
-      <div class="story-section__inner">
-        <div class="story-content reveal">
-          <div class="story-content__label">Chapter 04</div>
-          <h2>People & Connection</h2>
-          <p>The mentors who guided me, the friends who supported me, and the communities that inspired me. Research is never a solo endeavor.</p>
-        </div>
-        <div class="photo-grid photo-grid--trio reveal">
-          <div class="photo-card">
-            <div class="photo-card__placeholder">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-              <span>Add photo</span>
-            </div>
-          </div>
-          <div class="photo-card">
-            <div class="photo-card__placeholder">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-              <span>Add photo</span>
-            </div>
-          </div>
-          <div class="photo-card">
-            <div class="photo-card__placeholder">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-              <span>Add photo</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SECTION 5: Moments -->
-    <section class="story-section theme-amber" id="moments" data-scene="moments">
-      <div class="story-section__inner">
-        <div class="story-content reveal">
-          <div class="story-content__label">Chapter 05</div>
-          <h2>Little Moments</h2>
-          <p>A perfect cup of coffee, a sunset walk, a book that changed everything. It is the small things that make life extraordinary.</p>
-        </div>
-        <div class="photo-grid photo-grid--single reveal">
-          <div class="photo-card" style="aspect-ratio:16/9">
-            <div class="photo-card__placeholder">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-              <span>Add photo</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ENDING -->
-    <section class="life-ending" data-scene="ending">
-      <h2>The Story Continues...</h2>
-      <p>Every day writes a new chapter. Thank you for taking a moment to know me beyond the publications.</p>
-      <a href="/" class="life-ending__btn">&larr; Back to Home</a>
-    </section>
-
+    </div>
+    <div class="panel__inner">
+      <div class="panel__label">02 &mdash; Journey</div>
+      <div class="panel__title">The Academic<br><em>Path</em></div>
+      <div class="panel__divider"></div>
+      <div class="panel__text">From classrooms to conferences, from late-night coding to early-morning writing. The path of a researcher is never straight, but always meaningful.</div>
+    </div>
   </div>
 
-  <!-- ===== THREE.JS 3D SCENE ===== -->
-  <script>
-  (function(){
-    // --- Scene Setup ---
-    var canvas = document.getElementById('scene-canvas');
-    var renderer = new THREE.WebGLRenderer({ canvas:canvas, antialias:true, alpha:true });
+  <!-- 3: Explore -->
+  <div class="panel panel--left" id="p3">
+    <div class="panel__inner">
+      <div class="panel__label">03 &mdash; Explore</div>
+      <div class="panel__title">Exploring<br>the <em>World</em></div>
+      <div class="panel__divider"></div>
+      <div class="panel__text">Travel broadens the mind and feeds the soul. Every new place brings fresh perspectives that find their way back into my work.</div>
+    </div>
+    <div class="panel__photo panel__photo--wide" style="position:absolute;right:8vw">
+      <div class="panel__photo-placeholder">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+        Add photo
+      </div>
+    </div>
+  </div>
+
+  <!-- 4: Connect -->
+  <div class="panel panel--right" id="p4">
+    <div class="panel__photos" style="position:absolute;left:8vw">
+      <div class="panel__photo">
+        <div class="panel__photo-placeholder">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+          Add photo
+        </div>
+      </div>
+      <div class="panel__photo">
+        <div class="panel__photo-placeholder">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+          Add photo
+        </div>
+      </div>
+    </div>
+    <div class="panel__inner">
+      <div class="panel__label">04 &mdash; Connect</div>
+      <div class="panel__title">People &<br><em>Connection</em></div>
+      <div class="panel__divider"></div>
+      <div class="panel__text">The mentors who guided me, the friends who supported me, and the communities that inspired me. Research is never a solo endeavor.</div>
+    </div>
+  </div>
+
+  <!-- 5: Moments -->
+  <div class="panel panel--center" id="p5">
+    <div class="panel__inner">
+      <div class="panel__label">05 &mdash; Moments</div>
+      <div class="panel__title">Little<br><em>Moments</em></div>
+      <div class="panel__divider" style="margin-left:auto;margin-right:auto"></div>
+      <div class="panel__text" style="margin:0 auto">A perfect cup of coffee, a sunset walk, a book that changed everything. The small things that make life extraordinary.</div>
+    </div>
+  </div>
+
+  <!-- 6: Ending -->
+  <div class="panel panel--hero panel--ending" id="p6">
+    <div class="panel__inner" style="text-align:center">
+      <div class="panel__title">The Story<br><em>Continues</em>...</div>
+      <div class="panel__text" style="margin:0 auto">Thank you for taking a moment to know me beyond the publications.</div>
+      <a href="/" class="panel__btn">Back to Home &#8594;</a>
+    </div>
+  </div>
+
+</div>
+
+<!-- ===== Scroll spacer ===== -->
+<div class="scroll-space"></div>
+
+<!-- ===== ENGINE ===== -->
+<script>
+(function(){
+  'use strict';
+
+  /* ---------- Lenis smooth scroll ---------- */
+  var lenis = new Lenis({
+    duration: 1.4,
+    easing: function(t){ return Math.min(1, 1.001 - Math.pow(2, -10 * t)); },
+    orientation: 'vertical',
+    smoothWheel: true
+  });
+  function raf(time){ lenis.raf(time); requestAnimationFrame(raf); }
+  requestAnimationFrame(raf);
+
+  // Connect Lenis to GSAP ScrollTrigger
+  lenis.on('scroll', ScrollTrigger.update);
+  gsap.ticker.add(function(time){ lenis.raf(time * 1000); });
+  gsap.ticker.lagSmoothing(0);
+
+  /* ---------- Three.js Scene ---------- */
+  var canvas = document.getElementById('c');
+  var renderer = new THREE.WebGLRenderer({ canvas:canvas, antialias:true, alpha:false });
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.setClearColor(0x000000);
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure = 1.0;
+
+  var scene = new THREE.Scene();
+  scene.fog = new THREE.FogExp2(0x000000, 0.035);
+
+  var camera = new THREE.PerspectiveCamera(50, window.innerWidth/window.innerHeight, 0.1, 200);
+  camera.position.set(0, 0, 12);
+
+  /* --- Lights --- */
+  var ambLight = new THREE.AmbientLight(0xffffff, 0.15);
+  scene.add(ambLight);
+
+  var keyLight = new THREE.DirectionalLight(0xffffff, 0.6);
+  keyLight.position.set(5, 8, 5);
+  scene.add(keyLight);
+
+  var pointA = new THREE.PointLight(0xffffff, 1.5, 30);
+  pointA.position.set(0, 0, 8);
+  scene.add(pointA);
+
+  var pointB = new THREE.PointLight(0x888899, 0.8, 25);
+  pointB.position.set(-5, 3, -5);
+  scene.add(pointB);
+
+  /* --- Camera path (CatmullRom spline) --- */
+  var cameraPath = new THREE.CatmullRomCurve3([
+    new THREE.Vector3(0, 0, 12),     // hero
+    new THREE.Vector3(3, 1, 8),      // origin
+    new THREE.Vector3(-2, 2, 4),     // journey
+    new THREE.Vector3(4, -1, 0),     // explore
+    new THREE.Vector3(-3, 0, -4),    // connect
+    new THREE.Vector3(0, 3, -8),     // moments
+    new THREE.Vector3(0, 0, -13)     // ending
+  ], false, 'catmullrom', 0.5);
+
+  var lookAtPath = new THREE.CatmullRomCurve3([
+    new THREE.Vector3(0, 0, 0),
+    new THREE.Vector3(1, 0, 4),
+    new THREE.Vector3(-1, 1, 0),
+    new THREE.Vector3(2, -1, -3),
+    new THREE.Vector3(-1, 0, -7),
+    new THREE.Vector3(0, 1, -11),
+    new THREE.Vector3(0, 0, -18)
+  ], false, 'catmullrom', 0.5);
+
+  /* --- Floating wireframe objects along the path --- */
+  var meshes = [];
+  var geos = [
+    new THREE.IcosahedronGeometry(1, 1),
+    new THREE.TorusGeometry(0.8, 0.25, 16, 40),
+    new THREE.OctahedronGeometry(0.9, 0),
+    new THREE.TorusKnotGeometry(0.6, 0.2, 64, 8, 2, 3),
+    new THREE.DodecahedronGeometry(0.7, 0),
+    new THREE.IcosahedronGeometry(1.2, 0),
+  ];
+
+  // Place objects around the camera path
+  for (var i = 0; i < 40; i++) {
+    var t = i / 40;
+    var pathPos = cameraPath.getPointAt(t);
+    var geo = geos[i % geos.length];
+    var mat = new THREE.MeshPhongMaterial({
+      color: 0xffffff,
+      wireframe: true,
+      transparent: true,
+      opacity: 0.06 + Math.random() * 0.08
+    });
+    var m = new THREE.Mesh(geo, mat);
+    // Offset from camera path
+    m.position.set(
+      pathPos.x + (Math.random() - 0.5) * 12,
+      pathPos.y + (Math.random() - 0.5) * 8,
+      pathPos.z + (Math.random() - 0.5) * 6
+    );
+    var s = 0.3 + Math.random() * 1.5;
+    m.scale.set(s, s, s);
+    m.rotation.set(Math.random()*Math.PI, Math.random()*Math.PI, 0);
+    m.userData = {
+      rotX: (Math.random()-0.5)*0.003,
+      rotY: (Math.random()-0.5)*0.003,
+      baseOpacity: mat.opacity
+    };
+    scene.add(m);
+    meshes.push(m);
+  }
+
+  // A few solid objects (accent pieces)
+  var solidGeos = [
+    new THREE.SphereGeometry(0.15, 32, 32),
+    new THREE.BoxGeometry(0.2, 0.2, 0.2),
+    new THREE.TetrahedronGeometry(0.18)
+  ];
+  for (var i = 0; i < 60; i++) {
+    var t = Math.random();
+    var pp = cameraPath.getPointAt(t);
+    var sg = solidGeos[i % solidGeos.length];
+    var sm = new THREE.MeshStandardMaterial({
+      color: 0xffffff,
+      metalness: 0.9,
+      roughness: 0.1,
+      transparent: true,
+      opacity: 0.3 + Math.random() * 0.3
+    });
+    var solid = new THREE.Mesh(sg, sm);
+    solid.position.set(
+      pp.x + (Math.random()-0.5)*16,
+      pp.y + (Math.random()-0.5)*10,
+      pp.z + (Math.random()-0.5)*8
+    );
+    var ss = 0.3 + Math.random() * 0.8;
+    solid.scale.set(ss, ss, ss);
+    solid.userData = {
+      rotX: (Math.random()-0.5)*0.005,
+      rotY: (Math.random()-0.5)*0.005,
+      floatSpeed: 0.5 + Math.random(),
+      floatAmp: 0.2 + Math.random()*0.3,
+      baseY: solid.position.y
+    };
+    scene.add(solid);
+    meshes.push(solid);
+  }
+
+  /* --- Particle field --- */
+  var pCount = 600;
+  var pGeo = new THREE.BufferGeometry();
+  var pPos = new Float32Array(pCount * 3);
+  for (var i = 0; i < pCount; i++) {
+    pPos[i*3]   = (Math.random()-0.5)*40;
+    pPos[i*3+1] = (Math.random()-0.5)*30;
+    pPos[i*3+2] = 15 - Math.random()*40; // spread along z
+  }
+  pGeo.setAttribute('position', new THREE.BufferAttribute(pPos, 3));
+  var pMat = new THREE.PointsMaterial({ color:0xffffff, size:0.02, transparent:true, opacity:0.5 });
+  var points = new THREE.Points(pGeo, pMat);
+  scene.add(points);
+
+  /* --- Thin line along camera path --- */
+  var pathLine = new THREE.Line(
+    new THREE.BufferGeometry().setFromPoints(cameraPath.getPoints(200)),
+    new THREE.LineBasicMaterial({ color:0xffffff, transparent:true, opacity:0.03 })
+  );
+  scene.add(pathLine);
+
+  /* ---------- Scroll-driven state ---------- */
+  var scrollData = { progress: 0 };
+
+  // Main scroll driver
+  gsap.to(scrollData, {
+    progress: 1,
+    ease: 'none',
+    scrollTrigger: {
+      trigger: '.scroll-space',
+      start: 'top top',
+      end: 'bottom bottom',
+      scrub: 0.8
+    }
+  });
+
+  /* ---------- Panel animations (GSAP ScrollTrigger) ---------- */
+  var totalSections = 7; // 0-6
+  var panels = [];
+  for (var i = 0; i <= 6; i++) { panels.push(document.getElementById('p' + i)); }
+  var dots = document.querySelectorAll('.dots__item');
+  var secNum = document.getElementById('secNum');
+  var progressBar = document.getElementById('progress');
+
+  function sectionStart(idx) { return idx / totalSections; }
+  function sectionEnd(idx) { return (idx + 1) / totalSections; }
+
+  // Create ScrollTrigger for each panel
+  for (var i = 0; i < totalSections; i++) {
+    (function(idx){
+      var startPct = (idx / totalSections) * 100;
+      var endPct = ((idx + 1) / totalSections) * 100;
+
+      // Fade in
+      ScrollTrigger.create({
+        trigger: '.scroll-space',
+        start: startPct + '% top',
+        end: (startPct + (100/totalSections)*0.15) + '% top',
+        scrub: 0.5,
+        onUpdate: function(self) {
+          var p = self.progress;
+          if (panels[idx]) {
+            panels[idx].style.opacity = p;
+            panels[idx].style.visibility = p > 0.01 ? 'visible' : 'hidden';
+            // slight upward motion
+            var children = panels[idx].querySelectorAll('.panel__inner,.panel__photo,.panel__photos,.hero__title,.hero__sub,.hero__scroll');
+            children.forEach(function(c){
+              c.style.transform = 'translateY(' + (30 * (1 - p)) + 'px)';
+            });
+          }
+        }
+      });
+
+      // Fade out
+      ScrollTrigger.create({
+        trigger: '.scroll-space',
+        start: (endPct - (100/totalSections)*0.15) + '% top',
+        end: endPct + '% top',
+        scrub: 0.5,
+        onUpdate: function(self) {
+          var p = self.progress;
+          if (idx < totalSections - 1 && panels[idx]) {
+            panels[idx].style.opacity = 1 - p;
+            if (p > 0.99) panels[idx].style.visibility = 'hidden';
+          }
+        }
+      });
+    })(i);
+  }
+
+  /* ---------- Render loop ---------- */
+  var clock = new THREE.Clock();
+
+  function render() {
+    requestAnimationFrame(render);
+    var elapsed = clock.getElapsedTime();
+    var t = scrollData.progress;
+
+    // Camera follows path
+    var camPos = cameraPath.getPointAt(Math.min(t, 0.999));
+    var lookPos = lookAtPath.getPointAt(Math.min(t, 0.999));
+    camera.position.copy(camPos);
+    camera.lookAt(lookPos);
+
+    // Move key light with camera
+    pointA.position.copy(camPos);
+    pointA.position.x += 2;
+    pointA.position.y += 1;
+
+    // Subtle light intensity breathing
+    pointA.intensity = 1.2 + Math.sin(elapsed * 0.5) * 0.3;
+
+    // Fog density changes
+    scene.fog.density = 0.03 + t * 0.015;
+
+    // Exposure shift (brighter in middle, darker at ends)
+    renderer.toneMappingExposure = 0.8 + Math.sin(t * Math.PI) * 0.4;
+
+    // Animate meshes
+    for (var i = 0; i < meshes.length; i++) {
+      var m = meshes[i];
+      m.rotation.x += m.userData.rotX || 0;
+      m.rotation.y += m.userData.rotY || 0;
+      if (m.userData.floatSpeed) {
+        m.position.y = m.userData.baseY + Math.sin(elapsed * m.userData.floatSpeed + i) * m.userData.floatAmp;
+      }
+    }
+
+    // Particles gentle rotation
+    points.rotation.y = elapsed * 0.01;
+
+    // Update UI
+    var currentSection = Math.min(Math.floor(t * totalSections), totalSections - 1);
+    secNum.textContent = ('0' + (currentSection + 1)).slice(-2);
+    progressBar.style.width = (t * 100) + '%';
+    dots.forEach(function(d, i) {
+      d.classList.toggle('active', i === currentSection);
+    });
+
+    renderer.render(scene, camera);
+  }
+  render();
+
+  /* ---------- Dots click to scroll ---------- */
+  dots.forEach(function(d){
+    d.addEventListener('click', function(){
+      var idx = parseInt(d.getAttribute('data-idx'));
+      var scrollTarget = (idx / totalSections) * document.querySelector('.scroll-space').offsetHeight;
+      lenis.scrollTo(scrollTarget, { duration: 2 });
+    });
+  });
+
+  /* ---------- Resize ---------- */
+  window.addEventListener('resize', function(){
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
     renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  });
 
-    var scene = new THREE.Scene();
-    scene.fog = new THREE.FogExp2(0x0a0a1a, 0.015);
+})();
+</script>
 
-    var camera = new THREE.PerspectiveCamera(60, window.innerWidth/window.innerHeight, 0.1, 100);
-    camera.position.set(0, 0, 8);
-
-    // --- Lights ---
-    var ambientLight = new THREE.AmbientLight(0x222244, 0.6);
-    scene.add(ambientLight);
-
-    var mainLight = new THREE.PointLight(0x7c3aed, 2, 30);
-    mainLight.position.set(5, 5, 5);
-    scene.add(mainLight);
-
-    var accentLight = new THREE.PointLight(0xf75092, 1.5, 25);
-    accentLight.position.set(-5, -3, 3);
-    scene.add(accentLight);
-
-    var rimLight = new THREE.PointLight(0x3b82f6, 1, 20);
-    rimLight.position.set(0, 5, -5);
-    scene.add(rimLight);
-
-    // --- Floating Objects ---
-    var objects = [];
-    var geometries = [
-      new THREE.IcosahedronGeometry(0.6, 0),
-      new THREE.TorusGeometry(0.5, 0.2, 16, 32),
-      new THREE.OctahedronGeometry(0.5, 0),
-      new THREE.TorusKnotGeometry(0.4, 0.15, 64, 8),
-      new THREE.DodecahedronGeometry(0.45, 0),
-      new THREE.SphereGeometry(0.35, 32, 32),
-      new THREE.TetrahedronGeometry(0.5, 0),
-      new THREE.ConeGeometry(0.35, 0.7, 6),
-    ];
-    var colors = [0x7c3aed, 0x60a5fa, 0x34d399, 0xf75092, 0xfbbf24, 0xa78bfa, 0xfb923c, 0x22d3ee];
-
-    for (var i = 0; i < 25; i++) {
-      var geo = geometries[i % geometries.length];
-      var mat = new THREE.MeshPhongMaterial({
-        color: colors[i % colors.length],
-        transparent: true,
-        opacity: 0.15 + Math.random() * 0.2,
-        shininess: 100,
-        wireframe: Math.random() > 0.6
-      });
-      var mesh = new THREE.Mesh(geo, mat);
-      mesh.position.set(
-        (Math.random() - 0.5) * 20,
-        (Math.random() - 0.5) * 16,
-        (Math.random() - 0.5) * 12 - 3
-      );
-      mesh.rotation.set(Math.random()*Math.PI, Math.random()*Math.PI, 0);
-      var s = 0.4 + Math.random() * 1.2;
-      mesh.scale.set(s, s, s);
-      mesh.userData = {
-        basePos: mesh.position.clone(),
-        floatSpeed: 0.3 + Math.random() * 0.7,
-        floatAmp: 0.3 + Math.random() * 0.5,
-        rotSpeed: { x: (Math.random()-0.5)*0.01, y: (Math.random()-0.5)*0.01 }
-      };
-      scene.add(mesh);
-      objects.push(mesh);
-    }
-
-    // --- Particle field ---
-    var particleGeo = new THREE.BufferGeometry();
-    var particleCount = 300;
-    var pPositions = new Float32Array(particleCount * 3);
-    for (var i = 0; i < particleCount; i++) {
-      pPositions[i*3] = (Math.random()-0.5)*30;
-      pPositions[i*3+1] = (Math.random()-0.5)*30;
-      pPositions[i*3+2] = (Math.random()-0.5)*20 - 5;
-    }
-    particleGeo.setAttribute('position', new THREE.BufferAttribute(pPositions, 3));
-    var particleMat = new THREE.PointsMaterial({ color:0xffffff, size:0.03, transparent:true, opacity:0.4 });
-    var particles = new THREE.Points(particleGeo, particleMat);
-    scene.add(particles);
-
-    // --- Scene presets for each section ---
-    var sceneStates = {
-      hero:    { cam:[0,0,8],    mainCol:0x7c3aed, accentCol:0xf75092, rimCol:0x3b82f6, fog:0x0a0a1a, fogDensity:0.015 },
-      origin:  { cam:[2,1,7],    mainCol:0xa78bfa, accentCol:0xc084fc, rimCol:0x7c3aed, fog:0x0d0520, fogDensity:0.018 },
-      journey: { cam:[-2,0.5,6], mainCol:0x3b82f6, accentCol:0x60a5fa, rimCol:0x2563eb, fog:0x050d1a, fogDensity:0.012 },
-      explore: { cam:[1,-1,7],   mainCol:0x10b981, accentCol:0x34d399, rimCol:0x059669, fog:0x051a10, fogDensity:0.014 },
-      connect: { cam:[-1,1,6.5], mainCol:0xf43f5e, accentCol:0xfb7185, rimCol:0xe11d48, fog:0x1a0510, fogDensity:0.016 },
-      moments: { cam:[0,0.5,5],  mainCol:0xf59e0b, accentCol:0xfbbf24, rimCol:0xd97706, fog:0x1a1005, fogDensity:0.010 },
-      ending:  { cam:[0,2,9],    mainCol:0x8b5cf6, accentCol:0xf9a8d4, rimCol:0xfbbf24, fog:0x0a0a1a, fogDensity:0.020 }
-    };
-
-    // --- Scroll tracking ---
-    var scrollProgress = 0;
-    var currentState = sceneStates.hero;
-    var targetState = sceneStates.hero;
-    var lerpFactor = 0;
-
-    function getScrollData() {
-      var sections = document.querySelectorAll('[data-scene]');
-      var scrollY = window.pageYOffset;
-      var winH = window.innerHeight;
-      for (var i = sections.length - 1; i >= 0; i--) {
-        var rect = sections[i].getBoundingClientRect();
-        var top = rect.top + scrollY;
-        if (scrollY >= top - winH * 0.5) {
-          var sceneName = sections[i].getAttribute('data-scene');
-          var progress = Math.min(1, Math.max(0, (scrollY - top + winH * 0.5) / winH));
-          return { scene: sceneName, progress: progress, index: i };
-        }
-      }
-      return { scene:'hero', progress:0, index:0 };
-    }
-
-    // --- Lerp helpers ---
-    function lerpVal(a, b, t) { return a + (b - a) * t; }
-    function lerpColor(colObj, target, t) {
-      var tc = new THREE.Color(target);
-      colObj.r = lerpVal(colObj.r, tc.r, t);
-      colObj.g = lerpVal(colObj.g, tc.g, t);
-      colObj.b = lerpVal(colObj.b, tc.b, t);
-    }
-
-    // --- Animation ---
-    var clock = new THREE.Clock();
-    function animate() {
-      requestAnimationFrame(animate);
-      var elapsed = clock.getElapsedTime();
-      var dt = Math.min(clock.getDelta(), 0.05);
-
-      // Get current scroll state
-      var sd = getScrollData();
-      var target = sceneStates[sd.scene] || sceneStates.hero;
-      var t = 0.03; // smooth lerp speed
-
-      // Lerp camera
-      camera.position.x = lerpVal(camera.position.x, target.cam[0], t);
-      camera.position.y = lerpVal(camera.position.y, target.cam[1], t);
-      camera.position.z = lerpVal(camera.position.z, target.cam[2], t);
-      camera.lookAt(0, 0, 0);
-
-      // Lerp lights
-      lerpColor(mainLight.color, target.mainCol, t);
-      lerpColor(accentLight.color, target.accentCol, t);
-      lerpColor(rimLight.color, target.rimCol, t);
-
-      // Lerp fog
-      lerpColor(scene.fog.color, target.fog, t);
-      scene.fog.density = lerpVal(scene.fog.density, target.fogDensity, t);
-      renderer.setClearColor(scene.fog.color, 1);
-
-      // Float and rotate objects
-      for (var i = 0; i < objects.length; i++) {
-        var o = objects[i];
-        var ud = o.userData;
-        o.position.y = ud.basePos.y + Math.sin(elapsed * ud.floatSpeed + i) * ud.floatAmp;
-        o.position.x = ud.basePos.x + Math.cos(elapsed * ud.floatSpeed * 0.7 + i * 1.3) * ud.floatAmp * 0.5;
-        o.rotation.x += ud.rotSpeed.x;
-        o.rotation.y += ud.rotSpeed.y;
-      }
-
-      // Rotate particles slowly
-      particles.rotation.y = elapsed * 0.02;
-      particles.rotation.x = Math.sin(elapsed * 0.01) * 0.1;
-
-      renderer.render(scene, camera);
-    }
-    animate();
-
-    // --- Resize ---
-    window.addEventListener('resize', function() {
-      camera.aspect = window.innerWidth / window.innerHeight;
-      camera.updateProjectionMatrix();
-      renderer.setSize(window.innerWidth, window.innerHeight);
-    });
-
-    // --- Scroll: update nav, progress, reveals ---
-    var dots = document.querySelectorAll('.dot-nav__dot');
-    var navLinks = document.querySelectorAll('.life-nav__links a');
-    var progressBar = document.getElementById('progress');
-    var reveals = document.querySelectorAll('.reveal');
-
-    window.addEventListener('scroll', function() {
-      var scrollY = window.pageYOffset;
-      var docH = document.documentElement.scrollHeight - window.innerHeight;
-      var pct = docH > 0 ? (scrollY / docH) * 100 : 0;
-      progressBar.style.width = pct + '%';
-
-      // Update active dot & nav link
-      var sd = getScrollData();
-      dots.forEach(function(d, i) {
-        d.classList.toggle('active', i === sd.index);
-      });
-      navLinks.forEach(function(a) {
-        a.classList.toggle('active', parseInt(a.getAttribute('data-section')) === sd.index - 1);
-      });
-
-      // Reveal elements
-      reveals.forEach(function(el) {
-        var rect = el.getBoundingClientRect();
-        if (rect.top < window.innerHeight * 0.8) {
-          el.classList.add('visible');
-        }
-      });
-    }, { passive:true });
-
-    // --- Scroll to section ---
-    window.scrollToSection = function(idx) {
-      var sections = document.querySelectorAll('[data-scene]');
-      if (sections[idx]) {
-        sections[idx].scrollIntoView({ behavior:'smooth' });
-      }
-    };
-
-    // --- Nav link click ---
-    navLinks.forEach(function(a) {
-      a.addEventListener('click', function(e) {
-        e.preventDefault();
-        var idx = parseInt(a.getAttribute('data-section')) + 1;
-        window.scrollToSection(idx);
-      });
-    });
-
-  })();
-  </script>
 </body>
 </html>
