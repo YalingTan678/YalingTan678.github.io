@@ -559,6 +559,10 @@ var detailParticles;
 var detailStreams = [];
 var prevDetailProgress = 0;
 
+function smoothNoise(x,y,z){
+  return Math.sin(x*1.1+y*0.7)*0.5+Math.sin(y*1.3+z*0.9)*0.3+Math.sin(z*0.8+x*1.5)*0.2;
+}
+
 function initDetailScene() {
   detailScene = new THREE.Scene();
   detailScene.fog = new THREE.FogExp2(0x0c0a12, 0.04);
@@ -687,10 +691,6 @@ function initDetailScene() {
 
   var STREAM_COUNT = 400; // particles per stream
   detailStreams = [];
-
-  function smoothNoise(x,y,z){
-    return Math.sin(x*1.1+y*0.7)*0.5+Math.sin(y*1.3+z*0.9)*0.3+Math.sin(z*0.8+x*1.5)*0.2;
-  }
 
   streamCurves.forEach(function(curve, si){
     var geo = new THREE.BufferGeometry();
