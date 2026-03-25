@@ -18,47 +18,88 @@ permalink: /life/
     html,body{width:100%;overflow-x:hidden;font-family:'Inter',system-ui,sans-serif;background:#faf8ff;color:#1e1b4b}
     body.layer2-active{overflow-y:auto}
     body:not(.layer2-active){overflow-y:hidden;height:100vh}
+    ::-webkit-scrollbar{display:none}
+    html{scrollbar-width:none}
 
-    canvas#mainCanvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:1;pointer-events:none}
+    /* Three.js canvas — hidden during gallery, shown for detail */
+    canvas#mainCanvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:1;pointer-events:none;display:none}
 
     /* Film grain overlay */
-    .film-grain{position:fixed;top:0;left:0;width:100%;height:100%;z-index:9998;pointer-events:none;opacity:0.04;
+    .film-grain{position:fixed;top:0;left:0;width:100%;height:100%;z-index:9998;pointer-events:none;opacity:0.03;
       background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
       background-size:128px 128px}
 
-    /* ====== LAYER 1: Card Landing ====== */
-    #layer1{position:fixed;top:0;left:0;width:100%;height:100%;z-index:10;display:flex;align-items:center;justify-content:center}
-    #layer1 .title-text{position:absolute;bottom:8%;left:50%;transform:translateX(-50%);text-align:center;z-index:12;pointer-events:none}
-    #layer1 .title-text h1{font-family:'Playfair Display',serif;font-size:clamp(1.5rem,3vw,2.5rem);font-weight:400;color:rgba(30,27,75,0.6);letter-spacing:0.05em}
-    #layer1 .title-text p{font-size:0.75rem;color:rgba(30,27,75,0.3);margin-top:0.5rem;letter-spacing:0.15em;text-transform:uppercase}
+    /* ====== BACKGROUND PARTICLES (CSS) ====== */
+    #bgParticles{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;overflow:hidden}
+    .bg-dot{position:absolute;border-radius:50%;pointer-events:none;animation:floatDot linear infinite}
+    @keyframes floatDot{
+      0%{transform:translate(0,0) scale(1);opacity:0}
+      8%{opacity:var(--dot-opacity,0.2)}
+      88%{opacity:var(--dot-opacity,0.2)}
+      100%{transform:translate(var(--dx),var(--dy)) scale(0.5);opacity:0}
+    }
+
+    /* ====== FLASH OVERLAY ====== */
+    #flashOverlay{position:fixed;top:0;left:0;width:100%;height:100%;background:#fff;z-index:15;pointer-events:none;opacity:0}
+
+    /* ====== LAYER 1: 3D Card Gallery ====== */
+    #layer1{position:fixed;top:0;left:0;width:100%;height:100%;z-index:10;display:flex;align-items:center;justify-content:center;overflow:hidden}
+
+    #layer1 .title-text{position:absolute;top:2.5rem;left:50%;transform:translateX(-50%);text-align:center;z-index:12;pointer-events:none}
+    #layer1 .title-text h1{font-family:'Playfair Display',serif;font-size:clamp(1.3rem,2.5vw,2rem);font-weight:400;color:rgba(30,27,75,0.55);letter-spacing:0.05em}
+    #layer1 .title-text p{font-size:0.7rem;color:rgba(30,27,75,0.25);margin-top:0.3rem;letter-spacing:0.15em;text-transform:uppercase}
+
+    .scroll-hint{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:0.4rem;z-index:12;pointer-events:none}
+    .scroll-hint__line{width:1px;height:24px;background:linear-gradient(to bottom,transparent,rgba(124,58,237,0.4));animation:scrollPulse 2s ease-in-out infinite}
+    @keyframes scrollPulse{0%,100%{opacity:0.3;transform:scaleY(0.7)}50%{opacity:1;transform:scaleY(1.2)}}
+    .scroll-hint span{font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(30,27,75,0.25)}
+
+    /* Gallery 3D container */
+    .gallery-wrap{width:100%;height:100%;perspective:1200px;perspective-origin:50% 50%}
+    .gallery-stage{width:100%;height:100%;position:relative;transform-style:preserve-3d}
+
+    /* Cards */
+    .gcard{position:absolute;left:50%;top:50%;border-radius:14px;overflow:hidden;will-change:transform,opacity;backface-visibility:hidden;
+      box-shadow:0 15px 50px rgba(30,27,75,0.1),0 0 0 1px rgba(124,58,237,0.04)}
+    .gcard--main{cursor:pointer;border:1px solid rgba(255,255,255,0.35);
+      box-shadow:0 20px 60px rgba(30,27,75,0.12),0 0 0 1px rgba(124,58,237,0.06);transition:box-shadow 0.4s ease}
+    .gcard--main.hovered{box-shadow:0 35px 90px rgba(124,58,237,0.22),0 0 50px rgba(247,80,146,0.08),0 0 0 1px rgba(124,58,237,0.15)}
+    .gcard--deco{border:1px solid rgba(255,255,255,0.18);pointer-events:none}
+    .gcard__img{width:100%;height:100%;background-size:cover;background-position:center;position:absolute;top:0;left:0}
+    .gcard__overlay{position:absolute;bottom:0;left:0;right:0;padding:1.5rem 1.2rem;
+      background:linear-gradient(transparent 0%,rgba(0,0,0,0.55) 100%);display:flex;flex-direction:column;gap:0.25rem}
+    .gcard__label{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:#fff;text-shadow:0 2px 10px rgba(0,0,0,0.3);line-height:1.2}
+    .gcard__explore{font-size:0.65rem;font-weight:500;color:rgba(255,255,255,0.6);letter-spacing:0.12em;text-transform:uppercase;
+      opacity:0;transform:translateY(6px);transition:opacity 0.35s,transform 0.35s}
+    .gcard--main.hovered .gcard__explore{opacity:1;transform:translateY(0)}
 
     /* ====== LAYER 2: Detail Page ====== */
     #layer2{display:none;position:relative;z-index:10;width:100%;height:600vh}
 
     /* Back button */
-    .back-btn{position:fixed;top:2rem;left:2rem;z-index:100;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);
-      color:rgba(255,255,255,0.6);padding:0.5rem 1.2rem;border-radius:30px;font-size:0.75rem;font-family:'Inter',sans-serif;
+    .back-btn{position:fixed;top:2rem;left:2rem;z-index:100;background:rgba(124,58,237,0.08);border:1px solid rgba(124,58,237,0.2);
+      color:rgba(30,27,75,0.6);padding:0.5rem 1.2rem;border-radius:30px;font-size:0.75rem;font-family:'Inter',sans-serif;
       letter-spacing:0.1em;cursor:pointer;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);transition:all 0.3s;display:none}
-    .back-btn:hover{background:rgba(255,255,255,0.1);color:#fff}
+    .back-btn:hover{background:rgba(124,58,237,0.15);color:#1e1b4b}
 
     /* Content panels */
     .panel{position:fixed;top:0;left:0;width:100%;height:100vh;z-index:50;display:none;align-items:center;justify-content:center;
       pointer-events:none;opacity:0;transform:translateY(30px)}
     .panel.visible{display:flex}
-    .panel-inner{max-width:600px;width:90%;padding:2rem;pointer-events:auto}
-    .panel-number{font-size:0.7rem;letter-spacing:0.2em;color:rgba(255,255,255,0.2);margin-bottom:1rem;font-weight:300}
+    .panel-inner{max-width:600px;width:90%;padding:2rem;pointer-events:auto;background:rgba(250,248,255,0.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-radius:16px;border:1px solid rgba(124,58,237,0.1);box-shadow:0 8px 32px rgba(124,58,237,0.08)}
+    .panel-number{font-size:0.7rem;letter-spacing:0.2em;color:rgba(124,58,237,0.35);margin-bottom:1rem;font-weight:300}
     .panel-title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,3rem);font-weight:400;line-height:1.2;
-      color:rgba(255,255,255,0.9);margin-bottom:1rem;letter-spacing:-0.01em}
-    .panel-text{font-size:0.9rem;font-weight:300;line-height:1.8;color:rgba(255,255,255,0.45);margin-bottom:1.5rem}
-    .panel-photo{width:100%;height:200px;border:1px dashed rgba(255,255,255,0.15);border-radius:8px;display:flex;align-items:center;
-      justify-content:center;color:rgba(255,255,255,0.2);font-size:0.75rem;letter-spacing:0.1em;background:rgba(255,255,255,0.02)}
+      color:#1e1b4b;margin-bottom:1rem;letter-spacing:-0.01em}
+    .panel-text{font-size:0.9rem;font-weight:300;line-height:1.8;color:rgba(30,27,75,0.55);margin-bottom:1.5rem}
+    .panel-photo{width:100%;height:200px;border:1px dashed rgba(124,58,237,0.2);border-radius:8px;display:flex;align-items:center;
+      justify-content:center;color:rgba(124,58,237,0.3);font-size:0.75rem;letter-spacing:0.1em;background:rgba(124,58,237,0.03)}
 
     /* Right dot nav */
     .dot-nav{position:fixed;right:2rem;top:50%;transform:translateY(-50%);z-index:100;display:none;flex-direction:column;gap:1rem}
-    .dot-nav .dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.15);cursor:pointer;transition:all 0.3s;position:relative}
-    .dot-nav .dot.active{background:rgba(255,255,255,0.8);transform:scale(1.5)}
+    .dot-nav .dot{width:6px;height:6px;border-radius:50%;background:rgba(124,58,237,0.2);cursor:pointer;transition:all 0.3s;position:relative}
+    .dot-nav .dot.active{background:rgba(124,58,237,0.8);transform:scale(1.5)}
     .dot-nav .dot::after{content:attr(data-label);position:absolute;right:16px;top:50%;transform:translateY(-50%);font-size:0.6rem;
-      letter-spacing:0.1em;text-transform:uppercase;white-space:nowrap;opacity:0;transition:opacity 0.3s;color:rgba(255,255,255,0.5)}
+      letter-spacing:0.1em;text-transform:uppercase;white-space:nowrap;opacity:0;transition:opacity 0.3s;color:rgba(30,27,75,0.5)}
     .dot-nav .dot:hover::after{opacity:1}
 
     /* Progress bar */
@@ -67,8 +108,8 @@ permalink: /life/
 
     /* Section counter */
     .section-counter{position:fixed;right:2rem;bottom:2rem;z-index:100;font-size:0.7rem;letter-spacing:0.15em;
-      color:rgba(255,255,255,0.2);pointer-events:none;display:none}
-    .section-counter span{color:rgba(255,255,255,0.6);font-weight:600;font-size:0.9rem}
+      color:rgba(30,27,75,0.2);pointer-events:none;display:none}
+    .section-counter span{color:rgba(124,58,237,0.6);font-weight:600;font-size:0.9rem}
 
     /* Panel CTA button */
     .panel-cta{display:inline-block;padding:0.6rem 1.8rem;border-radius:30px;font-size:0.75rem;font-weight:500;letter-spacing:0.1em;
@@ -82,18 +123,32 @@ permalink: /life/
       .section-counter{right:1rem;bottom:1rem}
       .back-btn{top:1rem;left:1rem;padding:0.4rem 0.8rem;font-size:0.65rem}
       .panel-inner{padding:1.5rem}
+      .gallery-wrap{perspective:800px}
+      #layer1 .title-text{top:1.5rem}
+      .scroll-hint{bottom:1.5rem}
     }
   </style>
 </head>
 <body>
   <canvas id="mainCanvas"></canvas>
   <div class="film-grain"></div>
+  <div id="bgParticles"></div>
+  <div id="flashOverlay"></div>
 
-  <!-- LAYER 1: 3D Card Landing -->
+  <!-- LAYER 1: 3D Card Gallery -->
   <div id="layer1">
+    <div class="gallery-wrap" id="galleryWrapper">
+      <div class="gallery-stage" id="galleryStage">
+        <!-- Cards built by JS -->
+      </div>
+    </div>
     <div class="title-text">
       <h1>Beyond the Research</h1>
       <p>Click a card to explore</p>
+    </div>
+    <div class="scroll-hint" id="scrollHint">
+      <div class="scroll-hint__line"></div>
+      <span>Scroll to browse</span>
     </div>
   </div>
 
@@ -119,7 +174,7 @@ permalink: /life/
 <script>
 (function(){
 
-/* ====== CONTENT DATA ====== */
+/* ====== CONTENT DATA (detail panels) ====== */
 var THEMES = {
   pet: {
     panels: [
@@ -153,10 +208,23 @@ var THEMES = {
   }
 };
 
-var CARD_DATA = [
-  { key: "pet",     label: "Pet Lover", img: "/images/life/pet.jpg" },
-  { key: "florist", label: "Florist",   img: "/images/life/florist.jpg" },
-  { key: "travel",  label: "Travel",    img: "/images/life/travel.jpg" }
+/* ====== GALLERY CARD DATA ====== */
+var ALL_CARDS = [
+  // Far back decorative
+  { type:'deco', x:-280, y:-140, z:-480, ry:-6, rx:5, w:180, h:240, bg:'linear-gradient(135deg,#ede9fe 0%,#fce7f3 100%)' },
+  { type:'deco', x:340, y:120, z:-420, ry:-10, rx:3, w:160, h:220, bg:'linear-gradient(135deg,#ddd6fe 0%,#fbcfe8 100%)' },
+  { type:'deco', x:60, y:-200, z:-360, ry:-4, rx:7, w:170, h:230, bg:'linear-gradient(135deg,#c4b5fd 0%,#f9a8d4 100%)' },
+  // Mid-back: Travel + deco
+  { type:'main', key:'travel', label:'Travel', img:'/images/life/travel.jpg', x:240, y:80, z:-260, ry:-9, rx:4, w:280, h:380 },
+  { type:'deco', x:-360, y:30, z:-220, ry:-12, rx:5, w:150, h:200, bg:'linear-gradient(135deg,#a78bfa 0%,#f472b6 100%)' },
+  { type:'deco', x:-120, y:180, z:-180, ry:-5, rx:6, w:160, h:210, bg:'linear-gradient(135deg,#8b5cf6 0%,#ec4899 100%)' },
+  // Center: Florist + deco
+  { type:'main', key:'florist', label:'Florist', img:'/images/life/florist.jpg', x:-40, y:-30, z:-20, ry:-6, rx:3, w:280, h:380 },
+  { type:'deco', x:340, y:-150, z:20, ry:-8, rx:5, w:170, h:230, bg:'linear-gradient(135deg,rgba(124,58,237,0.35),rgba(247,80,146,0.35))' },
+  // Foreground: Pet Lover + deco
+  { type:'main', key:'pet', label:'Pet Lover', img:'/images/life/pet.jpg', x:150, y:-90, z:160, ry:-10, rx:4, w:280, h:380 },
+  { type:'deco', x:-300, y:100, z:200, ry:-14, rx:5, w:150, h:200, bg:'linear-gradient(135deg,#c084fc 0%,#f9a8d4 100%)' },
+  { type:'deco', x:380, y:60, z:260, ry:-7, rx:6, w:160, h:220, bg:'linear-gradient(135deg,#7c3aed 0%,#f75092 100%)' }
 ];
 
 /* ====== GLOBALS ====== */
@@ -169,15 +237,32 @@ var dotNav = document.getElementById('dotNav');
 var sectionCounter = document.getElementById('sectionCounter');
 var secNum = document.getElementById('secNum');
 var panelCta = document.getElementById('panelCta');
+var galleryStage = document.getElementById('galleryStage');
+var flashOverlay = document.getElementById('flashOverlay');
+var scrollHint = document.getElementById('scrollHint');
 
 var renderer, camera, currentScene;
 var currentLayer = 1;
 var animId;
 var activeTheme = null;
 var transitioning = false;
-var entrancePlayed = false;
 
-/* ====== RENDERER SETUP ====== */
+var cardElements = [];
+var mainCardElements = [];
+
+// Mouse parallax
+var targetMouseX = 0, targetMouseY = 0;
+var smoothMouseX = 0, smoothMouseY = 0;
+
+// Scroll Z
+var targetScrollZ = 0, scrollZ = 0;
+var SCROLL_MIN = -250, SCROLL_MAX = 550;
+
+// Mobile scale
+var isMobile = window.innerWidth < 768;
+var galleryScale = isMobile ? 0.5 : 1;
+
+/* ====== THREE.JS RENDERER (for detail scene only) ====== */
 renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: false });
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 renderer.setSize(window.innerWidth, window.innerHeight);
@@ -185,293 +270,159 @@ renderer.setClearColor(0xfaf8ff, 1);
 renderer.toneMapping = THREE.ACESFilmicToneMapping;
 renderer.toneMappingExposure = 1.0;
 
-/* ====== LAYER 1: CARD SCENE ====== */
-var cardScene, cardCamera, cardClock, cards3D = [], cardMeshes = [];
-var raycaster = new THREE.Raycaster();
-var mouse2 = new THREE.Vector2(-999, -999);
-var mouseRaw = { x: 0, y: 0 };
-var hoveredCard = null;
-var starPoints;
-var starBasePos;
+/* ====== BUILD GALLERY ====== */
+function buildGallery() {
+  galleryStage.innerHTML = '';
+  cardElements = [];
+  mainCardElements = [];
 
-function createCardTexture(label, imgSrc) {
-  var c = document.createElement('canvas');
-  c.width = 512; c.height = 720;
-  var ctx = c.getContext('2d');
+  ALL_CARDS.forEach(function(d, i) {
+    var card = document.createElement('div');
+    card.className = 'gcard' + (d.type === 'main' ? ' gcard--main' : ' gcard--deco');
+    card.dataset.z = d.z;
+    card.dataset.idx = i;
+    card.style.width = d.w + 'px';
+    card.style.height = d.h + 'px';
 
-  // Solid dark base while image loads
-  ctx.fillStyle = '#1e1b4b';
-  ctx.fillRect(0, 0, 512, 720);
+    if (d.type === 'main') {
+      card.dataset.key = d.key;
+      var imgDiv = document.createElement('div');
+      imgDiv.className = 'gcard__img';
+      imgDiv.style.backgroundImage = "url('" + d.img + "')";
+      card.appendChild(imgDiv);
 
-  // Label text at bottom with gradient overlay
-  ctx.fillStyle = 'rgba(0,0,0,0.5)';
-  ctx.fillRect(0, 560, 512, 160);
-  var grad = ctx.createLinearGradient(0, 520, 0, 720);
-  grad.addColorStop(0, 'rgba(0,0,0,0)');
-  grad.addColorStop(0.3, 'rgba(0,0,0,0.6)');
-  grad.addColorStop(1, 'rgba(0,0,0,0.8)');
-  ctx.fillStyle = grad;
-  ctx.fillRect(0, 520, 512, 200);
+      var overlay = document.createElement('div');
+      overlay.className = 'gcard__overlay';
+      overlay.innerHTML = '<span class="gcard__label">' + d.label + '</span><span class="gcard__explore">Explore \u2192</span>';
+      card.appendChild(overlay);
 
-  ctx.font = '700 42px Playfair Display, serif';
-  ctx.textAlign = 'center';
-  ctx.fillStyle = '#ffffff';
-  ctx.fillText(label, 256, 660);
+      // Click
+      (function(el, data) {
+        el.addEventListener('click', function() {
+          if (transitioning || currentLayer !== 1) return;
+          transitionToDetail(el);
+        });
+        // Hover
+        el.addEventListener('mouseenter', function() {
+          if (transitioning) return;
+          gsap.to(el, { z: data.z + 50, scale: 1.08, duration: 0.4, ease: 'power2.out', overwrite: 'auto' });
+          el.classList.add('hovered');
+        });
+        el.addEventListener('mouseleave', function() {
+          gsap.to(el, { z: data.z, scale: 1, duration: 0.4, ease: 'power2.out', overwrite: 'auto' });
+          el.classList.remove('hovered');
+        });
+      })(card, d);
 
-  var tex = new THREE.CanvasTexture(c);
-  tex.needsUpdate = true;
-
-  // Load photo and redraw
-  var img = new Image();
-  img.crossOrigin = 'anonymous';
-  img.onload = function() {
-    // Cover-fit the image
-    var iw = img.width, ih = img.height;
-    var cw = 512, ch = 720;
-    var scale = Math.max(cw/iw, ch/ih);
-    var sw = iw * scale, sh = ih * scale;
-    var sx = (cw - sw) / 2, sy = (ch - sh) / 2;
-    ctx.drawImage(img, sx, sy, sw, sh);
-
-    // Bottom gradient overlay for text
-    var grad2 = ctx.createLinearGradient(0, 480, 0, 720);
-    grad2.addColorStop(0, 'rgba(0,0,0,0)');
-    grad2.addColorStop(0.4, 'rgba(0,0,0,0.5)');
-    grad2.addColorStop(1, 'rgba(0,0,0,0.75)');
-    ctx.fillStyle = grad2;
-    ctx.fillRect(0, 480, 512, 240);
-
-    // Label
-    ctx.font = '700 42px Playfair Display, serif';
-    ctx.textAlign = 'center';
-    ctx.fillStyle = '#ffffff';
-    ctx.shadowColor = 'rgba(0,0,0,0.5)';
-    ctx.shadowBlur = 8;
-    ctx.fillText(label, 256, 660);
-    ctx.shadowBlur = 0;
-
-    tex.needsUpdate = true;
-  };
-  img.src = imgSrc;
-
-  return tex;
-}
-
-function initCardScene() {
-  cardScene = new THREE.Scene();
-  cardCamera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 100);
-  cardCamera.position.set(0, 0, 12);
-  cardClock = new THREE.Clock();
-
-  // Lights — bright enough to see cards
-  cardScene.add(new THREE.AmbientLight(0xffffff, 0.8));
-  var dirLight = new THREE.DirectionalLight(0xffffff, 0.6);
-  dirLight.position.set(0, 2, 10);
-  cardScene.add(dirLight);
-  var ptLight = new THREE.PointLight(0x7c3aed, 1.0, 30);
-  ptLight.position.set(5, 5, 10);
-  cardScene.add(ptLight);
-  var ptLight2 = new THREE.PointLight(0xf75092, 0.7, 30);
-  ptLight2.position.set(-5, -3, 8);
-  cardScene.add(ptLight2);
-
-  // Cards
-  cards3D = [];
-  cardMeshes = [];
-  var positions = [
-    new THREE.Vector3(-4.5, 0, 0),
-    new THREE.Vector3(0, 0.3, 0.5),
-    new THREE.Vector3(4.5, 0, 0)
-  ];
-  var rotations = [-0.15, 0, 0.15];
-
-  for (var i = 0; i < 3; i++) {
-    var tex = createCardTexture(CARD_DATA[i].label, CARD_DATA[i].img);
-    var geo = new THREE.PlaneGeometry(3.5, 5);
-    var mat = new THREE.MeshBasicMaterial({
-      map: tex,
-      transparent: true,
-      opacity: 0.95,
-      side: THREE.DoubleSide
-    });
-    var mesh = new THREE.Mesh(geo, mat);
-    mesh.position.copy(positions[i]);
-    mesh.rotation.y = rotations[i];
-    mesh.userData = { idx: i, basePos: positions[i].clone(), baseRot: rotations[i], floatOffset: i * 2.1 };
-    cardScene.add(mesh);
-    cards3D.push(mesh);
-    cardMeshes.push(mesh);
-  }
-
-  // Colored flowing particles (site palette)
-  var particleColors = [0x7c3aed, 0x9f50d3, 0xf75092, 0xa78bfa, 0xf9a8d4];
-  var totalParticles = 600;
-  var starGeo = new THREE.BufferGeometry();
-  var starPos = new Float32Array(totalParticles * 3);
-  var starColors = new Float32Array(totalParticles * 3);
-  for (var i = 0; i < totalParticles; i++) {
-    starPos[i * 3] = (Math.random() - 0.5) * 35;
-    starPos[i * 3 + 1] = (Math.random() - 0.5) * 25;
-    starPos[i * 3 + 2] = (Math.random() - 0.5) * 15 - 3;
-    var col = new THREE.Color(particleColors[i % particleColors.length]);
-    starColors[i * 3] = col.r;
-    starColors[i * 3 + 1] = col.g;
-    starColors[i * 3 + 2] = col.b;
-  }
-  starGeo.setAttribute('position', new THREE.BufferAttribute(starPos, 3));
-  starGeo.setAttribute('color', new THREE.BufferAttribute(starColors, 3));
-  starPoints = new THREE.Points(starGeo, new THREE.PointsMaterial({
-    size: 0.08, transparent: true, opacity: 0.6, sizeAttenuation: true, vertexColors: true
-  }));
-  cardScene.add(starPoints);
-
-  // Store base positions for mouse-driven flow
-  starBasePos = new Float32Array(starPos);
-
-  currentScene = cardScene;
-  camera = cardCamera;
-}
-
-function playEntranceAnimation() {
-  // Set initial state for entrance animation
-  for (var i = 0; i < cards3D.length; i++) {
-    cards3D[i].scale.set(0.3, 0.3, 0.3);
-    cards3D[i].material.opacity = 0;
-    cards3D[i].position.set(0, -1, 0);
-    cards3D[i].rotation.y = 0;
-  }
-
-  // Hide title text initially
-  var titleText = layer1.querySelector('.title-text');
-  gsap.set(titleText, { opacity: 0 });
-
-  var tl = gsap.timeline({
-    onComplete: function() {
-      entrancePlayed = true;
+      mainCardElements.push(card);
+    } else {
+      var imgDiv = document.createElement('div');
+      imgDiv.className = 'gcard__img';
+      imgDiv.style.background = d.bg;
+      card.appendChild(imgDiv);
     }
+
+    // Set initial 3D position via GSAP
+    gsap.set(card, {
+      xPercent: -50,
+      yPercent: -50,
+      x: d.x * galleryScale,
+      y: d.y * galleryScale,
+      z: d.z,
+      rotateX: d.rx,
+      rotateY: d.ry,
+      opacity: 0,
+      scale: 0.6
+    });
+
+    galleryStage.appendChild(card);
+    cardElements.push(card);
+  });
+}
+
+/* ====== ENTRANCE ANIMATION ====== */
+function playGalleryEntrance() {
+  var titleText = layer1.querySelector('.title-text');
+  gsap.set(titleText, { opacity: 0, y: 15 });
+  gsap.set(scrollHint, { opacity: 0, y: 10 });
+
+  // Sort cards by z (back to front) for stagger
+  var sorted = cardElements.slice().sort(function(a, b) {
+    return parseFloat(a.dataset.z) - parseFloat(b.dataset.z);
   });
 
-  // Phase 1 (0-2s): Arc fan-out
-  var arcPositions = [
-    { x: -5, y: 0.5, z: 0.5 },
-    { x: 0, y: 1, z: 1 },
-    { x: 5, y: 0.5, z: 0.5 }
-  ];
-  var arcRotations = [-0.3, 0, 0.3];
+  var tl = gsap.timeline();
 
-  for (var i = 0; i < cards3D.length; i++) {
-    tl.to(cards3D[i].position, { x: arcPositions[i].x, y: arcPositions[i].y, z: arcPositions[i].z, duration: 1.5, ease: 'power2.out' }, i * 0.15);
-    tl.to(cards3D[i].scale, { x: 1.0, y: 1.0, z: 1.0, duration: 1.5, ease: 'power2.out' }, i * 0.15);
-    tl.to(cards3D[i].material, { opacity: 0.95, duration: 1.2, ease: 'power1.out' }, i * 0.15);
-    tl.to(cards3D[i].rotation, { y: arcRotations[i], duration: 1.5, ease: 'power2.out' }, i * 0.15);
-  }
+  tl.to(sorted, {
+    opacity: 1,
+    scale: 1,
+    stagger: 0.05,
+    duration: 0.9,
+    ease: 'back.out(1.2)',
+    delay: 0.2
+  });
 
-  // Phase 2 (2-3.5s): Hold in arc + show text + breathing float
-  tl.to(titleText, { opacity: 1, duration: 1.0, ease: 'power1.out' }, 2);
-  for (var i = 0; i < cards3D.length; i++) {
-    tl.to(cards3D[i].position, { y: arcPositions[i].y + 0.2, duration: 0.8, ease: 'sine.inOut', yoyo: true, repeat: 1 }, 2);
-  }
-
-  // Phase 3 (3.5-5s): Settle to final positions
-  for (var i = 0; i < cards3D.length; i++) {
-    var bp = cards3D[i].userData.basePos;
-    var br = cards3D[i].userData.baseRot;
-    tl.to(cards3D[i].position, { x: bp.x, y: bp.y, z: bp.z, duration: 1.2, ease: 'power2.inOut' }, 3.5);
-    tl.to(cards3D[i].rotation, { y: br, duration: 1.2, ease: 'power2.inOut' }, 3.5);
-  }
+  tl.to(titleText, { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out' }, '-=0.6');
+  tl.to(scrollHint, { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' }, '-=0.4');
 }
 
-/* ====== LAYER 1 RENDER ====== */
-function renderCardScene() {
-  if (currentLayer !== 1) return;
-  animId = requestAnimationFrame(renderCardScene);
-
-  var el = cardClock.getElapsedTime();
-
-  // Float animation (only after entrance completes)
-  if (entrancePlayed) {
-    for (var i = 0; i < cards3D.length; i++) {
-      var card = cards3D[i];
-      var bp = card.userData.basePos;
-      var fo = card.userData.floatOffset;
-      card.position.y = bp.y + Math.sin(el * 0.8 + fo) * 0.15;
-      card.position.x = bp.x + Math.sin(el * 0.5 + fo + 1) * 0.03;
-    }
-  }
-
-  // Raycaster hover
-  raycaster.setFromCamera(mouse2, cardCamera);
-  var intersects = raycaster.intersectObjects(cardMeshes);
-
-  if (intersects.length > 0) {
-    var hit = intersects[0].object;
-    hoveredCard = hit;
-    canvas.style.cursor = 'pointer';
-
-    for (var i = 0; i < cards3D.length; i++) {
-      var card = cards3D[i];
-      if (card === hit) {
-        // Scale up, tilt toward mouse, glow
-        card.scale.lerp(new THREE.Vector3(1.15, 1.15, 1.15), 0.08);
-        card.rotation.y = card.userData.baseRot + (mouseRaw.x - 0.5) * 0.15;
-        card.rotation.x = (mouseRaw.y - 0.5) * -0.1;
-        card.material.emissiveIntensity = 0.4;
-      } else {
-        // Dim + push back
-        card.scale.lerp(new THREE.Vector3(0.92, 0.92, 0.92), 0.06);
-        card.material.emissiveIntensity = 0.02;
-        card.rotation.y += (card.userData.baseRot - card.rotation.y) * 0.05;
-        card.rotation.x *= 0.95;
-      }
-    }
-  } else {
-    hoveredCard = null;
-    canvas.style.cursor = 'default';
-    for (var i = 0; i < cards3D.length; i++) {
-      var card = cards3D[i];
-      card.scale.lerp(new THREE.Vector3(1, 1, 1), 0.06);
-      card.material.emissiveIntensity = 0.1;
-      card.rotation.y += (card.userData.baseRot - card.rotation.y) * 0.05;
-      card.rotation.x *= 0.95;
-    }
-  }
-
-  // Animate particles — mouse-driven flow
-  if (starPoints && starBasePos) {
-    var positions = starPoints.geometry.attributes.position.array;
-    for (var i = 0; i < 600; i++) {
-      var bx = starBasePos[i*3], by = starBasePos[i*3+1], bz = starBasePos[i*3+2];
-      positions[i*3] = bx + Math.sin(el * 0.3 + i * 0.1) * 0.15 + mouseRaw.x * 0.5;
-      positions[i*3+1] = by + Math.cos(el * 0.25 + i * 0.13) * 0.12 + mouseRaw.y * 0.3;
-      positions[i*3+2] = bz + Math.sin(el * 0.2 + i * 0.07) * 0.1;
-    }
-    starPoints.geometry.attributes.position.needsUpdate = true;
-  }
-
-  renderer.render(cardScene, cardCamera);
-}
-
-/* ====== MOUSE EVENTS (LAYER 1) ====== */
+/* ====== MOUSE EVENTS ====== */
 window.addEventListener('mousemove', function(e) {
-  mouse2.x = (e.clientX / window.innerWidth) * 2 - 1;
-  mouse2.y = -(e.clientY / window.innerHeight) * 2 + 1;
-  mouseRaw.x = e.clientX / window.innerWidth;
-  mouseRaw.y = e.clientY / window.innerHeight;
+  targetMouseX = (e.clientX / window.innerWidth - 0.5) * 2;  // -1 to 1
+  targetMouseY = (e.clientY / window.innerHeight - 0.5) * 2;
 });
 
-window.addEventListener('click', function(e) {
-  if (currentLayer !== 1 || !hoveredCard || transitioning) return;
-  var idx = hoveredCard.userData.idx;
-  transitionToDetail(idx);
-});
+/* ====== WHEEL SCROLL ====== */
+window.addEventListener('wheel', function(e) {
+  if (currentLayer !== 1 || transitioning) return;
+  targetScrollZ += e.deltaY * 0.6;
+  targetScrollZ = Math.max(SCROLL_MIN, Math.min(SCROLL_MAX, targetScrollZ));
+}, { passive: true });
 
-/* ====== TRANSITION: CARD -> DETAIL ====== */
-function transitionToDetail(cardIdx) {
+// Touch support
+var touchStartY = 0;
+window.addEventListener('touchstart', function(e) {
+  touchStartY = e.touches[0].clientY;
+}, { passive: true });
+window.addEventListener('touchmove', function(e) {
+  if (currentLayer !== 1 || transitioning) return;
+  var dy = touchStartY - e.touches[0].clientY;
+  touchStartY = e.touches[0].clientY;
+  targetScrollZ += dy * 1.8;
+  targetScrollZ = Math.max(SCROLL_MIN, Math.min(SCROLL_MAX, targetScrollZ));
+}, { passive: true });
+
+/* ====== GALLERY ANIMATION LOOP ====== */
+var galleryAnimId;
+
+function galleryLoop() {
+  galleryAnimId = requestAnimationFrame(galleryLoop);
+  if (currentLayer !== 1) return;
+
+  if (!transitioning) {
+    smoothMouseX += (targetMouseX - smoothMouseX) * 0.04;
+    smoothMouseY += (targetMouseY - smoothMouseY) * 0.04;
+    scrollZ += (targetScrollZ - scrollZ) * 0.06;
+  }
+
+  galleryStage.style.transform =
+    'rotateY(' + (smoothMouseX * 4) + 'deg) ' +
+    'rotateX(' + (-smoothMouseY * 3) + 'deg) ' +
+    'translateZ(' + scrollZ + 'px)';
+
+  // Fade scroll hint when user scrolls
+  if (Math.abs(scrollZ) > 30) {
+    scrollHint.style.opacity = Math.max(0, 1 - Math.abs(scrollZ) / 80);
+  }
+}
+
+/* ====== TRANSITION: GALLERY -> DETAIL ====== */
+function transitionToDetail(mainCardEl) {
   transitioning = true;
-  activeTheme = CARD_DATA[cardIdx].key;
+  activeTheme = mainCardEl.dataset.key;
   populatePanels(activeTheme);
 
-  var clicked = cards3D[cardIdx];
+  gsap.killTweensOf('.gcard');
 
   var tl = gsap.timeline({
     onComplete: function() {
@@ -480,32 +431,73 @@ function transitionToDetail(cardIdx) {
     }
   });
 
-  // Other cards fly out to sides and fade
-  for (var i = 0; i < cards3D.length; i++) {
-    if (i !== cardIdx) {
-      var dir = i < cardIdx ? -1 : 1;
-      tl.to(cards3D[i].position, { x: dir * 12, duration: 0.6, ease: 'power2.in' }, 0);
-      tl.to(cards3D[i].scale, { x: 0.6, y: 0.6, z: 0.6, duration: 0.6, ease: 'power2.in' }, 0);
-      tl.to(cards3D[i].material, { opacity: 0, duration: 0.4 }, 0.2);
+  // Fade title + scroll hint
+  tl.to('#layer1 .title-text', { opacity: 0, y: -15, duration: 0.3, ease: 'power2.in' }, 0);
+  tl.to(scrollHint, { opacity: 0, duration: 0.2 }, 0);
+
+  // Smoothly bring stage to neutral
+  var stageProxy = { mx: smoothMouseX, my: smoothMouseY, sz: scrollZ };
+  tl.to(stageProxy, {
+    mx: 0, my: 0, sz: 0,
+    duration: 0.6,
+    ease: 'power2.inOut',
+    onUpdate: function() {
+      smoothMouseX = stageProxy.mx;
+      smoothMouseY = stageProxy.my;
+      scrollZ = stageProxy.sz;
     }
-  }
+  }, 0);
 
-  // Clicked card: move to center, scale up, flip on Y axis
-  tl.to(clicked.position, { x: 0, y: 0, z: 2, duration: 0.5, ease: 'power2.out' }, 0);
-  tl.to(clicked.scale, { x: 1.3, y: 1.3, z: 1.3, duration: 0.5, ease: 'power2.out' }, 0);
-  tl.to(clicked.rotation, { y: Math.PI, duration: 0.7, ease: 'power2.inOut' }, 0.3);
-  tl.to(clicked.material, { opacity: 0, duration: 0.3 }, 0.8);
+  // Explode other cards outward
+  var cx = window.innerWidth / 2;
+  var cy = window.innerHeight / 2;
 
-  // Flash white on renderer
-  tl.to({}, { duration: 0.1, onComplete: function() {
-    renderer.setClearColor(0xcccccc, 1);
-  }}, 0.7);
-  tl.to({}, { duration: 0.3, onComplete: function() {
-    renderer.setClearColor(0x0a0a0a, 1);
-  }}, 0.9);
+  cardElements.forEach(function(c) {
+    if (c === mainCardEl) return;
+    var rect = c.getBoundingClientRect();
+    var cardCx = rect.left + rect.width / 2;
+    var cardCy = rect.top + rect.height / 2;
+    var angle = Math.atan2(cardCy - cy, cardCx - cx);
+    if (Math.abs(cardCx - cx) < 5 && Math.abs(cardCy - cy) < 5) {
+      angle = Math.random() * Math.PI * 2;
+    }
+    var dist = 900 + Math.random() * 500;
 
-  // Hide title text
-  tl.to(layer1.querySelector('.title-text'), { opacity: 0, duration: 0.3 }, 0);
+    tl.to(c, {
+      x: '+=' + Math.round(Math.cos(angle) * dist),
+      y: '+=' + Math.round(Math.sin(angle) * dist),
+      scale: 0.15,
+      opacity: 0,
+      rotation: (Math.random() - 0.5) * 50,
+      duration: 0.7,
+      ease: 'power3.in'
+    }, 0);
+  });
+
+  // Clicked card: pop forward, center, flatten, expand to fullscreen
+  var rect = mainCardEl.getBoundingClientRect();
+  var scaleToFill = Math.max(window.innerWidth / rect.width, window.innerHeight / rect.height) * 1.3;
+
+  // Pop out
+  tl.to(mainCardEl, { z: '+=120', duration: 0.15, ease: 'power2.out' }, 0);
+  // Center & flatten
+  tl.to(mainCardEl, {
+    x: 0, y: 0, z: 600,
+    rotateX: 0, rotateY: 0, rotation: 0,
+    duration: 0.7,
+    ease: 'power2.inOut'
+  }, 0.15);
+  // Scale to fill
+  tl.to(mainCardEl, {
+    scale: scaleToFill,
+    duration: 0.4,
+    ease: 'power2.in'
+  }, 0.6);
+  // Fade out card
+  tl.to(mainCardEl, { opacity: 0, duration: 0.2 }, 0.9);
+
+  // White flash
+  tl.to(flashOverlay, { opacity: 1, duration: 0.25, ease: 'power1.in' }, 0.85);
 }
 
 function populatePanels(themeKey) {
@@ -519,15 +511,19 @@ function populatePanels(themeKey) {
 /* ====== SHOW DETAIL LAYER ====== */
 function showDetailLayer() {
   currentLayer = 2;
-  cancelAnimationFrame(animId);
+  cancelAnimationFrame(galleryAnimId);
 
   layer1.style.display = 'none';
+  canvas.style.display = 'block';
   layer2.style.display = 'block';
   backBtn.style.display = 'block';
   progressBar.style.display = 'block';
   dotNav.style.display = 'flex';
   sectionCounter.style.display = 'block';
   document.body.classList.add('layer2-active');
+
+  // Hide flash
+  gsap.to(flashOverlay, { opacity: 0, duration: 0.4 });
 
   window.scrollTo(0, 0);
 
@@ -548,11 +544,14 @@ function showDetailLayer() {
     dotNav.appendChild(dot);
   }
 
+  renderer.setClearColor(0xfaf8ff, 1);
+  renderer.setSize(window.innerWidth, window.innerHeight);
+
   initDetailScene();
   renderDetailScene();
 }
 
-/* ====== LAYER 2: DETAIL SCENE ====== */
+/* ====== LAYER 2: DETAIL SCENE (Three.js — preserved) ====== */
 var detailScene, detailCamera, detailClock;
 var cameraPath, lookAtPath;
 var detailParticles;
@@ -565,15 +564,15 @@ function smoothNoise(x,y,z){
 
 function initDetailScene() {
   detailScene = new THREE.Scene();
-  detailScene.fog = new THREE.FogExp2(0x0c0a12, 0.04);
+  detailScene.fog = new THREE.FogExp2(0xfaf8ff, 0.04);
 
   detailCamera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 200);
 
-  detailScene.add(new THREE.AmbientLight(0xffffff, 0.15));
-  var dl = new THREE.DirectionalLight(0x7c3aed, 0.3);
+  detailScene.add(new THREE.AmbientLight(0xffffff, 0.6));
+  var dl = new THREE.DirectionalLight(0x7c3aed, 0.5);
   dl.position.set(5, 10, 5);
   detailScene.add(dl);
-  var dl2 = new THREE.DirectionalLight(0xf75092, 0.2);
+  var dl2 = new THREE.DirectionalLight(0xf75092, 0.4);
   dl2.position.set(-5, -5, -10);
   detailScene.add(dl2);
 
@@ -616,7 +615,7 @@ function initDetailScene() {
       color: i % 2 === 0 ? 0x7c3aed : 0xf75092,
       wireframe: true,
       transparent: true,
-      opacity: 0.15
+      opacity: 0.25
     });
     var mesh = new THREE.Mesh(geo, mat);
     mesh.position.set(
@@ -635,10 +634,10 @@ function initDetailScene() {
     var pt = cameraPath.getPointAt(t);
     var geo = new THREE.SphereGeometry(0.08 + Math.random() * 0.12, 8, 8);
     var mat = new THREE.MeshPhongMaterial({
-      color: 0xaaaacc,
+      color: 0x9f50d3,
       shininess: 100,
       transparent: true,
-      opacity: 0.3
+      opacity: 0.35
     });
     var mesh = new THREE.Mesh(geo, mat);
     mesh.position.set(
@@ -661,7 +660,7 @@ function initDetailScene() {
   }
   pGeo.setAttribute('position', new THREE.BufferAttribute(pPos, 3));
   detailParticles = new THREE.Points(pGeo, new THREE.PointsMaterial({
-    color: 0xffffff, size: 0.04, transparent: true, opacity: 0.3, sizeAttenuation: true
+    color: 0xa78bfa, size: 0.04, transparent: true, opacity: 0.4, sizeAttenuation: true
   }));
   detailScene.add(detailParticles);
 
@@ -712,7 +711,7 @@ function initDetailScene() {
     geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
 
     // Bright colored streams for visibility
-    var streamColors = [0x7c3aed, 0xf75092, 0x3b82f6, 0x22c55e];
+    var streamColors = [0x7c3aed, 0xf75092, 0x9f50d3, 0xa78bfa];
     var pts = new THREE.Points(geo, new THREE.PointsMaterial({
       color: streamColors[si],
       size: 0.15,
@@ -861,6 +860,7 @@ function transitionToCards() {
 
   // Hide detail UI
   layer2.style.display = 'none';
+  canvas.style.display = 'none';
   backBtn.style.display = 'none';
   progressBar.style.display = 'none';
   dotNav.style.display = 'none';
@@ -878,31 +878,24 @@ function transitionToCards() {
 
   // Re-show layer 1
   layer1.style.display = 'flex';
-  layer1.querySelector('.title-text').style.opacity = '1';
+  gsap.set(flashOverlay, { opacity: 0 });
 
-  // Re-init card scene
-  initCardScene();
+  // Reset scroll
+  targetScrollZ = 0;
+  scrollZ = 0;
+  smoothMouseX = 0;
+  smoothMouseY = 0;
 
-  // Place cards at final positions directly (no entrance replay)
-  for (var i = 0; i < cards3D.length; i++) {
-    var bp = cards3D[i].userData.basePos;
-    cards3D[i].position.copy(bp);
-    cards3D[i].scale.set(1, 1, 1);
-    cards3D[i].material.opacity = 0.95;
-    cards3D[i].rotation.y = cards3D[i].userData.baseRot;
-  }
-
-  // Reset hover state
-  hoveredCard = null;
-  mouse2.set(-999, -999);
+  // Rebuild gallery with entrance animation
+  buildGallery();
 
   currentLayer = 1;
-  renderCardScene();
+  galleryLoop();
+  playGalleryEntrance();
 
-  // Delay clearing transitioning flag to prevent re-click
   setTimeout(function() {
     transitioning = false;
-  }, 500);
+  }, 1000);
 }
 
 backBtn.addEventListener('click', transitionToCards);
@@ -911,20 +904,42 @@ panelCta.addEventListener('click', transitionToCards);
 /* ====== RESIZE ====== */
 window.addEventListener('resize', function() {
   renderer.setSize(window.innerWidth, window.innerHeight);
-  if (currentLayer === 1 && cardCamera) {
-    cardCamera.aspect = window.innerWidth / window.innerHeight;
-    cardCamera.updateProjectionMatrix();
-  }
+  isMobile = window.innerWidth < 768;
+  galleryScale = isMobile ? 0.5 : 1;
   if (currentLayer === 2 && detailCamera) {
     detailCamera.aspect = window.innerWidth / window.innerHeight;
     detailCamera.updateProjectionMatrix();
   }
 });
 
+/* ====== BACKGROUND PARTICLES (CSS) ====== */
+function createBgParticles() {
+  var container = document.getElementById('bgParticles');
+  var colors = ['#7c3aed','#9f50d3','#f75092','#a78bfa','#f9a8d4','#c084fc','#8b5cf6'];
+  for (var i = 0; i < 35; i++) {
+    var dot = document.createElement('div');
+    dot.className = 'bg-dot';
+    var size = 2 + Math.random() * 5;
+    var op = 0.08 + Math.random() * 0.18;
+    dot.style.cssText =
+      'width:' + size + 'px;height:' + size + 'px;' +
+      'left:' + (Math.random() * 100) + '%;' +
+      'top:' + (Math.random() * 100) + '%;' +
+      'background:' + colors[i % colors.length] + ';' +
+      '--dot-opacity:' + op + ';' +
+      'animation-duration:' + (18 + Math.random() * 25) + 's;' +
+      'animation-delay:' + (-Math.random() * 25) + 's;' +
+      '--dx:' + ((Math.random() - 0.5) * 250) + 'px;' +
+      '--dy:' + ((Math.random() - 0.5) * 250) + 'px;';
+    container.appendChild(dot);
+  }
+}
+
 /* ====== INIT ====== */
-initCardScene();
-renderCardScene();
-playEntranceAnimation();
+createBgParticles();
+buildGallery();
+galleryLoop();
+playGalleryEntrance();
 
 })();
 </script>
