@@ -61,15 +61,20 @@ permalink: /life/
     .gallery-wrap{width:100%;height:100%;perspective:1200px;perspective-origin:50% 50%}
     .gallery-stage{width:100%;height:100%;position:relative;transform-style:preserve-3d}
 
-    /* Cards */
-    .gcard{position:absolute;left:50%;top:50%;border-radius:14px;overflow:hidden;will-change:transform,opacity;backface-visibility:hidden;
-      box-shadow:0 15px 50px rgba(30,27,75,0.1),0 0 0 1px rgba(124,58,237,0.04)}
-    .gcard--main{cursor:pointer;border:1px solid rgba(255,255,255,0.35);
-      box-shadow:0 20px 60px rgba(30,27,75,0.12),0 0 0 1px rgba(124,58,237,0.06);transition:box-shadow 0.4s ease}
-    .gcard--main.hovered{box-shadow:0 35px 90px rgba(124,58,237,0.22),0 0 50px rgba(247,80,146,0.08),0 0 0 1px rgba(124,58,237,0.15)}
-    .gcard--deco{border:1px solid rgba(255,255,255,0.18);pointer-events:none}
-    .gcard__img{width:100%;height:100%;background-size:cover;background-position:center;position:absolute;top:0;left:0}
-    .gcard__overlay{position:absolute;bottom:0;left:0;right:0;padding:1.5rem 1.2rem;
+    /* Cards — glass/acrylic quality */
+    .gcard{position:absolute;left:50%;top:50%;border-radius:12px;overflow:hidden;will-change:transform,opacity;backface-visibility:hidden;
+      border:1px solid rgba(255,255,255,0.4);
+      box-shadow:0 2px 8px rgba(30,27,75,0.08),0 25px 70px rgba(30,27,75,0.12);
+      transition:box-shadow 0.45s ease,filter 0.45s ease}
+    .gcard--main{cursor:pointer}
+    .gcard--main.hovered{box-shadow:0 4px 12px rgba(124,58,237,0.15),0 40px 100px rgba(124,58,237,0.2),0 0 40px rgba(247,80,146,0.08)}
+    .gcard--deco{pointer-events:none}
+    .gcard__img{width:100%;height:100%;background-size:cover;background-position:center;position:absolute;top:0;left:0;filter:contrast(1.04) saturate(1.1)}
+    /* Glass reflection overlay */
+    .gcard::after{content:'';position:absolute;top:0;left:0;right:0;bottom:0;
+      background:linear-gradient(135deg,rgba(255,255,255,0.18) 0%,transparent 40%,transparent 60%,rgba(255,255,255,0.05) 100%);
+      pointer-events:none;z-index:2}
+    .gcard__overlay{position:absolute;bottom:0;left:0;right:0;padding:1.5rem 1.2rem;z-index:3;
       background:linear-gradient(transparent 0%,rgba(0,0,0,0.55) 100%);display:flex;flex-direction:column;gap:0.25rem}
     .gcard__label{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:#fff;text-shadow:0 2px 10px rgba(0,0,0,0.3);line-height:1.2}
     .gcard__explore{font-size:0.65rem;font-weight:500;color:rgba(255,255,255,0.6);letter-spacing:0.12em;text-transform:uppercase;
@@ -209,24 +214,32 @@ var THEMES = {
   }
 };
 
-/* ====== GALLERY CARDS — horizontal layout ====== */
+/* ====== GALLERY CARDS — diagonal 3D cascade (bottom-left → top-right) ====== */
+/* Uniform tilt: ry ~-25, rx ~8. Each card steps: +150 X, -100 Y, -80 Z */
+var CARD_RY = -25, CARD_RX = 8;
 var ALL_CARDS = [
-  // Back decorative row
-  { type:'deco', x:-480, y:-60, z:-180, ry:-5, rx:3, w:160, h:220, bg:'linear-gradient(135deg,#ede9fe,#fce7f3)' },
-  { type:'deco', x:-160, y:110, z:-160, ry:-8, rx:4, w:150, h:200, bg:'linear-gradient(135deg,#ddd6fe,#fbcfe8)' },
-  { type:'deco', x:180, y:-120, z:-150, ry:-4, rx:5, w:160, h:220, bg:'linear-gradient(135deg,#c4b5fd,#f9a8d4)' },
-  { type:'deco', x:460, y:80, z:-170, ry:-9, rx:3, w:150, h:200, bg:'linear-gradient(135deg,#a78bfa,#f472b6)' },
-
-  // === 3 MAIN CARDS — horizontal row ===
-  { type:'main', key:'pet',     label:'Pet Lover', img:'/images/life/pet.jpg',     x:-340, y:0,  z:0,  ry:-7,  rx:3, w:280, h:380 },
-  { type:'main', key:'florist', label:'Florist',   img:'/images/life/florist.jpg', x:0,    y:10, z:40, ry:-3,  rx:2, w:290, h:390 },
-  { type:'main', key:'travel',  label:'Travel',    img:'/images/life/travel.jpg',  x:340,  y:0,  z:0,  ry:-7,  rx:3, w:280, h:380 },
-
-  // Front decorative row
-  { type:'deco', x:-500, y:70,   z:100, ry:-12, rx:4, w:140, h:190, bg:'linear-gradient(135deg,#7c3aed,#f75092)' },
-  { type:'deco', x:-180, y:-130, z:110, ry:-5,  rx:6, w:150, h:200, bg:'linear-gradient(135deg,#c084fc,#f9a8d4)' },
-  { type:'deco', x:160,  y:130,  z:90,  ry:-8,  rx:4, w:140, h:190, bg:'linear-gradient(135deg,#8b5cf6,#ec4899)' },
-  { type:'deco', x:490,  y:-70,  z:80,  ry:-10, rx:5, w:150, h:210, bg:'linear-gradient(135deg,#ddd6fe,#fbcfe8)' }
+  // --- card 0: bottom-left foreground (deco) ---
+  { type:'deco', x:-440, y:260,  z:160,  ry:CARD_RY, rx:CARD_RX, w:160, h:220, bg:'linear-gradient(135deg,#7c3aed,#f75092)' },
+  // --- card 1: MAIN — Pet Lover ---
+  { type:'main', key:'pet', label:'Pet Lover', img:'/images/life/pet.jpg', x:-300, y:170, z:80, ry:CARD_RY, rx:CARD_RX, w:270, h:370 },
+  // --- card 2: deco ---
+  { type:'deco', x:-170, y:100,  z:10,   ry:CARD_RY, rx:CARD_RX, w:150, h:200, bg:'linear-gradient(135deg,#c084fc,#f9a8d4)' },
+  // --- card 3: deco ---
+  { type:'deco', x:-60,  y:30,   z:-60,  ry:CARD_RY, rx:CARD_RX, w:160, h:220, bg:'linear-gradient(135deg,#ddd6fe,#fbcfe8)' },
+  // --- card 4: MAIN — Florist ---
+  { type:'main', key:'florist', label:'Florist', img:'/images/life/florist.jpg', x:60, y:-40, z:-130, ry:CARD_RY, rx:CARD_RX, w:280, h:380 },
+  // --- card 5: deco ---
+  { type:'deco', x:180,  y:-110, z:-200, ry:CARD_RY, rx:CARD_RX, w:150, h:200, bg:'linear-gradient(135deg,#a78bfa,#f472b6)' },
+  // --- card 6: deco ---
+  { type:'deco', x:290,  y:-170, z:-270, ry:CARD_RY, rx:CARD_RX, w:160, h:210, bg:'linear-gradient(135deg,#8b5cf6,#ec4899)' },
+  // --- card 7: MAIN — Travel ---
+  { type:'main', key:'travel', label:'Travel', img:'/images/life/travel.jpg', x:400, y:-240, z:-340, ry:CARD_RY, rx:CARD_RX, w:270, h:370 },
+  // --- card 8: deco (top-right, furthest back) ---
+  { type:'deco', x:520,  y:-310, z:-410, ry:CARD_RY, rx:CARD_RX, w:150, h:200, bg:'linear-gradient(135deg,#ede9fe,#fce7f3)' },
+  // --- card 9: deco offset ---
+  { type:'deco', x:130,  y:190,  z:50,   ry:CARD_RY, rx:CARD_RX, w:140, h:190, bg:'linear-gradient(135deg,#c4b5fd,#f9a8d4)' },
+  // --- card 10: deco offset ---
+  { type:'deco', x:440,  y:-100, z:-180, ry:CARD_RY, rx:CARD_RX, w:140, h:190, bg:'linear-gradient(135deg,#ddd6fe,#fbcfe8)' }
 ];
 
 /* ====== GLOBALS ====== */
@@ -298,12 +311,21 @@ function buildGallery() {
         });
         el.addEventListener('mouseenter', function() {
           if (transitioning) return;
-          gsap.to(el, { z: data.z + 50, scale: 1.08, duration: 0.4, ease: 'power2.out', overwrite: 'auto' });
+          // Pull this card forward
+          gsap.to(el, { z: data.z + 100, scale: 1.05, duration: 0.45, ease: 'power2.out', overwrite: 'auto' });
           el.classList.add('hovered');
+          // Dim all other cards
+          cardElements.forEach(function(c) {
+            if (c !== el) gsap.to(c, { opacity: 0.65, duration: 0.35, overwrite: 'auto' });
+          });
         });
         el.addEventListener('mouseleave', function() {
-          gsap.to(el, { z: data.z, scale: 1, duration: 0.4, ease: 'power2.out', overwrite: 'auto' });
+          gsap.to(el, { z: data.z, scale: 1, duration: 0.45, ease: 'power2.out', overwrite: 'auto' });
           el.classList.remove('hovered');
+          // Restore all cards
+          cardElements.forEach(function(c) {
+            if (c !== el) gsap.to(c, { opacity: 1, duration: 0.35, overwrite: 'auto' });
+          });
         });
       })(card, d);
 
@@ -333,55 +355,57 @@ function buildGallery() {
   });
 }
 
-/* ====== 45-DEGREE SWEEP ENTRANCE ====== */
+/* ====== DIAGONAL SWEEP ENTRANCE ====== */
 function playGalleryEntrance() {
   var titleText = layer1.querySelector('.title-text');
   gsap.set(titleText, { opacity: 0, y: 15 });
 
-  // Stage starts rotated & offset (viewing from 45-degree diagonal)
+  // Stage starts with extra rotation — as if camera flies in at 45°
   gsap.set(galleryStage, {
-    rotateY: -35,
-    rotateX: 12,
-    x: 500 * galleryScale,
-    y: -200 * galleryScale,
-    z: -300
+    rotateY: -20,
+    rotateX: 15,
+    x: 350 * galleryScale,
+    y: -250 * galleryScale
   });
 
-  // All cards start hidden
-  cardElements.forEach(function(c) {
-    gsap.set(c, { opacity: 0, scale: 0.5 });
+  // All cards start offset further along the diagonal + hidden
+  cardElements.forEach(function(c, i) {
+    var d = ALL_CARDS[parseInt(c.dataset.idx)];
+    gsap.set(c, { opacity: 0, scale: 0.7, x: (d.x + 200) * galleryScale, y: (d.y - 150) * galleryScale });
   });
 
   var tl = gsap.timeline();
 
-  // Phase 1 (0–2s): Stage sweeps from diagonal to frontal view
+  // Phase 1: Stage sweeps to resting position
   tl.to(galleryStage, {
     rotateY: 0,
     rotateX: 0,
     x: 0,
     y: 0,
-    z: 0,
-    duration: 2.2,
-    ease: 'power2.inOut'
+    duration: 2,
+    ease: 'power3.inOut'
   }, 0);
 
-  // Phase 2: Cards fade in with stagger during the sweep (left to right)
+  // Phase 2: Cards appear one by one along the diagonal (front → back)
+  // Sort by index order (which follows the diagonal from bottom-left to top-right)
   var sorted = cardElements.slice().sort(function(a, b) {
-    var ai = parseInt(a.dataset.idx);
-    var bi = parseInt(b.dataset.idx);
-    return ALL_CARDS[ai].x - ALL_CARDS[bi].x; // left to right
+    return parseInt(a.dataset.idx) - parseInt(b.dataset.idx);
   });
 
-  tl.to(sorted, {
-    opacity: 1,
-    scale: 1,
-    stagger: 0.07,
-    duration: 0.8,
-    ease: 'back.out(1.1)'
-  }, 0.3);
+  sorted.forEach(function(c, i) {
+    var d = ALL_CARDS[parseInt(c.dataset.idx)];
+    tl.to(c, {
+      opacity: 1,
+      scale: 1,
+      x: d.x * galleryScale,
+      y: d.y * galleryScale,
+      duration: 0.7,
+      ease: 'power2.out'
+    }, 0.15 + i * 0.08);
+  });
 
   // Phase 3: Title fades in
-  tl.to(titleText, { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out' }, 1.8);
+  tl.to(titleText, { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out' }, 1.6);
 }
 
 /* ====== MOUSE PARALLAX ====== */
@@ -404,7 +428,7 @@ function galleryLoop() {
   }
 }
 
-/* ====== TRANSITION: GALLERY -> DETAIL ====== */
+/* ====== TRANSITION: GALLERY -> DETAIL ("pull out card") ====== */
 function transitionToDetail(mainCardEl) {
   transitioning = true;
   activeTheme = mainCardEl.dataset.key;
@@ -419,50 +443,45 @@ function transitionToDetail(mainCardEl) {
     }
   });
 
+  // Fade title
   tl.to('#layer1 .title-text', { opacity: 0, y: -15, duration: 0.3, ease: 'power2.in' }, 0);
 
-  // Reset stage rotation smoothly
-  tl.to(galleryStage, { rotateY: 0, rotateX: 0, duration: 0.4, ease: 'power2.out', overwrite: 'auto' }, 0);
-
-  // Explode other cards outward
-  var cx = window.innerWidth / 2;
-  var cy = window.innerHeight / 2;
-
+  // Other cards: retreat backward + blur + fade
   cardElements.forEach(function(c) {
     if (c === mainCardEl) return;
-    var rect = c.getBoundingClientRect();
-    var cardCx = rect.left + rect.width / 2;
-    var cardCy = rect.top + rect.height / 2;
-    var angle = Math.atan2(cardCy - cy, cardCx - cx);
-    if (Math.abs(cardCx - cx) < 5 && Math.abs(cardCy - cy) < 5) angle = Math.random() * Math.PI * 2;
-    var dist = 900 + Math.random() * 500;
-
     tl.to(c, {
-      x: '+=' + Math.round(Math.cos(angle) * dist),
-      y: '+=' + Math.round(Math.sin(angle) * dist),
-      scale: 0.15,
+      z: '-=400',
       opacity: 0,
-      rotation: (Math.random() - 0.5) * 50,
-      duration: 0.7,
-      ease: 'power3.in'
+      filter: 'blur(8px)',
+      duration: 0.8,
+      ease: 'power2.in'
     }, 0);
   });
 
-  // Clicked card: pop, center, flatten, expand
-  tl.to(mainCardEl, { z: '+=120', duration: 0.15, ease: 'power2.out' }, 0);
+  // Reset stage rotation smoothly
+  tl.to(galleryStage, { rotateY: 0, rotateX: 0, duration: 0.5, ease: 'power2.out', overwrite: 'auto' }, 0);
+
+  // Clicked card: pull forward out of the stack
+  tl.to(mainCardEl, { z: '+=200', duration: 0.25, ease: 'power2.out' }, 0);
+
+  // Flatten rotation and center
   tl.to(mainCardEl, {
-    x: 0, y: 0, z: 600,
+    x: 0, y: 0, z: 500,
     rotateX: 0, rotateY: 0, rotation: 0,
     duration: 0.7,
     ease: 'power2.inOut'
-  }, 0.15);
+  }, 0.2);
 
+  // Scale to fill viewport
   var rect = mainCardEl.getBoundingClientRect();
-  var scaleToFill = Math.max(window.innerWidth / rect.width, window.innerHeight / rect.height) * 1.3;
-  tl.to(mainCardEl, { scale: scaleToFill, duration: 0.4, ease: 'power2.in' }, 0.6);
-  tl.to(mainCardEl, { opacity: 0, duration: 0.2 }, 0.9);
+  var scaleToFill = Math.max(window.innerWidth / Math.max(rect.width, 1), window.innerHeight / Math.max(rect.height, 1)) * 1.3;
+  tl.to(mainCardEl, { scale: scaleToFill, duration: 0.45, ease: 'power2.in' }, 0.7);
 
-  tl.to(flashOverlay, { opacity: 1, duration: 0.25, ease: 'power1.in' }, 0.85);
+  // Fade out
+  tl.to(mainCardEl, { opacity: 0, duration: 0.2 }, 1.0);
+
+  // White flash
+  tl.to(flashOverlay, { opacity: 1, duration: 0.25, ease: 'power1.in' }, 0.95);
 }
 
 function populatePanels(themeKey) {
