@@ -214,21 +214,13 @@ var THEMES = {
   }
 };
 
-/* ====== GALLERY CARDS — diagonal 3D cascade, UNIFORM SIZE ====== */
+/* ====== GALLERY CARDS — 3 main cards only, diagonal cascade ====== */
 var CARD_RY = -25, CARD_RX = 8;
-var CARD_W = 260, CARD_H = 350; // all same size
+var CARD_W = 280, CARD_H = 380;
 var ALL_CARDS = [
-  { type:'deco', x:-380, y:220,  z:140,  ry:CARD_RY, rx:CARD_RX, w:CARD_W, h:CARD_H, bg:'linear-gradient(135deg,#7c3aed,#f75092)' },
-  { type:'main', key:'pet', label:'Pet Lover', img:'/images/life/pet.jpg', x:-240, y:140, z:70, ry:CARD_RY, rx:CARD_RX, w:CARD_W, h:CARD_H },
-  { type:'deco', x:-110, y:70,   z:5,    ry:CARD_RY, rx:CARD_RX, w:CARD_W, h:CARD_H, bg:'linear-gradient(135deg,#c084fc,#f9a8d4)' },
-  { type:'deco', x:10,   y:0,    z:-60,  ry:CARD_RY, rx:CARD_RX, w:CARD_W, h:CARD_H, bg:'linear-gradient(135deg,#ddd6fe,#fbcfe8)' },
-  { type:'main', key:'florist', label:'Florist', img:'/images/life/florist.jpg', x:130, y:-70, z:-130, ry:CARD_RY, rx:CARD_RX, w:CARD_W, h:CARD_H },
-  { type:'deco', x:250,  y:-140, z:-200, ry:CARD_RY, rx:CARD_RX, w:CARD_W, h:CARD_H, bg:'linear-gradient(135deg,#a78bfa,#f472b6)' },
-  { type:'deco', x:360,  y:-200, z:-265, ry:CARD_RY, rx:CARD_RX, w:CARD_W, h:CARD_H, bg:'linear-gradient(135deg,#8b5cf6,#ec4899)' },
-  { type:'main', key:'travel', label:'Travel', img:'/images/life/travel.jpg', x:470, y:-270, z:-330, ry:CARD_RY, rx:CARD_RX, w:CARD_W, h:CARD_H },
-  { type:'deco', x:580,  y:-340, z:-400, ry:CARD_RY, rx:CARD_RX, w:CARD_W, h:CARD_H, bg:'linear-gradient(135deg,#ede9fe,#fce7f3)' },
-  { type:'deco', x:200,  y:160,  z:40,   ry:CARD_RY, rx:CARD_RX, w:CARD_W, h:CARD_H, bg:'linear-gradient(135deg,#c4b5fd,#f9a8d4)' },
-  { type:'deco', x:500,  y:-120, z:-180, ry:CARD_RY, rx:CARD_RX, w:CARD_W, h:CARD_H, bg:'linear-gradient(135deg,#ddd6fe,#fbcfe8)' }
+  { type:'main', key:'pet',     label:'Pet Lover', img:'/images/life/pet.jpg',     x:-200, y:120, z:80,   ry:CARD_RY, rx:CARD_RX, w:CARD_W, h:CARD_H },
+  { type:'main', key:'florist', label:'Florist',   img:'/images/life/florist.jpg', x:60,   y:0,   z:-60,  ry:CARD_RY, rx:CARD_RX, w:CARD_W, h:CARD_H },
+  { type:'main', key:'travel',  label:'Travel',    img:'/images/life/travel.jpg',  x:320,  y:-120, z:-200, ry:CARD_RY, rx:CARD_RX, w:CARD_W, h:CARD_H }
 ];
 
 /* ====== GLOBALS ====== */
