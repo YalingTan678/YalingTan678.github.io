@@ -1,0 +1,489 @@
+---
+layout: null
+permalink: /playground/
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Life Gallery Playground | Lily Tan</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+  html,body{width:100%;height:100%;overflow:hidden;font-family:'Inter',system-ui,sans-serif;background:#faf8ff;color:#1e1b4b}
+
+  /* ====== CONTROL PANEL ====== */
+  .ctrl{position:fixed;top:0;right:0;z-index:500;width:320px;height:100vh;overflow-y:auto;
+    background:rgba(255,255,255,0.92);backdrop-filter:blur(16px);border-left:1px solid rgba(124,58,237,0.1);
+    padding:1.5rem;font-size:0.8rem;display:flex;flex-direction:column;gap:1.2rem}
+  .ctrl h2{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:#1e1b4b;margin-bottom:0.3rem}
+  .ctrl h3{font-size:0.7rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#7c3aed;margin-bottom:0.5rem}
+  .ctrl-group{background:rgba(124,58,237,0.04);border-radius:10px;padding:1rem;display:flex;flex-direction:column;gap:0.5rem}
+  .ctrl label{display:flex;align-items:center;gap:0.6rem;cursor:pointer;padding:0.35rem 0.5rem;border-radius:6px;transition:background 0.2s}
+  .ctrl label:hover{background:rgba(124,58,237,0.08)}
+  .ctrl input[type="radio"]{accent-color:#7c3aed}
+  .ctrl .desc{font-size:0.68rem;color:rgba(30,27,75,0.45);margin-left:1.6rem;margin-top:-0.2rem}
+  .ctrl button.try-btn{background:linear-gradient(135deg,#7c3aed,#f75092);color:#fff;border:none;border-radius:8px;
+    padding:0.6rem 1rem;font-size:0.75rem;font-weight:600;cursor:pointer;letter-spacing:0.05em;transition:transform 0.2s,box-shadow 0.2s;
+    font-family:'Inter',sans-serif}
+  .ctrl button.try-btn:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(124,58,237,0.3)}
+  .ctrl button.reset-btn{background:rgba(124,58,237,0.08);color:#7c3aed;border:1px solid rgba(124,58,237,0.2);border-radius:8px;
+    padding:0.5rem 0.8rem;font-size:0.7rem;font-weight:500;cursor:pointer;font-family:'Inter',sans-serif}
+  .ctrl-footer{margin-top:auto;padding-top:1rem;border-top:1px solid rgba(124,58,237,0.1);font-size:0.65rem;color:rgba(30,27,75,0.35);line-height:1.5}
+
+  /* ====== GALLERY AREA ====== */
+  .preview{position:fixed;top:0;left:0;width:calc(100% - 320px);height:100%;overflow:hidden}
+  .preview-label{position:absolute;top:1.2rem;left:1.5rem;z-index:20;font-size:0.65rem;font-weight:600;letter-spacing:0.1em;
+    text-transform:uppercase;color:rgba(30,27,75,0.3)}
+  .gallery-wrap{width:100%;height:100%;perspective:1200px;perspective-origin:50% 50%}
+  .gallery-stage{width:100%;height:100%;position:relative;transform-style:preserve-3d}
+
+  .gcard{position:absolute;left:50%;top:50%;width:260px;height:350px;border-radius:12px;overflow:hidden;
+    will-change:transform,opacity;backface-visibility:hidden;
+    border:1px solid rgba(255,255,255,0.4);
+    box-shadow:0 2px 8px rgba(30,27,75,0.08),0 25px 70px rgba(30,27,75,0.12);
+    transition:box-shadow 0.45s ease,filter 0.45s ease}
+  .gcard--main{cursor:pointer}
+  .gcard--deco{pointer-events:none}
+  .gcard__img{width:100%;height:100%;background-size:cover;background-position:center;position:absolute;top:0;left:0;filter:contrast(1.04) saturate(1.1)}
+  .gcard::after{content:'';position:absolute;top:0;left:0;right:0;bottom:0;
+    background:linear-gradient(135deg,rgba(255,255,255,0.18) 0%,transparent 40%,transparent 60%,rgba(255,255,255,0.05) 100%);
+    pointer-events:none;z-index:2}
+  .gcard__overlay{position:absolute;bottom:0;left:0;right:0;padding:1.2rem 1rem;z-index:3;
+    background:linear-gradient(transparent 0%,rgba(0,0,0,0.55) 100%);display:flex;flex-direction:column;gap:0.2rem}
+  .gcard__label{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;color:#fff;text-shadow:0 2px 10px rgba(0,0,0,0.3)}
+  .gcard__explore{font-size:0.6rem;font-weight:500;color:rgba(255,255,255,0.5);letter-spacing:0.1em;text-transform:uppercase;
+    opacity:0;transform:translateY(5px);transition:opacity 0.3s,transform 0.3s}
+  .gcard.hovered .gcard__explore{opacity:1;transform:translateY(0)}
+  .gcard.hovered{box-shadow:0 4px 12px rgba(124,58,237,0.15),0 40px 100px rgba(124,58,237,0.2),0 0 40px rgba(247,80,146,0.08)}
+
+  .title-text{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);text-align:center;z-index:12;pointer-events:none;
+    width:calc(100% - 320px)}
+  .title-text h1{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:400;color:rgba(30,27,75,0.45)}
+  .title-text p{font-size:0.6rem;color:rgba(30,27,75,0.2);margin-top:0.2rem;letter-spacing:0.15em;text-transform:uppercase}
+
+  /* BG particles */
+  #bgP{position:fixed;top:0;left:0;width:calc(100% - 320px);height:100%;z-index:0;pointer-events:none;overflow:hidden}
+  .bgd{position:absolute;border-radius:50%;animation:fd linear infinite}
+  @keyframes fd{0%{transform:translate(0,0);opacity:0}8%{opacity:var(--o,0.15)}88%{opacity:var(--o,0.15)}100%{transform:translate(var(--dx),var(--dy));opacity:0}}
+</style>
+</head>
+<body>
+
+<div id="bgP"></div>
+
+<div class="preview">
+  <div class="preview-label">Preview</div>
+  <div class="gallery-wrap" id="gw">
+    <div class="gallery-stage" id="gs"></div>
+  </div>
+  <div class="title-text">
+    <h1>Beyond the Research</h1>
+    <p>Hover & click cards to preview interactions</p>
+  </div>
+</div>
+
+<div class="ctrl">
+  <h2>Interaction Playground</h2>
+  <p style="font-size:0.7rem;color:rgba(30,27,75,0.4);line-height:1.5">Choose different hover, click, and entrance effects. Click "Replay Entrance" to see entrance animations. Hover and click cards in the preview to test.</p>
+
+  <!-- HOVER EFFECTS -->
+  <div class="ctrl-group">
+    <h3>Hover Effect</h3>
+    <label><input type="radio" name="hover" value="pullout" checked> Pull Out (Z+100, scale 1.05)</label>
+    <div class="desc">Card slides forward from the stack, others dim</div>
+
+    <label><input type="radio" name="hover" value="tilt"> Tilt Follow</label>
+    <div class="desc">Card tilts to follow mouse cursor, 3D rotation</div>
+
+    <label><input type="radio" name="hover" value="glow"> Glow Rise</label>
+    <div class="desc">Card rises up (Y-30), glowing purple border appears</div>
+
+    <label><input type="radio" name="hover" value="fan"> Fan Spread</label>
+    <div class="desc">Hovered card stays, nearby cards fan apart revealing gaps</div>
+
+    <label><input type="radio" name="hover" value="focus"> Cinema Focus</label>
+    <div class="desc">Others blur + shrink, hovered card sharpens + slight grow</div>
+
+    <label><input type="radio" name="hover" value="flip"> Peek Flip</label>
+    <div class="desc">Card lifts its near edge 15° as if being picked up</div>
+  </div>
+
+  <!-- CLICK TRANSITIONS -->
+  <div class="ctrl-group">
+    <h3>Click Transition</h3>
+    <label><input type="radio" name="click" value="pullcard" checked> Pull Card</label>
+    <div class="desc">Card pulls out of stack, flattens, zooms to fill screen; others retreat + blur</div>
+
+    <label><input type="radio" name="click" value="explode"> Explosion</label>
+    <div class="desc">Other cards fly outward in all directions; clicked card centers + expands</div>
+
+    <label><input type="radio" name="click" value="domino"> Domino Collapse</label>
+    <div class="desc">Cards fall like dominoes starting from clicked card; clicked card rises up</div>
+
+    <label><input type="radio" name="click" value="vortex"> Vortex</label>
+    <div class="desc">Other cards spiral inward toward clicked card then vanish; clicked card expands</div>
+
+    <label><input type="radio" name="click" value="flip3d"> 3D Flip</label>
+    <div class="desc">Clicked card flips 180° on Y-axis revealing a "back" that fades to detail page</div>
+
+    <label><input type="radio" name="click" value="slide"> Slide Deck</label>
+    <div class="desc">All cards slide left like a deck being dealt, clicked card stays + grows</div>
+  </div>
+
+  <!-- ENTRANCE ANIMATIONS -->
+  <div class="ctrl-group">
+    <h3>Entrance Animation</h3>
+    <label><input type="radio" name="entrance" value="diagonal" checked> Diagonal Sweep</label>
+    <div class="desc">Camera sweeps 45° across, cards appear along the diagonal</div>
+
+    <label><input type="radio" name="entrance" value="cascade"> Cascade Drop</label>
+    <div class="desc">Cards drop in from above one by one, bouncing into place</div>
+
+    <label><input type="radio" name="entrance" value="spiral"> Spiral In</label>
+    <div class="desc">Cards spiral inward from scattered positions to final layout</div>
+
+    <label><input type="radio" name="entrance" value="flip"> Flip Reveal</label>
+    <div class="desc">All cards start face-down (rotateY 180°), flip to reveal one by one</div>
+
+    <label><input type="radio" name="entrance" value="zoom"> Zoom Burst</label>
+    <div class="desc">All cards start at center stacked, then burst outward to positions</div>
+
+    <label><input type="radio" name="entrance" value="typewriter"> Typewriter</label>
+    <div class="desc">Cards slide in from the right side one by one like typing</div>
+  </div>
+
+  <!-- PARALLAX -->
+  <div class="ctrl-group">
+    <h3>Mouse Parallax</h3>
+    <label><input type="radio" name="parallax" value="subtle"> Subtle (±2°)</label>
+    <label><input type="radio" name="parallax" value="medium" checked> Medium (±5°)</label>
+    <label><input type="radio" name="parallax" value="strong"> Strong (±10°)</label>
+    <label><input type="radio" name="parallax" value="none"> Off</label>
+  </div>
+
+  <button class="try-btn" onclick="replayEntrance()">Replay Entrance</button>
+  <button class="reset-btn" onclick="resetAll()">Reset Cards</button>
+
+  <div class="ctrl-footer">
+    Pick the combinations you like, then tell me which ones to use on the real Life page.<br><br>
+    <a href="/life/" style="color:#7c3aed">← Back to Life page</a>
+  </div>
+</div>
+
+<script>
+(function(){
+
+/* ====== CARD DATA — uniform 260×350, diagonal cascade ====== */
+var RY = -25, RX = 8;
+var CARDS = [
+  { type:'deco', x:-380, y:220,  z:140,  bg:'linear-gradient(135deg,#7c3aed,#f75092)' },
+  { type:'main', key:'pet',     label:'Pet Lover', img:'/images/life/pet.jpg',     x:-240, y:140, z:70 },
+  { type:'deco', x:-110, y:70,   z:5,    bg:'linear-gradient(135deg,#c084fc,#f9a8d4)' },
+  { type:'deco', x:10,   y:0,    z:-60,  bg:'linear-gradient(135deg,#ddd6fe,#fbcfe8)' },
+  { type:'main', key:'florist', label:'Florist',   img:'/images/life/florist.jpg', x:130,  y:-70, z:-130 },
+  { type:'deco', x:250,  y:-140, z:-200, bg:'linear-gradient(135deg,#a78bfa,#f472b6)' },
+  { type:'deco', x:360,  y:-200, z:-265, bg:'linear-gradient(135deg,#8b5cf6,#ec4899)' },
+  { type:'main', key:'travel',  label:'Travel',    img:'/images/life/travel.jpg',  x:470,  y:-270, z:-330 },
+  { type:'deco', x:580,  y:-340, z:-400, bg:'linear-gradient(135deg,#ede9fe,#fce7f3)' },
+  { type:'deco', x:200,  y:160,  z:40,   bg:'linear-gradient(135deg,#c4b5fd,#f9a8d4)' },
+  { type:'deco', x:500,  y:-120, z:-180, bg:'linear-gradient(135deg,#ddd6fe,#fbcfe8)' }
+];
+
+var stage = document.getElementById('gs');
+var cardEls = [];
+var mainEls = [];
+var tmx = 0, tmy = 0, smx = 0, smy = 0;
+var transitioning = false;
+
+/* ====== BUILD ====== */
+function build() {
+  stage.innerHTML = '';
+  cardEls = []; mainEls = [];
+
+  CARDS.forEach(function(d, i) {
+    var c = document.createElement('div');
+    c.className = 'gcard' + (d.type === 'main' ? ' gcard--main' : ' gcard--deco');
+    c.dataset.idx = i;
+    c.dataset.z = d.z;
+    if (d.key) c.dataset.key = d.key;
+
+    if (d.type === 'main') {
+      c.innerHTML = '<div class="gcard__img" style="background-image:url(\'' + d.img + '\')"></div>' +
+        '<div class="gcard__overlay"><span class="gcard__label">' + d.label + '</span><span class="gcard__explore">Explore →</span></div>';
+      c.addEventListener('mouseenter', function(e) { if (!transitioning) doHover(c, i, true, e); });
+      c.addEventListener('mouseleave', function(e) { if (!transitioning) doHover(c, i, false, e); });
+      c.addEventListener('mousemove', function(e) { if (!transitioning) doHoverMove(c, i, e); });
+      c.addEventListener('click', function() { if (!transitioning) doClick(c, i); });
+      mainEls.push(c);
+    } else {
+      c.innerHTML = '<div class="gcard__img" style="background:' + d.bg + '"></div>';
+    }
+
+    gsap.set(c, { xPercent: -50, yPercent: -50, x: d.x, y: d.y, z: d.z, rotateX: RX, rotateY: RY });
+    stage.appendChild(c);
+    cardEls.push(c);
+  });
+}
+
+/* ====== HOVER EFFECTS ====== */
+function getHoverMode() { return document.querySelector('input[name="hover"]:checked').value; }
+
+function doHover(el, idx, isEnter, e) {
+  var mode = getHoverMode();
+  var d = CARDS[idx];
+
+  if (isEnter) {
+    el.classList.add('hovered');
+    switch(mode) {
+      case 'pullout':
+        gsap.to(el, { z: d.z + 100, scale: 1.05, duration: 0.45, ease: 'power2.out', overwrite: true });
+        cardEls.forEach(function(c) { if (c !== el) gsap.to(c, { opacity: 0.6, duration: 0.35, overwrite: true }); });
+        break;
+      case 'tilt':
+        gsap.to(el, { z: d.z + 60, scale: 1.03, duration: 0.3, ease: 'power2.out', overwrite: true });
+        break;
+      case 'glow':
+        gsap.to(el, { y: d.y - 30, scale: 1.04, duration: 0.4, ease: 'power2.out', overwrite: true,
+          boxShadow: '0 0 40px rgba(124,58,237,0.35), 0 30px 80px rgba(124,58,237,0.2)' });
+        break;
+      case 'fan':
+        cardEls.forEach(function(c, ci) {
+          if (c === el) return;
+          var diff = ci - idx;
+          gsap.to(c, { x: CARDS[ci].x + diff * 30, y: CARDS[ci].y + diff * -20, duration: 0.4, ease: 'power2.out', overwrite: true });
+        });
+        gsap.to(el, { z: d.z + 50, scale: 1.04, duration: 0.35, overwrite: true });
+        break;
+      case 'focus':
+        cardEls.forEach(function(c) {
+          if (c !== el) gsap.to(c, { filter: 'blur(4px)', scale: 0.92, opacity: 0.5, duration: 0.4, overwrite: true });
+        });
+        gsap.to(el, { scale: 1.06, z: d.z + 60, duration: 0.4, overwrite: true });
+        break;
+      case 'flip':
+        gsap.to(el, { rotateX: RX + 15, z: d.z + 80, duration: 0.4, ease: 'power2.out', overwrite: true });
+        break;
+    }
+  } else {
+    el.classList.remove('hovered');
+    gsap.to(el, { x: d.x, y: d.y, z: d.z, scale: 1, rotateX: RX, rotateY: RY, boxShadow: '', filter: '', duration: 0.45, ease: 'power2.out', overwrite: true });
+    cardEls.forEach(function(c) {
+      if (c !== el) {
+        var cd = CARDS[parseInt(c.dataset.idx)];
+        gsap.to(c, { x: cd.x, y: cd.y, opacity: 1, scale: 1, filter: '', duration: 0.4, ease: 'power2.out', overwrite: true });
+      }
+    });
+  }
+}
+
+function doHoverMove(el, idx, e) {
+  if (getHoverMode() !== 'tilt') return;
+  var rect = el.getBoundingClientRect();
+  var mx = (e.clientX - rect.left) / rect.width - 0.5;
+  var my = (e.clientY - rect.top) / rect.height - 0.5;
+  gsap.to(el, { rotateY: RY + mx * 20, rotateX: RX - my * 15, duration: 0.2, ease: 'power1.out', overwrite: true });
+}
+
+/* ====== CLICK TRANSITIONS ====== */
+function getClickMode() { return document.querySelector('input[name="click"]:checked').value; }
+
+function doClick(el, idx) {
+  var mode = getClickMode();
+  transitioning = true;
+
+  var tl = gsap.timeline({ onComplete: function() {
+    // Auto-reset after 1.5s so they can try again
+    setTimeout(function() { resetAll(); transitioning = false; }, 1200);
+  }});
+
+  switch(mode) {
+    case 'pullcard':
+      tl.to('#gs .title-text, .title-text', { opacity: 0, duration: 0.2 }, 0);
+      cardEls.forEach(function(c) {
+        if (c === el) return;
+        tl.to(c, { z: '-=400', opacity: 0, filter: 'blur(8px)', duration: 0.8, ease: 'power2.in' }, 0);
+      });
+      tl.to(el, { z: '+=200', duration: 0.2, ease: 'power2.out' }, 0);
+      tl.to(el, { x: 0, y: 0, z: 500, rotateX: 0, rotateY: 0, duration: 0.7, ease: 'power2.inOut' }, 0.2);
+      tl.to(el, { scale: 4, duration: 0.4, ease: 'power2.in' }, 0.7);
+      tl.to(el, { opacity: 0, duration: 0.2 }, 0.95);
+      break;
+
+    case 'explode':
+      var cx = window.innerWidth / 2 - 160, cy = window.innerHeight / 2;
+      cardEls.forEach(function(c) {
+        if (c === el) return;
+        var r = c.getBoundingClientRect();
+        var ang = Math.atan2(r.top + r.height/2 - cy, r.left + r.width/2 - cx);
+        var dist = 800 + Math.random() * 500;
+        tl.to(c, { x: '+=' + Math.cos(ang)*dist, y: '+=' + Math.sin(ang)*dist, scale: 0.2, opacity: 0, rotation: (Math.random()-0.5)*60, duration: 0.7, ease: 'power3.in' }, 0);
+      });
+      tl.to(el, { x: 0, y: 0, z: 400, rotateX: 0, rotateY: 0, scale: 3.5, duration: 0.9, ease: 'power2.inOut' }, 0.1);
+      tl.to(el, { opacity: 0, duration: 0.2 }, 0.9);
+      break;
+
+    case 'domino':
+      var sorted = cardEls.slice().sort(function(a,b) { return Math.abs(parseInt(a.dataset.idx)-idx) - Math.abs(parseInt(b.dataset.idx)-idx); });
+      sorted.forEach(function(c, si) {
+        if (c === el) return;
+        tl.to(c, { rotateX: 90, y: '+=200', opacity: 0, duration: 0.5, ease: 'power2.in' }, si * 0.06);
+      });
+      tl.to(el, { x: 0, y: -50, z: 400, rotateX: 0, rotateY: 0, scale: 2.5, duration: 0.8, ease: 'power2.inOut' }, 0.3);
+      tl.to(el, { opacity: 0, duration: 0.2 }, 1.0);
+      break;
+
+    case 'vortex':
+      cardEls.forEach(function(c, ci) {
+        if (c === el) return;
+        var angle = (ci / cardEls.length) * Math.PI * 3;
+        var delay = Math.abs(ci - idx) * 0.04;
+        tl.to(c, { x: CARDS[idx].x, y: CARDS[idx].y, z: CARDS[idx].z, scale: 0.1, opacity: 0,
+          rotation: angle * 30, duration: 0.8, ease: 'power3.in' }, delay);
+      });
+      tl.to(el, { x: 0, y: 0, z: 500, rotateX: 0, rotateY: 0, scale: 3.5, duration: 0.8, ease: 'power2.inOut' }, 0.4);
+      tl.to(el, { opacity: 0, duration: 0.2 }, 1.1);
+      break;
+
+    case 'flip3d':
+      cardEls.forEach(function(c) {
+        if (c !== el) tl.to(c, { opacity: 0, z: '-=200', duration: 0.5 }, 0);
+      });
+      tl.to(el, { x: 0, y: 0, z: 300, duration: 0.4, ease: 'power2.out' }, 0);
+      tl.to(el, { rotateY: RY + 180, duration: 0.7, ease: 'power2.inOut' }, 0.3);
+      tl.to(el, { scale: 3, rotateX: 0, duration: 0.5, ease: 'power2.in' }, 0.6);
+      tl.to(el, { opacity: 0, duration: 0.2 }, 1.0);
+      break;
+
+    case 'slide':
+      cardEls.forEach(function(c, ci) {
+        if (c === el) return;
+        tl.to(c, { x: -800 - ci * 50, opacity: 0, duration: 0.6, ease: 'power2.in' }, ci * 0.03);
+      });
+      tl.to(el, { x: 0, y: 0, z: 400, rotateX: 0, rotateY: 0, scale: 3, duration: 0.8, ease: 'power2.inOut' }, 0.2);
+      tl.to(el, { opacity: 0, duration: 0.2 }, 0.9);
+      break;
+  }
+}
+
+/* ====== ENTRANCE ANIMATIONS ====== */
+function getEntranceMode() { return document.querySelector('input[name="entrance"]:checked').value; }
+
+function replayEntrance() {
+  if (transitioning) return;
+  transitioning = true;
+  build(); // rebuild fresh
+
+  var mode = getEntranceMode();
+  var tl = gsap.timeline({ onComplete: function() { transitioning = false; } });
+
+  // Start all hidden
+  cardEls.forEach(function(c) { gsap.set(c, { opacity: 0, scale: 0.6 }); });
+
+  switch(mode) {
+    case 'diagonal':
+      gsap.set(stage, { rotateY: -20, rotateX: 15, x: 300, y: -200 });
+      tl.to(stage, { rotateY: 0, rotateX: 0, x: 0, y: 0, duration: 2, ease: 'power3.inOut' }, 0);
+      cardEls.forEach(function(c, i) {
+        var d = CARDS[i];
+        gsap.set(c, { x: d.x + 180, y: d.y - 130 });
+        tl.to(c, { opacity: 1, scale: 1, x: d.x, y: d.y, duration: 0.7, ease: 'power2.out' }, 0.15 + i * 0.08);
+      });
+      break;
+
+    case 'cascade':
+      cardEls.forEach(function(c, i) {
+        var d = CARDS[i];
+        gsap.set(c, { y: d.y - 600, opacity: 0 });
+        tl.to(c, { y: d.y, opacity: 1, scale: 1, duration: 0.8, ease: 'bounce.out' }, i * 0.1);
+      });
+      break;
+
+    case 'spiral':
+      cardEls.forEach(function(c, i) {
+        var angle = (i / cardEls.length) * Math.PI * 4;
+        var radius = 500;
+        gsap.set(c, { x: Math.cos(angle) * radius, y: Math.sin(angle) * radius, rotation: angle * 30, scale: 0.2 });
+        var d = CARDS[i];
+        tl.to(c, { x: d.x, y: d.y, rotation: 0, scale: 1, opacity: 1, duration: 1, ease: 'power2.out' }, i * 0.07);
+      });
+      break;
+
+    case 'flip':
+      cardEls.forEach(function(c, i) {
+        var d = CARDS[i];
+        gsap.set(c, { rotateY: RY + 180, opacity: 1, scale: 1, x: d.x, y: d.y });
+        tl.to(c, { rotateY: RY, duration: 0.6, ease: 'power2.out' }, i * 0.1);
+      });
+      break;
+
+    case 'zoom':
+      cardEls.forEach(function(c) { gsap.set(c, { x: 0, y: 0, z: 0, scale: 0.1 }); });
+      cardEls.forEach(function(c, i) {
+        var d = CARDS[i];
+        tl.to(c, { x: d.x, y: d.y, z: d.z, scale: 1, opacity: 1, duration: 0.8, ease: 'back.out(1.4)' }, 0.3 + i * 0.06);
+      });
+      break;
+
+    case 'typewriter':
+      cardEls.forEach(function(c, i) {
+        var d = CARDS[i];
+        gsap.set(c, { x: 800, y: d.y, opacity: 0 });
+        tl.to(c, { x: d.x, opacity: 1, scale: 1, duration: 0.5, ease: 'power2.out' }, i * 0.12);
+      });
+      break;
+  }
+}
+window.replayEntrance = replayEntrance;
+
+/* ====== RESET ====== */
+function resetAll() {
+  gsap.killTweensOf('.gcard');
+  gsap.killTweensOf(stage);
+  gsap.set(stage, { rotateY: 0, rotateX: 0, x: 0, y: 0 });
+  build();
+  transitioning = false;
+}
+window.resetAll = resetAll;
+
+/* ====== MOUSE PARALLAX ====== */
+function getParallax() { return document.querySelector('input[name="parallax"]:checked').value; }
+
+document.addEventListener('mousemove', function(e) {
+  tmx = (e.clientX / window.innerWidth - 0.5) * 2;
+  tmy = (e.clientY / window.innerHeight - 0.5) * 2;
+});
+
+function pLoop() {
+  requestAnimationFrame(pLoop);
+  if (transitioning) return;
+  var mode = getParallax();
+  var str = mode === 'subtle' ? 2 : mode === 'medium' ? 5 : mode === 'strong' ? 10 : 0;
+  smx += (tmx - smx) * 0.04;
+  smy += (tmy - smy) * 0.04;
+  stage.style.transform = 'rotateY(' + (smx * str) + 'deg) rotateX(' + (-smy * str * 0.6) + 'deg)';
+}
+
+/* ====== BG PARTICLES ====== */
+(function(){
+  var ct = document.getElementById('bgP');
+  var cols = ['#7c3aed','#9f50d3','#f75092','#a78bfa','#f9a8d4'];
+  for (var i = 0; i < 25; i++) {
+    var d = document.createElement('div'); d.className = 'bgd';
+    var s = 2 + Math.random() * 4;
+    d.style.cssText = 'width:'+s+'px;height:'+s+'px;left:'+(Math.random()*100)+'%;top:'+(Math.random()*100)+'%;background:'+cols[i%5]+';--o:'+(0.08+Math.random()*0.15)+';animation-duration:'+(18+Math.random()*22)+'s;animation-delay:'+(-Math.random()*22)+'s;--dx:'+((Math.random()-0.5)*200)+'px;--dy:'+((Math.random()-0.5)*200)+'px;';
+    ct.appendChild(d);
+  }
+})();
+
+/* ====== INIT ====== */
+build();
+pLoop();
+setTimeout(replayEntrance, 300);
+
+})();
+</script>
+</body>
+</html>

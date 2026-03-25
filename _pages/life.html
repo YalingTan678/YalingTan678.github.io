@@ -214,32 +214,21 @@ var THEMES = {
   }
 };
 
-/* ====== GALLERY CARDS — diagonal 3D cascade (bottom-left → top-right) ====== */
-/* Uniform tilt: ry ~-25, rx ~8. Each card steps: +150 X, -100 Y, -80 Z */
+/* ====== GALLERY CARDS — diagonal 3D cascade, UNIFORM SIZE ====== */
 var CARD_RY = -25, CARD_RX = 8;
+var CARD_W = 260, CARD_H = 350; // all same size
 var ALL_CARDS = [
-  // --- card 0: bottom-left foreground (deco) ---
-  { type:'deco', x:-440, y:260,  z:160,  ry:CARD_RY, rx:CARD_RX, w:160, h:220, bg:'linear-gradient(135deg,#7c3aed,#f75092)' },
-  // --- card 1: MAIN — Pet Lover ---
-  { type:'main', key:'pet', label:'Pet Lover', img:'/images/life/pet.jpg', x:-300, y:170, z:80, ry:CARD_RY, rx:CARD_RX, w:270, h:370 },
-  // --- card 2: deco ---
-  { type:'deco', x:-170, y:100,  z:10,   ry:CARD_RY, rx:CARD_RX, w:150, h:200, bg:'linear-gradient(135deg,#c084fc,#f9a8d4)' },
-  // --- card 3: deco ---
-  { type:'deco', x:-60,  y:30,   z:-60,  ry:CARD_RY, rx:CARD_RX, w:160, h:220, bg:'linear-gradient(135deg,#ddd6fe,#fbcfe8)' },
-  // --- card 4: MAIN — Florist ---
-  { type:'main', key:'florist', label:'Florist', img:'/images/life/florist.jpg', x:60, y:-40, z:-130, ry:CARD_RY, rx:CARD_RX, w:280, h:380 },
-  // --- card 5: deco ---
-  { type:'deco', x:180,  y:-110, z:-200, ry:CARD_RY, rx:CARD_RX, w:150, h:200, bg:'linear-gradient(135deg,#a78bfa,#f472b6)' },
-  // --- card 6: deco ---
-  { type:'deco', x:290,  y:-170, z:-270, ry:CARD_RY, rx:CARD_RX, w:160, h:210, bg:'linear-gradient(135deg,#8b5cf6,#ec4899)' },
-  // --- card 7: MAIN — Travel ---
-  { type:'main', key:'travel', label:'Travel', img:'/images/life/travel.jpg', x:400, y:-240, z:-340, ry:CARD_RY, rx:CARD_RX, w:270, h:370 },
-  // --- card 8: deco (top-right, furthest back) ---
-  { type:'deco', x:520,  y:-310, z:-410, ry:CARD_RY, rx:CARD_RX, w:150, h:200, bg:'linear-gradient(135deg,#ede9fe,#fce7f3)' },
-  // --- card 9: deco offset ---
-  { type:'deco', x:130,  y:190,  z:50,   ry:CARD_RY, rx:CARD_RX, w:140, h:190, bg:'linear-gradient(135deg,#c4b5fd,#f9a8d4)' },
-  // --- card 10: deco offset ---
-  { type:'deco', x:440,  y:-100, z:-180, ry:CARD_RY, rx:CARD_RX, w:140, h:190, bg:'linear-gradient(135deg,#ddd6fe,#fbcfe8)' }
+  { type:'deco', x:-380, y:220,  z:140,  ry:CARD_RY, rx:CARD_RX, w:CARD_W, h:CARD_H, bg:'linear-gradient(135deg,#7c3aed,#f75092)' },
+  { type:'main', key:'pet', label:'Pet Lover', img:'/images/life/pet.jpg', x:-240, y:140, z:70, ry:CARD_RY, rx:CARD_RX, w:CARD_W, h:CARD_H },
+  { type:'deco', x:-110, y:70,   z:5,    ry:CARD_RY, rx:CARD_RX, w:CARD_W, h:CARD_H, bg:'linear-gradient(135deg,#c084fc,#f9a8d4)' },
+  { type:'deco', x:10,   y:0,    z:-60,  ry:CARD_RY, rx:CARD_RX, w:CARD_W, h:CARD_H, bg:'linear-gradient(135deg,#ddd6fe,#fbcfe8)' },
+  { type:'main', key:'florist', label:'Florist', img:'/images/life/florist.jpg', x:130, y:-70, z:-130, ry:CARD_RY, rx:CARD_RX, w:CARD_W, h:CARD_H },
+  { type:'deco', x:250,  y:-140, z:-200, ry:CARD_RY, rx:CARD_RX, w:CARD_W, h:CARD_H, bg:'linear-gradient(135deg,#a78bfa,#f472b6)' },
+  { type:'deco', x:360,  y:-200, z:-265, ry:CARD_RY, rx:CARD_RX, w:CARD_W, h:CARD_H, bg:'linear-gradient(135deg,#8b5cf6,#ec4899)' },
+  { type:'main', key:'travel', label:'Travel', img:'/images/life/travel.jpg', x:470, y:-270, z:-330, ry:CARD_RY, rx:CARD_RX, w:CARD_W, h:CARD_H },
+  { type:'deco', x:580,  y:-340, z:-400, ry:CARD_RY, rx:CARD_RX, w:CARD_W, h:CARD_H, bg:'linear-gradient(135deg,#ede9fe,#fce7f3)' },
+  { type:'deco', x:200,  y:160,  z:40,   ry:CARD_RY, rx:CARD_RX, w:CARD_W, h:CARD_H, bg:'linear-gradient(135deg,#c4b5fd,#f9a8d4)' },
+  { type:'deco', x:500,  y:-120, z:-180, ry:CARD_RY, rx:CARD_RX, w:CARD_W, h:CARD_H, bg:'linear-gradient(135deg,#ddd6fe,#fbcfe8)' }
 ];
 
 /* ====== GLOBALS ====== */
