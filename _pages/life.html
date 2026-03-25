@@ -59,7 +59,7 @@ permalink: /life/
 
     /* Gallery 3D container */
     .gallery-wrap{width:100%;height:100%;perspective:1200px;perspective-origin:50% 50%}
-    .gallery-stage{width:100%;height:100%;position:relative;transform-style:preserve-3d}
+    .gallery-stage{width:100%;height:100%;position:relative}
 
     /* Cards — glass/acrylic quality */
     .gcard{position:absolute;left:50%;top:50%;border-radius:12px;overflow:hidden;will-change:transform,opacity;backface-visibility:hidden;
@@ -328,6 +328,7 @@ function buildGallery() {
       z: d.z,
       rotateX: d.rx,
       rotateY: d.ry,
+      transformPerspective: 1200,
       opacity: 0,
       scale: 0.5
     });
