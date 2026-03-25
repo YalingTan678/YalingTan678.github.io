@@ -1,5 +1,5 @@
 ---
-title: "Tutor, Not Solver: Designing a Guardrailed AI Assistant for Learning in Higher Education"
+title: "Scaffolding over Shortcuts: Building a Safety-Aware LLM Tutoring System for University Contexts"
 collection: publications
 permalink: /publication/ur-tutor-not-solver
 excerpt: 'A design case documenting PeteChat, an LLM-powered AI tutor at Purdue University that scaffolds learning without undermining academic integrity.'
@@ -51,7 +51,7 @@ Faculty can see what students are asking — not individual conversations, but p
 
 ---
 
-## The "Tutor, Not Solver" Principle in Action
+## The "Scaffolding over Shortcuts" Principle in Action
 
 | Student asks... | ChatGPT would say... | PeteChat says... |
 |:---------------|:---------------------|:-----------------|

@@ -1,5 +1,5 @@
 ---
-title: "Pre-service Teachers' TPACK in Xinjiang: Examining Culture Diversity as Context"
+title: "How Ethnic and Cultural Context Shapes Technology Integration Knowledge Among Trainee Teachers in Western China"
 collection: publications
 permalink: /publication/ur-tpack-xinjiang
 excerpt: 'Examining how cultural diversity in Xinjiang shapes pre-service teachers technological pedagogical content knowledge (TPACK).'

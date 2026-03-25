@@ -184,6 +184,21 @@ My teaching philosophy is grounded in the belief that language acquisition is mo
 
 <h2>Teaching Experience</h2>
 
+<!-- Honeybee Technology -->
+<div class="teach-card" style="cursor:default">
+  <div class="teach-card__img teach-card__img--icon">&#128029;</div>
+  <div class="teach-card__body">
+    <div class="teach-card__header">
+      <span class="teach-card__org">Honeybee Technology Co., Ltd</span>
+      <span class="teach-card__meta">Jan &ndash; Jul 2025 &middot; China</span>
+    </div>
+    <div class="teach-card__role">Career Planning Specialist</div>
+    <ul class="teach-card__desc">
+      <li>300+ students assessed; 100+ CVs revised; 100% placement success rate.</li>
+    </ul>
+  </div>
+</div>
+
 <!-- EDCI 612 -->
 <a class="teach-card" href="/teaching/edci612/">
   <div class="teach-card__img">

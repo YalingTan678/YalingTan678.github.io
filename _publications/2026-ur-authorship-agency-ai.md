@@ -1,5 +1,5 @@
 ---
-title: "Authorship, Agency, and AI: How Higher Education Instructors Navigate Authenticity in Student Writing"
+title: "Whose Words Are These? University Faculty Perspectives on Originality and AI-Mediated Composition"
 collection: publications
 permalink: /publication/ur-authorship-agency-ai
 excerpt: 'Investigating how higher education instructors navigate questions of authorship and authenticity as AI tools reshape student writing.'

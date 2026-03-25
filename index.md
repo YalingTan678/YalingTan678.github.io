@@ -354,6 +354,23 @@ author_profile: false
   </script>
 </section>
 
+<!-- ========== EXPERIENCE ========== -->
+<section class="lt-section lt-fade-in">
+  <h2 class="lt-section__title">Professional Experience</h2>
+  <div class="lt-exp__item">
+    <div class="lt-exp__header">
+      <div>
+        <div class="lt-exp__org">Purdue University</div>
+        <div class="lt-exp__role">Research Assistant, Library &amp; School of Information Studies</div>
+      </div>
+      <div class="lt-exp__date-loc"><span>2025 &ndash; Present</span></div>
+    </div>
+    <ul class="lt-exp__bullets">
+      <li>Three research projects: scoping review (20,000+ articles), AI-assisted learning, audio/video in teaching.</li>
+    </ul>
+  </div>
+</section>
+
 <!-- ========== METHODOLOGY (interactive pipeline) ========== -->
 <section class="lt-section lt-fade-in">
   <h2 class="lt-section__title">Methodology</h2>
@@ -673,31 +690,3 @@ function filterTL(cat) {
   </ul>
 </section>
 
-<!-- ========== EXPERIENCE ========== -->
-<section class="lt-section lt-fade-in">
-  <h2 class="lt-section__title">Professional Experience</h2>
-  <div class="lt-exp__item">
-    <div class="lt-exp__header">
-      <div>
-        <div class="lt-exp__org">Purdue University</div>
-        <div class="lt-exp__role">Research Assistant, Library &amp; School of Information Studies</div>
-      </div>
-      <div class="lt-exp__date-loc"><span>2025 &ndash; Present</span></div>
-    </div>
-    <ul class="lt-exp__bullets">
-      <li>Three research projects: scoping review (20,000+ articles), AI-assisted learning, audio/video in teaching.</li>
-    </ul>
-  </div>
-  <div class="lt-exp__item">
-    <div class="lt-exp__header">
-      <div>
-        <div class="lt-exp__org">Honeybee Technology Co., Ltd</div>
-        <div class="lt-exp__role">Career Planning Specialist</div>
-      </div>
-      <div class="lt-exp__date-loc"><span>Jan &ndash; Jul 2025</span></div>
-    </div>
-    <ul class="lt-exp__bullets">
-      <li>300+ students assessed; 100+ CVs revised; 100% placement success rate.</li>
-    </ul>
-  </div>
-</section>

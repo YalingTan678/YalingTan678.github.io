@@ -261,7 +261,7 @@ I study how emerging technologies transform education beyond the classroom. My w
   <div class="pub-card__thumb"><img src="/images/pubs/petechat-v2.png" alt="PeteChat interface"></div>
   <div class="pub-card__body">
     <div class="pub-card__top">
-      <span class="pub-card__title">Tutor, Not Solver: Designing a Guardrailed AI Assistant for Learning in Higher Education</span>
+      <span class="pub-card__title">Scaffolding over Shortcuts: Building a Safety-Aware LLM Tutoring System for University Contexts</span>
       <div class="pub-card__badges">
         <span class="pub-badge pub-badge--ur">Under Review</span>
       </div>
@@ -275,7 +275,7 @@ I study how emerging technologies transform education beyond the classroom. My w
   <div class="pub-card__thumb"><img src="/images/pubs/tpack-model.png" alt="TPACK Framework"></div>
   <div class="pub-card__body">
     <div class="pub-card__top">
-      <span class="pub-card__title">Pre-service Teachers' TPACK in Xinjiang: Examining Culture Diversity as Context</span>
+      <span class="pub-card__title">How Ethnic and Cultural Context Shapes Technology Integration Knowledge Among Trainee Teachers in Western China</span>
       <div class="pub-card__badges">
         <span class="pub-badge pub-badge--ur">Under Review</span>
       </div>
@@ -289,7 +289,7 @@ I study how emerging technologies transform education beyond the classroom. My w
   <div class="pub-card__thumb"><img src="/images/pubs/authorship-ai-loop.png" alt="AI Authenticity Loop diagram"></div>
   <div class="pub-card__body">
     <div class="pub-card__top">
-      <span class="pub-card__title">Authorship, Agency, and AI: How Higher Education Instructors Navigate Authenticity in Student Writing</span>
+      <span class="pub-card__title">Whose Words Are These? University Faculty Perspectives on Originality and AI-Mediated Composition</span>
       <div class="pub-card__badges">
         <span class="pub-badge pub-badge--ur">Under Review</span>
       </div>
