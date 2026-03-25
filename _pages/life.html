@@ -132,11 +132,9 @@ gsap.registerPlugin(ScrollTrigger);
 /* ====== PHOTO DATA (placeholder gradients — replace with real photos later) ====== */
 var PHOTOS = {
   pet: [
-    {h:280,c:['#f9a8d4','#7c3aed']},{h:360,c:['#c084fc','#f472b6']},{h:240,c:['#a78bfa','#ec4899']},
-    {h:320,c:['#8b5cf6','#f9a8d4']},{h:200,c:['#ddd6fe','#fbcfe8']},{h:380,c:['#7c3aed','#f75092']},
-    {h:260,c:['#c4b5fd','#f9a8d4']},{h:300,c:['#9f50d3','#ec4899']},{h:340,c:['#ede9fe','#c084fc']},
-    {h:220,c:['#f75092','#a78bfa']},{h:290,c:['#8b5cf6','#f472b6']},{h:350,c:['#7c3aed','#ddd6fe']},
-    {h:270,c:['#c084fc','#f75092']},{h:310,c:['#a78bfa','#fbcfe8']},{h:250,c:['#9f50d3','#f9a8d4']}
+    {img:'/images/life/pet/1.jpg'},{img:'/images/life/pet/2.jpg'},{img:'/images/life/pet/3.jpg'},
+    {img:'/images/life/pet/4.jpg'},{img:'/images/life/pet/5.jpg'},{img:'/images/life/pet/7.jpg'},
+    {img:'/images/life/pet/8.jpg'},{img:'/images/life/pet/9.jpg'}
   ],
   florist: [
     {h:340,c:['#86efac','#7c3aed']},{h:260,c:['#fbbf24','#f75092']},{h:300,c:['#a78bfa','#34d399']},
@@ -308,8 +306,11 @@ function showDetailLayer() {
   photos.forEach(function(p, i) {
     var card = document.createElement('div');
     card.className = 'mphoto';
-    // Placeholder gradient block (replace with <img> when you have real photos)
-    card.innerHTML = '<div class="ph" style="height:' + p.h + 'px;background:linear-gradient(135deg,' + p.c[0] + ',' + p.c[1] + ');border-radius:12px"></div>';
+    if (p.img) {
+      card.innerHTML = '<img class="ph" src="' + p.img + '" alt="" loading="lazy">';
+    } else {
+      card.innerHTML = '<div class="ph" style="height:' + (p.h || 280) + 'px;background:linear-gradient(135deg,' + p.c[0] + ',' + p.c[1] + ');border-radius:12px"></div>';
+    }
     wrap.appendChild(card);
   });
 
