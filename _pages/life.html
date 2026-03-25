@@ -298,22 +298,23 @@ function buildGallery() {
           if (transitioning || currentLayer !== 1) return;
           transitionToDetail(el);
         });
+        // Cinema Focus hover: others blur+shrink, this card sharpens+grows
         el.addEventListener('mouseenter', function() {
           if (transitioning) return;
-          // Pull this card forward
-          gsap.to(el, { z: data.z + 100, scale: 1.05, duration: 0.45, ease: 'power2.out', overwrite: 'auto' });
           el.classList.add('hovered');
-          // Dim all other cards
+          gsap.to(el, { scale: 1.06, z: data.z + 60, duration: 0.4, ease: 'power2.out', overwrite: 'auto' });
           cardElements.forEach(function(c) {
-            if (c !== el) gsap.to(c, { opacity: 0.65, duration: 0.35, overwrite: 'auto' });
+            if (c !== el) gsap.to(c, { filter: 'blur(4px)', scale: 0.92, opacity: 0.5, duration: 0.4, overwrite: 'auto' });
           });
         });
         el.addEventListener('mouseleave', function() {
-          gsap.to(el, { z: data.z, scale: 1, duration: 0.45, ease: 'power2.out', overwrite: 'auto' });
           el.classList.remove('hovered');
-          // Restore all cards
+          gsap.to(el, { scale: 1, z: data.z, duration: 0.4, ease: 'power2.out', overwrite: 'auto' });
           cardElements.forEach(function(c) {
-            if (c !== el) gsap.to(c, { opacity: 1, duration: 0.35, overwrite: 'auto' });
+            if (c !== el) {
+              var cd = ALL_CARDS[parseInt(c.dataset.idx)];
+              gsap.to(c, { filter: 'none', scale: 1, opacity: 1, duration: 0.4, ease: 'power2.out', overwrite: 'auto' });
+            }
           });
         });
       })(card, d);
@@ -344,57 +345,34 @@ function buildGallery() {
   });
 }
 
-/* ====== DIAGONAL SWEEP ENTRANCE ====== */
+/* ====== ZOOM BURST ENTRANCE ====== */
 function playGalleryEntrance() {
   var titleText = layer1.querySelector('.title-text');
   gsap.set(titleText, { opacity: 0, y: 15 });
 
-  // Stage starts with extra rotation — as if camera flies in at 45°
-  gsap.set(galleryStage, {
-    rotateY: -20,
-    rotateX: 15,
-    x: 350 * galleryScale,
-    y: -250 * galleryScale
-  });
-
-  // All cards start offset further along the diagonal + hidden
-  cardElements.forEach(function(c, i) {
-    var d = ALL_CARDS[parseInt(c.dataset.idx)];
-    gsap.set(c, { opacity: 0, scale: 0.7, x: (d.x + 200) * galleryScale, y: (d.y - 150) * galleryScale });
+  // All cards start stacked at center, tiny and invisible
+  cardElements.forEach(function(c) {
+    gsap.set(c, { x: 0, y: 0, z: 0, scale: 0.1, opacity: 0 });
   });
 
   var tl = gsap.timeline();
 
-  // Phase 1: Stage sweeps to resting position
-  tl.to(galleryStage, {
-    rotateY: 0,
-    rotateX: 0,
-    x: 0,
-    y: 0,
-    duration: 2,
-    ease: 'power3.inOut'
-  }, 0);
-
-  // Phase 2: Cards appear one by one along the diagonal (front → back)
-  // Sort by index order (which follows the diagonal from bottom-left to top-right)
-  var sorted = cardElements.slice().sort(function(a, b) {
-    return parseInt(a.dataset.idx) - parseInt(b.dataset.idx);
-  });
-
-  sorted.forEach(function(c, i) {
+  // Cards burst outward to their final diagonal positions
+  cardElements.forEach(function(c, i) {
     var d = ALL_CARDS[parseInt(c.dataset.idx)];
     tl.to(c, {
-      opacity: 1,
-      scale: 1,
       x: d.x * galleryScale,
       y: d.y * galleryScale,
-      duration: 0.7,
-      ease: 'power2.out'
-    }, 0.15 + i * 0.08);
+      z: d.z,
+      scale: 1,
+      opacity: 1,
+      duration: 0.9,
+      ease: 'back.out(1.3)'
+    }, 0.3 + i * 0.06);
   });
 
-  // Phase 3: Title fades in
-  tl.to(titleText, { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out' }, 1.6);
+  // Title fades in after cards settle
+  tl.to(titleText, { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out' }, 1.2);
 }
 
 /* ====== MOUSE PARALLAX ====== */
@@ -412,8 +390,8 @@ function galleryLoop() {
     smoothMouseY += (targetMouseY - smoothMouseY) * 0.04;
 
     galleryStage.style.transform =
-      'rotateY(' + (smoothMouseX * 4) + 'deg) ' +
-      'rotateX(' + (-smoothMouseY * 3) + 'deg)';
+      'rotateY(' + (smoothMouseX * 2) + 'deg) ' +
+      'rotateX(' + (-smoothMouseY * 1.5) + 'deg)';
   }
 }
 
