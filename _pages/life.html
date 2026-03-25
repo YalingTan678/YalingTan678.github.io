@@ -21,15 +21,23 @@ permalink: /life/
     ::-webkit-scrollbar{display:none}
     html{scrollbar-width:none}
 
-    /* Three.js canvas — hidden during gallery, shown for detail */
     canvas#mainCanvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:1;pointer-events:none;display:none}
 
-    /* Film grain overlay */
     .film-grain{position:fixed;top:0;left:0;width:100%;height:100%;z-index:9998;pointer-events:none;opacity:0.03;
       background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
       background-size:128px 128px}
 
-    /* ====== BACKGROUND PARTICLES (CSS) ====== */
+    /* ====== TOP NAV BAR ====== */
+    .life-nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;
+      padding:0 2rem;height:54px;background:rgba(250,248,255,0.75);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+      border-bottom:1px solid rgba(124,58,237,0.06)}
+    .life-nav__logo{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:#1e1b4b;text-decoration:none;letter-spacing:-0.01em}
+    .life-nav__logo:hover{color:#7c3aed}
+    .life-nav__links{display:flex;gap:1.6rem;list-style:none}
+    .life-nav__links a{font-size:0.78rem;font-weight:500;color:rgba(30,27,75,0.5);text-decoration:none;letter-spacing:0.04em;transition:color 0.2s}
+    .life-nav__links a:hover,.life-nav__links a.active{color:#7c3aed}
+
+    /* ====== BACKGROUND PARTICLES ====== */
     #bgParticles{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;overflow:hidden}
     .bg-dot{position:absolute;border-radius:50%;pointer-events:none;animation:floatDot linear infinite}
     @keyframes floatDot{
@@ -45,14 +53,9 @@ permalink: /life/
     /* ====== LAYER 1: 3D Card Gallery ====== */
     #layer1{position:fixed;top:0;left:0;width:100%;height:100%;z-index:10;display:flex;align-items:center;justify-content:center;overflow:hidden}
 
-    #layer1 .title-text{position:absolute;top:2.5rem;left:50%;transform:translateX(-50%);text-align:center;z-index:12;pointer-events:none}
-    #layer1 .title-text h1{font-family:'Playfair Display',serif;font-size:clamp(1.3rem,2.5vw,2rem);font-weight:400;color:rgba(30,27,75,0.55);letter-spacing:0.05em}
-    #layer1 .title-text p{font-size:0.7rem;color:rgba(30,27,75,0.25);margin-top:0.3rem;letter-spacing:0.15em;text-transform:uppercase}
-
-    .scroll-hint{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:0.4rem;z-index:12;pointer-events:none}
-    .scroll-hint__line{width:1px;height:24px;background:linear-gradient(to bottom,transparent,rgba(124,58,237,0.4));animation:scrollPulse 2s ease-in-out infinite}
-    @keyframes scrollPulse{0%,100%{opacity:0.3;transform:scaleY(0.7)}50%{opacity:1;transform:scaleY(1.2)}}
-    .scroll-hint span{font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(30,27,75,0.25)}
+    #layer1 .title-text{position:absolute;top:70px;left:50%;transform:translateX(-50%);text-align:center;z-index:12;pointer-events:none}
+    #layer1 .title-text h1{font-family:'Playfair Display',serif;font-size:clamp(1.2rem,2.2vw,1.8rem);font-weight:400;color:rgba(30,27,75,0.5);letter-spacing:0.05em}
+    #layer1 .title-text p{font-size:0.65rem;color:rgba(30,27,75,0.22);margin-top:0.25rem;letter-spacing:0.15em;text-transform:uppercase}
 
     /* Gallery 3D container */
     .gallery-wrap{width:100%;height:100%;perspective:1200px;perspective-origin:50% 50%}
@@ -76,13 +79,11 @@ permalink: /life/
     /* ====== LAYER 2: Detail Page ====== */
     #layer2{display:none;position:relative;z-index:10;width:100%;height:600vh}
 
-    /* Back button */
     .back-btn{position:fixed;top:2rem;left:2rem;z-index:100;background:rgba(124,58,237,0.08);border:1px solid rgba(124,58,237,0.2);
       color:rgba(30,27,75,0.6);padding:0.5rem 1.2rem;border-radius:30px;font-size:0.75rem;font-family:'Inter',sans-serif;
       letter-spacing:0.1em;cursor:pointer;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);transition:all 0.3s;display:none}
     .back-btn:hover{background:rgba(124,58,237,0.15);color:#1e1b4b}
 
-    /* Content panels */
     .panel{position:fixed;top:0;left:0;width:100%;height:100vh;z-index:50;display:none;align-items:center;justify-content:center;
       pointer-events:none;opacity:0;transform:translateY(30px)}
     .panel.visible{display:flex}
@@ -94,7 +95,6 @@ permalink: /life/
     .panel-photo{width:100%;height:200px;border:1px dashed rgba(124,58,237,0.2);border-radius:8px;display:flex;align-items:center;
       justify-content:center;color:rgba(124,58,237,0.3);font-size:0.75rem;letter-spacing:0.1em;background:rgba(124,58,237,0.03)}
 
-    /* Right dot nav */
     .dot-nav{position:fixed;right:2rem;top:50%;transform:translateY(-50%);z-index:100;display:none;flex-direction:column;gap:1rem}
     .dot-nav .dot{width:6px;height:6px;border-radius:50%;background:rgba(124,58,237,0.2);cursor:pointer;transition:all 0.3s;position:relative}
     .dot-nav .dot.active{background:rgba(124,58,237,0.8);transform:scale(1.5)}
@@ -102,34 +102,46 @@ permalink: /life/
       letter-spacing:0.1em;text-transform:uppercase;white-space:nowrap;opacity:0;transition:opacity 0.3s;color:rgba(30,27,75,0.5)}
     .dot-nav .dot:hover::after{opacity:1}
 
-    /* Progress bar */
     .progress-bar{position:fixed;top:0;left:0;height:2px;z-index:200;background:linear-gradient(90deg,#7c3aed,#f75092);width:0%;
       pointer-events:none;display:none}
 
-    /* Section counter */
     .section-counter{position:fixed;right:2rem;bottom:2rem;z-index:100;font-size:0.7rem;letter-spacing:0.15em;
       color:rgba(30,27,75,0.2);pointer-events:none;display:none}
     .section-counter span{color:rgba(124,58,237,0.6);font-weight:600;font-size:0.9rem}
 
-    /* Panel CTA button */
     .panel-cta{display:inline-block;padding:0.6rem 1.8rem;border-radius:30px;font-size:0.75rem;font-weight:500;letter-spacing:0.1em;
       cursor:pointer;color:#fff;background:linear-gradient(135deg,#7c3aed,#f75092);border:none;font-family:'Inter',sans-serif;
       transition:all 0.3s;pointer-events:auto}
     .panel-cta:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(124,58,237,0.4)}
 
-    /* Mobile */
     @media(max-width:768px){
+      .life-nav{padding:0 1rem;height:48px}
+      .life-nav__links{gap:1rem}
+      .life-nav__links a{font-size:0.7rem}
       .dot-nav{right:0.8rem}
       .section-counter{right:1rem;bottom:1rem}
       .back-btn{top:1rem;left:1rem;padding:0.4rem 0.8rem;font-size:0.65rem}
       .panel-inner{padding:1.5rem}
       .gallery-wrap{perspective:800px}
-      #layer1 .title-text{top:1.5rem}
-      .scroll-hint{bottom:1.5rem}
+      #layer1 .title-text{top:58px}
     }
   </style>
 </head>
 <body>
+
+  <!-- TOP NAV -->
+  <nav class="life-nav">
+    <a href="/" class="life-nav__logo">Lily Tan</a>
+    <ul class="life-nav__links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/publications/">Research</a></li>
+      <li><a href="/teaching/">Teaching</a></li>
+      <li><a href="/service/">Service</a></li>
+      <li><a href="/cv/">CV</a></li>
+      <li><a href="/life/" class="active">Life</a></li>
+    </ul>
+  </nav>
+
   <canvas id="mainCanvas"></canvas>
   <div class="film-grain"></div>
   <div id="bgParticles"></div>
@@ -138,32 +150,21 @@ permalink: /life/
   <!-- LAYER 1: 3D Card Gallery -->
   <div id="layer1">
     <div class="gallery-wrap" id="galleryWrapper">
-      <div class="gallery-stage" id="galleryStage">
-        <!-- Cards built by JS -->
-      </div>
+      <div class="gallery-stage" id="galleryStage"></div>
     </div>
     <div class="title-text">
       <h1>Beyond the Research</h1>
       <p>Click a card to explore</p>
     </div>
-    <div class="scroll-hint" id="scrollHint">
-      <div class="scroll-hint__line"></div>
-      <span>Scroll to browse</span>
-    </div>
   </div>
 
   <!-- LAYER 2: Detail Page -->
   <div id="layer2"></div>
-
   <button class="back-btn" id="backBtn">&larr; Back</button>
-
   <div class="progress-bar" id="progressBar"></div>
-
   <div class="dot-nav" id="dotNav"></div>
-
   <div class="section-counter" id="sectionCounter"><span id="secNum">01</span> / 06</div>
 
-  <!-- 6 panels -->
   <div class="panel" id="panel0"><div class="panel-inner"><div class="panel-number">01</div><div class="panel-title" id="pt0"></div><div class="panel-text" id="px0"></div></div></div>
   <div class="panel" id="panel1"><div class="panel-inner"><div class="panel-number">02</div><div class="panel-title" id="pt1"></div><div class="panel-text" id="px1"></div><div class="panel-photo">Add photo</div></div></div>
   <div class="panel" id="panel2"><div class="panel-inner"><div class="panel-number">03</div><div class="panel-title" id="pt2"></div><div class="panel-text" id="px2"></div></div></div>
@@ -174,7 +175,7 @@ permalink: /life/
 <script>
 (function(){
 
-/* ====== CONTENT DATA (detail panels) ====== */
+/* ====== THEMES (detail panels) ====== */
 var THEMES = {
   pet: {
     panels: [
@@ -208,23 +209,24 @@ var THEMES = {
   }
 };
 
-/* ====== GALLERY CARD DATA ====== */
+/* ====== GALLERY CARDS — horizontal layout ====== */
 var ALL_CARDS = [
-  // Far back decorative
-  { type:'deco', x:-280, y:-140, z:-480, ry:-6, rx:5, w:180, h:240, bg:'linear-gradient(135deg,#ede9fe 0%,#fce7f3 100%)' },
-  { type:'deco', x:340, y:120, z:-420, ry:-10, rx:3, w:160, h:220, bg:'linear-gradient(135deg,#ddd6fe 0%,#fbcfe8 100%)' },
-  { type:'deco', x:60, y:-200, z:-360, ry:-4, rx:7, w:170, h:230, bg:'linear-gradient(135deg,#c4b5fd 0%,#f9a8d4 100%)' },
-  // Mid-back: Travel + deco
-  { type:'main', key:'travel', label:'Travel', img:'/images/life/travel.jpg', x:240, y:80, z:-260, ry:-9, rx:4, w:280, h:380 },
-  { type:'deco', x:-360, y:30, z:-220, ry:-12, rx:5, w:150, h:200, bg:'linear-gradient(135deg,#a78bfa 0%,#f472b6 100%)' },
-  { type:'deco', x:-120, y:180, z:-180, ry:-5, rx:6, w:160, h:210, bg:'linear-gradient(135deg,#8b5cf6 0%,#ec4899 100%)' },
-  // Center: Florist + deco
-  { type:'main', key:'florist', label:'Florist', img:'/images/life/florist.jpg', x:-40, y:-30, z:-20, ry:-6, rx:3, w:280, h:380 },
-  { type:'deco', x:340, y:-150, z:20, ry:-8, rx:5, w:170, h:230, bg:'linear-gradient(135deg,rgba(124,58,237,0.35),rgba(247,80,146,0.35))' },
-  // Foreground: Pet Lover + deco
-  { type:'main', key:'pet', label:'Pet Lover', img:'/images/life/pet.jpg', x:150, y:-90, z:160, ry:-10, rx:4, w:280, h:380 },
-  { type:'deco', x:-300, y:100, z:200, ry:-14, rx:5, w:150, h:200, bg:'linear-gradient(135deg,#c084fc 0%,#f9a8d4 100%)' },
-  { type:'deco', x:380, y:60, z:260, ry:-7, rx:6, w:160, h:220, bg:'linear-gradient(135deg,#7c3aed 0%,#f75092 100%)' }
+  // Back decorative row
+  { type:'deco', x:-480, y:-60, z:-180, ry:-5, rx:3, w:160, h:220, bg:'linear-gradient(135deg,#ede9fe,#fce7f3)' },
+  { type:'deco', x:-160, y:110, z:-160, ry:-8, rx:4, w:150, h:200, bg:'linear-gradient(135deg,#ddd6fe,#fbcfe8)' },
+  { type:'deco', x:180, y:-120, z:-150, ry:-4, rx:5, w:160, h:220, bg:'linear-gradient(135deg,#c4b5fd,#f9a8d4)' },
+  { type:'deco', x:460, y:80, z:-170, ry:-9, rx:3, w:150, h:200, bg:'linear-gradient(135deg,#a78bfa,#f472b6)' },
+
+  // === 3 MAIN CARDS — horizontal row ===
+  { type:'main', key:'pet',     label:'Pet Lover', img:'/images/life/pet.jpg',     x:-340, y:0,  z:0,  ry:-7,  rx:3, w:280, h:380 },
+  { type:'main', key:'florist', label:'Florist',   img:'/images/life/florist.jpg', x:0,    y:10, z:40, ry:-3,  rx:2, w:290, h:390 },
+  { type:'main', key:'travel',  label:'Travel',    img:'/images/life/travel.jpg',  x:340,  y:0,  z:0,  ry:-7,  rx:3, w:280, h:380 },
+
+  // Front decorative row
+  { type:'deco', x:-500, y:70,   z:100, ry:-12, rx:4, w:140, h:190, bg:'linear-gradient(135deg,#7c3aed,#f75092)' },
+  { type:'deco', x:-180, y:-130, z:110, ry:-5,  rx:6, w:150, h:200, bg:'linear-gradient(135deg,#c084fc,#f9a8d4)' },
+  { type:'deco', x:160,  y:130,  z:90,  ry:-8,  rx:4, w:140, h:190, bg:'linear-gradient(135deg,#8b5cf6,#ec4899)' },
+  { type:'deco', x:490,  y:-70,  z:80,  ry:-10, rx:5, w:150, h:210, bg:'linear-gradient(135deg,#ddd6fe,#fbcfe8)' }
 ];
 
 /* ====== GLOBALS ====== */
@@ -239,30 +241,23 @@ var secNum = document.getElementById('secNum');
 var panelCta = document.getElementById('panelCta');
 var galleryStage = document.getElementById('galleryStage');
 var flashOverlay = document.getElementById('flashOverlay');
-var scrollHint = document.getElementById('scrollHint');
 
 var renderer, camera, currentScene;
 var currentLayer = 1;
-var animId;
+var animId, galleryAnimId;
 var activeTheme = null;
 var transitioning = false;
 
 var cardElements = [];
 var mainCardElements = [];
 
-// Mouse parallax
 var targetMouseX = 0, targetMouseY = 0;
 var smoothMouseX = 0, smoothMouseY = 0;
 
-// Scroll Z
-var targetScrollZ = 0, scrollZ = 0;
-var SCROLL_MIN = -250, SCROLL_MAX = 550;
-
-// Mobile scale
 var isMobile = window.innerWidth < 768;
 var galleryScale = isMobile ? 0.5 : 1;
 
-/* ====== THREE.JS RENDERER (for detail scene only) ====== */
+/* ====== THREE.JS RENDERER (detail scene only) ====== */
 renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: false });
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 renderer.setSize(window.innerWidth, window.innerHeight);
@@ -281,8 +276,8 @@ function buildGallery() {
     card.className = 'gcard' + (d.type === 'main' ? ' gcard--main' : ' gcard--deco');
     card.dataset.z = d.z;
     card.dataset.idx = i;
-    card.style.width = d.w + 'px';
-    card.style.height = d.h + 'px';
+    card.style.width = (d.w * galleryScale) + 'px';
+    card.style.height = (d.h * galleryScale) + 'px';
 
     if (d.type === 'main') {
       card.dataset.key = d.key;
@@ -296,13 +291,11 @@ function buildGallery() {
       overlay.innerHTML = '<span class="gcard__label">' + d.label + '</span><span class="gcard__explore">Explore \u2192</span>';
       card.appendChild(overlay);
 
-      // Click
       (function(el, data) {
         el.addEventListener('click', function() {
           if (transitioning || currentLayer !== 1) return;
           transitionToDetail(el);
         });
-        // Hover
         el.addEventListener('mouseenter', function() {
           if (transitioning) return;
           gsap.to(el, { z: data.z + 50, scale: 1.08, duration: 0.4, ease: 'power2.out', overwrite: 'auto' });
@@ -322,7 +315,7 @@ function buildGallery() {
       card.appendChild(imgDiv);
     }
 
-    // Set initial 3D position via GSAP
+    // Initial position (hidden for entrance animation)
     gsap.set(card, {
       xPercent: -50,
       yPercent: -50,
@@ -332,7 +325,7 @@ function buildGallery() {
       rotateX: d.rx,
       rotateY: d.ry,
       opacity: 0,
-      scale: 0.6
+      scale: 0.5
     });
 
     galleryStage.appendChild(card);
@@ -340,60 +333,62 @@ function buildGallery() {
   });
 }
 
-/* ====== ENTRANCE ANIMATION ====== */
+/* ====== 45-DEGREE SWEEP ENTRANCE ====== */
 function playGalleryEntrance() {
   var titleText = layer1.querySelector('.title-text');
   gsap.set(titleText, { opacity: 0, y: 15 });
-  gsap.set(scrollHint, { opacity: 0, y: 10 });
 
-  // Sort cards by z (back to front) for stagger
-  var sorted = cardElements.slice().sort(function(a, b) {
-    return parseFloat(a.dataset.z) - parseFloat(b.dataset.z);
+  // Stage starts rotated & offset (viewing from 45-degree diagonal)
+  gsap.set(galleryStage, {
+    rotateY: -35,
+    rotateX: 12,
+    x: 500 * galleryScale,
+    y: -200 * galleryScale,
+    z: -300
+  });
+
+  // All cards start hidden
+  cardElements.forEach(function(c) {
+    gsap.set(c, { opacity: 0, scale: 0.5 });
   });
 
   var tl = gsap.timeline();
 
+  // Phase 1 (0–2s): Stage sweeps from diagonal to frontal view
+  tl.to(galleryStage, {
+    rotateY: 0,
+    rotateX: 0,
+    x: 0,
+    y: 0,
+    z: 0,
+    duration: 2.2,
+    ease: 'power2.inOut'
+  }, 0);
+
+  // Phase 2: Cards fade in with stagger during the sweep (left to right)
+  var sorted = cardElements.slice().sort(function(a, b) {
+    var ai = parseInt(a.dataset.idx);
+    var bi = parseInt(b.dataset.idx);
+    return ALL_CARDS[ai].x - ALL_CARDS[bi].x; // left to right
+  });
+
   tl.to(sorted, {
     opacity: 1,
     scale: 1,
-    stagger: 0.05,
-    duration: 0.9,
-    ease: 'back.out(1.2)',
-    delay: 0.2
-  });
+    stagger: 0.07,
+    duration: 0.8,
+    ease: 'back.out(1.1)'
+  }, 0.3);
 
-  tl.to(titleText, { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out' }, '-=0.6');
-  tl.to(scrollHint, { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' }, '-=0.4');
+  // Phase 3: Title fades in
+  tl.to(titleText, { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out' }, 1.8);
 }
 
-/* ====== MOUSE EVENTS ====== */
+/* ====== MOUSE PARALLAX ====== */
 window.addEventListener('mousemove', function(e) {
-  targetMouseX = (e.clientX / window.innerWidth - 0.5) * 2;  // -1 to 1
+  targetMouseX = (e.clientX / window.innerWidth - 0.5) * 2;
   targetMouseY = (e.clientY / window.innerHeight - 0.5) * 2;
 });
-
-/* ====== WHEEL SCROLL ====== */
-window.addEventListener('wheel', function(e) {
-  if (currentLayer !== 1 || transitioning) return;
-  targetScrollZ += e.deltaY * 0.6;
-  targetScrollZ = Math.max(SCROLL_MIN, Math.min(SCROLL_MAX, targetScrollZ));
-}, { passive: true });
-
-// Touch support
-var touchStartY = 0;
-window.addEventListener('touchstart', function(e) {
-  touchStartY = e.touches[0].clientY;
-}, { passive: true });
-window.addEventListener('touchmove', function(e) {
-  if (currentLayer !== 1 || transitioning) return;
-  var dy = touchStartY - e.touches[0].clientY;
-  touchStartY = e.touches[0].clientY;
-  targetScrollZ += dy * 1.8;
-  targetScrollZ = Math.max(SCROLL_MIN, Math.min(SCROLL_MAX, targetScrollZ));
-}, { passive: true });
-
-/* ====== GALLERY ANIMATION LOOP ====== */
-var galleryAnimId;
 
 function galleryLoop() {
   galleryAnimId = requestAnimationFrame(galleryLoop);
@@ -402,17 +397,10 @@ function galleryLoop() {
   if (!transitioning) {
     smoothMouseX += (targetMouseX - smoothMouseX) * 0.04;
     smoothMouseY += (targetMouseY - smoothMouseY) * 0.04;
-    scrollZ += (targetScrollZ - scrollZ) * 0.06;
-  }
 
-  galleryStage.style.transform =
-    'rotateY(' + (smoothMouseX * 4) + 'deg) ' +
-    'rotateX(' + (-smoothMouseY * 3) + 'deg) ' +
-    'translateZ(' + scrollZ + 'px)';
-
-  // Fade scroll hint when user scrolls
-  if (Math.abs(scrollZ) > 30) {
-    scrollHint.style.opacity = Math.max(0, 1 - Math.abs(scrollZ) / 80);
+    galleryStage.style.transform =
+      'rotateY(' + (smoothMouseX * 4) + 'deg) ' +
+      'rotateX(' + (-smoothMouseY * 3) + 'deg)';
   }
 }
 
@@ -431,22 +419,10 @@ function transitionToDetail(mainCardEl) {
     }
   });
 
-  // Fade title + scroll hint
   tl.to('#layer1 .title-text', { opacity: 0, y: -15, duration: 0.3, ease: 'power2.in' }, 0);
-  tl.to(scrollHint, { opacity: 0, duration: 0.2 }, 0);
 
-  // Smoothly bring stage to neutral
-  var stageProxy = { mx: smoothMouseX, my: smoothMouseY, sz: scrollZ };
-  tl.to(stageProxy, {
-    mx: 0, my: 0, sz: 0,
-    duration: 0.6,
-    ease: 'power2.inOut',
-    onUpdate: function() {
-      smoothMouseX = stageProxy.mx;
-      smoothMouseY = stageProxy.my;
-      scrollZ = stageProxy.sz;
-    }
-  }, 0);
+  // Reset stage rotation smoothly
+  tl.to(galleryStage, { rotateY: 0, rotateX: 0, duration: 0.4, ease: 'power2.out', overwrite: 'auto' }, 0);
 
   // Explode other cards outward
   var cx = window.innerWidth / 2;
@@ -458,9 +434,7 @@ function transitionToDetail(mainCardEl) {
     var cardCx = rect.left + rect.width / 2;
     var cardCy = rect.top + rect.height / 2;
     var angle = Math.atan2(cardCy - cy, cardCx - cx);
-    if (Math.abs(cardCx - cx) < 5 && Math.abs(cardCy - cy) < 5) {
-      angle = Math.random() * Math.PI * 2;
-    }
+    if (Math.abs(cardCx - cx) < 5 && Math.abs(cardCy - cy) < 5) angle = Math.random() * Math.PI * 2;
     var dist = 900 + Math.random() * 500;
 
     tl.to(c, {
@@ -474,29 +448,20 @@ function transitionToDetail(mainCardEl) {
     }, 0);
   });
 
-  // Clicked card: pop forward, center, flatten, expand to fullscreen
-  var rect = mainCardEl.getBoundingClientRect();
-  var scaleToFill = Math.max(window.innerWidth / rect.width, window.innerHeight / rect.height) * 1.3;
-
-  // Pop out
+  // Clicked card: pop, center, flatten, expand
   tl.to(mainCardEl, { z: '+=120', duration: 0.15, ease: 'power2.out' }, 0);
-  // Center & flatten
   tl.to(mainCardEl, {
     x: 0, y: 0, z: 600,
     rotateX: 0, rotateY: 0, rotation: 0,
     duration: 0.7,
     ease: 'power2.inOut'
   }, 0.15);
-  // Scale to fill
-  tl.to(mainCardEl, {
-    scale: scaleToFill,
-    duration: 0.4,
-    ease: 'power2.in'
-  }, 0.6);
-  // Fade out card
+
+  var rect = mainCardEl.getBoundingClientRect();
+  var scaleToFill = Math.max(window.innerWidth / rect.width, window.innerHeight / rect.height) * 1.3;
+  tl.to(mainCardEl, { scale: scaleToFill, duration: 0.4, ease: 'power2.in' }, 0.6);
   tl.to(mainCardEl, { opacity: 0, duration: 0.2 }, 0.9);
 
-  // White flash
   tl.to(flashOverlay, { opacity: 1, duration: 0.25, ease: 'power1.in' }, 0.85);
 }
 
@@ -514,6 +479,7 @@ function showDetailLayer() {
   cancelAnimationFrame(galleryAnimId);
 
   layer1.style.display = 'none';
+  document.querySelector('.life-nav').style.display = 'none';
   canvas.style.display = 'block';
   layer2.style.display = 'block';
   backBtn.style.display = 'block';
@@ -522,12 +488,10 @@ function showDetailLayer() {
   sectionCounter.style.display = 'block';
   document.body.classList.add('layer2-active');
 
-  // Hide flash
   gsap.to(flashOverlay, { opacity: 0, duration: 0.4 });
 
   window.scrollTo(0, 0);
 
-  // Build dot nav
   dotNav.innerHTML = '';
   var panelData = THEMES[activeTheme].panels;
   for (var i = 0; i < 6; i++) {
@@ -551,7 +515,7 @@ function showDetailLayer() {
   renderDetailScene();
 }
 
-/* ====== LAYER 2: DETAIL SCENE (Three.js — preserved) ====== */
+/* ====== DETAIL SCENE (Three.js — preserved exactly) ====== */
 var detailScene, detailCamera, detailClock;
 var cameraPath, lookAtPath;
 var detailParticles;
@@ -576,7 +540,6 @@ function initDetailScene() {
   dl2.position.set(-5, -5, -10);
   detailScene.add(dl2);
 
-  // Camera path
   cameraPath = new THREE.CatmullRomCurve3([
     new THREE.Vector3(0, 0, 12),
     new THREE.Vector3(3, 1, 8),
@@ -588,7 +551,6 @@ function initDetailScene() {
     new THREE.Vector3(0, 0, -16)
   ]);
 
-  // LookAt path (offset from camera path)
   lookAtPath = new THREE.CatmullRomCurve3([
     new THREE.Vector3(1, 0.5, 8),
     new THREE.Vector3(-1, 1.5, 5),
@@ -600,7 +562,6 @@ function initDetailScene() {
     new THREE.Vector3(1, 0, -20)
   ]);
 
-  // 40 wireframe objects along path
   var wireGeos = [
     new THREE.IcosahedronGeometry(0.5, 0),
     new THREE.OctahedronGeometry(0.5, 0),
@@ -611,44 +572,24 @@ function initDetailScene() {
     var t = i / 40;
     var pt = cameraPath.getPointAt(t);
     var geo = wireGeos[i % wireGeos.length];
-    var mat = new THREE.MeshPhongMaterial({
-      color: i % 2 === 0 ? 0x7c3aed : 0xf75092,
-      wireframe: true,
-      transparent: true,
-      opacity: 0.25
-    });
+    var mat = new THREE.MeshPhongMaterial({ color: i % 2 === 0 ? 0x7c3aed : 0xf75092, wireframe: true, transparent: true, opacity: 0.25 });
     var mesh = new THREE.Mesh(geo, mat);
-    mesh.position.set(
-      pt.x + (Math.random() - 0.5) * 8,
-      pt.y + (Math.random() - 0.5) * 6,
-      pt.z + (Math.random() - 0.5) * 4
-    );
+    mesh.position.set(pt.x + (Math.random() - 0.5) * 8, pt.y + (Math.random() - 0.5) * 6, pt.z + (Math.random() - 0.5) * 4);
     mesh.rotation.set(Math.random() * Math.PI, Math.random() * Math.PI, 0);
     mesh.userData.rotSpeed = { x: (Math.random() - 0.5) * 0.01, y: (Math.random() - 0.5) * 0.01 };
     detailScene.add(mesh);
   }
 
-  // 60 metallic small objects
   for (var i = 0; i < 60; i++) {
     var t = i / 60;
     var pt = cameraPath.getPointAt(t);
     var geo = new THREE.SphereGeometry(0.08 + Math.random() * 0.12, 8, 8);
-    var mat = new THREE.MeshPhongMaterial({
-      color: 0x9f50d3,
-      shininess: 100,
-      transparent: true,
-      opacity: 0.35
-    });
+    var mat = new THREE.MeshPhongMaterial({ color: 0x9f50d3, shininess: 100, transparent: true, opacity: 0.35 });
     var mesh = new THREE.Mesh(geo, mat);
-    mesh.position.set(
-      pt.x + (Math.random() - 0.5) * 10,
-      pt.y + (Math.random() - 0.5) * 8,
-      pt.z + (Math.random() - 0.5) * 6
-    );
+    mesh.position.set(pt.x + (Math.random() - 0.5) * 10, pt.y + (Math.random() - 0.5) * 8, pt.z + (Math.random() - 0.5) * 6);
     detailScene.add(mesh);
   }
 
-  // 600 particles along path
   var pGeo = new THREE.BufferGeometry();
   var pPos = new Float32Array(600 * 3);
   for (var i = 0; i < 600; i++) {
@@ -659,66 +600,32 @@ function initDetailScene() {
     pPos[i * 3 + 2] = pt.z + (Math.random() - 0.5) * 8;
   }
   pGeo.setAttribute('position', new THREE.BufferAttribute(pPos, 3));
-  detailParticles = new THREE.Points(pGeo, new THREE.PointsMaterial({
-    color: 0xa78bfa, size: 0.04, transparent: true, opacity: 0.4, sizeAttenuation: true
-  }));
+  detailParticles = new THREE.Points(pGeo, new THREE.PointsMaterial({ color: 0xa78bfa, size: 0.04, transparent: true, opacity: 0.4, sizeAttenuation: true }));
   detailScene.add(detailParticles);
 
-  // ===== PARTICLE STREAMS (Aramco-style flowing ribbons) =====
   var streamCurves = [
-    new THREE.CatmullRomCurve3([
-      new THREE.Vector3(-6,3,14), new THREE.Vector3(-2,5,8), new THREE.Vector3(3,1,3),
-      new THREE.Vector3(-1,-2,-2), new THREE.Vector3(4,2,-7), new THREE.Vector3(-3,4,-12),
-      new THREE.Vector3(2,0,-17)
-    ], false, 'catmullrom', 0.3),
-    new THREE.CatmullRomCurve3([
-      new THREE.Vector3(5,-2,13), new THREE.Vector3(1,3,7), new THREE.Vector3(-4,0,2),
-      new THREE.Vector3(2,-3,-3), new THREE.Vector3(-2,1,-8), new THREE.Vector3(5,-1,-13),
-      new THREE.Vector3(-1,3,-18)
-    ], false, 'catmullrom', 0.3),
-    new THREE.CatmullRomCurve3([
-      new THREE.Vector3(-3,-4,15), new THREE.Vector3(4,1,9), new THREE.Vector3(-1,4,4),
-      new THREE.Vector3(3,-1,-1), new THREE.Vector3(-4,-2,-6), new THREE.Vector3(1,3,-11),
-      new THREE.Vector3(-2,-1,-16)
-    ], false, 'catmullrom', 0.3),
-    new THREE.CatmullRomCurve3([
-      new THREE.Vector3(2,5,12), new THREE.Vector3(-3,-1,6), new THREE.Vector3(5,2,1),
-      new THREE.Vector3(-2,4,-4), new THREE.Vector3(3,-3,-9), new THREE.Vector3(-4,0,-14),
-      new THREE.Vector3(0,2,-19)
-    ], false, 'catmullrom', 0.3)
+    new THREE.CatmullRomCurve3([new THREE.Vector3(-6,3,14),new THREE.Vector3(-2,5,8),new THREE.Vector3(3,1,3),new THREE.Vector3(-1,-2,-2),new THREE.Vector3(4,2,-7),new THREE.Vector3(-3,4,-12),new THREE.Vector3(2,0,-17)], false, 'catmullrom', 0.3),
+    new THREE.CatmullRomCurve3([new THREE.Vector3(5,-2,13),new THREE.Vector3(1,3,7),new THREE.Vector3(-4,0,2),new THREE.Vector3(2,-3,-3),new THREE.Vector3(-2,1,-8),new THREE.Vector3(5,-1,-13),new THREE.Vector3(-1,3,-18)], false, 'catmullrom', 0.3),
+    new THREE.CatmullRomCurve3([new THREE.Vector3(-3,-4,15),new THREE.Vector3(4,1,9),new THREE.Vector3(-1,4,4),new THREE.Vector3(3,-1,-1),new THREE.Vector3(-4,-2,-6),new THREE.Vector3(1,3,-11),new THREE.Vector3(-2,-1,-16)], false, 'catmullrom', 0.3),
+    new THREE.CatmullRomCurve3([new THREE.Vector3(2,5,12),new THREE.Vector3(-3,-1,6),new THREE.Vector3(5,2,1),new THREE.Vector3(-2,4,-4),new THREE.Vector3(3,-3,-9),new THREE.Vector3(-4,0,-14),new THREE.Vector3(0,2,-19)], false, 'catmullrom', 0.3)
   ];
 
-  var STREAM_COUNT = 400; // particles per stream
+  var STREAM_COUNT = 400;
   detailStreams = [];
 
   streamCurves.forEach(function(curve, si){
     var geo = new THREE.BufferGeometry();
     var pos = new Float32Array(STREAM_COUNT * 3);
     var pData = [];
-
     for(var i = 0; i < STREAM_COUNT; i++){
       var t = Math.random();
       var pt = curve.getPointAt(t);
       pos[i*3] = pt.x; pos[i*3+1] = pt.y; pos[i*3+2] = pt.z;
-      pData.push({
-        t: t,
-        speed: 0.003 + Math.random() * 0.006,
-        spreadR: 0.05 + Math.random() * 0.4,
-        spreadAngle: Math.random() * Math.PI * 2,
-        noiseOff: Math.random() * 100
-      });
+      pData.push({ t: t, speed: 0.003 + Math.random() * 0.006, spreadR: 0.05 + Math.random() * 0.4, spreadAngle: Math.random() * Math.PI * 2, noiseOff: Math.random() * 100 });
     }
     geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
-
-    // Bright colored streams for visibility
     var streamColors = [0x7c3aed, 0xf75092, 0x9f50d3, 0xa78bfa];
-    var pts = new THREE.Points(geo, new THREE.PointsMaterial({
-      color: streamColors[si],
-      size: 0.15,
-      transparent: true,
-      opacity: 0.8,
-      sizeAttenuation: true
-    }));
+    var pts = new THREE.Points(geo, new THREE.PointsMaterial({ color: streamColors[si], size: 0.15, transparent: true, opacity: 0.8, sizeAttenuation: true }));
     detailScene.add(pts);
     detailStreams.push({ points:pts, geo:geo, curve:curve, data:pData });
   });
@@ -727,24 +634,19 @@ function initDetailScene() {
   currentScene = detailScene;
   camera = detailCamera;
 
-  // Set up ScrollTrigger
   gsap.registerPlugin(ScrollTrigger);
   ScrollTrigger.getAll().forEach(function(st) { st.kill(); });
-
   ScrollTrigger.create({
     trigger: layer2,
     start: 'top top',
     end: 'bottom bottom',
     scrub: 0.8,
-    onUpdate: function(self) {
-      detailProgress = self.progress;
-    }
+    onUpdate: function(self) { detailProgress = self.progress; }
   });
 }
 
 var detailProgress = 0;
 
-/* ====== LAYER 2 RENDER ====== */
 function renderDetailScene() {
   if (currentLayer !== 2) return;
   animId = requestAnimationFrame(renderDetailScene);
@@ -752,17 +654,14 @@ function renderDetailScene() {
   var el = detailClock.getElapsedTime();
   var prog = Math.max(0, Math.min(detailProgress, 0.999));
 
-  // Camera on path
   var camPos = cameraPath.getPointAt(prog);
   var lookPos = lookAtPath.getPointAt(Math.min(prog + 0.05, 0.999));
   detailCamera.position.copy(camPos);
   detailCamera.lookAt(lookPos);
 
-  // Fog and exposure driven by scroll
   detailScene.fog.density = 0.04 + prog * 0.02;
   renderer.toneMappingExposure = 1.0 + Math.sin(prog * Math.PI) * 0.3;
 
-  // Rotate wireframe objects
   detailScene.children.forEach(function(child) {
     if (child.userData.rotSpeed) {
       child.rotation.x += child.userData.rotSpeed.x;
@@ -770,22 +669,16 @@ function renderDetailScene() {
     }
   });
 
-  // Particle subtle drift
-  if (detailParticles) {
-    detailParticles.rotation.y = el * 0.005;
-  }
+  if (detailParticles) detailParticles.rotation.y = el * 0.005;
 
-  // Animate flowing particle streams
-  var scrollSpeed = Math.abs(prog - prevDetailProgress) * 60; // approx scroll velocity
+  var scrollSpeed = Math.abs(prog - prevDetailProgress) * 60;
   prevDetailProgress = prog;
-  var speedBoost = 1 + scrollSpeed * 80; // scroll makes particles rush
+  var speedBoost = 1 + scrollSpeed * 80;
 
   for (var si = 0; si < detailStreams.length; si++) {
     var stream = detailStreams[si];
     var positions = stream.geo.attributes.position.array;
     var curve = stream.curve;
-
-    // Density fade: sparse at start/end, dense in middle
     var densityFade = prog < 0.15 ? prog / 0.15 : (prog > 0.85 ? (1 - prog) / 0.15 : 1);
     stream.points.material.opacity = 0.55 * densityFade;
 
@@ -793,15 +686,12 @@ function renderDetailScene() {
       var pd = stream.data[pi];
       pd.t += pd.speed * speedBoost * 0.016;
       if (pd.t > 1) pd.t -= 1;
-
       var t = pd.t;
       var pt = curve.getPointAt(t);
       var tangent = curve.getTangentAt(t);
       var perpX = -tangent.y, perpY = tangent.x;
-
       var n1 = smoothNoise(t*5+pd.noiseOff, el*0.3+si, si*7);
       var dSpread = pd.spreadR * (0.7 + n1*0.5);
-
       positions[pi*3]   = pt.x + perpX*dSpread*Math.cos(pd.spreadAngle+el*0.15+n1*0.4);
       positions[pi*3+1] = pt.y + perpY*dSpread*Math.sin(pd.spreadAngle+el*0.12);
       positions[pi*3+2] = pt.z + Math.sin(t*6+el*0.2+pd.noiseOff)*0.12*pd.spreadR;
@@ -809,7 +699,6 @@ function renderDetailScene() {
     stream.geo.attributes.position.needsUpdate = true;
   }
 
-  // Panel visibility
   var sectionSize = 1 / 6;
   var currentIdx = Math.min(Math.floor(prog / sectionSize), 5);
   var localT = (prog - currentIdx * sectionSize) / sectionSize;
@@ -818,18 +707,10 @@ function renderDetailScene() {
     var panel = document.getElementById('panel' + i);
     if (i === currentIdx) {
       panel.classList.add('visible');
-      // Fade in first 15%, hold, fade out last 15%
       var opacity, ty;
-      if (localT < 0.15) {
-        opacity = localT / 0.15;
-        ty = 30 * (1 - localT / 0.15);
-      } else if (localT > 0.85) {
-        opacity = (1 - localT) / 0.15;
-        ty = -30 * (1 - (1 - localT) / 0.15);
-      } else {
-        opacity = 1;
-        ty = 0;
-      }
+      if (localT < 0.15) { opacity = localT / 0.15; ty = 30 * (1 - localT / 0.15); }
+      else if (localT > 0.85) { opacity = (1 - localT) / 0.15; ty = -30 * (1 - (1 - localT) / 0.15); }
+      else { opacity = 1; ty = 0; }
       panel.style.opacity = Math.max(0, Math.min(1, opacity));
       panel.style.transform = 'translateY(' + ty + 'px)';
     } else {
@@ -838,11 +719,8 @@ function renderDetailScene() {
     }
   }
 
-  // Update UI
   secNum.textContent = ('0' + (currentIdx + 1)).slice(-2);
   progressBar.style.width = (prog * 100) + '%';
-
-  // Update dots
   var dots = dotNav.querySelectorAll('.dot');
   dots.forEach(function(d, i) { d.classList.toggle('active', i === currentIdx); });
 
@@ -852,13 +730,11 @@ function renderDetailScene() {
 /* ====== TRANSITION: DETAIL -> CARDS ====== */
 function transitionToCards() {
   transitioning = true;
-  currentLayer = 0; // prevent rendering
+  currentLayer = 0;
   cancelAnimationFrame(animId);
 
-  // Kill ScrollTrigger
   ScrollTrigger.getAll().forEach(function(st) { st.kill(); });
 
-  // Hide detail UI
   layer2.style.display = 'none';
   canvas.style.display = 'none';
   backBtn.style.display = 'none';
@@ -867,7 +743,6 @@ function transitionToCards() {
   sectionCounter.style.display = 'none';
   document.body.classList.remove('layer2-active');
 
-  // Hide all panels
   for (var i = 0; i < 6; i++) {
     var panel = document.getElementById('panel' + i);
     panel.classList.remove('visible');
@@ -876,26 +751,19 @@ function transitionToCards() {
 
   window.scrollTo(0, 0);
 
-  // Re-show layer 1
   layer1.style.display = 'flex';
+  document.querySelector('.life-nav').style.display = 'flex';
   gsap.set(flashOverlay, { opacity: 0 });
 
-  // Reset scroll
-  targetScrollZ = 0;
-  scrollZ = 0;
   smoothMouseX = 0;
   smoothMouseY = 0;
 
-  // Rebuild gallery with entrance animation
   buildGallery();
-
   currentLayer = 1;
   galleryLoop();
   playGalleryEntrance();
 
-  setTimeout(function() {
-    transitioning = false;
-  }, 1000);
+  setTimeout(function() { transitioning = false; }, 2500);
 }
 
 backBtn.addEventListener('click', transitionToCards);
@@ -912,11 +780,11 @@ window.addEventListener('resize', function() {
   }
 });
 
-/* ====== BACKGROUND PARTICLES (CSS) ====== */
+/* ====== BACKGROUND PARTICLES ====== */
 function createBgParticles() {
   var container = document.getElementById('bgParticles');
   var colors = ['#7c3aed','#9f50d3','#f75092','#a78bfa','#f9a8d4','#c084fc','#8b5cf6'];
-  for (var i = 0; i < 35; i++) {
+  for (var i = 0; i < 30; i++) {
     var dot = document.createElement('div');
     dot.className = 'bg-dot';
     var size = 2 + Math.random() * 5;
