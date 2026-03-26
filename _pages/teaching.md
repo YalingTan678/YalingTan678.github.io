@@ -264,7 +264,9 @@ My teaching philosophy is grounded in the belief that language acquisition is mo
 
 <!-- Honeybee Technology -->
 <div class="teach-card" style="cursor:default">
-  <div class="teach-card__img teach-card__img--icon">&#128029;</div>
+  <div class="teach-card__img">
+    <img src="/images/teaching/honeybee.png" alt="Honeybee Technologies">
+  </div>
   <div class="teach-card__body">
     <div class="teach-card__header">
       <span class="teach-card__org">Honeybee Technology Co., Ltd</span>
