@@ -184,21 +184,6 @@ My teaching philosophy is grounded in the belief that language acquisition is mo
 
 <h2>Teaching Experience</h2>
 
-<!-- Honeybee Technology -->
-<div class="teach-card" style="cursor:default">
-  <div class="teach-card__img teach-card__img--icon">&#128029;</div>
-  <div class="teach-card__body">
-    <div class="teach-card__header">
-      <span class="teach-card__org">Honeybee Technology Co., Ltd</span>
-      <span class="teach-card__meta">Jan &ndash; Jul 2025 &middot; China</span>
-    </div>
-    <div class="teach-card__role">Career Planning Specialist</div>
-    <ul class="teach-card__desc">
-      <li>300+ students assessed; 100+ CVs revised; 100% placement success rate.</li>
-    </ul>
-  </div>
-</div>
-
 <!-- EDCI 612 -->
 <a class="teach-card" href="/teaching/edci612/">
   <div class="teach-card__img">
@@ -276,5 +261,22 @@ My teaching philosophy is grounded in the belief that language acquisition is mo
     <span class="teach-card__link">Visit TAL Education &rarr;</span>
   </div>
 </a>
+
+<!-- Honeybee Technology -->
+<div class="teach-card" style="cursor:default">
+  <div class="teach-card__img teach-card__img--icon">&#128029;</div>
+  <div class="teach-card__body">
+    <div class="teach-card__header">
+      <span class="teach-card__org">Honeybee Technology Co., Ltd</span>
+      <span class="teach-card__meta">Jan &ndash; Jul 2025 &middot; Chengdu, China</span>
+    </div>
+    <div class="teach-card__role">Career Planning Specialist</div>
+    <ul class="teach-card__desc">
+      <li>Assessed over 300 students' academic backgrounds and aspirations to create tailored education roadmaps.</li>
+      <li>Revised and edited over 100 r&eacute;sum&eacute;s/CVs; coached students on interview strategies for job placement and graduate school admissions, resulting in a 100% success rate.</li>
+      <li>Collaborated with colleagues to design a comprehensive Standard Operating Procedure (SOP) that reduced onboarding time and enhanced team efficiency.</li>
+    </ul>
+  </div>
+</div>
 
 </div>
