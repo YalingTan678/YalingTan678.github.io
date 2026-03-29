@@ -3,353 +3,435 @@ layout: home
 author_profile: false
 ---
 
-<!-- ========== RESEARCH STRANDS VENN ========== -->
+<!-- ========== RESEARCH STRANDS RADAR ========== -->
 <section class="lt-section lt-fade-in" style="padding-top:0">
   <h2 class="lt-section__title">Research Strands</h2>
-  <p style="font-size:0.92rem;color:#4a5568;line-height:1.7;margin-bottom:1.5rem">My work moves across four interconnected strands. Hover over each area to see how they relate:</p>
+  <p style="font-size:0.92rem;color:#4a5568;line-height:1.7;margin-bottom:1rem">My work moves across four interconnected strands. Hover over each area to see how they relate:</p>
 
-  <div style="position:relative;max-width:960px;margin:0 auto">
-    <!-- SVG Venn Diagram -->
-    <svg viewBox="0 0 900 680" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
-      <defs>
-        <filter id="shadow-green" x="-20%" y="-20%" width="140%" height="140%">
-          <feDropShadow dx="0" dy="4" stdDeviation="10" flood-color="#047857" flood-opacity="0.25"/>
-        </filter>
-        <filter id="shadow-blue" x="-20%" y="-20%" width="140%" height="140%">
-          <feDropShadow dx="0" dy="4" stdDeviation="10" flood-color="#2563eb" flood-opacity="0.25"/>
-        </filter>
-        <filter id="shadow-orange" x="-20%" y="-20%" width="140%" height="140%">
-          <feDropShadow dx="0" dy="4" stdDeviation="10" flood-color="#c2410c" flood-opacity="0.25"/>
-        </filter>
-        <filter id="shadow-purple" x="-20%" y="-20%" width="140%" height="140%">
-          <feDropShadow dx="0" dy="4" stdDeviation="10" flood-color="#6d28d9" flood-opacity="0.25"/>
-        </filter>
-        <filter id="pill-shadow" x="-15%" y="-40%" width="130%" height="200%">
-          <feGaussianBlur in="SourceAlpha" stdDeviation="3" result="blur"/>
-          <feOffset dy="2" result="shifted"/>
-          <feFlood flood-opacity="0.15" result="color"/>
-          <feComposite in="color" in2="shifted" operator="in" result="shadow"/>
-          <feMerge><feMergeNode in="shadow"/><feMergeNode in="SourceGraphic"/></feMerge>
-        </filter>
-        <!-- Gradient fills for ellipses -->
-        <radialGradient id="grad-literacy" cx="35%" cy="30%" r="70%">
-          <stop offset="0%" stop-color="#6ee7b7" stop-opacity="0.55"/>
-          <stop offset="45%" stop-color="#34d399" stop-opacity="0.30"/>
-          <stop offset="100%" stop-color="#047857" stop-opacity="0.10"/>
-        </radialGradient>
-        <radialGradient id="grad-idle" cx="35%" cy="30%" r="70%">
-          <stop offset="0%" stop-color="#93c5fd" stop-opacity="0.55"/>
-          <stop offset="45%" stop-color="#60a5fa" stop-opacity="0.30"/>
-          <stop offset="100%" stop-color="#2563eb" stop-opacity="0.10"/>
-        </radialGradient>
-        <radialGradient id="grad-equity" cx="65%" cy="30%" r="70%">
-          <stop offset="0%" stop-color="#fdba74" stop-opacity="0.55"/>
-          <stop offset="45%" stop-color="#fb923c" stop-opacity="0.30"/>
-          <stop offset="100%" stop-color="#c2410c" stop-opacity="0.10"/>
-        </radialGradient>
-        <radialGradient id="grad-tpack" cx="65%" cy="30%" r="70%">
-          <stop offset="0%" stop-color="#c4b5fd" stop-opacity="0.55"/>
-          <stop offset="45%" stop-color="#a78bfa" stop-opacity="0.30"/>
-          <stop offset="100%" stop-color="#6d28d9" stop-opacity="0.10"/>
-        </radialGradient>
-        <!-- Pill gradient backgrounds -->
-        <linearGradient id="pill-green" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stop-color="#ffffff"/><stop offset="40%" stop-color="#ecfdf5"/><stop offset="100%" stop-color="#a7f3d0"/>
-        </linearGradient>
-        <linearGradient id="pill-blue" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stop-color="#ffffff"/><stop offset="40%" stop-color="#eff6ff"/><stop offset="100%" stop-color="#bfdbfe"/>
-        </linearGradient>
-        <linearGradient id="pill-orange" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stop-color="#ffffff"/><stop offset="40%" stop-color="#fff7ed"/><stop offset="100%" stop-color="#fed7aa"/>
-        </linearGradient>
-        <linearGradient id="pill-purple" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stop-color="#ffffff"/><stop offset="40%" stop-color="#f5f3ff"/><stop offset="100%" stop-color="#ddd6fe"/>
-        </linearGradient>
-        <linearGradient id="pill-center" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stop-color="#f8fafc"/><stop offset="100%" stop-color="#e2e8f0"/>
-        </linearGradient>
-      </defs>
-
-      <!-- Strand ellipses with gradient fills -->
-      <ellipse id="venn-literacy" cx="340" cy="240" rx="240" ry="185" fill="url(#grad-literacy)" stroke="#047857" stroke-width="2.5" stroke-opacity="0" filter="url(#shadow-green)" style="cursor:pointer;transition:all 0.5s ease"/>
-      <ellipse id="venn-idle" cx="230" cy="410" rx="220" ry="175" fill="url(#grad-idle)" stroke="#2563eb" stroke-width="2.5" stroke-opacity="0" filter="url(#shadow-blue)" style="cursor:pointer;transition:all 0.5s ease"/>
-      <ellipse id="venn-equity" cx="530" cy="410" rx="220" ry="175" fill="url(#grad-equity)" stroke="#c2410c" stroke-width="2.5" stroke-opacity="0" filter="url(#shadow-orange)" style="cursor:pointer;transition:all 0.5s ease"/>
-      <ellipse id="venn-tpack" cx="650" cy="240" rx="210" ry="170" fill="url(#grad-tpack)" stroke="#6d28d9" stroke-width="2.5" stroke-opacity="0" filter="url(#shadow-purple)" style="cursor:pointer;transition:all 0.5s ease"/>
-
-      <!-- ===== AI Literacy & Learning Design (top-left green) ===== -->
-      <g class="strand-group" data-strand="literacy">
-        <g class="strand-title" style="cursor:pointer">
-          <text x="250" y="105" font-size="19" font-weight="800" fill="#047857" text-anchor="middle">AI Literacy &amp;</text>
-          <text x="250" y="130" font-size="19" font-weight="800" fill="#047857" text-anchor="middle">Learning Design</text>
-          <text x="250" y="150" font-size="11" fill="#047857" opacity="0.6" text-anchor="middle" font-style="italic">Design principles &amp; environments</text>
-        </g>
-        <g class="strand-pills">
-          <a href="/publication/2025-two-years-innovation" class="strand-pill" style="opacity:0;transform:translateY(8px)">
-            <rect x="185" y="170" width="180" height="26" rx="13" fill="url(#pill-green)" stroke="#047857" stroke-opacity="0.4" stroke-width="1.2" filter="url(#pill-shadow)"/>
-            <text x="275" y="188" font-size="11.5" fill="#047857" font-weight="600" text-anchor="middle" style="cursor:pointer">GenAI Review · CAEAI '25</text>
-          </a>
-          <a href="/publication/ur-tutor-not-solver" class="strand-pill" style="opacity:0;transform:translateY(8px)">
-            <rect x="185" y="202" width="180" height="26" rx="13" fill="url(#pill-green)" stroke="#047857" stroke-opacity="0.4" stroke-width="1.2" filter="url(#pill-shadow)"/>
-            <text x="275" y="220" font-size="11.5" fill="#047857" font-weight="600" text-anchor="middle" style="cursor:pointer">PeteChat Design Case →</text>
-          </a>
-          <a href="/publication/2026-clawdbot-unboxed" class="strand-pill" style="opacity:0;transform:translateY(8px)">
-            <rect x="200" y="234" width="150" height="26" rx="13" fill="url(#pill-green)" stroke="#047857" stroke-opacity="0.4" stroke-width="1.2" filter="url(#pill-shadow)"/>
-            <text x="275" y="252" font-size="11.5" fill="#047857" font-weight="600" text-anchor="middle" style="cursor:pointer">Clawdbot · Talk '26</text>
-          </a>
-        </g>
-      </g>
-
-      <!-- ===== TPACK & Teacher Ed (top-right purple) ===== -->
-      <g class="strand-group" data-strand="tpack">
-        <g class="strand-title" style="cursor:pointer">
-          <text x="720" y="115" font-size="19" font-weight="800" fill="#6d28d9" text-anchor="middle">TPACK &amp;</text>
-          <text x="720" y="140" font-size="19" font-weight="800" fill="#6d28d9" text-anchor="middle">Teacher Ed</text>
-          <text x="720" y="160" font-size="11" fill="#6d28d9" opacity="0.6" text-anchor="middle" font-style="italic">Technology integration &amp; diversity</text>
-        </g>
-        <g class="strand-pills">
-          <a href="/publication/ur-tpack-xinjiang" class="strand-pill" style="opacity:0;transform:translateY(8px)">
-            <rect x="640" y="180" width="160" height="26" rx="13" fill="url(#pill-purple)" stroke="#6d28d9" stroke-opacity="0.4" stroke-width="1.2" filter="url(#pill-shadow)"/>
-            <text x="720" y="198" font-size="11.5" fill="#6d28d9" font-weight="600" text-anchor="middle" style="cursor:pointer">TPACK Xinjiang →</text>
-          </a>
-          <a href="/publication/2025-purdue-ai-gai" class="strand-pill" style="opacity:0;transform:translateY(8px)">
-            <rect x="640" y="212" width="160" height="26" rx="13" fill="url(#pill-purple)" stroke="#6d28d9" stroke-opacity="0.4" stroke-width="1.2" filter="url(#pill-shadow)"/>
-            <text x="720" y="230" font-size="11.5" fill="#6d28d9" font-weight="600" text-anchor="middle" style="cursor:pointer">GAI-IDLE · P-12 '25</text>
-          </a>
-        </g>
-      </g>
-
-      <!-- ===== IDLE & Pragmatics (bottom-left blue) ===== -->
-      <g class="strand-group" data-strand="idle">
-        <g class="strand-title" style="cursor:pointer">
-          <text x="140" y="360" font-size="19" font-weight="800" fill="#2563eb" text-anchor="middle">IDLE &amp;</text>
-          <text x="140" y="385" font-size="19" font-weight="800" fill="#2563eb" text-anchor="middle">Pragmatics</text>
-          <text x="140" y="405" font-size="11" fill="#2563eb" opacity="0.6" text-anchor="middle" font-style="italic">AI chatbots &amp; self-directed learning</text>
-        </g>
-        <g class="strand-pills">
-          <a href="/publication/2026-doubao-genai-efl" class="strand-pill" style="opacity:0;transform:translateY(8px)">
-            <rect x="55" y="420" width="170" height="26" rx="13" fill="url(#pill-blue)" stroke="#2563eb" stroke-opacity="0.4" stroke-width="1.2" filter="url(#pill-shadow)"/>
-            <text x="140" y="438" font-size="11.5" fill="#2563eb" font-weight="600" text-anchor="middle" style="cursor:pointer">Doubao EFL · PE '26</text>
-          </a>
-          <a href="/publication/2025-pointing-to-context" class="strand-pill" style="opacity:0;transform:translateY(8px)">
-            <rect x="55" y="452" width="170" height="26" rx="13" fill="url(#pill-blue)" stroke="#2563eb" stroke-opacity="0.4" stroke-width="1.2" filter="url(#pill-shadow)"/>
-            <text x="140" y="470" font-size="11.5" fill="#2563eb" font-weight="600" text-anchor="middle" style="cursor:pointer">Context · MJSS '25</text>
-          </a>
-          <a href="/publication/2024-call-context" class="strand-pill" style="opacity:0;transform:translateY(8px)">
-            <rect x="70" y="484" width="140" height="26" rx="13" fill="url(#pill-blue)" stroke="#2563eb" stroke-opacity="0.4" stroke-width="1.2" filter="url(#pill-shadow)"/>
-            <text x="140" y="502" font-size="11.5" fill="#2563eb" font-weight="600" text-anchor="middle" style="cursor:pointer">CALL Tokyo '24</text>
-          </a>
-        </g>
-      </g>
-
-      <!-- ===== Equity & Assessment (bottom-right orange) ===== -->
-      <g class="strand-group" data-strand="equity">
-        <g class="strand-title" style="cursor:pointer">
-          <text x="620" y="360" font-size="19" font-weight="800" fill="#c2410c" text-anchor="middle">Equity &amp;</text>
-          <text x="620" y="385" font-size="19" font-weight="800" fill="#c2410c" text-anchor="middle">Assessment</text>
-          <text x="620" y="405" font-size="11" fill="#c2410c" opacity="0.6" text-anchor="middle" font-style="italic">Authenticity &amp; evaluative judgment</text>
-        </g>
-        <g class="strand-pills">
-          <a href="/publication/2026-aera-meta-analysis" class="strand-pill" style="opacity:0;transform:translateY(8px)">
-            <rect x="520" y="420" width="200" height="26" rx="13" fill="url(#pill-orange)" stroke="#c2410c" stroke-opacity="0.4" stroke-width="1.2" filter="url(#pill-shadow)"/>
-            <text x="620" y="438" font-size="11.5" fill="#c2410c" font-weight="600" text-anchor="middle" style="cursor:pointer">Meta-analysis · AERA '26</text>
-          </a>
-          <a href="/publication/2025-aect-authenticity" class="strand-pill" style="opacity:0;transform:translateY(8px)">
-            <rect x="530" y="452" width="180" height="26" rx="13" fill="url(#pill-orange)" stroke="#c2410c" stroke-opacity="0.4" stroke-width="1.2" filter="url(#pill-shadow)"/>
-            <text x="620" y="470" font-size="11.5" fill="#c2410c" font-weight="600" text-anchor="middle" style="cursor:pointer">Authenticity · AECT '25</text>
-          </a>
-          <a href="/publication/ur-authorship-agency-ai" class="strand-pill" style="opacity:0;transform:translateY(8px)">
-            <rect x="545" y="484" width="150" height="26" rx="13" fill="url(#pill-orange)" stroke="#c2410c" stroke-opacity="0.4" stroke-width="1.2" filter="url(#pill-shadow)"/>
-            <text x="620" y="502" font-size="11.5" fill="#c2410c" font-weight="600" text-anchor="middle" style="cursor:pointer">Authorship &amp; AI →</text>
-          </a>
-        </g>
-      </g>
-
-      <!-- ===== Center overlap ===== -->
-      <g class="overlap-labels">
-        <rect x="340" y="335" width="130" height="40" rx="20" fill="url(#pill-center)" stroke="#64748b" stroke-opacity="0.2" stroke-width="1" filter="url(#pill-shadow)"/>
-        <text x="405" y="353" font-size="13" fill="#1e1b4b" font-weight="700" text-anchor="middle" opacity="0.7">AI × Education</text>
-        <text x="405" y="368" font-size="10" fill="#64748b" text-anchor="middle" opacity="0.6">Shared foundation</text>
-
-        <!-- Overlap: Literacy ∩ IDLE -->
-        <text x="250" y="310" font-size="10.5" fill="#0f766e" text-anchor="middle" opacity="0.6" font-style="italic">Design for</text>
-        <text x="250" y="324" font-size="10.5" fill="#0f766e" text-anchor="middle" opacity="0.6" font-style="italic">informal learning</text>
-
-        <!-- Overlap: Literacy ∩ Equity / center-top -->
-        <text x="470" y="280" font-size="10.5" fill="#92400e" text-anchor="middle" opacity="0.6" font-style="italic">Authentic</text>
-        <text x="470" y="294" font-size="10.5" fill="#92400e" text-anchor="middle" opacity="0.6" font-style="italic">AI integration</text>
-
-        <!-- Overlap: IDLE ∩ Equity -->
-        <text x="385" y="460" font-size="10.5" fill="#7c2d12" text-anchor="middle" opacity="0.6" font-style="italic">AI tools &amp;</text>
-        <text x="385" y="474" font-size="10.5" fill="#7c2d12" text-anchor="middle" opacity="0.6" font-style="italic">fair assessment</text>
-
-        <!-- Overlap: Literacy ∩ TPACK -->
-        <text x="540" y="195" font-size="10.5" fill="#4c1d95" text-anchor="middle" opacity="0.6" font-style="italic">Curriculum</text>
-        <text x="540" y="209" font-size="10.5" fill="#4c1d95" text-anchor="middle" opacity="0.6" font-style="italic">design</text>
-      </g>
-
-      <!-- Pulse animation for active ellipse -->
-      <style>
-        @keyframes venn-pulse {
-          0%, 100% { stroke-width: 3; }
-          50% { stroke-width: 5; }
-        }
-        .strand-pill { transition: opacity 0.4s ease, transform 0.4s ease; }
-        .strand-title { transition: opacity 0.3s ease; }
-        .strand-title:hover text { font-size: 20px; }
-        .overlap-labels { transition: opacity 0.4s ease; }
-      </style>
-    </svg>
+  <div style="display:flex;justify-content:center;gap:0.4rem;margin-bottom:1.2rem;flex-wrap:wrap">
+    <button class="rdr-fb rdr-fb--on" data-filter="all">All</button>
+    <button class="rdr-fb" data-filter="publication">Publications</button>
+    <button class="rdr-fb" data-filter="talk">Talks</button>
+    <button class="rdr-fb" data-filter="progress">In Progress</button>
   </div>
 
-  <!-- Description panel (appears on click) -->
-  <div id="venn-desc-panel" style="max-width:660px;margin:1rem auto 0;padding:0;overflow:hidden;transition:all 0.5s cubic-bezier(0.4,0,0.2,1);max-height:0;opacity:0">
-    <div style="padding:1.2rem 1.5rem;border-radius:14px;border:1px solid rgba(100,100,200,0.12);background:linear-gradient(135deg,#f8fafc,#f1f5f9);box-shadow:0 2px 12px rgba(0,0,0,0.06)">
-      <div style="display:flex;align-items:center;gap:0.6rem;margin-bottom:0.5rem">
-        <div id="venn-desc-dot" style="width:10px;height:10px;border-radius:50%;background:#047857"></div>
-        <strong id="venn-desc-title" style="font-size:1.05rem;color:#1e1b4b"></strong>
-      </div>
-      <p id="venn-desc-text" style="font-size:0.92rem;color:#475569;line-height:1.7;margin:0"></p>
+  <div id="rdr-wrap" style="position:relative;max-width:860px;margin:0 auto;-webkit-user-select:none;user-select:none">
+    <svg id="rdr-svg" viewBox="0 0 900 760" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;overflow:visible;display:block"></svg>
+    <div id="rdr-tip"></div>
+  </div>
+
+  <div id="rdr-modal">
+    <div id="rdr-modal-card">
+      <button id="rdr-modal-x">&times;</button>
+      <div id="rdr-modal-body"></div>
     </div>
   </div>
 
-  <!-- Click interaction -->
+  <style>
+  .rdr-fb{font-size:.78rem;padding:.35rem .9rem;border-radius:20px;border:1px solid #cbd5e1;background:#fff;color:#475569;cursor:pointer;transition:all .25s;font-weight:500;font-family:inherit}
+  .rdr-fb:hover{border-color:#94a3b8;background:#f8fafc;transform:translateY(-1px)}
+  .rdr-fb--on{background:#1e293b;color:#fff;border-color:#1e293b;box-shadow:0 2px 8px rgba(30,41,59,.3)}
+  #rdr-tip{display:none;position:absolute;pointer-events:none;background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:.65rem .9rem;box-shadow:0 4px 24px rgba(0,0,0,.14);z-index:10;max-width:250px;font-size:.8rem;line-height:1.5;backdrop-filter:blur(8px)}
+  #rdr-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:100;justify-content:center;align-items:center}
+  #rdr-modal-card{background:#fff;border-radius:14px;padding:1.4rem 1.8rem;max-width:400px;width:90%;box-shadow:0 8px 40px rgba(0,0,0,.15);position:relative;animation:rdr-modalIn .3s ease}
+  @keyframes rdr-modalIn{from{opacity:0;transform:scale(.92) translateY(10px)}to{opacity:1;transform:scale(1) translateY(0)}}
+  #rdr-modal-x{position:absolute;top:.5rem;right:.8rem;background:none;border:none;font-size:1.5rem;cursor:pointer;color:#94a3b8;line-height:1;transition:color .2s}
+  #rdr-modal-x:hover{color:#475569}
+  .rdr-ring{transform-origin:450px 380px}
+  .rdr-ring circle{animation:rdr-ringSpin 60s linear infinite}
+  @keyframes rdr-ringSpin{to{stroke-dashoffset:-100}}
+  .rdr-outer{transform-origin:450px 380px;animation:rdr-outerSpin 90s linear infinite}
+  @keyframes rdr-outerSpin{to{transform:rotate(360deg)}}
+  .rdr-axis line{transition:opacity .3s,stroke-width .3s,stroke .3s}
+  .rdr-axis-glow line{animation:rdr-axGlow 1.2s ease-in-out infinite;stroke-width:2px!important}
+  @keyframes rdr-axGlow{0%,100%{opacity:.7}50%{opacity:1}}
+  .rdr-dot{transform-box:fill-box;transform-origin:center;cursor:pointer;transition:transform .25s ease,opacity .3s ease,filter .3s ease}
+  .rdr-dot:hover{transform:scale(1.6)!important;filter:drop-shadow(0 0 8px currentColor)}
+  .rdr-dot.dim{opacity:.1!important}
+  .rdr-dot.off{opacity:0!important;pointer-events:none}
+  .rdr-dot-pulse{animation:rdr-dotPulse 2s ease-in-out infinite}
+  @keyframes rdr-dotPulse{0%,100%{opacity:.25}50%{opacity:.55}}
+  .rdr-dot-float{animation:rdr-float var(--dur,3s) ease-in-out infinite var(--del,0s)}
+  @keyframes rdr-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+  .rdr-lbl{cursor:pointer;transition:opacity .3s,transform .3s ease}
+  .rdr-lbl:hover{transform:scale(1.06)}
+  .rdr-lbl.dim{opacity:.15}
+  .rdr-sector{transition:opacity .4s}
+  .rdr-conn{pointer-events:none;transition:opacity .3s}
+  .rdr-conn-anim{animation:rdr-dash .8s linear infinite}
+  @keyframes rdr-dash{to{stroke-dashoffset:-14}}
+  .rdr-mini{pointer-events:none}
+  .rdr-mini-anim{animation:rdr-miniIn .3s ease both}
+  @keyframes rdr-miniIn{from{opacity:0;transform:translateX(6px)}to{opacity:1;transform:translateX(0)}}
+  .rdr-ripple{pointer-events:none}
+  .rdr-ripple circle{animation:rdr-rippleOut .6s ease-out forwards}
+  @keyframes rdr-rippleOut{from{r:9;opacity:.5}to{r:28;opacity:0}}
+  .rdr-ellipse-breathe{animation:rdr-breathe 4s ease-in-out infinite}
+  @keyframes rdr-breathe{0%,100%{opacity:var(--base-op,.75)}50%{opacity:calc(var(--base-op,.75) - .06)}}
+  @media(max-width:640px){.rdr-fb{font-size:.72rem;padding:.25rem .65rem}}
+  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+  </style>
+
   <script>
   (function(){
-    var active = null;
-    var strandData = {
-      literacy: {
-        color: '#047857',
-        title: 'AI Literacy & Learning Design',
-        desc: 'Exploring how to design learning environments that build AI literacy through hands-on, principle-driven experiences. Projects include GenAI curriculum reviews, the PeteChat AI tutor, and the Clawdbot tangible learning kit.'
-      },
-      tpack: {
-        color: '#6d28d9',
-        title: 'TPACK & Teacher Ed',
-        desc: 'Investigating how teachers integrate technology into diverse classrooms using the TPACK framework. Research spans Xinjiang teacher education contexts and P-12 generative AI readiness.'
-      },
-      idle: {
-        color: '#2563eb',
-        title: 'IDLE & Pragmatics',
-        desc: 'Studying informal and self-directed language learning with AI chatbots. Research includes Doubao-powered EFL practice, pragmatic context awareness, and CALL methodologies.'
-      },
-      equity: {
-        color: '#c2410c',
-        title: 'Equity & Assessment',
-        desc: 'Examining how AI reshapes assessment authenticity and academic authorship. Work includes meta-analyses of AI in education, evaluative judgment frameworks, and equity-centered design.'
-      }
-    };
-    var ids = ['literacy','idle','equity','tpack'];
-    var panel = document.getElementById('venn-desc-panel');
-    var descTitle = document.getElementById('venn-desc-title');
-    var descText = document.getElementById('venn-desc-text');
-    var descDot = document.getElementById('venn-desc-dot');
+    var CX=450,CY=380,RINGS=[80,160,240],ALEN=280,RAD=Math.PI/180;
+    var svg=document.getElementById('rdr-svg');
+    var tip=document.getElementById('rdr-tip');
+    var wrap=document.getElementById('rdr-wrap');
+    var modal=document.getElementById('rdr-modal');
+    var mBody=document.getElementById('rdr-modal-body');
 
-    function resetAll() {
-      ids.forEach(function(id) {
-        var el = document.getElementById('venn-'+id);
-        if (el) {
-          el.style.opacity = '';
-          el.setAttribute('stroke-width','2.5');
-          el.setAttribute('stroke-opacity','0');
-          el.style.animation = '';
-        }
-        var grp = document.querySelector('[data-strand="'+id+'"]');
-        if (grp) {
-          grp.querySelector('.strand-title').style.opacity = '';
-          var pills = grp.querySelectorAll('.strand-pill');
-          pills.forEach(function(p) {
-            p.style.opacity = '0';
-            p.style.transform = 'translateY(8px)';
-          });
-        }
-      });
-      var overlaps = document.querySelector('.overlap-labels');
-      if (overlaps) overlaps.style.opacity = '';
-      panel.style.maxHeight = '0';
-      panel.style.opacity = '0';
-      active = null;
-    }
+    var S=[
+      {id:'literacy',lbl:['AI Literacy &','Learning Design'],sub:'Design principles & environments',c:'#0D9488',a:270,lx:450,ly:65,an:'middle'},
+      {id:'tpack',lbl:['TPACK &','Teacher Ed'],sub:'Technology integration & diversity',c:'#7C3AED',a:0,lx:740,ly:370,an:'start'},
+      {id:'equity',lbl:['Equity &','Assessment'],sub:'Authenticity & evaluative judgment',c:'#EA580C',a:90,lx:450,ly:695,an:'middle'},
+      {id:'idle',lbl:['IDLE &','Pragmatics'],sub:'AI chatbots & self-directed learning',c:'#0369A1',a:180,lx:160,ly:370,an:'end'}
+    ];
+    var sMap={};S.forEach(function(s){sMap[s.id]=s;});
 
-    function activateStrand(strand) {
-      if (active === strand) return;
-      active = strand;
-      var data = strandData[strand];
+    var P=[
+      {id:'genai',l:'GenAI Review \u00b7 CAEAI \'25',s:'literacy',r:155,t:'publication',v:'CAEAI',y:2025,st:'Published',lk:'/publication/2025-two-years-innovation',d:'Systematic review of empirical GenAI research in language learning and teaching.'},
+      {id:'pete',l:'PeteChat Design Case',s:'literacy',r:215,t:'progress',v:'Under Review',y:2026,st:'Revising',lk:'/publication/ur-tutor-not-solver',d:'Building a safety-aware LLM tutoring system for university contexts.'},
+      {id:'claw',l:'Clawdbot \u00b7 Talk \'26',s:'literacy',r:95,t:'talk',v:'Conference Talk',y:2026,st:'Upcoming',lk:'/publication/2026-clawdbot-unboxed',d:'What Clawdbot does, why it\'s hot, and where it breaks.'},
+      {id:'tpxj',l:'TPACK Xinjiang Study',s:'tpack',r:160,t:'progress',v:'Education Sciences',y:2026,st:'In Review',lk:'/publication/ur-tpack-xinjiang',d:'How ethnic and cultural context shapes technology integration knowledge among trainee teachers in Western China.'},
+      {id:'idle-r',l:'IDLE Literature Review',s:'idle',r:165,t:'progress',v:'In Progress',y:2026,st:'In Progress',lk:null,d:'Comprehensive literature review of informal digital learning of English (IDLE) research.'},
+      {id:'doubao',l:'Doubao \u00b7 PE (Q2) \'26',s:'equity',r:145,t:'publication',v:'Practical English',y:2026,st:'Published',lk:'/publication/2026-doubao-genai-efl',d:'Doubao as a GenAI scaffold in senior high school EFL writing.'},
+      {id:'nontrad',l:'NonTrad \u00d7 ChatGPT \u00b7 BJET \'25',cs:['literacy','idle'],a:225,r:185,t:'publication',v:'BJET',y:2025,st:'Published',lk:null,d:'Exploring non-traditional learners\' engagement with ChatGPT for informal language learning.'},
+      {id:'lowinc',l:'Low-Income & ChatGPT \u00b7 Lang. \'23',cs:['idle','equity'],a:135,r:185,t:'publication',v:'Language',y:2023,st:'Published',lk:null,d:'Investigating ChatGPT usage patterns among low-income language learners.'},
+      {id:'global',l:'Global Learners Study',cs:['equity','tpack'],a:45,r:185,t:'progress',v:'In Progress',y:2026,st:'In Progress',lk:null,d:'Study examining technology access and outcomes for global learners across diverse contexts.'}
+    ];
 
-      // Dim all ellipses and titles, then highlight selected
-      ids.forEach(function(id) {
-        var el = document.getElementById('venn-'+id);
-        var grp = document.querySelector('[data-strand="'+id+'"]');
-        if (id === strand) {
-          el.style.opacity = '1';
-          el.setAttribute('stroke-width','3');
-          el.setAttribute('stroke-opacity','0.8');
-          el.style.animation = 'venn-pulse 2s ease-in-out infinite';
-          if (grp) {
-            grp.querySelector('.strand-title').style.opacity = '1';
-            var pills = grp.querySelectorAll('.strand-pill');
-            pills.forEach(function(p, i) {
-              setTimeout(function() {
-                p.style.opacity = '1';
-                p.style.transform = 'translateY(0)';
-              }, 100 + i * 120);
-            });
-          }
-        } else {
-          el.style.opacity = '0.35';
-          el.setAttribute('stroke-width','2.5');
-          el.setAttribute('stroke-opacity','0');
-          el.style.animation = '';
-          if (grp) {
-            grp.querySelector('.strand-title').style.opacity = '0.3';
-            var pills = grp.querySelectorAll('.strand-pill');
-            pills.forEach(function(p) {
-              p.style.opacity = '0';
-              p.style.transform = 'translateY(8px)';
-            });
-          }
-        }
-      });
+    /* helpers */
+    function pol(a,r){return{x:CX+r*Math.cos(a*RAD),y:CY+r*Math.sin(a*RAD)};}
+    function el(tag,at){var e=document.createElementNS('http://www.w3.org/2000/svg',tag);for(var k in at)e.setAttribute(k,at[k]);return e;}
+    function pPos(p){return pol(p.cs?p.a:sMap[p.s].a,p.r);}
+    function pClr(p){if(!p.cs)return sMap[p.s].c;var a=sMap[p.cs[0]].c,b=sMap[p.cs[1]].c;return bHex(a,b);}
+    function bHex(a,b){var r=(parseInt(a.slice(1,3),16)+parseInt(b.slice(1,3),16))>>1,g=(parseInt(a.slice(3,5),16)+parseInt(b.slice(3,5),16))>>1,l=(parseInt(a.slice(5,7),16)+parseInt(b.slice(5,7),16))>>1;return'#'+((1<<24)|(r<<16)|(g<<8)|l).toString(16).slice(1);}
+    function secP(sa,ea,r){var sp=pol(sa,r),ep=pol(ea,r),sw=((ea-sa+360)%360);return'M '+CX+' '+CY+' L '+sp.x.toFixed(1)+' '+sp.y.toFixed(1)+' A '+r+' '+r+' 0 '+(sw>180?1:0)+' 1 '+ep.x.toFixed(1)+' '+ep.y.toFixed(1)+' Z';}
+    function stC(st){return st==='Published'?'#059669':st==='Upcoming'?'#d97706':'#6366f1';}
 
-      // Dim overlaps
-      var overlaps = document.querySelector('.overlap-labels');
-      if (overlaps) overlaps.style.opacity = '0.2';
+    /* build SVG */
+    // defs (shadow filter)
+    var defs=el('defs',{});
+    var filt=el('filter',{id:'rdr-shd',x:'-30%',y:'-30%',width:'160%',height:'160%'});
+    filt.appendChild(el('feGaussianBlur',{in:'SourceAlpha',stdDeviation:'3',result:'b'}));
+    filt.appendChild(el('feOffset',{dy:'2',result:'o'}));
+    filt.appendChild(el('feFlood',{'flood-opacity':'0.1',result:'c'}));
+    filt.appendChild(el('feComposite',{in:'c',in2:'o',operator:'in',result:'s'}));
+    var mg=el('feMerge',{});mg.appendChild(el('feMergeNode',{in:'s'}));mg.appendChild(el('feMergeNode',{in:'SourceGraphic'}));
+    filt.appendChild(mg);defs.appendChild(filt);
 
-      // Show description panel
-      descTitle.textContent = data.title;
-      descText.textContent = data.desc;
-      descDot.style.background = data.color;
-      descTitle.style.color = data.color;
-      panel.style.maxHeight = '200px';
-      panel.style.opacity = '1';
-    }
+    // radial gradients for strand ellipses
+    var gradData=[
+      {id:'grad-lit',cx:'50%',cy:'35%',stops:[['0%','#99f6e4',0.55],['45%','#5eead4',0.30],['100%','#0D9488',0.10]]},
+      {id:'grad-tpack',cx:'35%',cy:'50%',stops:[['0%','#ddd6fe',0.55],['45%','#a78bfa',0.30],['100%','#7C3AED',0.10]]},
+      {id:'grad-eq',cx:'50%',cy:'35%',stops:[['0%','#fed7aa',0.55],['45%','#fb923c',0.30],['100%','#EA580C',0.10]]},
+      {id:'grad-idle',cx:'65%',cy:'50%',stops:[['0%','#bae6fd',0.55],['45%','#38bdf8',0.30],['100%','#0369A1',0.10]]}
+    ];
+    gradData.forEach(function(gd){
+      var rg=el('radialGradient',{id:gd.id,cx:gd.cx,cy:gd.cy,r:'70%'});
+      gd.stops.forEach(function(s){rg.appendChild(el('stop',{offset:s[0],'stop-color':s[1],'stop-opacity':s[2]}));});
+      defs.appendChild(rg);
+    });
+    // outer glow gradient
+    var outerGrad=el('radialGradient',{id:'grad-outer',cx:'50%',cy:'50%',r:'50%'});
+    outerGrad.appendChild(el('stop',{offset:'0%','stop-color':'#f0f4ff','stop-opacity':'0.5'}));
+    outerGrad.appendChild(el('stop',{offset:'70%','stop-color':'#e8ecf4','stop-opacity':'0.25'}));
+    outerGrad.appendChild(el('stop',{offset:'100%','stop-color':'#dde3ee','stop-opacity':'0.08'}));
+    defs.appendChild(outerGrad);
+    svg.appendChild(defs);
 
-    // Attach hover to ellipses and strand groups
-    ids.forEach(function(id) {
-      var ellipse = document.getElementById('venn-'+id);
-      var grp = document.querySelector('[data-strand="'+id+'"]');
-      function enter() { activateStrand(id); }
-      function leave() { resetAll(); }
-      if (ellipse) {
-        ellipse.addEventListener('mouseenter', enter);
-        ellipse.addEventListener('mouseleave', function(e) {
-          var rel = e.relatedTarget;
-          if (rel && (rel.closest('[data-strand="'+id+'"]') || rel.closest('#venn-desc-panel'))) return;
-          leave();
-        });
-      }
-      if (grp) {
-        grp.addEventListener('mouseenter', enter);
-        grp.addEventListener('mouseleave', function(e) {
-          var rel = e.relatedTarget;
-          if (rel && (rel === ellipse || rel.closest('#venn-desc-panel'))) return;
-          leave();
-        });
-      }
+    // large background circle (slow rotation)
+    var outerCircle=el('circle',{cx:CX,cy:CY,r:RINGS[2]+40,fill:'url(#grad-outer)',stroke:'#e2e8f0','stroke-width':'.5','stroke-dasharray':'8 5',opacity:'.6',class:'rdr-outer'});
+    svg.appendChild(outerCircle);
+
+    // four gradient ellipses behind each strand
+    var ellipseData=[
+      {grad:'grad-lit',cx:CX,cy:CY-120,rx:240,ry:250},       // literacy (up)
+      {grad:'grad-tpack',cx:CX+140,cy:CY,rx:260,ry:210},     // tpack (right)
+      {grad:'grad-eq',cx:CX,cy:CY+120,rx:240,ry:250},        // equity (down)
+      {grad:'grad-idle',cx:CX-140,cy:CY,rx:260,ry:210}       // idle (left)
+    ];
+    var strandEllipses={};
+    var sIds=['literacy','tpack','equity','idle'];
+    ellipseData.forEach(function(ed,i){
+      var ell=el('ellipse',{cx:ed.cx,cy:ed.cy,rx:ed.rx,ry:ed.ry,fill:'url(#'+ed.grad+')',opacity:'0',class:'rdr-ellipse-breathe',style:'pointer-events:none;transition:opacity .4s ease;--base-op:.75'});
+      svg.appendChild(ell);
+      strandEllipses[sIds[i]]=ell;
     });
 
-    // Also keep panel visible while hovering it
-    panel.addEventListener('mouseenter', function() {});
-    panel.addEventListener('mouseleave', function() { resetAll(); });
+    // sectors (highlight on strand hover)
+    var sectors={};
+    S.forEach(function(s){
+      var p=el('path',{d:secP(s.a-45,s.a+45,RINGS[2]),fill:s.c,opacity:'0',class:'rdr-sector','data-s':s.id});
+      svg.appendChild(p);sectors[s.id]=p;
+    });
+
+    // concentric rings
+    var ringEls=[];
+    RINGS.forEach(function(r){
+      var g=el('g',{class:'rdr-ring',style:'opacity:0;transform:scale(0)'});
+      g.appendChild(el('circle',{cx:CX,cy:CY,r:r,fill:'none',stroke:'#d1d5db','stroke-width':'1','stroke-dasharray':'6 4',opacity:'.45'}));
+      svg.appendChild(g);ringEls.push(g);
+    });
+
+    // axes
+    var axEls={};
+    S.forEach(function(s){
+      var end=pol(s.a,ALEN);
+      var g=el('g',{class:'rdr-axis','data-s':s.id,style:'opacity:0'});
+      g.appendChild(el('line',{x1:CX,y1:CY,x2:end.x.toFixed(1),y2:end.y.toFixed(1),stroke:'#cbd5e1','stroke-width':'.8',opacity:'.6'}));
+      svg.appendChild(g);axEls[s.id]=g;
+    });
+
+    // center badge
+    var badge=el('g',{style:'opacity:0'});
+    badge.appendChild(el('circle',{cx:CX,cy:CY,r:38,fill:'#fff',stroke:'#e2e8f0','stroke-width':'1.5',filter:'url(#rdr-shd)'}));
+    var ct1=el('text',{x:CX,y:CY-6,'text-anchor':'middle','font-size':'12','font-weight':'700',fill:'#1e1b4b',opacity:'.8'});
+    ct1.textContent='AI \u00d7 Education';
+    var ct2=el('text',{x:CX,y:CY+10,'text-anchor':'middle','font-size':'9',fill:'#64748b',opacity:'.6'});
+    ct2.textContent='Shared foundation';
+    badge.appendChild(ct1);badge.appendChild(ct2);svg.appendChild(badge);
+
+    // connection line (dot-to-center on hover)
+    var conn=el('line',{x1:CX,y1:CY,x2:CX,y2:CY,stroke:'transparent','stroke-width':'1.5','stroke-dasharray':'4 3',class:'rdr-conn',opacity:'0'});
+    svg.appendChild(conn);
+
+    // strand labels
+    var lblEls={};
+    S.forEach(function(s){
+      var g=el('g',{class:'rdr-lbl','data-s':s.id,style:'opacity:0'});
+      s.lbl.forEach(function(line,j){
+        var t=el('text',{x:s.lx,y:s.ly+j*22,'text-anchor':s.an,'font-size':'17','font-weight':'800',fill:s.c});
+        t.textContent=line;g.appendChild(t);
+      });
+      var sub=el('text',{x:s.lx,y:s.ly+s.lbl.length*22+2,'text-anchor':s.an,'font-size':'10',fill:s.c,opacity:'.55','font-style':'italic'});
+      sub.textContent=s.sub;g.appendChild(sub);
+      svg.appendChild(g);lblEls[s.id]=g;
+    });
+
+    // paper dots
+    var dots=[];
+    P.forEach(function(p){
+      var pos=pPos(p),c=pClr(p);
+      var floatDur=(2.5+Math.random()*1.5).toFixed(1);
+      var floatDel=(Math.random()*2).toFixed(1);
+      var g=el('g',{class:'rdr-dot rdr-dot-float','data-p':p.id,'data-t':p.t,style:'opacity:0;--dur:'+floatDur+'s;--del:'+floatDel+'s'});
+      g.appendChild(el('circle',{cx:pos.x.toFixed(1),cy:pos.y.toFixed(1),r:'9',fill:'#fff',stroke:c,'stroke-width':'2.5'}));
+      g.appendChild(el('circle',{cx:pos.x.toFixed(1),cy:pos.y.toFixed(1),r:'3.5',fill:c,opacity:'.4',class:'rdr-dot-pulse'}));
+      svg.appendChild(g);
+      dots.push({el:g,p:p,pos:pos,c:c});
+    });
+
+    /* ---- entry animation ---- */
+    var entered=false;
+    function runEntry(){
+      if(entered)return;entered=true;
+      var ease='cubic-bezier(0.34,1.56,0.64,1)';
+      // ellipses bloom in first
+      sIds.forEach(function(id,i){
+        setTimeout(function(){strandEllipses[id].style.transition='opacity .8s ease';strandEllipses[id].style.opacity='.75';},i*120);
+      });
+      // then rings expand
+      ringEls.forEach(function(r,i){
+        setTimeout(function(){r.style.transition='opacity .7s ease,transform .7s '+ease;r.style.opacity='1';r.style.transform='scale(1)';},300+i*150);
+      });
+      var sids=Object.keys(axEls);
+      sids.forEach(function(k,i){setTimeout(function(){axEls[k].style.transition='opacity .5s ease';axEls[k].style.opacity='1';},650+i*80);});
+      setTimeout(function(){badge.style.transition='opacity .5s ease';badge.style.opacity='1';},750);
+      dots.forEach(function(d,i){
+        setTimeout(function(){d.el.style.transition='opacity .35s ease,transform .35s '+ease;d.el.style.opacity='1';d.el.style.transform='scale(1)';},850+i*65);
+      });
+      S.forEach(function(s,i){setTimeout(function(){lblEls[s.id].style.transition='opacity .5s ease';lblEls[s.id].style.opacity='1';},1200+i*70);});
+    }
+    var obs=new IntersectionObserver(function(en){if(en[0].isIntersecting){runEntry();obs.disconnect();}},{threshold:.15});
+    obs.observe(svg);
+
+    /* ---- strand hover ---- */
+    var miniEls=[];
+    function clrMini(){miniEls.forEach(function(e){if(e.parentNode)e.parentNode.removeChild(e);});miniEls=[];}
+
+    function hiStrand(sid){
+      S.forEach(function(s){sectors[s.id].setAttribute('opacity',s.id===sid?'.22':'0');});
+      S.forEach(function(s){
+        var ln=axEls[s.id].querySelector('line');
+        if(s.id===sid){ln.setAttribute('opacity','1');ln.setAttribute('stroke-width','1.5');ln.setAttribute('stroke',s.c);axEls[s.id].classList.add('rdr-axis-glow');}
+        else{ln.setAttribute('opacity','.12');ln.setAttribute('stroke-width','.8');ln.setAttribute('stroke','#cbd5e1');axEls[s.id].classList.remove('rdr-axis-glow');}
+      });
+      S.forEach(function(s){lblEls[s.id].classList.toggle('dim',s.id!==sid);});
+      S.forEach(function(s){
+        if(strandEllipses[s.id]){
+          strandEllipses[s.id].setAttribute('opacity',s.id===sid?'1':'.12');
+          strandEllipses[s.id].style.animationPlayState=s.id===sid?'paused':'running';
+        }
+      });
+      clrMini();
+      dots.forEach(function(d){
+        var own=(d.p.s===sid)||(d.p.cs&&d.p.cs.indexOf(sid)!==-1);
+        d.el.classList.toggle('dim',!own);
+        if(own){
+          var lx,la;
+          if(d.pos.x<CX-50){lx=d.pos.x-14;la='end';}else{lx=d.pos.x+14;la='start';}
+          var t=el('text',{x:lx,y:d.pos.y-3,'text-anchor':la,'font-size':'9','font-weight':'600',fill:d.c,class:'rdr-mini rdr-mini-anim'});
+          t.textContent=d.p.l;svg.appendChild(t);miniEls.push(t);
+          var t2=el('text',{x:lx,y:d.pos.y+8,'text-anchor':la,'font-size':'7.5',fill:'#64748b',class:'rdr-mini rdr-mini-anim',style:'animation-delay:.08s'});
+          t2.textContent=d.p.v+' \u00b7 '+d.p.y;svg.appendChild(t2);miniEls.push(t2);
+        }
+      });
+    }
+
+    function resetHi(){
+      S.forEach(function(s){
+        sectors[s.id].setAttribute('opacity','0');
+        var ln=axEls[s.id].querySelector('line');
+        ln.setAttribute('opacity','.6');ln.setAttribute('stroke-width','.8');ln.setAttribute('stroke','#cbd5e1');
+        axEls[s.id].classList.remove('rdr-axis-glow');
+        lblEls[s.id].classList.remove('dim');
+        if(strandEllipses[s.id]){strandEllipses[s.id].setAttribute('opacity','.75');strandEllipses[s.id].style.animationPlayState='';}
+      });
+      dots.forEach(function(d){d.el.classList.remove('dim');});
+      clrMini();
+      tip.style.display='none';
+      conn.setAttribute('stroke','transparent');conn.setAttribute('opacity','0');conn.classList.remove('rdr-conn-anim');
+    }
+
+    S.forEach(function(s){
+      [lblEls[s.id],axEls[s.id]].forEach(function(elem){
+        elem.addEventListener('mouseenter',function(){hiStrand(s.id);});
+        elem.addEventListener('mouseleave',resetHi);
+        elem.addEventListener('touchstart',function(e){e.preventDefault();hiStrand(s.id);},{passive:false});
+      });
+    });
+
+    /* ---- dot hover / tooltip ---- */
+    function showTip(d){
+      var wr=wrap.getBoundingClientRect(),sr=svg.getBoundingClientRect();
+      var tx=sr.left+(d.pos.x/900)*sr.width-wr.left;
+      var ty=sr.top+(d.pos.y/760)*sr.height-wr.top;
+      var sc=stC(d.p.st);
+      tip.innerHTML='<div style="font-weight:700;color:#1e293b;margin-bottom:2px">'+d.p.l+'</div>'+
+        '<div style="color:#64748b;font-size:.73rem">'+d.p.v+' \u00b7 '+d.p.y+'</div>'+
+        '<div style="margin-top:3px"><span style="display:inline-block;padding:1px 7px;border-radius:10px;font-size:.68rem;font-weight:600;background:'+sc+'18;color:'+sc+'">'+d.p.st+'</span></div>';
+      tip.style.display='block';
+      var left=tx+15,top=ty-10;
+      if(left+260>wr.offsetWidth)left=tx-265;
+      if(top<0)top=ty+15;
+      tip.style.left=left+'px';tip.style.top=top+'px';
+      conn.setAttribute('x2',d.pos.x.toFixed(1));conn.setAttribute('y2',d.pos.y.toFixed(1));
+      conn.setAttribute('stroke',d.c);conn.setAttribute('opacity','.5');conn.classList.add('rdr-conn-anim');
+      if(d.p.cs){
+        S.forEach(function(s){
+          var ln=axEls[s.id].querySelector('line');
+          if(d.p.cs.indexOf(s.id)!==-1){ln.setAttribute('opacity','1');ln.setAttribute('stroke-width','1.5');}
+          else{ln.setAttribute('opacity','.12');ln.setAttribute('stroke-width','.8');}
+        });
+      }
+    }
+
+    function hideTip(){
+      tip.style.display='none';
+      conn.setAttribute('stroke','transparent');conn.setAttribute('opacity','0');conn.classList.remove('rdr-conn-anim');
+      S.forEach(function(s){
+        var ln=axEls[s.id].querySelector('line');
+        ln.setAttribute('opacity','.6');ln.setAttribute('stroke-width','.8');
+      });
+    }
+
+    dots.forEach(function(d){
+      d.el.addEventListener('mouseenter',function(){showTip(d);});
+      d.el.addEventListener('mouseleave',hideTip);
+      d.el.addEventListener('click',function(){
+        // ripple effect
+        var rip=el('g',{class:'rdr-ripple'});
+        rip.appendChild(el('circle',{cx:d.pos.x.toFixed(1),cy:d.pos.y.toFixed(1),r:'9',fill:'none',stroke:d.c,'stroke-width':'2'}));
+        svg.appendChild(rip);
+        setTimeout(function(){if(rip.parentNode)rip.parentNode.removeChild(rip);},650);
+        if(d.p.lk){window.location.href=d.p.lk;}
+        else{
+          var sc=stC(d.p.st);
+          mBody.innerHTML='<div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.5rem">'+
+            '<div style="width:10px;height:10px;border-radius:50%;background:'+d.c+'"></div>'+
+            '<span style="font-size:1.05rem;font-weight:700;color:#1e293b">'+d.p.l+'</span></div>'+
+            '<div style="color:#64748b;font-size:.83rem;margin-bottom:.5rem">'+d.p.v+' \u00b7 '+d.p.y+
+            ' <span style="display:inline-block;padding:1px 7px;border-radius:10px;font-size:.7rem;font-weight:600;background:'+sc+'18;color:'+sc+';margin-left:3px">'+d.p.st+'</span></div>'+
+            '<p style="color:#475569;font-size:.88rem;line-height:1.6;margin:0">'+d.p.d+'</p>';
+          modal.style.display='flex';
+        }
+      });
+      d.el.addEventListener('touchstart',function(e){e.preventDefault();showTip(d);},{passive:false});
+    });
+
+    // tap background to dismiss on mobile
+    svg.addEventListener('touchstart',function(e){
+      if(!e.target.closest('.rdr-dot,.rdr-lbl,.rdr-axis'))resetHi();
+    });
+
+    /* ---- modal ---- */
+    document.getElementById('rdr-modal-x').addEventListener('click',function(){modal.style.display='none';});
+    modal.addEventListener('click',function(e){if(e.target===modal)modal.style.display='none';});
+
+    /* ---- filters ---- */
+    var fbs=document.querySelectorAll('.rdr-fb');
+    fbs.forEach(function(btn){
+      btn.addEventListener('click',function(){
+        fbs.forEach(function(b){b.classList.remove('rdr-fb--on');});
+        btn.classList.add('rdr-fb--on');
+        var f=btn.getAttribute('data-filter');
+        dots.forEach(function(d){d.el.classList.toggle('off',f!=='all'&&d.p.t!==f);});
+      });
+    });
+
+    /* ---- drag to rotate (optional) ---- */
+    var rot=0,dragging=false,dragA=0;
+    svg.addEventListener('mousedown',function(e){
+      if(e.target.closest('.rdr-dot,.rdr-lbl,.rdr-axis'))return;
+      dragging=true;
+      var rect=svg.getBoundingClientRect();
+      var mx=(e.clientX-rect.left)*(900/rect.width),my=(e.clientY-rect.top)*(760/rect.height);
+      dragA=Math.atan2(my-CY,mx-CX)/RAD-rot;
+      svg.style.cursor='grabbing';
+    });
+    window.addEventListener('mousemove',function(e){
+      if(!dragging)return;
+      var rect=svg.getBoundingClientRect();
+      var mx=(e.clientX-rect.left)*(900/rect.width),my=(e.clientY-rect.top)*(760/rect.height);
+      rot=Math.atan2(my-CY,mx-CX)/RAD-dragA;
+      applyRot();
+    });
+    window.addEventListener('mouseup',function(){if(dragging){dragging=false;svg.style.cursor='';}});
+
+    function applyRot(){
+      var tr='rotate('+rot.toFixed(1)+' '+CX+' '+CY+')';
+      ringEls.forEach(function(r){r.querySelector('circle').setAttribute('transform',tr);});
+      S.forEach(function(s){
+        axEls[s.id].querySelector('line').setAttribute('transform',tr);
+        sectors[s.id].setAttribute('transform',tr);
+      });
+      conn.setAttribute('transform',tr);
+      // recalculate dot positions
+      dots.forEach(function(d){
+        var origA=d.p.cs?d.p.a:sMap[d.p.s].a;
+        var newA=origA+rot;
+        var np=pol(newA,d.p.r);
+        d.pos={x:np.x,y:np.y};
+        var circles=d.el.querySelectorAll('circle');
+        circles[0].setAttribute('cx',np.x.toFixed(1));circles[0].setAttribute('cy',np.y.toFixed(1));
+        circles[1].setAttribute('cx',np.x.toFixed(1));circles[1].setAttribute('cy',np.y.toFixed(1));
+      });
+      // move labels
+      S.forEach(function(s){
+        var newA=s.a+rot;
+        var lp=pol(newA,ALEN+50);
+        var g=lblEls[s.id];
+        var texts=g.querySelectorAll('text');
+        var an=lp.x>CX+30?'start':lp.x<CX-30?'end':'middle';
+        for(var i=0;i<texts.length;i++){
+          texts[i].setAttribute('x',lp.x.toFixed(1));
+          texts[i].setAttribute('y',(lp.y-20+i*((i<s.lbl.length)?22:24)).toFixed(1));
+          texts[i].setAttribute('text-anchor',an);
+        }
+      });
+    }
   })();
   </script>
 </section>
