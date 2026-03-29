@@ -96,9 +96,9 @@ author_profile: false
       {id:'clil',l:'CLIL \u00b7 Ed. Adv. \'23',s:'tpack',a:345,r:100,t:'publication',v:'Education Advances',y:2023,st:'Published',lk:'/publication/2023-clil-translation',d:'Study on MTI talent cultivation mode from the perspective of CLIL.'},
       {id:'idle-gai',l:'IDLE & GAI \u00b7 Talk \'25',cs:['idle','equity'],a:160,r:165,t:'talk',v:'Purdue AI in P-12',y:2025,st:'Presented',lk:null,d:'Assessing effects of extramural GAI-mediated IDLE on pragmatic and communicative competence of Chinese undergraduates.'},
       {id:'mjss',l:'Interpreting \u00b7 MJSS \'25',cs:['idle','literacy'],a:210,r:135,t:'publication',v:'MJSS',y:2025,st:'Published',lk:null,d:'Pointing to context from a relevance theory perspective: a comparative study of human and machine interpreting.'},
-      {id:'doubao',l:'Doubao \u00b7 PE (Q2) \'26',s:'equity',a:105,r:145,t:'publication',v:'Psicologia Educativa',y:2026,st:'Published',lk:'/publication/2026-doubao-genai-efl',d:'Doubao as a GenAI scaffold in senior high school EFL writing.'},
-      {id:'aera',l:'AERA Meta \u00b7 \'26',s:'equity',a:75,r:90,t:'talk',v:'AERA Convention',y:2026,st:'Upcoming',lk:null,d:'Meta-analysis on the achievement of technology on students from low-income families.'},
-      {id:'auth',l:'Authorship & AI',cs:['literacy','equity'],a:125,r:185,t:'progress',v:'Education Science',y:2026,st:'In Review',lk:null,d:'How higher education instructors navigate authenticity in student writing in an age of generative AI.'}
+      {id:'doubao',l:'Doubao \u00b7 PE (Q2) \'26',s:'equity',a:100,r:145,t:'publication',v:'Psicologia Educativa',y:2026,st:'Published',lk:'/publication/2026-doubao-genai-efl',d:'Doubao as a GenAI scaffold in senior high school EFL writing.'},
+      {id:'aera',l:'AERA Meta \u00b7 \'26',s:'equity',a:70,r:90,t:'talk',v:'AERA Convention',y:2026,st:'Upcoming',lk:null,d:'Meta-analysis on the achievement of technology on students from low-income families.'},
+      {id:'auth',l:'Authorship & AI',cs:['literacy','equity'],a:132,r:210,t:'progress',v:'Education Science',y:2026,st:'In Review',lk:null,d:'How higher education instructors navigate authenticity in student writing in an age of generative AI.'}
     ];
 
     /* helpers */
@@ -567,224 +567,73 @@ author_profile: false
   </script>
 </section>
 
-<!-- ========== INTERACTIVE TIMELINE ========== -->
+<!-- ========== JOURNEY (Swimlane + Compact) ========== -->
 <section class="lt-section lt-fade-in">
   <h2 class="lt-section__title">Journey</h2>
   <p style="font-size:0.88rem;color:#4a5568;line-height:1.7;margin-bottom:1rem">From translation studies to AI-mediated learning design, every step has brought me closer to one goal: becoming an instructional designer who harnesses AI to create equitable, human-centered learning experiences at scale.</p>
-  <!-- Filter buttons -->
-  <div style="display:flex;gap:0.4rem;margin-bottom:1.2rem;flex-wrap:wrap">
-    <button onclick="filterTL('all')" style="border:none;padding:0.3rem 0.7rem;border-radius:6px;font-size:0.72rem;font-weight:600;cursor:pointer;background:#1a1a2e;color:#fff;transition:all 0.2s">All</button>
-    <button onclick="filterTL('pub')" style="border:none;padding:0.3rem 0.7rem;border-radius:6px;font-size:0.72rem;font-weight:600;cursor:pointer;background:rgba(59,130,246,0.1);color:#2563eb;transition:all 0.2s">Publications</button>
-    <button onclick="filterTL('talk')" style="border:none;padding:0.3rem 0.7rem;border-radius:6px;font-size:0.72rem;font-weight:600;cursor:pointer;background:rgba(245,158,11,0.1);color:#d97706;transition:all 0.2s">Talks</button>
-    <button onclick="filterTL('edu')" style="border:none;padding:0.3rem 0.7rem;border-radius:6px;font-size:0.72rem;font-weight:600;cursor:pointer;background:rgba(139,92,246,0.1);color:#7c3aed;transition:all 0.2s">Education</button>
-    <button onclick="filterTL('work')" style="border:none;padding:0.3rem 0.7rem;border-radius:6px;font-size:0.72rem;font-weight:600;cursor:pointer;background:rgba(20,184,166,0.1);color:#0d9488;transition:all 0.2s">Experience</button>
-    <button onclick="filterTL('award')" style="border:none;padding:0.3rem 0.7rem;border-radius:6px;font-size:0.72rem;font-weight:600;cursor:pointer;background:rgba(236,72,153,0.1);color:#db2777;transition:all 0.2s">Awards</button>
+  <style>
+    .jny-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+    .jny-table{width:100%;min-width:620px;border-collapse:collapse}
+    .jny-table th{font-size:.68rem;font-weight:700;padding:.55rem .3rem;text-align:center;border-bottom:2px solid #e2e8f0;color:#94a3b8;position:sticky;top:0;background:#fff;z-index:2}
+    .jny-table td{padding:.35rem .25rem;vertical-align:middle;border-bottom:1px solid #f1f5f9}
+    .jny-cat{font-size:.68rem;font-weight:700;white-space:nowrap;padding-right:.5rem}
+    .jny-cat-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:4px;vertical-align:middle}
+    .jny-chip{display:inline-block;border-radius:8px;padding:.35rem .55rem;font-size:.68rem;font-weight:600;color:#1a1a2e;line-height:1.3;cursor:default;transition:transform .25s,box-shadow .25s;margin:2px 0;text-decoration:none}
+    .jny-chip:hover{transform:translateY(-2px);box-shadow:0 4px 14px rgba(0,0,0,.08)}
+    .jny-chip small{display:block;font-size:.56rem;font-weight:400;color:#94a3b8;margin-top:.1rem}
+    .jny-chip.highlight{border-width:2px;font-size:.72rem}
+    .jny-chip.upcoming{border-style:dashed}
+    .jny-tag{display:inline-block;font-size:.5rem;font-weight:700;padding:.1rem .35rem;border-radius:4px;margin-left:.3rem;vertical-align:middle;letter-spacing:.03em}
+  </style>
+  <div class="jny-wrap">
+    <table class="jny-table">
+      <thead><tr><th></th><th>2019</th><th>2021</th><th>2022</th><th>2023</th><th>2024</th><th>2025</th><th>2026</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="jny-cat" style="color:#8b5cf6"><span class="jny-cat-dot" style="background:#8b5cf6"></span>Education</td>
+          <td></td><td></td>
+          <td><a href="#" class="jny-chip" style="background:#f5f3ff;border:1px solid #ddd6fe">B.A. Translation<small>SWUST, China</small></a></td>
+          <td></td>
+          <td><a href="#" class="jny-chip" style="background:#f5f3ff;border:1px solid #ddd6fe">M.A. Dual Degree<small>NEU + Silesia</small></a></td>
+          <td><a href="#" class="jny-chip highlight" style="background:linear-gradient(135deg,#f5f3ff,#ede9fe);border:2px solid #a78bfa;color:#5b21b6">Ph.D. Purdue<small style="color:#7c3aed">Learning Design & Tech</small></a></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="jny-cat" style="color:#3b82f6"><span class="jny-cat-dot" style="background:#3b82f6"></span>Publications</td>
+          <td></td><td></td><td></td>
+          <td><a href="/publication/2023-clil-translation" class="jny-chip" style="background:#eff6ff;border:1px solid #bfdbfe">CLIL<small>Ed. Advances</small></a></td>
+          <td></td>
+          <td><a href="/publication/2025-two-years-innovation" class="jny-chip" style="background:#eff6ff;border:1px solid #bfdbfe">CAEAI<span class="jny-tag" style="background:#dcfce7;color:#16a34a">Q1</span><small>IF ≈ 10.5</small></a> <a href="#" class="jny-chip" style="background:#eff6ff;border:1px solid #bfdbfe">MJSS<small>Tan & Gao</small></a></td>
+          <td><a href="/publication/2026-doubao-genai-efl" class="jny-chip" style="background:#eff6ff;border:1px solid #bfdbfe">Doubao<span class="jny-tag" style="background:#dbeafe;color:#2563eb">Q2</span><small>Wang & Tan</small></a></td>
+        </tr>
+        <tr>
+          <td class="jny-cat" style="color:#f59e0b"><span class="jny-cat-dot" style="background:#f59e0b"></span>Talks</td>
+          <td></td><td></td><td></td><td></td>
+          <td><a href="/publication/2024-call-context" class="jny-chip" style="background:#fffbeb;border:1px solid #fde68a">CALL Tokyo<small>Interpreting</small></a> <a href="#" class="jny-chip" style="background:#fffbeb;border:1px solid #fde68a">SCT + IPC<small>2 conferences</small></a></td>
+          <td><a href="/publication/2025-aect-authenticity" class="jny-chip" style="background:#fffbeb;border:1px solid #fde68a">AECT + P-12<small>Las Vegas + Purdue</small></a></td>
+          <td><a href="/publication/2026-clawdbot-unboxed" class="jny-chip" style="background:#fffbeb;border:1px solid #fde68a">Clawdbot<small>AI Lunch & Learn</small></a> <a href="#" class="jny-chip upcoming" style="background:linear-gradient(135deg,#fffbeb,#fef3c7);border:2px dashed #fbbf24">AERA<span class="jny-tag" style="background:#fef3c7;color:#d97706">Upcoming</span><small>Los Angeles</small></a></td>
+        </tr>
+        <tr>
+          <td class="jny-cat" style="color:#14b8a6"><span class="jny-cat-dot" style="background:#14b8a6"></span>Experience</td>
+          <td></td>
+          <td><a href="/teaching/" class="jny-chip" style="background:#f0fdfa;border:1px solid #99f6e4">TAL Education<small>500+ students</small></a></td>
+          <td></td><td></td>
+          <td><a href="#" class="jny-chip" style="background:#f0fdfa;border:1px solid #99f6e4">U. of Silesia<small>Lecturer · 200+ students</small></a></td>
+          <td><a href="/service/" class="jny-chip" style="background:#f0fdfa;border:1px solid #99f6e4">RA + PALDT + GESC<small>Purdue University</small></a></td>
+          <td><a href="#" class="jny-chip" style="background:#f0fdfa;border:1px solid #99f6e4">Guest Lecturer<small>EDCI 612</small></a></td>
+        </tr>
+        <tr>
+          <td class="jny-cat" style="color:#ec4899"><span class="jny-cat-dot" style="background:#ec4899"></span>Awards</td>
+          <td><span class="jny-chip" style="background:#fdf2f8;border:1px solid #fbcfe8">National Award<small>$750</small></span></td>
+          <td></td><td></td><td></td>
+          <td><span class="jny-chip" style="background:#fdf2f8;border:1px solid #fbcfe8">Fellowship + Erasmus+<small>$2K + $5K</small></span></td>
+          <td><span class="jny-chip" style="background:#fdf2f8;border:1px solid #fbcfe8">LDT Travel<small>$250</small></span></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
   </div>
-  <!-- Scrollable timeline -->
-  <div style="overflow-x:auto;padding-bottom:1rem;-webkit-overflow-scrolling:touch">
-    <div id="timeline-track" style="display:flex;align-items:center;min-width:2200px;position:relative;padding:120px 40px 130px">
-      <!-- The line -->
-      <div style="position:absolute;left:40px;right:40px;top:50%;height:2px;background:linear-gradient(90deg,#e2e8f0,#94a3b8,#e2e8f0);z-index:1"></div>
-
-      <!-- 2019 -->
-      <div class="tl-node" data-cat="award" style="position:relative;flex:0 0 120px;z-index:2;text-align:center">
-        <div style="position:absolute;bottom:calc(50% + 12px);left:50%;transform:translateX(-50%);width:max-content">
-          <div style="background:#fdf2f8;border:1px solid #fbcfe8;border-radius:10px;padding:0.5rem 0.7rem;max-width:140px;cursor:default;transition:transform 0.3s,box-shadow 0.3s" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 8px 20px rgba(236,72,153,0.15)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
-            <div style="font-size:0.62rem;color:#db2777;font-weight:700;margin-bottom:0.15rem">&#127942; AWARD</div>
-            <div style="font-size:0.72rem;font-weight:600;color:#1a1a2e;line-height:1.35">National Undergraduate Award</div>
-            <div style="font-size:0.62rem;color:#94a3b8">SWUST · $750</div>
-          </div>
-        </div>
-        <div style="width:14px;height:14px;border-radius:50%;background:#ec4899;border:3px solid #fff;box-shadow:0 0 0 2px #ec4899;margin:0 auto;position:relative;z-index:3"></div>
-        <div style="font-size:0.7rem;font-weight:700;color:#1a1a2e;margin-top:8px">2019</div>
-      </div>
-
-      <!-- 2021 -->
-      <div class="tl-node" data-cat="work" style="position:relative;flex:0 0 160px;z-index:2;text-align:center">
-        <div style="font-size:0.7rem;font-weight:700;color:#1a1a2e;margin-bottom:8px">2021</div>
-        <div style="width:14px;height:14px;border-radius:50%;background:#14b8a6;border:3px solid #fff;box-shadow:0 0 0 2px #14b8a6;margin:0 auto;position:relative;z-index:3"></div>
-        <div style="position:absolute;top:calc(50% + 12px);left:50%;transform:translateX(-50%);width:max-content">
-          <a href="/teaching/" style="text-decoration:none;display:block;background:#f0fdfa;border:1px solid #99f6e4;border-radius:10px;padding:0.5rem 0.7rem;max-width:150px;transition:transform 0.3s,box-shadow 0.3s" onmouseover="this.style.transform='translateY(4px)';this.style.boxShadow='0 8px 20px rgba(20,184,166,0.15)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
-            <div style="font-size:0.62rem;color:#0d9488;font-weight:700;margin-bottom:0.15rem">&#128188; TEACHING</div>
-            <div style="font-size:0.72rem;font-weight:600;color:#1a1a2e;line-height:1.35">TAL Education</div>
-            <div style="font-size:0.62rem;color:#94a3b8">Lecturer · 500+ students</div>
-          </a>
-        </div>
-      </div>
-
-      <!-- 2022 -->
-      <div class="tl-node" data-cat="edu" style="position:relative;flex:0 0 130px;z-index:2;text-align:center">
-        <div style="position:absolute;bottom:calc(50% + 12px);left:50%;transform:translateX(-50%);width:max-content">
-          <div style="background:#f5f3ff;border:1px solid #ddd6fe;border-radius:10px;padding:0.5rem 0.7rem;max-width:140px;cursor:default;transition:transform 0.3s,box-shadow 0.3s" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 8px 20px rgba(139,92,246,0.15)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
-            <div style="font-size:0.62rem;color:#7c3aed;font-weight:700;margin-bottom:0.15rem">&#127891; DEGREE</div>
-            <div style="font-size:0.72rem;font-weight:600;color:#1a1a2e;line-height:1.35">B.A. Translation</div>
-            <div style="font-size:0.62rem;color:#94a3b8">SWUST, China</div>
-          </div>
-        </div>
-        <div style="width:14px;height:14px;border-radius:50%;background:#8b5cf6;border:3px solid #fff;box-shadow:0 0 0 2px #8b5cf6;margin:0 auto;position:relative;z-index:3"></div>
-        <div style="font-size:0.7rem;font-weight:700;color:#1a1a2e;margin-top:8px">2022</div>
-      </div>
-
-      <!-- 2023 -->
-      <div class="tl-node" data-cat="pub" style="position:relative;flex:0 0 140px;z-index:2;text-align:center">
-        <div style="font-size:0.7rem;font-weight:700;color:#1a1a2e;margin-bottom:8px">2023</div>
-        <div style="width:14px;height:14px;border-radius:50%;background:#3b82f6;border:3px solid #fff;box-shadow:0 0 0 2px #3b82f6;margin:0 auto;position:relative;z-index:3"></div>
-        <div style="position:absolute;top:calc(50% + 12px);left:50%;transform:translateX(-50%);width:max-content">
-          <a href="/publication/2023-clil-translation" style="text-decoration:none;display:block;background:#eff6ff;border:1px solid #bfdbfe;border-radius:10px;padding:0.5rem 0.7rem;max-width:150px;transition:transform 0.3s,box-shadow 0.3s" onmouseover="this.style.transform='translateY(4px)';this.style.boxShadow='0 8px 20px rgba(59,130,246,0.15)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
-            <div style="font-size:0.62rem;color:#2563eb;font-weight:700;margin-bottom:0.15rem">&#128220; PUB</div>
-            <div style="font-size:0.72rem;font-weight:600;color:#1a1a2e;line-height:1.35">CLIL · Ed. Advances</div>
-            <div style="font-size:0.62rem;color:#94a3b8">Gao &amp; Tan</div>
-          </a>
-        </div>
-      </div>
-
-      <!-- 2024 M.A. -->
-      <div class="tl-node" data-cat="edu" style="position:relative;flex:0 0 140px;z-index:2;text-align:center">
-        <div style="position:absolute;bottom:calc(50% + 12px);left:50%;transform:translateX(-50%);width:max-content">
-          <div style="background:#f5f3ff;border:1px solid #ddd6fe;border-radius:10px;padding:0.5rem 0.7rem;max-width:160px;cursor:default;transition:transform 0.3s,box-shadow 0.3s" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 8px 20px rgba(139,92,246,0.15)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
-            <div style="font-size:0.62rem;color:#7c3aed;font-weight:700;margin-bottom:0.15rem">&#127891; DEGREES</div>
-            <div style="font-size:0.72rem;font-weight:600;color:#1a1a2e;line-height:1.35">M.A. Interpreting &amp; Philology</div>
-            <div style="font-size:0.62rem;color:#94a3b8">NEU + Silesia (dual)</div>
-          </div>
-        </div>
-        <div style="width:14px;height:14px;border-radius:50%;background:#8b5cf6;border:3px solid #fff;box-shadow:0 0 0 2px #8b5cf6;margin:0 auto;position:relative;z-index:3"></div>
-        <div style="font-size:0.7rem;font-weight:700;color:#1a1a2e;margin-top:8px">2024</div>
-      </div>
-
-      <!-- 2024 Talks -->
-      <div class="tl-node" data-cat="talk" style="position:relative;flex:0 0 140px;z-index:2;text-align:center">
-        <div style="font-size:0.7rem;font-weight:700;color:#1a1a2e;margin-bottom:8px"></div>
-        <div style="width:14px;height:14px;border-radius:50%;background:#f59e0b;border:3px solid #fff;box-shadow:0 0 0 2px #f59e0b;margin:0 auto;position:relative;z-index:3"></div>
-        <div style="position:absolute;top:calc(50% + 12px);left:50%;transform:translateX(-50%);width:max-content">
-          <a href="/publication/2024-call-context" style="text-decoration:none;display:block;background:#fffbeb;border:1px solid #fde68a;border-radius:10px;padding:0.5rem 0.7rem;max-width:150px;transition:transform 0.3s,box-shadow 0.3s" onmouseover="this.style.transform='translateY(4px)';this.style.boxShadow='0 8px 20px rgba(245,158,11,0.15)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
-            <div style="font-size:0.62rem;color:#d97706;font-weight:700;margin-bottom:0.15rem">&#127908; TALKS</div>
-            <div style="font-size:0.72rem;font-weight:600;color:#1a1a2e;line-height:1.35">CALL Tokyo · SCT · Pisa</div>
-            <div style="font-size:0.62rem;color:#94a3b8">3 conferences</div>
-          </a>
-        </div>
-      </div>
-
-      <!-- 2024 Award -->
-      <div class="tl-node" data-cat="award" style="position:relative;flex:0 0 120px;z-index:2;text-align:center">
-        <div style="position:absolute;bottom:calc(50% + 12px);left:50%;transform:translateX(-50%);width:max-content">
-          <div style="background:#fdf2f8;border:1px solid #fbcfe8;border-radius:10px;padding:0.5rem 0.7rem;max-width:140px;cursor:default;transition:transform 0.3s,box-shadow 0.3s" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 8px 20px rgba(236,72,153,0.15)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
-            <div style="font-size:0.62rem;color:#db2777;font-weight:700;margin-bottom:0.15rem">&#127942; AWARDS</div>
-            <div style="font-size:0.72rem;font-weight:600;color:#1a1a2e;line-height:1.35">Fellowship + Erasmus+</div>
-            <div style="font-size:0.62rem;color:#94a3b8">$2K + $5K</div>
-          </div>
-        </div>
-        <div style="width:14px;height:14px;border-radius:50%;background:#ec4899;border:3px solid #fff;box-shadow:0 0 0 2px #ec4899;margin:0 auto;position:relative;z-index:3"></div>
-      </div>
-
-      <!-- 2025 PhD -->
-      <div class="tl-node" data-cat="edu" style="position:relative;flex:0 0 140px;z-index:2;text-align:center">
-        <div style="position:absolute;bottom:calc(50% + 12px);left:50%;transform:translateX(-50%);width:max-content">
-          <div style="background:linear-gradient(135deg,#f5f3ff,#ede9fe);border:2px solid #a78bfa;border-radius:12px;padding:0.6rem 0.8rem;max-width:160px;cursor:default;transition:transform 0.3s,box-shadow 0.3s" onmouseover="this.style.transform='translateY(-4px) scale(1.03)';this.style.boxShadow='0 12px 28px rgba(139,92,246,0.2)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
-            <div style="font-size:0.62rem;color:#7c3aed;font-weight:700;margin-bottom:0.15rem">&#127891; STARTED</div>
-            <div style="font-size:0.82rem;font-weight:700;color:#5b21b6;line-height:1.35">Ph.D. at Purdue</div>
-            <div style="font-size:0.62rem;color:#7c3aed">Learning Design &amp; Tech</div>
-          </div>
-        </div>
-        <div style="width:18px;height:18px;border-radius:50%;background:#8b5cf6;border:3px solid #fff;box-shadow:0 0 0 2px #8b5cf6,0 0 12px rgba(139,92,246,0.4);margin:0 auto;position:relative;z-index:3"></div>
-        <div style="font-size:0.7rem;font-weight:700;color:#1a1a2e;margin-top:8px">2025</div>
-      </div>
-
-      <!-- 2025 Pubs -->
-      <div class="tl-node" data-cat="pub" style="position:relative;flex:0 0 160px;z-index:2;text-align:center">
-        <div style="font-size:0.7rem;font-weight:700;color:#1a1a2e;margin-bottom:8px"></div>
-        <div style="width:14px;height:14px;border-radius:50%;background:#3b82f6;border:3px solid #fff;box-shadow:0 0 0 2px #3b82f6;margin:0 auto;position:relative;z-index:3"></div>
-        <div style="position:absolute;top:calc(50% + 12px);left:50%;transform:translateX(-50%);width:max-content">
-          <a href="/publication/2025-two-years-innovation" style="text-decoration:none;display:block;background:#eff6ff;border:1px solid #bfdbfe;border-radius:10px;padding:0.5rem 0.7rem;max-width:170px;transition:transform 0.3s,box-shadow 0.3s" onmouseover="this.style.transform='translateY(4px)';this.style.boxShadow='0 8px 20px rgba(59,130,246,0.15)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
-            <div style="font-size:0.62rem;color:#2563eb;font-weight:700;margin-bottom:0.15rem">&#128220; PUBS</div>
-            <div style="font-size:0.72rem;font-weight:600;color:#1a1a2e;line-height:1.35">CAEAI (Q1) + MJSS</div>
-            <div style="font-size:0.62rem;color:#22c55e;font-weight:600">IF ≈ 10.5</div>
-          </a>
-        </div>
-      </div>
-
-      <!-- 2025 Talks -->
-      <div class="tl-node" data-cat="talk" style="position:relative;flex:0 0 140px;z-index:2;text-align:center">
-        <div style="position:absolute;bottom:calc(50% + 12px);left:50%;transform:translateX(-50%);width:max-content">
-          <a href="/publication/2025-aect-authenticity" style="text-decoration:none;display:block;background:#fffbeb;border:1px solid #fde68a;border-radius:10px;padding:0.5rem 0.7rem;max-width:150px;transition:transform 0.3s,box-shadow 0.3s" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 8px 20px rgba(245,158,11,0.15)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
-            <div style="font-size:0.62rem;color:#d97706;font-weight:700;margin-bottom:0.15rem">&#127908; TALKS</div>
-            <div style="font-size:0.72rem;font-weight:600;color:#1a1a2e;line-height:1.35">AECT + AI P-12</div>
-            <div style="font-size:0.62rem;color:#94a3b8">Las Vegas + Purdue</div>
-          </a>
-        </div>
-        <div style="width:14px;height:14px;border-radius:50%;background:#f59e0b;border:3px solid #fff;box-shadow:0 0 0 2px #f59e0b;margin:0 auto;position:relative;z-index:3"></div>
-      </div>
-
-      <!-- 2025 Service -->
-      <div class="tl-node" data-cat="work" style="position:relative;flex:0 0 140px;z-index:2;text-align:center">
-        <div style="font-size:0.7rem;font-weight:700;color:#1a1a2e;margin-bottom:8px"></div>
-        <div style="width:14px;height:14px;border-radius:50%;background:#14b8a6;border:3px solid #fff;box-shadow:0 0 0 2px #14b8a6;margin:0 auto;position:relative;z-index:3"></div>
-        <div style="position:absolute;top:calc(50% + 12px);left:50%;transform:translateX(-50%);width:max-content">
-          <a href="/service/" style="text-decoration:none;display:block;background:#f0fdfa;border:1px solid #99f6e4;border-radius:10px;padding:0.5rem 0.7rem;max-width:160px;transition:transform 0.3s,box-shadow 0.3s" onmouseover="this.style.transform='translateY(4px)';this.style.boxShadow='0 8px 20px rgba(20,184,166,0.15)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
-            <div style="font-size:0.62rem;color:#0d9488;font-weight:700;margin-bottom:0.15rem">&#127793; SERVICE</div>
-            <div style="font-size:0.72rem;font-weight:600;color:#1a1a2e;line-height:1.35">PALDT + GESC + RA</div>
-            <div style="font-size:0.62rem;color:#94a3b8">Purdue University</div>
-          </a>
-        </div>
-      </div>
-
-      <!-- 2026 Pub -->
-      <div class="tl-node" data-cat="pub" style="position:relative;flex:0 0 140px;z-index:2;text-align:center">
-        <div style="position:absolute;bottom:calc(50% + 12px);left:50%;transform:translateX(-50%);width:max-content">
-          <a href="/publication/2026-doubao-genai-efl" style="text-decoration:none;display:block;background:#eff6ff;border:1px solid #bfdbfe;border-radius:10px;padding:0.5rem 0.7rem;max-width:160px;transition:transform 0.3s,box-shadow 0.3s" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 8px 20px rgba(59,130,246,0.15)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
-            <div style="font-size:0.62rem;color:#2563eb;font-weight:700;margin-bottom:0.15rem">&#128220; PUB</div>
-            <div style="font-size:0.72rem;font-weight:600;color:#1a1a2e;line-height:1.35">Doubao · PE (Q2)</div>
-            <div style="font-size:0.62rem;color:#94a3b8">Wang &amp; Tan</div>
-          </a>
-        </div>
-        <div style="width:14px;height:14px;border-radius:50%;background:#3b82f6;border:3px solid #fff;box-shadow:0 0 0 2px #3b82f6;margin:0 auto;position:relative;z-index:3"></div>
-        <div style="font-size:0.7rem;font-weight:700;color:#1a1a2e;margin-top:8px">2026</div>
-      </div>
-
-      <!-- 2026 Clawdbot -->
-      <div class="tl-node" data-cat="talk" style="position:relative;flex:0 0 140px;z-index:2;text-align:center">
-        <div style="font-size:0.7rem;font-weight:700;color:#1a1a2e;margin-bottom:8px"></div>
-        <div style="width:14px;height:14px;border-radius:50%;background:#f59e0b;border:3px solid #fff;box-shadow:0 0 0 2px #f59e0b;margin:0 auto;position:relative;z-index:3"></div>
-        <div style="position:absolute;top:calc(50% + 12px);left:50%;transform:translateX(-50%);width:max-content">
-          <a href="/publication/2026-clawdbot-unboxed" style="text-decoration:none;display:block;background:#fffbeb;border:1px solid #fde68a;border-radius:10px;padding:0.5rem 0.7rem;max-width:150px;transition:transform 0.3s,box-shadow 0.3s" onmouseover="this.style.transform='translateY(4px)';this.style.boxShadow='0 8px 20px rgba(245,158,11,0.15)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
-            <div style="font-size:0.62rem;color:#d97706;font-weight:700;margin-bottom:0.15rem">&#127908; TALK</div>
-            <div style="font-size:0.72rem;font-weight:600;color:#1a1a2e;line-height:1.35">Clawdbot Unboxed</div>
-            <div style="font-size:0.62rem;color:#94a3b8">AI Lunch &amp; Learn</div>
-          </a>
-        </div>
-      </div>
-
-      <!-- 2026 AERA upcoming -->
-      <div class="tl-node" data-cat="talk" style="position:relative;flex:0 0 140px;z-index:2;text-align:center">
-        <div style="position:absolute;bottom:calc(50% + 12px);left:50%;transform:translateX(-50%);width:max-content">
-          <a href="/publication/2026-aera-meta-analysis" style="text-decoration:none;display:block;background:linear-gradient(135deg,#fffbeb,#fef3c7);border:2px dashed #fbbf24;border-radius:10px;padding:0.5rem 0.7rem;max-width:150px;transition:transform 0.3s,box-shadow 0.3s" onmouseover="this.style.transform='translateY(-4px) scale(1.03)';this.style.boxShadow='0 8px 20px rgba(245,158,11,0.2)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
-            <div style="font-size:0.62rem;color:#d97706;font-weight:700;margin-bottom:0.15rem">&#128640; UPCOMING</div>
-            <div style="font-size:0.72rem;font-weight:600;color:#1a1a2e;line-height:1.35">AERA 2026</div>
-            <div style="font-size:0.62rem;color:#94a3b8">Los Angeles, CA</div>
-          </a>
-        </div>
-        <div style="width:18px;height:18px;border-radius:50%;background:#fbbf24;border:3px solid #fff;box-shadow:0 0 0 2px #fbbf24,0 0 12px rgba(251,191,36,0.4);margin:0 auto;position:relative;z-index:3;animation:glow-pulse 3s infinite"></div>
-      </div>
-
-    </div>
-  </div>
-  <!-- Scroll hint -->
-  <div style="text-align:center;color:#94a3b8;font-size:0.72rem;margin-top:0.3rem">&#8592; scroll to explore &#8594;</div>
 </section>
-
-<script>
-function filterTL(cat) {
-  var nodes = document.querySelectorAll('.tl-node');
-  nodes.forEach(function(n) {
-    if (cat === 'all' || n.dataset.cat === cat) {
-      n.style.opacity = '1';
-      n.style.transform = 'scale(1)';
-    } else {
-      n.style.opacity = '0.15';
-      n.style.transform = 'scale(0.9)';
-    }
-  });
-}
-</script>
 
 <!-- ========== NEWS & ACTIVITY ========== -->
 <section class="lt-section lt-fade-in">
