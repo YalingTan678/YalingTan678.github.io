@@ -53,8 +53,7 @@ author_profile: false
   @keyframes rdr-dotPulse{0%,100%{opacity:.25}50%{opacity:.55}}
   .rdr-dot-float{animation:rdr-float var(--dur,3s) ease-in-out infinite var(--del,0s)}
   @keyframes rdr-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
-  .rdr-lbl{cursor:pointer;transition:opacity .3s,transform .3s ease}
-  .rdr-lbl:hover{transform:scale(1.06)}
+  .rdr-lbl{cursor:pointer;transition:opacity .3s}
   .rdr-lbl.dim{opacity:.15}
   .rdr-sector{transition:opacity .4s}
   .rdr-conn{pointer-events:none;transition:opacity .3s}
@@ -201,6 +200,11 @@ author_profile: false
     var lblEls={};
     S.forEach(function(s){
       var g=el('g',{class:'rdr-lbl','data-s':s.id,style:'opacity:0'});
+      // invisible hit area for easier hover/click
+      var hitW=200,hitH=75;
+      var hitX=s.an==='middle'?s.lx-hitW/2:s.an==='start'?s.lx-10:s.lx-hitW+10;
+      var hitY=s.ly-18;
+      g.appendChild(el('rect',{x:hitX,y:hitY,width:hitW,height:hitH,fill:'transparent',style:'cursor:pointer'}));
       s.lbl.forEach(function(line,j){
         var t=el('text',{x:s.lx,y:s.ly+j*22,'text-anchor':s.an,'font-size':'17','font-weight':'800',fill:s.c});
         t.textContent=line;g.appendChild(t);
