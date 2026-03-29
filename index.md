@@ -89,14 +89,16 @@ author_profile: false
     var sMap={};S.forEach(function(s){sMap[s.id]=s;});
 
     var P=[
-      {id:'genai',l:'GenAI Review \u00b7 CAEAI \'25',s:'literacy',r:155,t:'publication',v:'CAEAI',y:2025,st:'Published',lk:'/publication/2025-two-years-innovation',d:'Systematic review of empirical GenAI research in language learning and teaching.'},
-      {id:'pete',l:'PeteChat Design Case',s:'literacy',r:215,t:'progress',v:'Under Review',y:2026,st:'Revising',lk:'/publication/ur-tutor-not-solver',d:'Building a safety-aware LLM tutoring system for university contexts.'},
-      {id:'claw',l:'Clawdbot \u00b7 Talk \'26',s:'literacy',r:95,t:'talk',v:'Conference Talk',y:2026,st:'Upcoming',lk:'/publication/2026-clawdbot-unboxed',d:'What Clawdbot does, why it\'s hot, and where it breaks.'},
-      {id:'tpxj',l:'TPACK Xinjiang Study',s:'tpack',r:160,t:'progress',v:'Education Sciences',y:2026,st:'In Review',lk:'/publication/ur-tpack-xinjiang',d:'How ethnic and cultural context shapes technology integration knowledge among trainee teachers in Western China.'},
-      {id:'idle-r',l:'IDLE Literature Review',s:'idle',r:165,t:'progress',v:'In Progress',y:2026,st:'In Progress',lk:null,d:'Comprehensive literature review of informal digital learning of English (IDLE) research.'},
-      {id:'doubao',l:'Doubao \u00b7 PE (Q2) \'26',s:'equity',r:145,t:'publication',v:'Practical English',y:2026,st:'Published',lk:'/publication/2026-doubao-genai-efl',d:'Doubao as a GenAI scaffold in senior high school EFL writing.'},
-      {id:'lowinc',l:'Low-Income & ChatGPT \u00b7 Lang. \'23',cs:['idle','equity'],a:135,r:185,t:'publication',v:'Language',y:2023,st:'Published',lk:null,d:'Investigating ChatGPT usage patterns among low-income language learners.'},
-      {id:'global',l:'Global Learners Study',cs:['equity','tpack'],a:45,r:185,t:'progress',v:'In Progress',y:2026,st:'In Progress',lk:null,d:'Study examining technology access and outcomes for global learners across diverse contexts.'}
+      {id:'genai',l:'GenAI Review \u00b7 CAEAI \'25',s:'literacy',r:155,t:'publication',v:'CAEAI (Q1)',y:2025,st:'Published',lk:'/publication/2025-two-years-innovation',d:'Two years of innovation: systematic review of empirical GenAI research in language learning and teaching.'},
+      {id:'pete',l:'PeteChat Design Case',s:'literacy',r:215,t:'progress',v:'Under Review',y:2026,st:'Revising',lk:'/publication/ur-tutor-not-solver',d:'Tutor, not solver: designing a guardrailed AI assistant for learning in higher education.'},
+      {id:'claw',l:'Clawdbot \u00b7 Talk \'26',s:'literacy',r:95,t:'talk',v:'AI Lunch & Learn',y:2026,st:'Presented',lk:'/publication/2026-clawdbot-unboxed',d:'Clawdbot Unboxed: What It Does, Why It\'s Hot, and Where It Breaks.'},
+      {id:'tpxj',l:'TPACK Xinjiang Study',s:'tpack',r:160,t:'progress',v:'Asia-Pacific Ed. Researcher',y:2026,st:'In Review',lk:'/publication/ur-tpack-xinjiang',d:'Pre-service teachers\' TPACK in Xinjiang: examining culture diversity as context.'},
+      {id:'clil',l:'CLIL \u00b7 Ed. Adv. \'23',s:'tpack',r:100,t:'publication',v:'Education Advances',y:2023,st:'Published',lk:'/publication/2023-clil-translation',d:'Study on MTI talent cultivation mode from the perspective of CLIL.'},
+      {id:'idle-gai',l:'IDLE & GAI \u00b7 Talk \'25',s:'idle',r:165,t:'talk',v:'Purdue AI in P-12',y:2025,st:'Presented',lk:null,d:'Assessing effects of extramural GAI-mediated IDLE on pragmatic and communicative competence of Chinese undergraduates.'},
+      {id:'mjss',l:'Interpreting \u00b7 MJSS \'25',s:'idle',r:105,t:'publication',v:'MJSS',y:2025,st:'Published',lk:null,d:'Pointing to context from a relevance theory perspective: a comparative study of human and machine interpreting.'},
+      {id:'doubao',l:'Doubao \u00b7 PE (Q2) \'26',s:'equity',r:145,t:'publication',v:'Psicologia Educativa',y:2026,st:'Published',lk:'/publication/2026-doubao-genai-efl',d:'Doubao as a GenAI scaffold in senior high school EFL writing.'},
+      {id:'aera',l:'AERA Meta \u00b7 \'26',s:'equity',r:90,t:'talk',v:'AERA Convention',y:2026,st:'Upcoming',lk:null,d:'Meta-analysis on the achievement of technology on students from low-income families.'},
+      {id:'auth',l:'Authorship & AI',cs:['literacy','equity'],a:135,r:185,t:'progress',v:'Education Science',y:2026,st:'In Review',lk:null,d:'How higher education instructors navigate authenticity in student writing in an age of generative AI.'}
     ];
 
     /* helpers */
@@ -228,11 +230,11 @@ author_profile: false
 
     // web lines connecting dots
     var webLinks=[
-      ['claw','genai'],['genai','pete'],           // literacy axis chain
-      ['pete','nontrad'],['nontrad','idle-r'],      // literacy → cross → idle
-      ['idle-r','lowinc'],['lowinc','doubao'],      // idle → cross → equity
-      ['doubao','global'],['global','tpxj'],        // equity → cross → tpack
-      ['nontrad','lowinc'],['lowinc','global'],['global','nontrad'] // cross-domain triangle
+      ['claw','genai'],['genai','pete'],           // literacy chain
+      ['pete','auth'],['auth','doubao'],            // literacy → cross → equity
+      ['mjss','idle-gai'],['idle-gai','auth'],      // idle → cross
+      ['doubao','aera'],['clil','tpxj'],            // equity → tpack
+      ['mjss','doubao'],['auth','tpxj']             // cross connections
     ];
     var dotMap={};dots.forEach(function(d){dotMap[d.p.id]=d;});
     var webEls=[];
@@ -477,42 +479,58 @@ author_profile: false
 <section class="lt-section lt-fade-in">
   <h2 class="lt-section__title">Methodology</h2>
   <p style="font-size:0.88rem;color:#4a5568;line-height:1.7;margin-bottom:1rem">I combine large-scale evidence synthesis with in-depth qualitative inquiry and iterative design. Each method feeds the next: reviews surface gaps, mixed methods explore them, statistics test claims, and design-based research translates findings into tools educators can actually use.</p>
-  <div style="display:flex;align-items:stretch;gap:0;background:linear-gradient(135deg,#f8fafc 0%,#f1f5f9 50%,#ede9fe 100%);border-radius:16px;overflow:hidden;position:relative;border:1px solid rgba(124,58,237,0.08);box-shadow:0 4px 20px rgba(0,0,0,0.04)">
-    <!-- Connecting line -->
-    <div style="position:absolute;top:50%;left:0;right:0;height:2px;background:linear-gradient(90deg,#93c5fd,#c4b5fd,#86efac,#fcd34d);z-index:1;opacity:0.4"></div>
-    <!-- Card 1 -->
-    <div style="flex:1;padding:1.5rem 1.2rem;text-align:center;position:relative;z-index:2;border-right:1px solid rgba(124,58,237,0.06);cursor:default;transition:background 0.4s" onmouseover="this.style.background='rgba(59,130,246,0.08)'" onmouseout="this.style.background='transparent'">
-      <div style="width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#3b82f6,#60a5fa);margin:0 auto 0.7rem;display:flex;align-items:center;justify-content:center;font-size:1.4rem;box-shadow:0 4px 15px rgba(59,130,246,0.25);transition:transform 0.4s,box-shadow 0.4s" onmouseover="this.style.transform='scale(1.15) rotate(5deg)';this.style.boxShadow='0 8px 25px rgba(59,130,246,0.35)'" onmouseout="this.style.transform='';this.style.boxShadow='0 4px 15px rgba(59,130,246,0.25)'">&#128269;</div>
-      <div style="font-size:0.82rem;font-weight:700;color:#1e293b;margin-bottom:0.3rem">Systematic Reviews</div>
-      <div style="font-size:0.68rem;color:#64748b;line-height:1.5">PRISMA · Scoping<br>Meta-analyses</div>
-      <div style="margin-top:0.6rem;font-size:0.6rem;color:#3b82f6;font-weight:600;letter-spacing:0.05em">144 ARTICLES SCREENED</div>
-    </div>
-    <!-- Arrow -->
-    <div style="display:flex;align-items:center;color:rgba(124,58,237,0.2);font-size:1.2rem;z-index:2">&#10132;</div>
-    <!-- Card 2 -->
-    <div style="flex:1;padding:1.5rem 1.2rem;text-align:center;position:relative;z-index:2;border-right:1px solid rgba(124,58,237,0.06);cursor:default;transition:background 0.4s" onmouseover="this.style.background='rgba(139,92,246,0.08)'" onmouseout="this.style.background='transparent'">
-      <div style="width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#8b5cf6,#a78bfa);margin:0 auto 0.7rem;display:flex;align-items:center;justify-content:center;font-size:1.4rem;box-shadow:0 4px 15px rgba(139,92,246,0.25);transition:transform 0.4s,box-shadow 0.4s" onmouseover="this.style.transform='scale(1.15) rotate(-5deg)';this.style.boxShadow='0 8px 25px rgba(139,92,246,0.35)'" onmouseout="this.style.transform='';this.style.boxShadow='0 4px 15px rgba(139,92,246,0.25)'">&#128300;</div>
-      <div style="font-size:0.82rem;font-weight:700;color:#1e293b;margin-bottom:0.3rem">Mixed Methods</div>
-      <div style="font-size:0.68rem;color:#64748b;line-height:1.5">Quan + Qual<br>Surveys · Interviews</div>
-      <div style="margin-top:0.6rem;font-size:0.6rem;color:#7c3aed;font-weight:600;letter-spacing:0.05em">CONVERGENT DESIGN</div>
-    </div>
-    <!-- Arrow -->
-    <div style="display:flex;align-items:center;color:rgba(124,58,237,0.2);font-size:1.2rem;z-index:2">&#10132;</div>
-    <!-- Card 3 -->
-    <div style="flex:1;padding:1.5rem 1.2rem;text-align:center;position:relative;z-index:2;border-right:1px solid rgba(124,58,237,0.06);cursor:default;transition:background 0.4s" onmouseover="this.style.background='rgba(34,197,94,0.08)'" onmouseout="this.style.background='transparent'">
-      <div style="width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#22c55e,#4ade80);margin:0 auto 0.7rem;display:flex;align-items:center;justify-content:center;font-size:1.4rem;box-shadow:0 4px 15px rgba(34,197,94,0.25);transition:transform 0.4s,box-shadow 0.4s" onmouseover="this.style.transform='scale(1.15) rotate(5deg)';this.style.boxShadow='0 8px 25px rgba(34,197,94,0.35)'" onmouseout="this.style.transform='';this.style.boxShadow='0 4px 15px rgba(34,197,94,0.25)'">&#128200;</div>
-      <div style="font-size:0.82rem;font-weight:700;color:#1e293b;margin-bottom:0.3rem">Statistical Analysis</div>
-      <div style="font-size:0.68rem;color:#64748b;line-height:1.5">SPSS · Prism<br>ANOVA · Coh-Metrix</div>
-      <div style="margin-top:0.6rem;font-size:0.6rem;color:#16a34a;font-weight:600;letter-spacing:0.05em">108 INDICES TESTED</div>
-    </div>
-    <!-- Arrow -->
-    <div style="display:flex;align-items:center;color:rgba(124,58,237,0.2);font-size:1.2rem;z-index:2">&#10132;</div>
-    <!-- Card 4 -->
-    <div style="flex:1;padding:1.5rem 1.2rem;text-align:center;position:relative;z-index:2;cursor:default;transition:background 0.4s" onmouseover="this.style.background='rgba(245,158,11,0.08)'" onmouseout="this.style.background='transparent'">
-      <div style="width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#f59e0b,#fbbf24);margin:0 auto 0.7rem;display:flex;align-items:center;justify-content:center;font-size:1.4rem;box-shadow:0 4px 15px rgba(245,158,11,0.25);transition:transform 0.4s,box-shadow 0.4s" onmouseover="this.style.transform='scale(1.15) rotate(-5deg)';this.style.boxShadow='0 8px 25px rgba(245,158,11,0.35)'" onmouseout="this.style.transform='';this.style.boxShadow='0 4px 15px rgba(245,158,11,0.25)'">&#127919;</div>
-      <div style="font-size:0.82rem;font-weight:700;color:#1e293b;margin-bottom:0.3rem">Design-Based Research</div>
-      <div style="font-size:0.68rem;color:#64748b;line-height:1.5">Iterative cycles<br>In-vivo prototyping</div>
-      <div style="margin-top:0.6rem;font-size:0.6rem;color:#d97706;font-weight:600;letter-spacing:0.05em">4 DBR PHASES</div>
+  <div style="position:relative;padding:2.5rem 1rem 2rem;overflow:hidden;border-radius:20px">
+    <!-- Background ellipses (matching Venn diagram style) -->
+    <svg style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0" viewBox="0 0 800 280" preserveAspectRatio="none">
+      <defs>
+        <radialGradient id="mg-teal" cx="15%" cy="50%" r="35%"><stop offset="0%" stop-color="#5eead4" stop-opacity="0.45"/><stop offset="60%" stop-color="#2dd4bf" stop-opacity="0.18"/><stop offset="100%" stop-color="#0D9488" stop-opacity="0"/></radialGradient>
+        <radialGradient id="mg-purple" cx="38%" cy="45%" r="30%"><stop offset="0%" stop-color="#c4b5fd" stop-opacity="0.4"/><stop offset="60%" stop-color="#8b5cf6" stop-opacity="0.15"/><stop offset="100%" stop-color="#7C3AED" stop-opacity="0"/></radialGradient>
+        <radialGradient id="mg-sky" cx="62%" cy="55%" r="30%"><stop offset="0%" stop-color="#7dd3fc" stop-opacity="0.4"/><stop offset="60%" stop-color="#0ea5e9" stop-opacity="0.15"/><stop offset="100%" stop-color="#0369A1" stop-opacity="0"/></radialGradient>
+        <radialGradient id="mg-orange" cx="85%" cy="50%" r="35%"><stop offset="0%" stop-color="#fdba74" stop-opacity="0.45"/><stop offset="60%" stop-color="#f97316" stop-opacity="0.18"/><stop offset="100%" stop-color="#EA580C" stop-opacity="0"/></radialGradient>
+      </defs>
+      <ellipse cx="120" cy="140" rx="220" ry="180" fill="url(#mg-teal)"/>
+      <ellipse cx="310" cy="140" rx="200" ry="170" fill="url(#mg-purple)"/>
+      <ellipse cx="500" cy="140" rx="200" ry="170" fill="url(#mg-sky)"/>
+      <ellipse cx="680" cy="140" rx="220" ry="180" fill="url(#mg-orange)"/>
+    </svg>
+    <!-- Dashed connecting line -->
+    <div style="position:absolute;top:52px;left:10%;right:10%;height:1px;border-top:1.5px dashed rgba(148,163,184,0.35);z-index:1"></div>
+    <!-- Cards -->
+    <div style="display:flex;align-items:flex-start;gap:0;position:relative;z-index:2">
+      <!-- Card 1 -->
+      <div style="flex:1;text-align:center;padding:0 0.8rem;cursor:default;transition:transform 0.4s" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform=''">
+        <div style="width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,0.85);backdrop-filter:blur(6px);border:1.5px solid rgba(13,148,136,0.2);margin:0 auto 0.7rem;display:flex;align-items:center;justify-content:center;font-size:1.3rem;box-shadow:0 4px 16px rgba(13,148,136,0.12);transition:box-shadow 0.4s" onmouseover="this.style.boxShadow='0 8px 24px rgba(13,148,136,0.22)'" onmouseout="this.style.boxShadow='0 4px 16px rgba(13,148,136,0.12)'">&#128269;</div>
+        <div style="font-size:0.82rem;font-weight:700;color:#0D9488;margin-bottom:0.25rem">Systematic Reviews</div>
+        <div style="font-size:0.68rem;color:#475569;line-height:1.5">PRISMA · Scoping<br>Meta-analyses</div>
+        <div style="margin-top:0.5rem;font-size:0.58rem;color:#0D9488;font-weight:600;letter-spacing:0.05em;opacity:0.8">144 ARTICLES SCREENED</div>
+      </div>
+      <!-- Dot connector -->
+      <div style="padding-top:22px;color:rgba(148,163,184,0.4);font-size:0.5rem;z-index:2">&#9679;</div>
+      <!-- Card 2 -->
+      <div style="flex:1;text-align:center;padding:0 0.8rem;cursor:default;transition:transform 0.4s" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform=''">
+        <div style="width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,0.85);backdrop-filter:blur(6px);border:1.5px solid rgba(124,58,237,0.2);margin:0 auto 0.7rem;display:flex;align-items:center;justify-content:center;font-size:1.3rem;box-shadow:0 4px 16px rgba(124,58,237,0.12);transition:box-shadow 0.4s" onmouseover="this.style.boxShadow='0 8px 24px rgba(124,58,237,0.22)'" onmouseout="this.style.boxShadow='0 4px 16px rgba(124,58,237,0.12)'">&#128300;</div>
+        <div style="font-size:0.82rem;font-weight:700;color:#7C3AED;margin-bottom:0.25rem">Mixed Methods</div>
+        <div style="font-size:0.68rem;color:#475569;line-height:1.5">Quan + Qual<br>Surveys · Interviews</div>
+        <div style="margin-top:0.5rem;font-size:0.58rem;color:#7C3AED;font-weight:600;letter-spacing:0.05em;opacity:0.8">CONVERGENT DESIGN</div>
+      </div>
+      <!-- Dot connector -->
+      <div style="padding-top:22px;color:rgba(148,163,184,0.4);font-size:0.5rem;z-index:2">&#9679;</div>
+      <!-- Card 3 -->
+      <div style="flex:1;text-align:center;padding:0 0.8rem;cursor:default;transition:transform 0.4s" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform=''">
+        <div style="width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,0.85);backdrop-filter:blur(6px);border:1.5px solid rgba(14,165,233,0.2);margin:0 auto 0.7rem;display:flex;align-items:center;justify-content:center;font-size:1.3rem;box-shadow:0 4px 16px rgba(14,165,233,0.12);transition:box-shadow 0.4s" onmouseover="this.style.boxShadow='0 8px 24px rgba(14,165,233,0.22)'" onmouseout="this.style.boxShadow='0 4px 16px rgba(14,165,233,0.12)'">&#128200;</div>
+        <div style="font-size:0.82rem;font-weight:700;color:#0369A1;margin-bottom:0.25rem">Statistical Analysis</div>
+        <div style="font-size:0.68rem;color:#475569;line-height:1.5">SPSS · Prism<br>ANOVA · Coh-Metrix</div>
+        <div style="margin-top:0.5rem;font-size:0.58rem;color:#0369A1;font-weight:600;letter-spacing:0.05em;opacity:0.8">108 INDICES TESTED</div>
+      </div>
+      <!-- Dot connector -->
+      <div style="padding-top:22px;color:rgba(148,163,184,0.4);font-size:0.5rem;z-index:2">&#9679;</div>
+      <!-- Card 4 -->
+      <div style="flex:1;text-align:center;padding:0 0.8rem;cursor:default;transition:transform 0.4s" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform=''">
+        <div style="width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,0.85);backdrop-filter:blur(6px);border:1.5px solid rgba(234,88,12,0.2);margin:0 auto 0.7rem;display:flex;align-items:center;justify-content:center;font-size:1.3rem;box-shadow:0 4px 16px rgba(234,88,12,0.12);transition:box-shadow 0.4s" onmouseover="this.style.boxShadow='0 8px 24px rgba(234,88,12,0.22)'" onmouseout="this.style.boxShadow='0 4px 16px rgba(234,88,12,0.12)'">&#127919;</div>
+        <div style="font-size:0.82rem;font-weight:700;color:#EA580C;margin-bottom:0.25rem">Design-Based Research</div>
+        <div style="font-size:0.68rem;color:#475569;line-height:1.5">Iterative cycles<br>In-vivo prototyping</div>
+        <div style="margin-top:0.5rem;font-size:0.58rem;color:#EA580C;font-weight:600;letter-spacing:0.05em;opacity:0.8">4 DBR PHASES</div>
+      </div>
     </div>
   </div>
 </section>
