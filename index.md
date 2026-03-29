@@ -572,67 +572,93 @@ author_profile: false
   <h2 class="lt-section__title">Journey</h2>
   <p style="font-size:0.88rem;color:#4a5568;line-height:1.7;margin-bottom:1rem">From translation studies to AI-mediated learning design, every step has brought me closer to one goal: becoming an instructional designer who harnesses AI to create equitable, human-centered learning experiences at scale.</p>
   <style>
+    .jny-filters{display:flex;gap:.4rem;margin-bottom:1rem;flex-wrap:wrap}
+    .jny-fbtn{border:none;padding:.3rem .7rem;border-radius:6px;font-size:.7rem;font-weight:600;cursor:pointer;transition:all .2s}
+    .jny-fbtn.active{color:#fff!important;background:#1a1a2e!important}
     .jny-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
-    .jny-table{width:100%;min-width:620px;border-collapse:collapse}
-    .jny-table th{font-size:.68rem;font-weight:700;padding:.55rem .3rem;text-align:center;border-bottom:2px solid #e2e8f0;color:#94a3b8;position:sticky;top:0;background:#fff;z-index:2}
-    .jny-table td{padding:.35rem .25rem;vertical-align:middle;border-bottom:1px solid #f1f5f9}
-    .jny-cat{font-size:.68rem;font-weight:700;white-space:nowrap;padding-right:.5rem}
-    .jny-cat-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:4px;vertical-align:middle}
-    .jny-chip{display:inline-block;border-radius:8px;padding:.35rem .55rem;font-size:.68rem;font-weight:600;color:#1a1a2e;line-height:1.3;cursor:default;transition:transform .25s,box-shadow .25s;margin:2px 0;text-decoration:none}
+    .jny-table{width:100%;min-width:560px;border-collapse:collapse}
+    .jny-table th{font-size:.7rem;font-weight:700;padding:.6rem .4rem;text-align:center;border-bottom:2px solid #e2e8f0;color:#94a3b8;position:sticky;top:0;background:#fff;z-index:2}
+    .jny-table th.jny-now{color:#5b21b6;position:relative}
+    .jny-table th.jny-now::after{content:'';position:absolute;bottom:-2px;left:20%;right:20%;height:3px;background:#8b5cf6;border-radius:2px}
+    .jny-table td{padding:.4rem .3rem;vertical-align:middle;border-bottom:1px solid #f1f5f9;transition:background .3s}
+    .jny-table tr:hover td{background:rgba(0,0,0,.015)}
+    .jny-table tr.jny-dimmed td{opacity:.12;transition:opacity .4s}
+    .jny-cat{font-size:.7rem;font-weight:700;white-space:nowrap;padding-right:.6rem}
+    .jny-cat-dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:5px;vertical-align:middle}
+    .jny-tipwrap{position:relative;display:inline-block}
+    .jny-chip{display:inline-block;border-radius:8px;padding:.4rem .6rem;font-size:.7rem;font-weight:600;color:#1a1a2e;line-height:1.3;cursor:default;transition:transform .25s,box-shadow .25s;margin:2px 0;text-decoration:none}
     .jny-chip:hover{transform:translateY(-2px);box-shadow:0 4px 14px rgba(0,0,0,.08)}
-    .jny-chip small{display:block;font-size:.56rem;font-weight:400;color:#94a3b8;margin-top:.1rem}
+    .jny-chip small{display:block;font-size:.58rem;font-weight:400;color:#94a3b8;margin-top:.1rem}
     .jny-chip.highlight{border-width:2px;font-size:.72rem}
     .jny-chip.upcoming{border-style:dashed}
     .jny-tag{display:inline-block;font-size:.5rem;font-weight:700;padding:.1rem .35rem;border-radius:4px;margin-left:.3rem;vertical-align:middle;letter-spacing:.03em}
+    .jny-tip{position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%) scale(.9);opacity:0;pointer-events:none;background:#fff;color:#475569;font-size:.62rem;line-height:1.5;padding:.55rem .75rem;border-radius:10px;white-space:nowrap;z-index:20;transition:opacity .25s,transform .25s;box-shadow:0 4px 20px rgba(0,0,0,.12);border:1px solid #e2e8f0}
+    .jny-tip::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);border:5px solid transparent;border-top-color:#fff}
+    .jny-tip strong{color:#1a1a2e}
+    .jny-tipwrap:hover .jny-tip{opacity:1;transform:translateX(-50%) scale(1)}
   </style>
+  <!-- Filter buttons -->
+  <div class="jny-filters">
+    <button class="jny-fbtn active" onclick="jnyFilter('all',this)">All</button>
+    <button class="jny-fbtn" style="background:#f5f3ff;color:#8b5cf6" onclick="jnyFilter('edu',this)">Education</button>
+    <button class="jny-fbtn" style="background:#eff6ff;color:#3b82f6" onclick="jnyFilter('pub',this)">Publications</button>
+    <button class="jny-fbtn" style="background:#fffbeb;color:#d97706" onclick="jnyFilter('talk',this)">Talks</button>
+    <button class="jny-fbtn" style="background:#f0fdfa;color:#14b8a6" onclick="jnyFilter('work',this)">Experience</button>
+    <button class="jny-fbtn" style="background:#fdf2f8;color:#ec4899" onclick="jnyFilter('award',this)">Awards</button>
+  </div>
   <div class="jny-wrap">
     <table class="jny-table">
-      <thead><tr><th></th><th>2019</th><th>2021</th><th>2022</th><th>2023</th><th>2024</th><th>2025</th><th>2026</th></tr></thead>
+      <thead><tr><th></th><th>2022</th><th>2023</th><th>2024</th><th class="jny-now">2025</th><th>2026</th></tr></thead>
       <tbody>
-        <tr>
+        <tr data-cat="edu">
           <td class="jny-cat" style="color:#8b5cf6"><span class="jny-cat-dot" style="background:#8b5cf6"></span>Education</td>
-          <td></td><td></td>
-          <td><span class="jny-chip" style="background:#f5f3ff;border:1px solid #ddd6fe">B.A. Translation<small>SWUST, China</small></span></td>
+          <td><span class="jny-tipwrap"><span class="jny-chip" style="background:#f5f3ff;border:1px solid #ddd6fe">B.A. Translation<small>SWUST, China</small></span><span class="jny-tip"><strong>B.A. in Translation</strong><br>Southwest University of Science &amp; Technology<br>Mianyang, China</span></span></td>
           <td></td>
-          <td><span class="jny-chip" style="background:#f5f3ff;border:1px solid #ddd6fe">M.A. Dual Degree<small>NEU + Silesia</small></span></td>
-          <td><span class="jny-chip highlight" style="background:linear-gradient(135deg,#f5f3ff,#ede9fe);border:2px solid #a78bfa;color:#5b21b6">Ph.D. Purdue<small style="color:#7c3aed">Learning Design & Tech</small></span></td>
+          <td><span class="jny-tipwrap"><span class="jny-chip" style="background:#f5f3ff;border:1px solid #ddd6fe">M.A. Dual Degree<small>NEU + Silesia</small></span><span class="jny-tip"><strong>M.A. Interpreting</strong> (Northeastern U., China)<br><strong>M.A. Philology</strong> (U. of Silesia, Poland)<br>Erasmus+ Double-Degree Program</span></span></td>
+          <td><span class="jny-tipwrap"><span class="jny-chip highlight" style="background:linear-gradient(135deg,#f5f3ff,#ede9fe);border:2px solid #a78bfa;color:#5b21b6">Ph.D. Purdue<small style="color:#7c3aed">Learning Design &amp; Tech</small></span><span class="jny-tip"><strong>Doctor of Philosophy</strong><br>Learning Design and Technology<br>Advisor: Dr. Victoria Lowell</span></span></td>
           <td></td>
         </tr>
-        <tr>
+        <tr data-cat="pub">
           <td class="jny-cat" style="color:#3b82f6"><span class="jny-cat-dot" style="background:#3b82f6"></span>Publications</td>
-          <td></td><td></td><td></td>
-          <td><a href="/publication/2023-clil-translation" class="jny-chip" style="background:#eff6ff;border:1px solid #bfdbfe">CLIL<small>Ed. Advances</small></a></td>
           <td></td>
-          <td><a href="/publication/2025-two-years-innovation" class="jny-chip" style="background:#eff6ff;border:1px solid #bfdbfe">CAEAI<span class="jny-tag" style="background:#dcfce7;color:#16a34a">Q1</span><small>IF ≈ 10.5</small></a> <span class="jny-chip" style="background:#eff6ff;border:1px solid #bfdbfe">MJSS<small>Tan & Gao</small></span></td>
-          <td><a href="/publication/2026-doubao-genai-efl" class="jny-chip" style="background:#eff6ff;border:1px solid #bfdbfe">Doubao<span class="jny-tag" style="background:#dbeafe;color:#2563eb">Q2</span><small>Wang & Tan</small></a></td>
+          <td><span class="jny-tipwrap"><a href="/publication/2023-clil-translation" class="jny-chip" style="background:#eff6ff;border:1px solid #bfdbfe">CLIL<small>Ed. Advances</small></a><span class="jny-tip"><strong>Gao &amp; Tan (2023)</strong><br>MTI talent cultivation from CLIL perspective<br>Education Advances, 13(12)</span></span></td>
+          <td></td>
+          <td><span class="jny-tipwrap"><a href="/publication/2025-two-years-innovation" class="jny-chip" style="background:#eff6ff;border:1px solid #bfdbfe">CAEAI<span class="jny-tag" style="background:#dcfce7;color:#16a34a">Q1</span><small>IF ≈ 10.5</small></a><span class="jny-tip"><strong>Li, Tan, Wang &amp; Lowell (2025)</strong><br>Systematic review of empirical GenAI research<br>Computers &amp; Education: AI, 9, 100445</span></span> <span class="jny-tipwrap"><span class="jny-chip" style="background:#eff6ff;border:1px solid #bfdbfe">MJSS<small>Tan &amp; Gao</small></span><span class="jny-tip"><strong>Tan &amp; Gao (2025)</strong><br>Human vs. machine interpreting<br>Mediterranean J. of Social Sciences, 16(3)</span></span></td>
+          <td><span class="jny-tipwrap"><a href="/publication/2026-doubao-genai-efl" class="jny-chip" style="background:#eff6ff;border:1px solid #bfdbfe">Doubao<span class="jny-tag" style="background:#dbeafe;color:#2563eb">Q2</span><small>Wang &amp; Tan</small></a><span class="jny-tip"><strong>Wang &amp; Tan (2026)</strong><br>GenAI scaffold in EFL writing<br>Psicologia Educativa, 14, 19-33</span></span></td>
         </tr>
-        <tr>
+        <tr data-cat="talk">
           <td class="jny-cat" style="color:#f59e0b"><span class="jny-cat-dot" style="background:#f59e0b"></span>Talks</td>
-          <td></td><td></td><td></td><td></td>
-          <td><a href="/publication/2024-call-context" class="jny-chip" style="background:#fffbeb;border:1px solid #fde68a">CALL Tokyo<small>Interpreting</small></a> <span class="jny-chip" style="background:#fffbeb;border:1px solid #fde68a">SCT + IPC<small>2 conferences</small></span></td>
-          <td><a href="/publication/2025-aect-authenticity" class="jny-chip" style="background:#fffbeb;border:1px solid #fde68a">AECT + P-12<small>Las Vegas + Purdue</small></a></td>
-          <td><a href="/publication/2026-clawdbot-unboxed" class="jny-chip" style="background:#fffbeb;border:1px solid #fde68a">Clawdbot<small>AI Lunch & Learn</small></a> <span class="jny-chip upcoming" style="background:linear-gradient(135deg,#fffbeb,#fef3c7);border:2px dashed #fbbf24">AERA<span class="jny-tag" style="background:#fef3c7;color:#d97706">Upcoming</span><small>Los Angeles</small></span></td>
-        </tr>
-        <tr>
-          <td class="jny-cat" style="color:#14b8a6"><span class="jny-cat-dot" style="background:#14b8a6"></span>Experience</td>
-          <td></td>
-          <td><a href="/teaching/" class="jny-chip" style="background:#f0fdfa;border:1px solid #99f6e4">TAL Education<small>500+ students</small></a></td>
           <td></td><td></td>
-          <td><span class="jny-chip" style="background:#f0fdfa;border:1px solid #99f6e4">U. of Silesia<small>Lecturer · 200+ students</small></span></td>
-          <td><a href="/service/" class="jny-chip" style="background:#f0fdfa;border:1px solid #99f6e4">RA + PALDT + GESC<small>Purdue University</small></a></td>
-          <td><span class="jny-chip" style="background:#f0fdfa;border:1px solid #99f6e4">Guest Lecturer<small>EDCI 612</small></span></td>
+          <td><span class="jny-tipwrap"><a href="/publication/2024-call-context" class="jny-chip" style="background:#fffbeb;border:1px solid #fde68a">CALL Tokyo<small>Interpreting</small></a><span class="jny-tip"><strong>XXIInd Int'l CALL Conference</strong><br>Human vs. machine interpreting<br>Tokyo, Japan · Sep 2024</span></span> <span class="jny-tipwrap"><span class="jny-chip" style="background:#fffbeb;border:1px solid #fde68a">SCT + IPC<small>2 conferences</small></span><span class="jny-tip"><strong>3rd SCT Conference</strong>, Guangdong<br><strong>10th IPC Conference</strong>, Pisa<br>May–Jun 2024</span></span></td>
+          <td><span class="jny-tipwrap"><a href="/publication/2025-aect-authenticity" class="jny-chip" style="background:#fffbeb;border:1px solid #fde68a">AECT + P-12<small>Las Vegas + Purdue</small></a><span class="jny-tip"><strong>AECT Convention</strong>, Las Vegas<br><strong>Purdue AI in P-12</strong> Conference<br>Oct–Nov 2025</span></span></td>
+          <td><span class="jny-tipwrap"><a href="/publication/2026-clawdbot-unboxed" class="jny-chip" style="background:#fffbeb;border:1px solid #fde68a">Clawdbot<small>AI Lunch &amp; Learn</small></a><span class="jny-tip"><strong>Clawdbot Unboxed</strong><br>AI Lunch &amp; Learn Series<br>Purdue CoE · Feb 2026</span></span> <span class="jny-tipwrap"><span class="jny-chip upcoming" style="background:linear-gradient(135deg,#fffbeb,#fef3c7);border:2px dashed #fbbf24">AERA<span class="jny-tag" style="background:#fef3c7;color:#d97706">Upcoming</span><small>Los Angeles</small></span><span class="jny-tip"><strong>AERA 2026 Convention</strong><br>Meta-analysis on technology &amp; low-income families<br>Los Angeles, CA · Apr 2026</span></span></td>
         </tr>
-        <tr>
+        <tr data-cat="work">
+          <td class="jny-cat" style="color:#14b8a6"><span class="jny-cat-dot" style="background:#14b8a6"></span>Experience</td>
+          <td></td><td></td>
+          <td><span class="jny-tipwrap"><span class="jny-chip" style="background:#f0fdfa;border:1px solid #99f6e4">U. of Silesia<small>Lecturer · 200+</small></span><span class="jny-tip"><strong>Lecturer</strong>, Institute of Linguistics<br>Spoken Chinese &amp; Academic Writing<br>200+ international students · 2023–2024</span></span></td>
+          <td><span class="jny-tipwrap"><a href="/service/" class="jny-chip" style="background:#f0fdfa;border:1px solid #99f6e4">RA + PALDT + GESC<small>Purdue University</small></a><span class="jny-tip"><strong>Research Assistant</strong>, Purdue Library &amp; SIS<br><strong>PALDT</strong> Marketing &amp; Design Officer<br><strong>GESC</strong> Committee Member</span></span></td>
+          <td><span class="jny-tipwrap"><span class="jny-chip" style="background:#f0fdfa;border:1px solid #99f6e4">Guest Lecturer<small>EDCI 612</small></span><span class="jny-tip"><strong>Guest Lecturer</strong>, EDCI 612<br>AI and Multilingual Learners<br>Co-presented with Dr. Lowell &amp; Belle Li</span></span></td>
+        </tr>
+        <tr data-cat="award">
           <td class="jny-cat" style="color:#ec4899"><span class="jny-cat-dot" style="background:#ec4899"></span>Awards</td>
-          <td><span class="jny-chip" style="background:#fdf2f8;border:1px solid #fbcfe8">National Award<small>$750</small></span></td>
-          <td></td><td></td><td></td>
-          <td><span class="jny-chip" style="background:#fdf2f8;border:1px solid #fbcfe8">Fellowship + Erasmus+<small>$2K + $5K</small></span></td>
-          <td><span class="jny-chip" style="background:#fdf2f8;border:1px solid #fbcfe8">LDT Travel<small>$250</small></span></td>
+          <td></td><td></td>
+          <td><span class="jny-tipwrap"><span class="jny-chip" style="background:#fdf2f8;border:1px solid #fbcfe8">Fellowship + Erasmus+<small>$2K + $5K</small></span><span class="jny-tip"><strong>National Academic Fellowship</strong> $2K<br>Northeastern University<br><strong>Erasmus+ Fund</strong> $5K · U. of Silesia</span></span></td>
+          <td><span class="jny-tipwrap"><span class="jny-chip" style="background:#fdf2f8;border:1px solid #fbcfe8">LDT Travel<small>$250</small></span><span class="jny-tip"><strong>LDT Travel Support Program</strong><br>Curriculum &amp; Instruction<br>Purdue University</span></span></td>
           <td></td>
         </tr>
       </tbody>
     </table>
   </div>
+  <script>
+  function jnyFilter(cat,btn){
+    document.querySelectorAll('.jny-fbtn').forEach(function(b){b.classList.remove('active');});
+    btn.classList.add('active');
+    document.querySelectorAll('.jny-table tr[data-cat]').forEach(function(r){
+      if(cat==='all'||r.dataset.cat===cat){r.classList.remove('jny-dimmed');}else{r.classList.add('jny-dimmed');}
+    });
+  }
+  </script>
 </section>
 
 <!-- ========== NEWS & ACTIVITY ========== -->
