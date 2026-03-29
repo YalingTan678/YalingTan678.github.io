@@ -592,10 +592,10 @@ author_profile: false
         <tr>
           <td class="jny-cat" style="color:#8b5cf6"><span class="jny-cat-dot" style="background:#8b5cf6"></span>Education</td>
           <td></td><td></td>
-          <td><a href="#" class="jny-chip" style="background:#f5f3ff;border:1px solid #ddd6fe">B.A. Translation<small>SWUST, China</small></a></td>
+          <td><span class="jny-chip" style="background:#f5f3ff;border:1px solid #ddd6fe">B.A. Translation<small>SWUST, China</small></span></td>
           <td></td>
-          <td><a href="#" class="jny-chip" style="background:#f5f3ff;border:1px solid #ddd6fe">M.A. Dual Degree<small>NEU + Silesia</small></a></td>
-          <td><a href="#" class="jny-chip highlight" style="background:linear-gradient(135deg,#f5f3ff,#ede9fe);border:2px solid #a78bfa;color:#5b21b6">Ph.D. Purdue<small style="color:#7c3aed">Learning Design & Tech</small></a></td>
+          <td><span class="jny-chip" style="background:#f5f3ff;border:1px solid #ddd6fe">M.A. Dual Degree<small>NEU + Silesia</small></span></td>
+          <td><span class="jny-chip highlight" style="background:linear-gradient(135deg,#f5f3ff,#ede9fe);border:2px solid #a78bfa;color:#5b21b6">Ph.D. Purdue<small style="color:#7c3aed">Learning Design & Tech</small></span></td>
           <td></td>
         </tr>
         <tr>
@@ -603,24 +603,24 @@ author_profile: false
           <td></td><td></td><td></td>
           <td><a href="/publication/2023-clil-translation" class="jny-chip" style="background:#eff6ff;border:1px solid #bfdbfe">CLIL<small>Ed. Advances</small></a></td>
           <td></td>
-          <td><a href="/publication/2025-two-years-innovation" class="jny-chip" style="background:#eff6ff;border:1px solid #bfdbfe">CAEAI<span class="jny-tag" style="background:#dcfce7;color:#16a34a">Q1</span><small>IF ≈ 10.5</small></a> <a href="#" class="jny-chip" style="background:#eff6ff;border:1px solid #bfdbfe">MJSS<small>Tan & Gao</small></a></td>
+          <td><a href="/publication/2025-two-years-innovation" class="jny-chip" style="background:#eff6ff;border:1px solid #bfdbfe">CAEAI<span class="jny-tag" style="background:#dcfce7;color:#16a34a">Q1</span><small>IF ≈ 10.5</small></a> <span class="jny-chip" style="background:#eff6ff;border:1px solid #bfdbfe">MJSS<small>Tan & Gao</small></span></td>
           <td><a href="/publication/2026-doubao-genai-efl" class="jny-chip" style="background:#eff6ff;border:1px solid #bfdbfe">Doubao<span class="jny-tag" style="background:#dbeafe;color:#2563eb">Q2</span><small>Wang & Tan</small></a></td>
         </tr>
         <tr>
           <td class="jny-cat" style="color:#f59e0b"><span class="jny-cat-dot" style="background:#f59e0b"></span>Talks</td>
           <td></td><td></td><td></td><td></td>
-          <td><a href="/publication/2024-call-context" class="jny-chip" style="background:#fffbeb;border:1px solid #fde68a">CALL Tokyo<small>Interpreting</small></a> <a href="#" class="jny-chip" style="background:#fffbeb;border:1px solid #fde68a">SCT + IPC<small>2 conferences</small></a></td>
+          <td><a href="/publication/2024-call-context" class="jny-chip" style="background:#fffbeb;border:1px solid #fde68a">CALL Tokyo<small>Interpreting</small></a> <span class="jny-chip" style="background:#fffbeb;border:1px solid #fde68a">SCT + IPC<small>2 conferences</small></span></td>
           <td><a href="/publication/2025-aect-authenticity" class="jny-chip" style="background:#fffbeb;border:1px solid #fde68a">AECT + P-12<small>Las Vegas + Purdue</small></a></td>
-          <td><a href="/publication/2026-clawdbot-unboxed" class="jny-chip" style="background:#fffbeb;border:1px solid #fde68a">Clawdbot<small>AI Lunch & Learn</small></a> <a href="#" class="jny-chip upcoming" style="background:linear-gradient(135deg,#fffbeb,#fef3c7);border:2px dashed #fbbf24">AERA<span class="jny-tag" style="background:#fef3c7;color:#d97706">Upcoming</span><small>Los Angeles</small></a></td>
+          <td><a href="/publication/2026-clawdbot-unboxed" class="jny-chip" style="background:#fffbeb;border:1px solid #fde68a">Clawdbot<small>AI Lunch & Learn</small></a> <span class="jny-chip upcoming" style="background:linear-gradient(135deg,#fffbeb,#fef3c7);border:2px dashed #fbbf24">AERA<span class="jny-tag" style="background:#fef3c7;color:#d97706">Upcoming</span><small>Los Angeles</small></span></td>
         </tr>
         <tr>
           <td class="jny-cat" style="color:#14b8a6"><span class="jny-cat-dot" style="background:#14b8a6"></span>Experience</td>
           <td></td>
           <td><a href="/teaching/" class="jny-chip" style="background:#f0fdfa;border:1px solid #99f6e4">TAL Education<small>500+ students</small></a></td>
           <td></td><td></td>
-          <td><a href="#" class="jny-chip" style="background:#f0fdfa;border:1px solid #99f6e4">U. of Silesia<small>Lecturer · 200+ students</small></a></td>
+          <td><span class="jny-chip" style="background:#f0fdfa;border:1px solid #99f6e4">U. of Silesia<small>Lecturer · 200+ students</small></span></td>
           <td><a href="/service/" class="jny-chip" style="background:#f0fdfa;border:1px solid #99f6e4">RA + PALDT + GESC<small>Purdue University</small></a></td>
-          <td><a href="#" class="jny-chip" style="background:#f0fdfa;border:1px solid #99f6e4">Guest Lecturer<small>EDCI 612</small></a></td>
+          <td><span class="jny-chip" style="background:#f0fdfa;border:1px solid #99f6e4">Guest Lecturer<small>EDCI 612</small></span></td>
         </tr>
         <tr>
           <td class="jny-cat" style="color:#ec4899"><span class="jny-cat-dot" style="background:#ec4899"></span>Awards</td>
