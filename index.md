@@ -89,22 +89,22 @@ author_profile: false
     var sMap={};S.forEach(function(s){sMap[s.id]=s;});
 
     var P=[
-      {id:'genai',l:'GenAI Review \u00b7 CAEAI \'25',s:'literacy',r:155,t:'publication',v:'CAEAI (Q1)',y:2025,st:'Published',lk:'/publication/2025-two-years-innovation',d:'Two years of innovation: systematic review of empirical GenAI research in language learning and teaching.'},
-      {id:'pete',l:'PeteChat Design Case',s:'literacy',r:215,t:'progress',v:'Under Review',y:2026,st:'Revising',lk:'/publication/ur-tutor-not-solver',d:'Tutor, not solver: designing a guardrailed AI assistant for learning in higher education.'},
+      {id:'genai',l:'GenAI Review \u00b7 CAEAI \'25',s:'literacy',a:255,r:155,t:'publication',v:'CAEAI (Q1)',y:2025,st:'Published',lk:'/publication/2025-two-years-innovation',d:'Two years of innovation: systematic review of empirical GenAI research in language learning and teaching.'},
+      {id:'pete',l:'PeteChat Design Case',s:'literacy',a:285,r:215,t:'progress',v:'Under Review',y:2026,st:'Revising',lk:'/publication/ur-tutor-not-solver',d:'Tutor, not solver: designing a guardrailed AI assistant for learning in higher education.'},
       {id:'claw',l:'Clawdbot \u00b7 Talk \'26',s:'literacy',r:95,t:'talk',v:'AI Lunch & Learn',y:2026,st:'Presented',lk:'/publication/2026-clawdbot-unboxed',d:'Clawdbot Unboxed: What It Does, Why It\'s Hot, and Where It Breaks.'},
-      {id:'tpxj',l:'TPACK Xinjiang Study',s:'tpack',r:160,t:'progress',v:'Asia-Pacific Ed. Researcher',y:2026,st:'In Review',lk:'/publication/ur-tpack-xinjiang',d:'Pre-service teachers\' TPACK in Xinjiang: examining culture diversity as context.'},
-      {id:'clil',l:'CLIL \u00b7 Ed. Adv. \'23',s:'tpack',r:100,t:'publication',v:'Education Advances',y:2023,st:'Published',lk:'/publication/2023-clil-translation',d:'Study on MTI talent cultivation mode from the perspective of CLIL.'},
-      {id:'idle-gai',l:'IDLE & GAI \u00b7 Talk \'25',cs:['idle','equity'],a:155,r:165,t:'talk',v:'Purdue AI in P-12',y:2025,st:'Presented',lk:null,d:'Assessing effects of extramural GAI-mediated IDLE on pragmatic and communicative competence of Chinese undergraduates.'},
-      {id:'mjss',l:'Interpreting \u00b7 MJSS \'25',cs:['idle','literacy'],a:205,r:135,t:'publication',v:'MJSS',y:2025,st:'Published',lk:null,d:'Pointing to context from a relevance theory perspective: a comparative study of human and machine interpreting.'},
-      {id:'doubao',l:'Doubao \u00b7 PE (Q2) \'26',s:'equity',r:145,t:'publication',v:'Psicologia Educativa',y:2026,st:'Published',lk:'/publication/2026-doubao-genai-efl',d:'Doubao as a GenAI scaffold in senior high school EFL writing.'},
-      {id:'aera',l:'AERA Meta \u00b7 \'26',s:'equity',r:90,t:'talk',v:'AERA Convention',y:2026,st:'Upcoming',lk:null,d:'Meta-analysis on the achievement of technology on students from low-income families.'},
-      {id:'auth',l:'Authorship & AI',cs:['literacy','equity'],a:135,r:185,t:'progress',v:'Education Science',y:2026,st:'In Review',lk:null,d:'How higher education instructors navigate authenticity in student writing in an age of generative AI.'}
+      {id:'tpxj',l:'TPACK Xinjiang Study',s:'tpack',a:15,r:160,t:'progress',v:'Asia-Pacific Ed. Researcher',y:2026,st:'In Review',lk:'/publication/ur-tpack-xinjiang',d:'Pre-service teachers\' TPACK in Xinjiang: examining culture diversity as context.'},
+      {id:'clil',l:'CLIL \u00b7 Ed. Adv. \'23',s:'tpack',a:345,r:100,t:'publication',v:'Education Advances',y:2023,st:'Published',lk:'/publication/2023-clil-translation',d:'Study on MTI talent cultivation mode from the perspective of CLIL.'},
+      {id:'idle-gai',l:'IDLE & GAI \u00b7 Talk \'25',cs:['idle','equity'],a:160,r:165,t:'talk',v:'Purdue AI in P-12',y:2025,st:'Presented',lk:null,d:'Assessing effects of extramural GAI-mediated IDLE on pragmatic and communicative competence of Chinese undergraduates.'},
+      {id:'mjss',l:'Interpreting \u00b7 MJSS \'25',cs:['idle','literacy'],a:210,r:135,t:'publication',v:'MJSS',y:2025,st:'Published',lk:null,d:'Pointing to context from a relevance theory perspective: a comparative study of human and machine interpreting.'},
+      {id:'doubao',l:'Doubao \u00b7 PE (Q2) \'26',s:'equity',a:105,r:145,t:'publication',v:'Psicologia Educativa',y:2026,st:'Published',lk:'/publication/2026-doubao-genai-efl',d:'Doubao as a GenAI scaffold in senior high school EFL writing.'},
+      {id:'aera',l:'AERA Meta \u00b7 \'26',s:'equity',a:75,r:90,t:'talk',v:'AERA Convention',y:2026,st:'Upcoming',lk:null,d:'Meta-analysis on the achievement of technology on students from low-income families.'},
+      {id:'auth',l:'Authorship & AI',cs:['literacy','equity'],a:125,r:185,t:'progress',v:'Education Science',y:2026,st:'In Review',lk:null,d:'How higher education instructors navigate authenticity in student writing in an age of generative AI.'}
     ];
 
     /* helpers */
     function pol(a,r){return{x:CX+r*Math.cos(a*RAD),y:CY+r*Math.sin(a*RAD)};}
     function el(tag,at){var e=document.createElementNS('http://www.w3.org/2000/svg',tag);for(var k in at)e.setAttribute(k,at[k]);return e;}
-    function pPos(p){return pol(p.cs?p.a:sMap[p.s].a,p.r);}
+    function pPos(p){return pol(p.a!=null?p.a:sMap[p.s].a,p.r);}
     function pClr(p){if(!p.cs)return sMap[p.s].c;var a=sMap[p.cs[0]].c,b=sMap[p.cs[1]].c;return bHex(a,b);}
     function bHex(a,b){var r=(parseInt(a.slice(1,3),16)+parseInt(b.slice(1,3),16))>>1,g=(parseInt(a.slice(3,5),16)+parseInt(b.slice(3,5),16))>>1,l=(parseInt(a.slice(5,7),16)+parseInt(b.slice(5,7),16))>>1;return'#'+((1<<24)|(r<<16)|(g<<8)|l).toString(16).slice(1);}
     function secP(sa,ea,r){var sp=pol(sa,r),ep=pol(ea,r),sw=((ea-sa+360)%360);return'M '+CX+' '+CY+' L '+sp.x.toFixed(1)+' '+sp.y.toFixed(1)+' A '+r+' '+r+' 0 '+(sw>180?1:0)+' 1 '+ep.x.toFixed(1)+' '+ep.y.toFixed(1)+' Z';}
