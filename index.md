@@ -98,7 +98,7 @@ author_profile: false
       {id:'doubao',l:'Doubao \u00b7 PE (Q2) \'26',s:'equity',a:105,r:150,t:'publication',v:'Psicologia Educativa',y:2026,st:'Published',lk:'/publication/2026-doubao-genai-efl',d:'Doubao as a GenAI scaffold in senior high school EFL writing.'},
       {id:'mjss',l:'Interpreting \u00b7 MJSS \'25',cs:['idle','literacy'],a:215,r:130,t:'publication',v:'MJSS',y:2025,st:'Published',lk:null,d:'Pointing to context from a relevance theory perspective: a comparative study of human and machine interpreting.'},
       {id:'idle-gai',l:'IDLE & GAI \u00b7 Talk \'25',cs:['idle','equity'],a:155,r:170,t:'talk',v:'Purdue AI in P-12',y:2025,st:'Presented',lk:null,d:'Assessing effects of extramural GAI-mediated IDLE on pragmatic and communicative competence of Chinese undergraduates.'},
-      {id:'auth',l:'Authorship & AI',cs:['literacy','equity'],a:130,r:215,t:'progress',v:'Education Science',y:2026,st:'In Review',lk:null,d:'How higher education instructors navigate authenticity in student writing in an age of generative AI.'}
+      {id:'auth',l:'Authorship & AI',s:'equity',a:130,r:220,t:'progress',v:'Education Science',y:2026,st:'In Review',lk:null,d:'How higher education instructors navigate authenticity in student writing in an age of generative AI.'}
     ];
 
     /* helpers */
@@ -294,28 +294,46 @@ author_profile: false
         }
       });
       clrMini();
-      var ownIdx=0;
+      var ownDots=[];
       dots.forEach(function(d){
         var own=(d.p.s===sid)||(d.p.cs&&d.p.cs.indexOf(sid)!==-1);
         d.el.classList.toggle('dim',!own);
-        if(own){
-          // alternate left/right to avoid overlap on same axis
-          var lx,la;
-          var dx=d.pos.x-CX,dy=d.pos.y-CY;
-          if(Math.abs(dx)<60){
-            // vertical axis — alternate sides
-            if(ownIdx%2===0){lx=d.pos.x+16;la='start';}else{lx=d.pos.x-16;la='end';}
-          }else if(dx<0){lx=d.pos.x-16;la='end';}
-          else{lx=d.pos.x+16;la='start';}
-          // background rect for readability
-          var bg=el('rect',{x:la==='start'?lx-2:lx-160,y:d.pos.y-18,width:162,height:32,rx:4,fill:'#fff',opacity:'.85',class:'rdr-mini'});
-          svg.appendChild(bg);miniEls.push(bg);
-          var t=el('text',{x:lx,y:d.pos.y-5,'text-anchor':la,'font-size':'12','font-weight':'700',fill:d.c,class:'rdr-mini rdr-mini-anim'});
-          t.textContent=d.p.l;svg.appendChild(t);miniEls.push(t);
-          var t2=el('text',{x:lx,y:d.pos.y+10,'text-anchor':la,'font-size':'9.5',fill:'#64748b',class:'rdr-mini rdr-mini-anim',style:'animation-delay:.08s'});
-          t2.textContent=d.p.v+' \u00b7 '+d.p.y;svg.appendChild(t2);miniEls.push(t2);
-          ownIdx++;
+        if(own) ownDots.push(d);
+      });
+      // sort by angle so nearby dots get alternating sides
+      ownDots.sort(function(a,b){
+        var aa=a.p.a!=null?a.p.a:(sMap[a.p.s]?sMap[a.p.s].a:0);
+        var ba=b.p.a!=null?b.p.a:(sMap[b.p.s]?sMap[b.p.s].a:0);
+        return aa-ba;
+      });
+      var placed=[];
+      ownDots.forEach(function(d,ownIdx){
+        var dx=d.pos.x-CX,dy=d.pos.y-CY;
+        // try preferred side first, then flip if collision
+        var sides=dx<0?[{lx:d.pos.x-16,la:'end'},{lx:d.pos.x+16,la:'start'}]:[{lx:d.pos.x+16,la:'start'},{lx:d.pos.x-16,la:'end'}];
+        if(Math.abs(dx)<60){sides=ownIdx%2===0?[{lx:d.pos.x+16,la:'start'},{lx:d.pos.x-16,la:'end'}]:[{lx:d.pos.x-16,la:'end'},{lx:d.pos.x+16,la:'start'}];}
+        var chosen=sides[0];
+        // check overlap with previously placed labels
+        for(var si=0;si<sides.length;si++){
+          var s=sides[si];
+          var rx=s.la==='start'?s.lx-2:s.lx-162;
+          var ry=d.pos.y-20;
+          var collision=false;
+          for(var pi=0;pi<placed.length;pi++){
+            var p=placed[pi];
+            if(rx<p.x+p.w&&rx+164>p.x&&ry<p.y+p.h&&ry+36>p.y){collision=true;break;}
+          }
+          if(!collision){chosen=s;break;}
         }
+        var lx=chosen.lx,la=chosen.la;
+        var bgX=la==='start'?lx-2:lx-162;
+        placed.push({x:bgX,y:d.pos.y-20,w:164,h:36});
+        var bg=el('rect',{x:bgX,y:d.pos.y-18,width:164,height:32,rx:4,fill:'#fff',opacity:'.88',class:'rdr-mini'});
+        svg.appendChild(bg);miniEls.push(bg);
+        var t=el('text',{x:lx,y:d.pos.y-5,'text-anchor':la,'font-size':'12','font-weight':'700',fill:d.c,class:'rdr-mini rdr-mini-anim'});
+        t.textContent=d.p.l;svg.appendChild(t);miniEls.push(t);
+        var t2=el('text',{x:lx,y:d.pos.y+10,'text-anchor':la,'font-size':'9.5',fill:'#64748b',class:'rdr-mini rdr-mini-anim',style:'animation-delay:.08s'});
+        t2.textContent=d.p.v+' \u00b7 '+d.p.y;svg.appendChild(t2);miniEls.push(t2);
       });
     }
 
