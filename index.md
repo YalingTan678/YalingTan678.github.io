@@ -122,10 +122,10 @@ author_profile: false
 
     // radial gradients for strand ellipses
     var gradData=[
-      {id:'grad-lit',cx:'50%',cy:'35%',stops:[['0%','#99f6e4',0.55],['45%','#5eead4',0.30],['100%','#0D9488',0.10]]},
-      {id:'grad-tpack',cx:'35%',cy:'50%',stops:[['0%','#ddd6fe',0.55],['45%','#a78bfa',0.30],['100%','#7C3AED',0.10]]},
-      {id:'grad-eq',cx:'50%',cy:'35%',stops:[['0%','#fed7aa',0.55],['45%','#fb923c',0.30],['100%','#EA580C',0.10]]},
-      {id:'grad-idle',cx:'65%',cy:'50%',stops:[['0%','#bae6fd',0.55],['45%','#38bdf8',0.30],['100%','#0369A1',0.10]]}
+      {id:'grad-lit',cx:'50%',cy:'35%',stops:[['0%','#5eead4',0.75],['45%','#2dd4bf',0.45],['100%','#0D9488',0.12]]},
+      {id:'grad-tpack',cx:'35%',cy:'50%',stops:[['0%','#c4b5fd',0.75],['45%','#8b5cf6',0.45],['100%','#7C3AED',0.12]]},
+      {id:'grad-eq',cx:'50%',cy:'35%',stops:[['0%','#fdba74',0.75],['45%','#f97316',0.45],['100%','#EA580C',0.12]]},
+      {id:'grad-idle',cx:'65%',cy:'50%',stops:[['0%','#7dd3fc',0.75],['45%','#0ea5e9',0.45],['100%','#0369A1',0.12]]}
     ];
     gradData.forEach(function(gd){
       var rg=el('radialGradient',{id:gd.id,cx:gd.cx,cy:gd.cy,r:'70%'});
@@ -241,7 +241,7 @@ author_profile: false
       var a=dotMap[pair[0]],b=dotMap[pair[1]];
       if(!a||!b)return;
       var ln=el('line',{x1:a.pos.x.toFixed(1),y1:a.pos.y.toFixed(1),x2:b.pos.x.toFixed(1),y2:b.pos.y.toFixed(1),
-        stroke:'#94a3b8','stroke-width':'.7','stroke-dasharray':'4 3',opacity:'0',style:'pointer-events:none;transition:opacity .5s'});
+        stroke:'#64748b','stroke-width':'1','stroke-dasharray':'5 4',opacity:'0',style:'pointer-events:none;transition:opacity .5s'});
       svg.insertBefore(ln,dots[0].el);
       webEls.push(ln);
     });
@@ -268,7 +268,7 @@ author_profile: false
       S.forEach(function(s,i){setTimeout(function(){lblEls[s.id].style.transition='opacity .5s ease';lblEls[s.id].style.opacity='1';},1200+i*70);});
       // web lines fade in after dots
       webEls.forEach(function(ln,i){
-        setTimeout(function(){ln.setAttribute('opacity','.25');},1100+i*50);
+        setTimeout(function(){ln.setAttribute('opacity','.45');},1100+i*50);
       });
     }
     var obs=new IntersectionObserver(function(en){if(en[0].isIntersecting){runEntry();obs.disconnect();}},{threshold:.15});
