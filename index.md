@@ -241,7 +241,7 @@ author_profile: false
       var a=dotMap[pair[0]],b=dotMap[pair[1]];
       if(!a||!b)return;
       var ln=el('line',{x1:a.pos.x.toFixed(1),y1:a.pos.y.toFixed(1),x2:b.pos.x.toFixed(1),y2:b.pos.y.toFixed(1),
-        stroke:'#64748b','stroke-width':'1','stroke-dasharray':'5 4',opacity:'0',style:'pointer-events:none;transition:opacity .5s'});
+        stroke:'#475569','stroke-width':'1.2','stroke-dasharray':'6 4',opacity:'.5',style:'pointer-events:none;transition:opacity .5s'});
       svg.insertBefore(ln,dots[0].el);
       webEls.push(ln);
     });
