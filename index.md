@@ -478,7 +478,8 @@ author_profile: false
 <!-- ========== METHODOLOGY (interactive pipeline) ========== -->
 <section class="lt-section lt-fade-in">
   <h2 class="lt-section__title">Methodology</h2>
-  <p style="font-size:0.88rem;color:#4a5568;line-height:1.7;margin-bottom:1rem">I combine large-scale evidence synthesis with in-depth qualitative inquiry and iterative design. Each method feeds the next: reviews surface gaps, mixed methods explore them, statistics test claims, and design-based research translates findings into tools educators can actually use.</p>
+  <style>.philo-box{position:relative;color:#374151;padding:1.4rem 1.6rem;margin-bottom:1.2rem;background:#fff;border-radius:14px;line-height:1.75;font-size:.92rem;border:1px solid #e2e8f0;overflow:hidden;cursor:default;transition:box-shadow .4s,border-color .4s}.philo-box:hover{box-shadow:0 4px 24px rgba(99,102,241,.1);border-color:rgba(139,92,246,.2)}.philo-box::before{content:"\201C";position:absolute;top:-.1rem;left:.8rem;font-size:3.5rem;font-family:Georgia,serif;color:rgba(139,92,246,.12);line-height:1}.philo-box::after{content:"";position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#6366f1,#8b5cf6,#ec4899,#f59e0b);opacity:0;transition:opacity .4s;border-radius:0 0 14px 14px}.philo-box:hover::after{opacity:1}</style>
+  <div class="philo-box">I combine large-scale evidence synthesis with in-depth qualitative inquiry and iterative design. Each method feeds the next: reviews surface gaps, mixed methods explore them, statistics test claims, and design-based research translates findings into tools educators can actually use.</div>
   <style>
     .meth-wrap{display:flex;gap:14px}
     .meth-card{flex:1;padding:1.4rem 1rem;text-align:center;border-radius:14px;background:#fff;position:relative;cursor:default;
@@ -570,7 +571,7 @@ author_profile: false
 <!-- ========== JOURNEY (Swimlane + Compact) ========== -->
 <section class="lt-section lt-fade-in">
   <h2 class="lt-section__title">Journey</h2>
-  <p style="font-size:0.88rem;color:#4a5568;line-height:1.7;margin-bottom:1rem">From translation studies to AI-mediated learning design, every step has brought me closer to one goal: becoming an instructional designer who harnesses AI to create equitable, human-centered learning experiences at scale.</p>
+  <div class="philo-box">From translation studies to AI-mediated learning design, every step has brought me closer to one goal: becoming an instructional designer who harnesses AI to create equitable, human-centered learning experiences at scale.</div>
   <style>
     .jny-filters{display:flex;gap:.4rem;margin-bottom:1rem;flex-wrap:wrap}
     .jny-fbtn{border:none;padding:.3rem .7rem;border-radius:6px;font-size:.7rem;font-weight:600;cursor:pointer;transition:all .2s}

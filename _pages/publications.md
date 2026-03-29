@@ -15,27 +15,29 @@ author_profile: true
   }
   .pub-page .research-stmt {
     position: relative;
-    color: #2d3748;
-    padding: 1.5rem 1.8rem;
+    color: #374151;
+    padding: 1.4rem 1.6rem;
     margin-bottom: 2.5rem;
-    background: linear-gradient(135deg, #f0f4ff 0%, #e8f4f8 40%, #fdf2f8 100%);
-    border-radius: 16px;
-    line-height: 1.8;
-    font-size: 0.95rem;
-    border: 1px solid rgba(99, 102, 241, 0.08);
-    box-shadow: 0 4px 24px rgba(99, 102, 241, 0.06), 0 1px 4px rgba(0, 0, 0, 0.03);
+    background: #fff;
+    border-radius: 14px;
+    line-height: 1.75;
+    font-size: 0.92rem;
+    border: 1px solid #e2e8f0;
     overflow: hidden;
+    cursor: default;
+    transition: box-shadow .4s, border-color .4s;
+  }
+  .pub-page .research-stmt:hover {
+    box-shadow: 0 4px 24px rgba(99,102,241,.1);
+    border-color: rgba(139,92,246,.2);
   }
   .pub-page .research-stmt::before {
     content: "\201C";
     position: absolute;
-    top: -0.15rem; left: 1rem;
-    font-size: 4.5rem;
+    top: -0.1rem; left: 0.8rem;
+    font-size: 3.5rem;
     font-family: Georgia, serif;
-    background: linear-gradient(135deg, #6366f1, #8b5cf6, #ec4899);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    opacity: 0.25;
+    color: rgba(139,92,246,.12);
     line-height: 1;
   }
   .pub-page .research-stmt::after {
@@ -44,7 +46,11 @@ author_profile: true
     bottom: 0; left: 0; right: 0;
     height: 3px;
     background: linear-gradient(90deg, #6366f1, #8b5cf6, #ec4899, #f59e0b);
-    border-radius: 0 0 16px 16px;
+    opacity: 0;
+    transition: opacity .4s;
+  }
+  .pub-page .research-stmt:hover::after {
+    opacity: 1;
   }
   .pub-page .stats {
     font-size: 0.85rem; color: #718096; margin-bottom: 1.5rem;
