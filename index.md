@@ -227,6 +227,25 @@ author_profile: false
       dots.push({el:g,p:p,pos:pos,c:c});
     });
 
+    // web lines connecting dots
+    var webLinks=[
+      ['claw','genai'],['genai','pete'],           // literacy axis chain
+      ['pete','nontrad'],['nontrad','idle-r'],      // literacy → cross → idle
+      ['idle-r','lowinc'],['lowinc','doubao'],      // idle → cross → equity
+      ['doubao','global'],['global','tpxj'],        // equity → cross → tpack
+      ['nontrad','lowinc'],['lowinc','global'],['global','nontrad'] // cross-domain triangle
+    ];
+    var dotMap={};dots.forEach(function(d){dotMap[d.p.id]=d;});
+    var webEls=[];
+    webLinks.forEach(function(pair){
+      var a=dotMap[pair[0]],b=dotMap[pair[1]];
+      if(!a||!b)return;
+      var ln=el('line',{x1:a.pos.x.toFixed(1),y1:a.pos.y.toFixed(1),x2:b.pos.x.toFixed(1),y2:b.pos.y.toFixed(1),
+        stroke:'#94a3b8','stroke-width':'.7','stroke-dasharray':'4 3',opacity:'0',style:'pointer-events:none;transition:opacity .5s'});
+      svg.insertBefore(ln,dots[0].el);
+      webEls.push(ln);
+    });
+
     /* ---- entry animation ---- */
     var entered=false;
     function runEntry(){
@@ -247,6 +266,10 @@ author_profile: false
         setTimeout(function(){d.el.style.transition='opacity .35s ease,transform .35s '+ease;d.el.style.opacity='1';d.el.style.transform='scale(1)';},850+i*65);
       });
       S.forEach(function(s,i){setTimeout(function(){lblEls[s.id].style.transition='opacity .5s ease';lblEls[s.id].style.opacity='1';},1200+i*70);});
+      // web lines fade in after dots
+      webEls.forEach(function(ln,i){
+        setTimeout(function(){ln.setAttribute('opacity','.25');},1100+i*50);
+      });
     }
     var obs=new IntersectionObserver(function(en){if(en[0].isIntersecting){runEntry();obs.disconnect();}},{threshold:.15});
     obs.observe(svg);
