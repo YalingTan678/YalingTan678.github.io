@@ -530,6 +530,7 @@
       .lt-footer__text {
         font-size: 0.78rem;
         color: var(--color-text-light);
+        text-align: center;
       }
 
       /* ========== SCROLL ANIMATION ========== */
@@ -644,7 +645,8 @@
 
     <!-- FOOTER -->
     <footer class="lt-footer">
-      <p class="lt-footer__text">&copy; {{ site.time | date: '%Y' }} Lily Tan &middot; Purdue University &middot; Updated {{ "now" | date: '%Y-%m-%d' }}</p>
+      <p class="lt-footer__text">Copyright &copy; 2025&ndash;{{ site.time | date: '%Y' }} Lily Tan. All Rights Reserved. The website was designed by Lily Tan and built with Jekyll and GitHub Pages.</p>
+      <p class="lt-footer__text" style="margin-top:0.3rem">Purdue University &middot; Updated {{ "now" | date: '%Y-%m-%d' }}</p>
     </footer>
 
     {% include scripts.html %}
