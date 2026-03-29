@@ -575,8 +575,8 @@ author_profile: false
     .jny-filters{display:flex;gap:.4rem;margin-bottom:1rem;flex-wrap:wrap}
     .jny-fbtn{border:none;padding:.3rem .7rem;border-radius:6px;font-size:.7rem;font-weight:600;cursor:pointer;transition:all .2s}
     .jny-fbtn.active{color:#fff!important;background:#1a1a2e!important}
-    .jny-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
-    .jny-table{width:100%;min-width:560px;border-collapse:collapse}
+    .jny-wrap{-webkit-overflow-scrolling:touch;position:relative}
+    .jny-table{width:100%;border-collapse:collapse}
     .jny-table th{font-size:.7rem;font-weight:700;padding:.6rem .4rem;text-align:center;border-bottom:2px solid #e2e8f0;color:#94a3b8;position:sticky;top:0;background:#fff;z-index:2}
     .jny-table th.jny-now{color:#5b21b6;position:relative}
     .jny-table th.jny-now::after{content:'';position:absolute;bottom:-2px;left:20%;right:20%;height:3px;background:#8b5cf6;border-radius:2px}
@@ -592,8 +592,8 @@ author_profile: false
     .jny-chip.highlight{border-width:2px;font-size:.72rem}
     .jny-chip.upcoming{border-style:dashed}
     .jny-tag{display:inline-block;font-size:.5rem;font-weight:700;padding:.1rem .35rem;border-radius:4px;margin-left:.3rem;vertical-align:middle;letter-spacing:.03em}
-    .jny-tip{position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%) scale(.9);opacity:0;pointer-events:none;background:#fff;color:#475569;font-size:.62rem;line-height:1.5;padding:.55rem .75rem;border-radius:10px;white-space:nowrap;z-index:20;transition:opacity .25s,transform .25s;box-shadow:0 4px 20px rgba(0,0,0,.12);border:1px solid #e2e8f0}
-    .jny-tip::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);border:5px solid transparent;border-top-color:#fff}
+    .jny-tip{position:absolute;top:calc(100% + 8px);left:50%;transform:translateX(-50%) scale(.9);opacity:0;pointer-events:none;background:#fff;color:#475569;font-size:.62rem;line-height:1.5;padding:.55rem .75rem;border-radius:10px;white-space:nowrap;z-index:20;transition:opacity .25s,transform .25s;box-shadow:0 4px 20px rgba(0,0,0,.12);border:1px solid #e2e8f0}
+    .jny-tip::after{content:'';position:absolute;bottom:100%;left:50%;transform:translateX(-50%);border:5px solid transparent;border-bottom-color:#fff}
     .jny-tip strong{color:#1a1a2e}
     .jny-tipwrap:hover .jny-tip{opacity:1;transform:translateX(-50%) scale(1)}
   </style>
