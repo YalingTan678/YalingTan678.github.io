@@ -95,7 +95,6 @@ author_profile: false
       {id:'tpxj',l:'TPACK Xinjiang Study',s:'tpack',r:160,t:'progress',v:'Education Sciences',y:2026,st:'In Review',lk:'/publication/ur-tpack-xinjiang',d:'How ethnic and cultural context shapes technology integration knowledge among trainee teachers in Western China.'},
       {id:'idle-r',l:'IDLE Literature Review',s:'idle',r:165,t:'progress',v:'In Progress',y:2026,st:'In Progress',lk:null,d:'Comprehensive literature review of informal digital learning of English (IDLE) research.'},
       {id:'doubao',l:'Doubao \u00b7 PE (Q2) \'26',s:'equity',r:145,t:'publication',v:'Practical English',y:2026,st:'Published',lk:'/publication/2026-doubao-genai-efl',d:'Doubao as a GenAI scaffold in senior high school EFL writing.'},
-      {id:'nontrad',l:'NonTrad \u00d7 ChatGPT \u00b7 BJET \'25',cs:['literacy','idle'],a:225,r:185,t:'publication',v:'BJET',y:2025,st:'Published',lk:null,d:'Exploring non-traditional learners\' engagement with ChatGPT for informal language learning.'},
       {id:'lowinc',l:'Low-Income & ChatGPT \u00b7 Lang. \'23',cs:['idle','equity'],a:135,r:185,t:'publication',v:'Language',y:2023,st:'Published',lk:null,d:'Investigating ChatGPT usage patterns among low-income language learners.'},
       {id:'global',l:'Global Learners Study',cs:['equity','tpack'],a:45,r:185,t:'progress',v:'In Progress',y:2026,st:'In Progress',lk:null,d:'Study examining technology access and outcomes for global learners across diverse contexts.'}
     ];

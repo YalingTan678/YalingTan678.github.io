@@ -305,7 +305,7 @@ My service philosophy is to strengthen academic communities through reliable and
 
 <!-- Purdue RA -->
 <div class="svc-card">
-  <div class="svc-card__img" style="display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#eef4ff,#f8fafc);font-size:2.5rem;color:#94a3b8">&#128218;</div>
+  <div class="svc-card__img"><img src="/images/service/purdue-lsis.png" alt="Purdue University Libraries and School of Information Studies"></div>
   <div class="svc-card__body">
     <div class="svc-card__header">
       <span class="svc-card__org">Purdue University, Library &amp; School of Information Studies</span>
