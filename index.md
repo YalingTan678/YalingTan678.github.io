@@ -596,6 +596,8 @@ author_profile: false
     .jny-tip::after{content:'';position:absolute;bottom:100%;left:50%;transform:translateX(-50%);border:5px solid transparent;border-bottom-color:#fff}
     .jny-tip strong{color:#1a1a2e}
     .jny-tipwrap:hover .jny-tip{opacity:1;transform:translateX(-50%) scale(1)}
+    .jny-frame{background:#fff;border-radius:16px;padding:1.2rem;box-shadow:0 2px 16px rgba(0,0,0,.06);border:1px solid #e2e8f0;position:relative;overflow:hidden}
+    .jny-frame::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#0D9488,#7C3AED,#0369A1,#EA580C,#ec4899)}
   </style>
   <!-- Filter buttons -->
   <div class="jny-filters">
@@ -606,6 +608,7 @@ author_profile: false
     <button class="jny-fbtn" style="background:#f0fdfa;color:#14b8a6" onclick="jnyFilter('work',this)">Experience</button>
     <button class="jny-fbtn" style="background:#fdf2f8;color:#ec4899" onclick="jnyFilter('award',this)">Awards</button>
   </div>
+  <div class="jny-frame">
   <div class="jny-wrap">
     <table class="jny-table">
       <thead><tr><th></th><th>2022</th><th>2023</th><th>2024</th><th class="jny-now">2025</th><th>2026</th></tr></thead>
@@ -649,6 +652,7 @@ author_profile: false
         </tr>
       </tbody>
     </table>
+  </div>
   </div>
   <script>
   function jnyFilter(cat,btn){
