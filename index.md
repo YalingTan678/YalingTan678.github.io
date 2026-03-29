@@ -272,9 +272,9 @@ author_profile: false
         if(own){
           var lx,la;
           if(d.pos.x<CX-50){lx=d.pos.x-14;la='end';}else{lx=d.pos.x+14;la='start';}
-          var t=el('text',{x:lx,y:d.pos.y-3,'text-anchor':la,'font-size':'9','font-weight':'600',fill:d.c,class:'rdr-mini rdr-mini-anim'});
+          var t=el('text',{x:lx,y:d.pos.y-5,'text-anchor':la,'font-size':'12.5','font-weight':'700',fill:d.c,class:'rdr-mini rdr-mini-anim'});
           t.textContent=d.p.l;svg.appendChild(t);miniEls.push(t);
-          var t2=el('text',{x:lx,y:d.pos.y+8,'text-anchor':la,'font-size':'7.5',fill:'#64748b',class:'rdr-mini rdr-mini-anim',style:'animation-delay:.08s'});
+          var t2=el('text',{x:lx,y:d.pos.y+10,'text-anchor':la,'font-size':'10',fill:'#64748b',class:'rdr-mini rdr-mini-anim',style:'animation-delay:.08s'});
           t2.textContent=d.p.v+' \u00b7 '+d.p.y;svg.appendChild(t2);miniEls.push(t2);
         }
       });
