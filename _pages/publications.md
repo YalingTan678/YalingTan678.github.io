@@ -6,6 +6,7 @@ author_profile: true
 ---
 
 <style>
+  /* G-style philosophy box */
   .pub-page { font-size: 0.95rem; line-height: 1.75; }
   .pub-page h2 {
     font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em;
