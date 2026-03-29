@@ -479,60 +479,92 @@ author_profile: false
 <section class="lt-section lt-fade-in">
   <h2 class="lt-section__title">Methodology</h2>
   <p style="font-size:0.88rem;color:#4a5568;line-height:1.7;margin-bottom:1rem">I combine large-scale evidence synthesis with in-depth qualitative inquiry and iterative design. Each method feeds the next: reviews surface gaps, mixed methods explore them, statistics test claims, and design-based research translates findings into tools educators can actually use.</p>
-  <div style="position:relative;padding:2.5rem 1rem 2rem;overflow:hidden;border-radius:20px">
-    <!-- Background ellipses (matching Venn diagram style) -->
-    <svg style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0" viewBox="0 0 800 280" preserveAspectRatio="none">
-      <defs>
-        <radialGradient id="mg-teal" cx="15%" cy="50%" r="35%"><stop offset="0%" stop-color="#5eead4" stop-opacity="0.45"/><stop offset="60%" stop-color="#2dd4bf" stop-opacity="0.18"/><stop offset="100%" stop-color="#0D9488" stop-opacity="0"/></radialGradient>
-        <radialGradient id="mg-purple" cx="38%" cy="45%" r="30%"><stop offset="0%" stop-color="#c4b5fd" stop-opacity="0.4"/><stop offset="60%" stop-color="#8b5cf6" stop-opacity="0.15"/><stop offset="100%" stop-color="#7C3AED" stop-opacity="0"/></radialGradient>
-        <radialGradient id="mg-sky" cx="62%" cy="55%" r="30%"><stop offset="0%" stop-color="#7dd3fc" stop-opacity="0.4"/><stop offset="60%" stop-color="#0ea5e9" stop-opacity="0.15"/><stop offset="100%" stop-color="#0369A1" stop-opacity="0"/></radialGradient>
-        <radialGradient id="mg-orange" cx="85%" cy="50%" r="35%"><stop offset="0%" stop-color="#fdba74" stop-opacity="0.45"/><stop offset="60%" stop-color="#f97316" stop-opacity="0.18"/><stop offset="100%" stop-color="#EA580C" stop-opacity="0"/></radialGradient>
-      </defs>
-      <ellipse cx="120" cy="140" rx="220" ry="180" fill="url(#mg-teal)"/>
-      <ellipse cx="310" cy="140" rx="200" ry="170" fill="url(#mg-purple)"/>
-      <ellipse cx="500" cy="140" rx="200" ry="170" fill="url(#mg-sky)"/>
-      <ellipse cx="680" cy="140" rx="220" ry="180" fill="url(#mg-orange)"/>
-    </svg>
-    <!-- Dashed connecting line -->
-    <div style="position:absolute;top:52px;left:10%;right:10%;height:1px;border-top:1.5px dashed rgba(148,163,184,0.35);z-index:1"></div>
-    <!-- Cards -->
-    <div style="display:flex;align-items:flex-start;gap:0;position:relative;z-index:2">
-      <!-- Card 1 -->
-      <div style="flex:1;text-align:center;padding:0 0.8rem;cursor:default;transition:transform 0.4s" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform=''">
-        <div style="width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,0.85);backdrop-filter:blur(6px);border:1.5px solid rgba(13,148,136,0.2);margin:0 auto 0.7rem;display:flex;align-items:center;justify-content:center;font-size:1.3rem;box-shadow:0 4px 16px rgba(13,148,136,0.12);transition:box-shadow 0.4s" onmouseover="this.style.boxShadow='0 8px 24px rgba(13,148,136,0.22)'" onmouseout="this.style.boxShadow='0 4px 16px rgba(13,148,136,0.12)'">&#128269;</div>
-        <div style="font-size:0.82rem;font-weight:700;color:#0D9488;margin-bottom:0.25rem">Systematic Reviews</div>
-        <div style="font-size:0.68rem;color:#475569;line-height:1.5">PRISMA · Scoping<br>Meta-analyses</div>
-        <div style="margin-top:0.5rem;font-size:0.58rem;color:#0D9488;font-weight:600;letter-spacing:0.05em;opacity:0.8">144 ARTICLES SCREENED</div>
-      </div>
-      <!-- Dot connector -->
-      <div style="padding-top:22px;color:rgba(148,163,184,0.4);font-size:0.5rem;z-index:2">&#9679;</div>
-      <!-- Card 2 -->
-      <div style="flex:1;text-align:center;padding:0 0.8rem;cursor:default;transition:transform 0.4s" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform=''">
-        <div style="width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,0.85);backdrop-filter:blur(6px);border:1.5px solid rgba(124,58,237,0.2);margin:0 auto 0.7rem;display:flex;align-items:center;justify-content:center;font-size:1.3rem;box-shadow:0 4px 16px rgba(124,58,237,0.12);transition:box-shadow 0.4s" onmouseover="this.style.boxShadow='0 8px 24px rgba(124,58,237,0.22)'" onmouseout="this.style.boxShadow='0 4px 16px rgba(124,58,237,0.12)'">&#128300;</div>
-        <div style="font-size:0.82rem;font-weight:700;color:#7C3AED;margin-bottom:0.25rem">Mixed Methods</div>
-        <div style="font-size:0.68rem;color:#475569;line-height:1.5">Quan + Qual<br>Surveys · Interviews</div>
-        <div style="margin-top:0.5rem;font-size:0.58rem;color:#7C3AED;font-weight:600;letter-spacing:0.05em;opacity:0.8">CONVERGENT DESIGN</div>
-      </div>
-      <!-- Dot connector -->
-      <div style="padding-top:22px;color:rgba(148,163,184,0.4);font-size:0.5rem;z-index:2">&#9679;</div>
-      <!-- Card 3 -->
-      <div style="flex:1;text-align:center;padding:0 0.8rem;cursor:default;transition:transform 0.4s" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform=''">
-        <div style="width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,0.85);backdrop-filter:blur(6px);border:1.5px solid rgba(14,165,233,0.2);margin:0 auto 0.7rem;display:flex;align-items:center;justify-content:center;font-size:1.3rem;box-shadow:0 4px 16px rgba(14,165,233,0.12);transition:box-shadow 0.4s" onmouseover="this.style.boxShadow='0 8px 24px rgba(14,165,233,0.22)'" onmouseout="this.style.boxShadow='0 4px 16px rgba(14,165,233,0.12)'">&#128200;</div>
-        <div style="font-size:0.82rem;font-weight:700;color:#0369A1;margin-bottom:0.25rem">Statistical Analysis</div>
-        <div style="font-size:0.68rem;color:#475569;line-height:1.5">SPSS · Prism<br>ANOVA · Coh-Metrix</div>
-        <div style="margin-top:0.5rem;font-size:0.58rem;color:#0369A1;font-weight:600;letter-spacing:0.05em;opacity:0.8">108 INDICES TESTED</div>
-      </div>
-      <!-- Dot connector -->
-      <div style="padding-top:22px;color:rgba(148,163,184,0.4);font-size:0.5rem;z-index:2">&#9679;</div>
-      <!-- Card 4 -->
-      <div style="flex:1;text-align:center;padding:0 0.8rem;cursor:default;transition:transform 0.4s" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform=''">
-        <div style="width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,0.85);backdrop-filter:blur(6px);border:1.5px solid rgba(234,88,12,0.2);margin:0 auto 0.7rem;display:flex;align-items:center;justify-content:center;font-size:1.3rem;box-shadow:0 4px 16px rgba(234,88,12,0.12);transition:box-shadow 0.4s" onmouseover="this.style.boxShadow='0 8px 24px rgba(234,88,12,0.22)'" onmouseout="this.style.boxShadow='0 4px 16px rgba(234,88,12,0.12)'">&#127919;</div>
-        <div style="font-size:0.82rem;font-weight:700;color:#EA580C;margin-bottom:0.25rem">Design-Based Research</div>
-        <div style="font-size:0.68rem;color:#475569;line-height:1.5">Iterative cycles<br>In-vivo prototyping</div>
-        <div style="margin-top:0.5rem;font-size:0.58rem;color:#EA580C;font-weight:600;letter-spacing:0.05em;opacity:0.8">4 DBR PHASES</div>
-      </div>
+  <style>
+    .meth-wrap{display:flex;gap:14px}
+    .meth-card{flex:1;padding:1.4rem 1rem;text-align:center;border-radius:14px;background:#fff;position:relative;cursor:default;
+      opacity:0;transform:translateY(20px) scale(.96);transition:opacity .6s ease,transform .6s ease,box-shadow .4s,flex .5s ease}
+    .meth-wrap.meth-visible .meth-card{opacity:1;transform:translateY(0) scale(1)}
+    .meth-wrap.meth-visible .meth-card:nth-child(1){transition-delay:.1s}
+    .meth-wrap.meth-visible .meth-card:nth-child(2){transition-delay:.3s}
+    .meth-wrap.meth-visible .meth-card:nth-child(3){transition-delay:.5s}
+    .meth-wrap.meth-visible .meth-card:nth-child(4){transition-delay:.7s}
+    .meth-card:nth-child(1){box-shadow:0 4px 20px rgba(13,148,136,.12)}
+    .meth-card:nth-child(2){box-shadow:0 4px 20px rgba(124,58,237,.12)}
+    .meth-card:nth-child(3){box-shadow:0 4px 20px rgba(3,105,161,.12)}
+    .meth-card:nth-child(4){box-shadow:0 4px 20px rgba(234,88,12,.12)}
+    .meth-card:hover{transform:translateY(-6px) scale(1.03)!important;z-index:10;flex:1.5}
+    .meth-card:nth-child(1):hover{box-shadow:0 10px 32px rgba(13,148,136,.22)}
+    .meth-card:nth-child(2):hover{box-shadow:0 10px 32px rgba(124,58,237,.22)}
+    .meth-card:nth-child(3):hover{box-shadow:0 10px 32px rgba(3,105,161,.22)}
+    .meth-card:nth-child(4):hover{box-shadow:0 10px 32px rgba(234,88,12,.22)}
+    .meth-num{font-size:1.8rem;font-weight:700;opacity:.1;margin-bottom:.15rem}
+    .meth-title{font-size:.82rem;font-weight:700;margin-bottom:.25rem}
+    .meth-sub{font-size:.65rem;color:#64748b;line-height:1.4}
+    .meth-counter{margin-top:.5rem;font-size:1.05rem;font-weight:700;opacity:.65;font-variant-numeric:tabular-nums}
+    .meth-counter-label{font-size:.5rem;text-transform:uppercase;letter-spacing:.06em;color:#94a3b8;font-weight:600}
+    .meth-detail{max-height:0;overflow:hidden;transition:max-height .5s ease,opacity .4s ease,margin .4s ease;opacity:0;font-size:.62rem;color:#94a3b8;line-height:1.5;margin-top:0}
+    .meth-card:hover .meth-detail{max-height:80px;opacity:1;margin-top:.5rem}
+    .meth-dot{width:6px;height:6px;border-radius:50%;margin:8px auto 0;opacity:.4}
+  </style>
+  <div class="meth-wrap" id="meth-cards">
+    <!-- Card 1 -->
+    <div class="meth-card">
+      <div class="meth-num" style="color:#0D9488">01</div>
+      <div class="meth-title" style="color:#0D9488">Systematic Reviews</div>
+      <div class="meth-sub">PRISMA · Scoping<br>Meta-analyses</div>
+      <div class="meth-counter" style="color:#0D9488"><span class="meth-cnt" data-target="144">0</span></div>
+      <div class="meth-counter-label">Articles Screened</div>
+      <div class="meth-detail">Synthesizing evidence across 144 articles to identify research gaps and emerging patterns in AI-assisted learning.</div>
+      <div class="meth-dot" style="background:#0D9488"></div>
+    </div>
+    <!-- Card 2 -->
+    <div class="meth-card">
+      <div class="meth-num" style="color:#7C3AED">02</div>
+      <div class="meth-title" style="color:#7C3AED">Mixed Methods</div>
+      <div class="meth-sub">Quan + Qual<br>Surveys · Interviews</div>
+      <div class="meth-counter" style="color:#7C3AED">Convergent</div>
+      <div class="meth-counter-label">Design Approach</div>
+      <div class="meth-detail">Triangulating survey data with interview insights using convergent mixed-methods design for richer, validated findings.</div>
+      <div class="meth-dot" style="background:#7C3AED"></div>
+    </div>
+    <!-- Card 3 -->
+    <div class="meth-card">
+      <div class="meth-num" style="color:#0369A1">03</div>
+      <div class="meth-title" style="color:#0369A1">Statistical Analysis</div>
+      <div class="meth-sub">SPSS · Prism<br>ANOVA · Coh-Metrix</div>
+      <div class="meth-counter" style="color:#0369A1"><span class="meth-cnt" data-target="108">0</span></div>
+      <div class="meth-counter-label">Indices Tested</div>
+      <div class="meth-detail">Rigorous quantitative analysis using 108 linguistic and performance indices across multiple datasets.</div>
+      <div class="meth-dot" style="background:#0369A1"></div>
+    </div>
+    <!-- Card 4 -->
+    <div class="meth-card">
+      <div class="meth-num" style="color:#EA580C">04</div>
+      <div class="meth-title" style="color:#EA580C">Design-Based Research</div>
+      <div class="meth-sub">Iterative cycles<br>In-vivo prototyping</div>
+      <div class="meth-counter" style="color:#EA580C"><span class="meth-cnt" data-target="4">0</span></div>
+      <div class="meth-counter-label">DBR Phases</div>
+      <div class="meth-detail">Translating findings into real tools through iterative design-test-refine cycles in authentic classroom contexts.</div>
+      <div class="meth-dot" style="background:#EA580C"></div>
     </div>
   </div>
+  <script>
+  (function(){
+    var wrap=document.getElementById('meth-cards');if(!wrap)return;
+    function countUp(el){var t=+el.dataset.target,d=Math.max(18,1400/t),n=0;el.textContent='0';var iv=setInterval(function(){n++;el.textContent=n;if(n>=t)clearInterval(iv);},d);}
+    var fired=false;
+    var obs=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting&&!fired){
+          fired=true;
+          wrap.classList.add('meth-visible');
+          setTimeout(function(){wrap.querySelectorAll('.meth-cnt').forEach(function(c){countUp(c);});},800);
+        }
+      });
+    },{threshold:0.3});
+    obs.observe(wrap);
+  })();
+  </script>
 </section>
 
 <!-- ========== INTERACTIVE TIMELINE ========== -->
