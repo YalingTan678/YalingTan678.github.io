@@ -497,7 +497,7 @@ author_profile: false
     .meth-card:nth-child(2):hover{box-shadow:0 10px 32px rgba(124,58,237,.22)}
     .meth-card:nth-child(3):hover{box-shadow:0 10px 32px rgba(3,105,161,.22)}
     .meth-card:nth-child(4):hover{box-shadow:0 10px 32px rgba(234,88,12,.22)}
-    .meth-num{font-size:1.8rem;font-weight:700;opacity:.1;margin-bottom:.15rem}
+    .meth-num{font-size:1.8rem;font-weight:700;opacity:.35;margin-bottom:.15rem}
     .meth-title{font-size:.82rem;font-weight:700;margin-bottom:.25rem}
     .meth-sub{font-size:.65rem;color:#64748b;line-height:1.4}
     .meth-counter{margin-top:.5rem;font-size:1.05rem;font-weight:700;opacity:.65;font-variant-numeric:tabular-nums}
