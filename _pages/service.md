@@ -310,22 +310,6 @@ My service philosophy is to strengthen academic communities through reliable and
   </div>
 </div>
 
-<!-- Purdue RA -->
-<div class="svc-card">
-  <div class="svc-card__img"><img src="/images/service/purdue-lsis.png" alt="Purdue University Libraries and School of Information Studies"></div>
-  <div class="svc-card__body">
-    <div class="svc-card__header">
-      <span class="svc-card__org">Purdue University, Library &amp; School of Information Studies</span>
-      <span class="svc-card__meta">Sep 2025 &ndash; Present</span>
-    </div>
-    <div class="svc-card__role">Research Assistant</div>
-    <ul class="svc-card__desc">
-      <li>Participating in three research projects, including a scoping review, a study on AI-assisted learning in students' research projects, and an investigation of audio and video effects in librarians' teaching.</li>
-      <li>Screened, coded, and synthesized data for a scoping review encompassing over 20,000 articles.</li>
-      <li>Conducted literature searches and provided statistical analysis support for selected research projects.</li>
-    </ul>
-  </div>
-</div>
 
 <h2>Honors, Awards &amp; Recognitions</h2>
 
