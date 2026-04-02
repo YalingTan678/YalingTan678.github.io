@@ -546,7 +546,7 @@ I believe great design serves learning. Whether it's a course interface, a confe
   </div>
   <div class="nl-scroll-card" onclick="openLightbox('/images/design/paldt-w3.jpg')">
     <img src="/images/design/paldt-w3.jpg" alt="PALDT Newsletter W3">
-    <span class="nl-scroll-card__label">Fall 2025 W3</span>
+    <span class="nl-scroll-card__label">Sep 8, 2025</span>
   </div>
   <div class="nl-scroll-card" onclick="openLightbox('/images/design/paldt-oct06.jpg')">
     <img src="/images/design/paldt-oct06.jpg" alt="PALDT Newsletter Oct 6, 2025">
