@@ -156,6 +156,51 @@ author_profile: true
     font-weight: 500;
   }
 
+  /* ===== Featured Project (horizontal) ===== */
+  .featured-project {
+    display: flex;
+    gap: 1.5rem;
+    padding: 1.2rem;
+    border: 1px solid #e8edf5;
+    border-radius: 14px;
+    background: #fff;
+    align-items: stretch;
+    transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+  }
+  .featured-project:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+    border-color: #2a7ae2;
+  }
+  .featured-project__video {
+    position: relative;
+    flex-shrink: 0;
+    width: 340px;
+    min-height: 220px;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #000;
+    cursor: pointer;
+  }
+  .featured-project__video img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.85;
+    transition: transform 0.4s, opacity 0.3s;
+  }
+  .featured-project:hover .featured-project__video img {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+  .featured-project__info {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
   /* ===== Video Card ===== */
   .design-card__video {
     position: relative;
@@ -328,8 +373,8 @@ author_profile: true
     .design-content { font-size: 0.9rem; }
     .design-content .philosophy { padding: 1.2rem 1.3rem; font-size: 0.9rem; }
     .design-grid { grid-template-columns: 1fr; }
-    .design-card[style*="flex-direction:row"] { flex-direction: column !important; }
-    .design-card[style*="flex-direction:row"] .design-card__video { width: 100% !important; height: 200px !important; }
+    .featured-project { flex-direction: column; }
+    .featured-project__video { width: 100%; min-height: 200px; }
     .nl-scroll-card { width: 180px; height: 270px; }
   }
   @media (max-width: 400px) {
@@ -347,19 +392,28 @@ I believe great design serves learning. Whether it's a course interface, a confe
 
 <h2>Featured Projects</h2>
 
-<!-- Zotero Tutorial Video — horizontal layout -->
-<div class="design-card" style="flex-direction:row; align-items:stretch; cursor:pointer;" onclick="window.open('/files/zotero-tutorial.mp4','_blank')">
-  <div class="design-card__video" style="width:320px; height:auto; flex-shrink:0;">
-    <img src="/images/design/zotero-thumb.jpg" alt="Zotero Tutorial Video thumbnail" style="height:100%; object-fit:cover;">
+<!-- Purdue Libraries RA Video Series -->
+<div class="featured-project">
+  <div class="featured-project__video" onclick="window.open('/files/zotero-tutorial.mp4','_blank')">
+    <img src="/images/design/zotero-thumb.jpg" alt="Zotero Tutorial Video thumbnail">
     <div class="design-card__play"></div>
   </div>
-  <div class="design-card__body" style="justify-content:center;">
-    <div class="design-card__title">Zotero Reference Manager Tutorial</div>
-    <div class="design-card__tags">
+  <div class="featured-project__info">
+    <div class="design-card__title" style="font-size:1.05rem;">Purdue Libraries Instructional Video Series</div>
+    <div class="design-card__tags" style="margin-top:0.3rem;">
       <span class="design-tag design-tag--video">Video</span>
+      <span class="design-tag design-tag--canva">Canva</span>
     </div>
-    <div class="design-card__desc">A 2-minute instructional video tutorial on using Zotero for academic reference management. Produced as part of an RA project at Purdue Libraries.</div>
-    <span class="design-card__link">Watch video &rarr;</span>
+    <div class="design-card__desc" style="margin-top:0.6rem;">
+      As a Research Assistant at Purdue University Libraries &amp; School of Information Studies, I design and produce short instructional videos to support graduate students across the College of Education. This series aims to lower the barrier to essential research skills, covering topics such as:
+    </div>
+    <ul style="font-size:0.84rem; color:#4a5568; line-height:1.7; padding-left:1.2rem; margin:0.5rem 0 0;">
+      <li><strong>Zotero</strong> &mdash; reference management &amp; citation workflows</li>
+      <li><strong>Research Guides</strong> &mdash; navigating library databases &amp; resources</li>
+      <li><strong>Systematic Writing</strong> &mdash; structuring literature reviews &amp; academic papers</li>
+      <li><strong>Data Management</strong> &mdash; organizing research data for reproducibility</li>
+    </ul>
+    <span class="design-card__link" style="margin-top:0.8rem;" onclick="window.open('/files/zotero-tutorial.mp4','_blank')">Watch Zotero tutorial &rarr;</span>
   </div>
 </div>
 
