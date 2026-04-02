@@ -402,7 +402,7 @@ I believe great design serves learning. Whether it's a course interface, a confe
     <div class="design-card__title" style="font-size:1.05rem;">Purdue Libraries Instructional Video Series</div>
     <div class="design-card__tags" style="margin-top:0.3rem;">
       <span class="design-tag design-tag--video">Video</span>
-      <span class="design-tag design-tag--canva">Canva</span>
+      <span class="design-tag design-tag--web">Coding</span>
     </div>
     <div class="design-card__desc" style="margin-top:0.6rem;">
       As a Research Assistant at Purdue University Libraries &amp; School of Information Studies, I design and produce short instructional videos to support graduate students across the College of Education. This series aims to lower the barrier to essential research skills, covering topics such as:
