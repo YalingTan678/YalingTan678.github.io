@@ -156,15 +156,144 @@ author_profile: true
     font-weight: 500;
   }
 
+  /* ===== Video Card ===== */
+  .design-card__video {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    background: #000;
+    cursor: pointer;
+  }
+  .design-card__video img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+    opacity: 0.85;
+  }
+  .design-card:hover .design-card__video img {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+  .design-card__play {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 48px; height: 48px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.92);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .design-card:hover .design-card__play {
+    transform: translate(-50%, -50%) scale(1.1);
+    box-shadow: 0 6px 24px rgba(0,0,0,0.3);
+  }
+  .design-card__play::after {
+    content: '';
+    display: block;
+    width: 0; height: 0;
+    border-style: solid;
+    border-width: 8px 0 8px 14px;
+    border-color: transparent transparent transparent #2a7ae2;
+    margin-left: 3px;
+  }
+
+  /* ===== PALDT Newsletter Carousel ===== */
+  .design-card--wide {
+    grid-column: 1 / -1;
+    flex-direction: row;
+    align-items: stretch;
+  }
+  .design-card--wide .design-card__body {
+    flex: 1; min-width: 0;
+  }
+
+  .newsletter-carousel {
+    position: relative;
+    width: 100%;
+    height: 320px;
+    overflow: hidden;
+    border-radius: 14px;
+    border: 1px solid #e8edf5;
+    background: #f8fafc;
+  }
+  .newsletter-track {
+    display: flex;
+    height: 100%;
+    transition: transform 0.5s ease;
+  }
+  .newsletter-track img {
+    flex-shrink: 0;
+    width: 240px;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    border-right: 1px solid #e8edf5;
+    cursor: pointer;
+    transition: opacity 0.3s;
+  }
+  .newsletter-track img:hover { opacity: 0.88; }
+  .newsletter-track img:last-child { border-right: none; }
+
+  .carousel-btn {
+    position: absolute;
+    top: 50%; transform: translateY(-50%);
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.92);
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    cursor: pointer;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    transition: background 0.2s;
+    color: #374151;
+  }
+  .carousel-btn:hover { background: #fff; }
+  .carousel-btn--prev { left: 8px; }
+  .carousel-btn--next { right: 8px; }
+
+  /* ===== Lightbox ===== */
+  .design-lightbox {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.85);
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  .design-lightbox.active { display: flex; }
+  .design-lightbox img {
+    max-height: 90vh;
+    max-width: 90vw;
+    border-radius: 8px;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.4);
+  }
+
   /* Responsive */
   @media (max-width: 768px) {
     .design-content { font-size: 0.9rem; }
     .design-content .philosophy { padding: 1.2rem 1.3rem; font-size: 0.9rem; }
     .design-grid { grid-template-columns: 1fr; }
+    .design-card--wide { flex-direction: column; }
+    .newsletter-carousel { height: 260px; }
+    .newsletter-track img { width: 200px; }
   }
   @media (max-width: 400px) {
     .design-content .philosophy { padding: 1rem; margin-bottom: 1.5rem; }
     .design-card__img { height: 160px; }
+    .newsletter-carousel { height: 220px; }
+    .newsletter-track img { width: 160px; }
   }
 </style>
 
@@ -178,53 +307,88 @@ I believe great design serves learning. Whether it's a course interface, a confe
 
 <div class="design-grid">
 
-<!-- Example card 1 — replace with your real project -->
+<!-- Zotero Tutorial Video -->
 <div class="design-card">
-  <div class="design-card__img design-card__img--placeholder">
-    <!-- Replace with: <img src="/images/design/your-image.jpg" alt="..."> -->
-    &#x1f3a8;
+  <div class="design-card__video" onclick="window.open('/files/zotero-tutorial.mp4','_blank')">
+    <img src="/images/design/zotero-thumb.jpg" alt="Zotero Tutorial Video thumbnail">
+    <div class="design-card__play"></div>
   </div>
   <div class="design-card__body">
-    <div class="design-card__title">PALDT Social Media Graphics</div>
+    <div class="design-card__title">Zotero Reference Manager Tutorial</div>
     <div class="design-card__tags">
-      <span class="design-tag design-tag--canva">Canva</span>
-      <span class="design-tag design-tag--branding">Branding</span>
+      <span class="design-tag design-tag--video">Video</span>
     </div>
-    <div class="design-card__desc">Designed promotional materials for PALDT events and announcements, maintaining consistent visual identity across platforms.</div>
+    <div class="design-card__desc">A 2-minute instructional video tutorial on using Zotero for academic reference management. Produced as part of an RA project at Purdue Libraries.</div>
+    <span class="design-card__link" onclick="window.open('/files/zotero-tutorial.mp4','_blank')">Watch video &rarr;</span>
   </div>
 </div>
 
-<!-- Example card 2 — replace with your real project -->
+<!-- Personal Academic Website -->
 <div class="design-card">
-  <div class="design-card__img design-card__img--placeholder">
-    &#x1f4d0;
-  </div>
-  <div class="design-card__body">
-    <div class="design-card__title">Conference Poster Design</div>
-    <div class="design-card__tags">
-      <span class="design-tag design-tag--figma">Figma</span>
-      <span class="design-tag design-tag--print">Print</span>
-    </div>
-    <div class="design-card__desc">Academic poster designs for AERA, AECT, and other conference presentations.</div>
-  </div>
-</div>
-
-<!-- Example card 3 — replace with your real project -->
-<div class="design-card">
-  <div class="design-card__img design-card__img--placeholder">
-    &#x1f310;
+  <div class="design-card__img">
+    <img src="/images/profile-v2.jpg" alt="Personal academic website">
   </div>
   <div class="design-card__body">
     <div class="design-card__title">Personal Academic Website</div>
     <div class="design-card__tags">
       <span class="design-tag design-tag--web">Web</span>
     </div>
-    <div class="design-card__desc">Designed and built this academic portfolio site using Jekyll and GitHub Pages.</div>
+    <div class="design-card__desc">Designed and built this academic portfolio site using Jekyll and GitHub Pages, featuring custom card layouts, interactive components, and responsive design.</div>
   </div>
 </div>
 
-<!-- Add more cards below as needed -->
+</div>
 
+<h2>PALDT Newsletters</h2>
+
+<p style="font-size:0.88rem;color:#4a5568;margin-bottom:1rem;">
+  Biweekly newsletters designed for the Purdue Association of Learning Design and Technology (PALDT) as Marketing &amp; Design Officer. Created with Publicate, covering announcements, workshops, events, and community spotlights.
+</p>
+
+<div class="newsletter-carousel" id="newsletterCarousel">
+  <div class="newsletter-track" id="newsletterTrack">
+    <img src="/images/design/paldt-mar22.jpg" alt="PALDT Newsletter Mar 22, 2026" onclick="openLightbox(this.src)">
+    <img src="/images/design/paldt-mar09.jpg" alt="PALDT Newsletter Mar 9, 2026" onclick="openLightbox(this.src)">
+    <img src="/images/design/paldt-jan26.jpg" alt="PALDT Newsletter Jan 26, 2026" onclick="openLightbox(this.src)">
+    <img src="/images/design/paldt-w3.jpg" alt="PALDT Newsletter W3" onclick="openLightbox(this.src)">
+    <img src="/images/design/paldt-oct06.jpg" alt="PALDT Newsletter Oct 6, 2025" onclick="openLightbox(this.src)">
+    <img src="/images/design/paldt-sep22.jpg" alt="PALDT Newsletter Sep 22, 2025" onclick="openLightbox(this.src)">
+    <img src="/images/design/paldt-sep08.jpg" alt="PALDT Newsletter Sep 8, 2025" onclick="openLightbox(this.src)">
+  </div>
+  <button class="carousel-btn carousel-btn--prev" onclick="scrollCarousel(-1)">&lsaquo;</button>
+  <button class="carousel-btn carousel-btn--next" onclick="scrollCarousel(1)">&rsaquo;</button>
+</div>
+
+<div class="design-lightbox" id="designLightbox" onclick="this.classList.remove('active')">
+  <img src="" alt="Newsletter full view" id="lightboxImg">
 </div>
 
 </div>
+
+<script>
+// Newsletter carousel
+var track = document.getElementById('newsletterTrack');
+var carousel = document.getElementById('newsletterCarousel');
+var pos = 0;
+
+function scrollCarousel(dir) {
+  var step = 260;
+  var maxScroll = track.scrollWidth - carousel.offsetWidth;
+  pos = Math.max(0, Math.min(pos + dir * step, maxScroll));
+  track.style.transform = 'translateX(-' + pos + 'px)';
+}
+
+// Lightbox
+function openLightbox(src) {
+  var lb = document.getElementById('designLightbox');
+  document.getElementById('lightboxImg').src = src;
+  lb.classList.add('active');
+}
+
+// Close on Escape
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    document.getElementById('designLightbox').classList.remove('active');
+  }
+});
+</script>
