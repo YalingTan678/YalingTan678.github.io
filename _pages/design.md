@@ -201,6 +201,80 @@ author_profile: true
     justify-content: center;
   }
 
+  /* ===== Dark Featured Project ===== */
+  .featured-project--dark {
+    background: #0f0f17;
+    border-color: rgba(255,255,255,0.08);
+    text-decoration: none;
+    color: inherit;
+  }
+  .featured-project--dark:hover {
+    border-color: #818cf8;
+    color: inherit;
+    text-decoration: none;
+  }
+  .featured-project--dark .design-card__title { color: #f1f5f9; }
+  .featured-project--dark .design-card__desc { color: #94a3b8; }
+  .featured-project--dark ul { color: #94a3b8; }
+  .featured-project--dark .design-card__link { color: #818cf8; }
+
+  .featured-project__preview {
+    flex-shrink: 0;
+    width: 340px;
+    min-height: 220px;
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Mini hero mock of the Interview Prep site */
+  .ips-hero-mock {
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(ellipse at 50% 50%, rgba(99,102,241,0.2) 0%, #0a0a0f 70%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    gap: 0.6rem;
+  }
+  .ips-hero-mock .ips-tag {
+    display: inline-block;
+    padding: 0.2rem 0.6rem;
+    border-radius: 999px;
+    font-size: 0.6rem;
+    font-weight: 500;
+    border: 1px solid rgba(255,255,255,0.1);
+    background: rgba(255,255,255,0.05);
+    color: #94a3b8;
+  }
+  .ips-hero-mock .ips-title {
+    font-size: 1.3rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #818cf8, #c084fc, #f472b6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 0.3rem 0;
+  }
+  .ips-hero-mock .ips-stats {
+    display: flex;
+    gap: 1.2rem;
+    font-size: 0.75rem;
+    color: #64748b;
+  }
+  .ips-hero-mock .ips-stats strong {
+    font-size: 1.1rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #818cf8, #c084fc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: block;
+    text-align: center;
+  }
+
   /* ===== Video Card ===== */
   .design-card__video {
     position: relative;
@@ -375,6 +449,7 @@ author_profile: true
     .design-grid { grid-template-columns: 1fr; }
     .featured-project { flex-direction: column; }
     .featured-project__video { width: 100%; min-height: 200px; }
+    .featured-project__preview { width: 100%; min-height: 180px; }
     .nl-scroll-card { width: 180px; height: 270px; }
   }
   @media (max-width: 400px) {
@@ -416,6 +491,42 @@ I believe great design serves learning. Whether it's a course interface, a confe
     <span class="design-card__link" style="margin-top:0.8rem;" onclick="window.open('/files/zotero-tutorial.mp4','_blank')">Watch Zotero tutorial &rarr;</span>
   </div>
 </div>
+
+<!-- Interview Prep Skills -->
+<a class="featured-project featured-project--dark" href="https://github.com/YalingTan678/interview-prep-skills" target="_blank">
+  <div class="featured-project__preview">
+    <div class="ips-hero-mock">
+      <span class="ips-tag">Undergrad</span>
+      <span class="ips-tag">Master's</span>
+      <span class="ips-tag">PhD</span>
+      <span class="ips-tag">Claude Code Skill</span>
+      <div class="ips-title">Interview Prep Skills</div>
+      <div class="ips-stats">
+        <span><strong>11</strong> Skills</span>
+        <span><strong>3</strong> Workflows</span>
+        <span><strong>4</strong> Frameworks</span>
+      </div>
+    </div>
+  </div>
+  <div class="featured-project__info">
+    <div class="design-card__title" style="font-size:1.05rem;">Interview Prep Skills</div>
+    <div class="design-card__tags" style="margin-top:0.3rem;">
+      <span class="design-tag design-tag--web">Web</span>
+      <span class="design-tag" style="background:#ede9fe;color:#7c3aed;">Claude Code</span>
+    </div>
+    <div class="design-card__desc" style="margin-top:0.6rem;">
+      A systematic, framework-driven interview preparation system designed for university students. Built as a Claude Code skill suite with 11 interactive skills covering the full interview lifecycle:
+    </div>
+    <ul style="font-size:0.84rem; color:#4a5568; line-height:1.7; padding-left:1.2rem; margin:0.5rem 0 0;">
+      <li><strong>Role Investigator</strong> &mdash; decode job descriptions &amp; identify key competencies</li>
+      <li><strong>Resume Tailor</strong> &mdash; customize resumes per role with keyword alignment</li>
+      <li><strong>Mock Interview</strong> &mdash; AI-powered practice with real-time feedback</li>
+      <li><strong>Value Proposition</strong> &mdash; craft compelling personal narratives</li>
+      <li><strong>Thank-You Note</strong> &mdash; generate personalized follow-ups</li>
+    </ul>
+    <span class="design-card__link" style="margin-top:0.8rem;">View on GitHub &rarr;</span>
+  </div>
+</a>
 
 <h2 style="margin-top:1.5rem;">PALDT Newsletters</h2>
 
