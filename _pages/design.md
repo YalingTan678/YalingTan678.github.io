@@ -499,7 +499,7 @@ I believe great design serves learning. Whether it's a course interface, a confe
       <span class="ips-tag">Undergrad</span>
       <span class="ips-tag">Master's</span>
       <span class="ips-tag">PhD</span>
-      <span class="ips-tag">Claude Code Skill</span>
+      <span class="ips-tag">Agent Skills Skill</span>
       <div class="ips-title">Interview Prep Skills</div>
       <div class="ips-stats">
         <span><strong>11</strong> Skills</span>
@@ -512,10 +512,10 @@ I believe great design serves learning. Whether it's a course interface, a confe
     <div class="design-card__title" style="font-size:1.05rem;">Interview Prep Skills</div>
     <div class="design-card__tags" style="margin-top:0.3rem;">
       <span class="design-tag design-tag--web">Web</span>
-      <span class="design-tag" style="background:#ede9fe;color:#7c3aed;">Claude Code</span>
+      <span class="design-tag" style="background:#ede9fe;color:#7c3aed;">Agent Skills</span>
     </div>
     <div class="design-card__desc" style="margin-top:0.6rem;">
-      A systematic, framework-driven interview preparation system designed for university students. Built as a Claude Code skill suite with 11 interactive skills covering the full interview lifecycle:
+      A systematic, framework-driven interview preparation system designed for university students. Built as a Agent Skills skill suite with 11 interactive skills covering the full interview lifecycle:
     </div>
     <ul style="font-size:0.84rem; color:#4a5568; line-height:1.7; padding-left:1.2rem; margin:0.5rem 0 0;">
       <li><strong>Role Investigator</strong> &mdash; decode job descriptions &amp; identify key competencies</li>
