@@ -187,7 +187,7 @@ I study how emerging technologies transform education beyond the classroom. My w
 </div>
 
 <p class="stats">
-  <a href="{{ site.author.googlescholar }}">Google Scholar</a> &middot; Citation: 48 &middot; h-index: 2
+  <a href="{{ site.author.googlescholar }}">Google Scholar</a> &middot; Citation: {{ site.data.scholar.citations_all }} &middot; h-index: {{ site.data.scholar.h_index_all }}
 </p>
 
 <h2>Peer-Reviewed Journal Articles</h2>

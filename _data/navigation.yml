@@ -7,6 +7,9 @@ main:
   - title: "Teaching"
     url: /teaching/
 
+  - title: "Design"
+    url: /design/
+
   - title: "Service"
     url: /service/
 
