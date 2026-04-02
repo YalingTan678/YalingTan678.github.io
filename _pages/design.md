@@ -213,6 +213,9 @@ author_profile: true
     color: inherit;
     text-decoration: none;
   }
+  .featured-project--dark, .featured-project--dark * {
+    font-style: normal;
+  }
 
   .featured-project__preview {
     flex-shrink: 0;
@@ -490,7 +493,7 @@ I believe great design serves learning. Whether it's a course interface, a confe
 </div>
 
 <!-- Interview Prep Skills -->
-<a class="featured-project featured-project--dark" href="https://github.com/YalingTan678/interview-prep-skills" target="_blank">
+<a class="featured-project featured-project--dark" href="https://github.com/YalingTan678/interview-prep-skills" target="_blank" style="font-style:normal;">
   <div class="featured-project__preview">
     <div class="ips-hero-mock">
       <span class="ips-tag">Undergrad</span>
