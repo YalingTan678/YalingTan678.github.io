@@ -203,63 +203,106 @@ author_profile: true
     margin-left: 3px;
   }
 
-  /* ===== PALDT Newsletter Carousel ===== */
-  .design-card--wide {
-    grid-column: 1 / -1;
-    flex-direction: row;
-    align-items: stretch;
+  /* ===== PALDT Newsletter Row with hover-scroll ===== */
+  .newsletter-row {
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    padding-bottom: 0.8rem;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
   }
-  .design-card--wide .design-card__body {
-    flex: 1; min-width: 0;
+  .newsletter-row::-webkit-scrollbar {
+    height: 6px;
+  }
+  .newsletter-row::-webkit-scrollbar-track {
+    background: #f1f5f9;
+    border-radius: 3px;
+  }
+  .newsletter-row::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 3px;
   }
 
-  .newsletter-carousel {
-    position: relative;
-    width: 100%;
-    height: 320px;
-    overflow: hidden;
-    border-radius: 14px;
-    border: 1px solid #e8edf5;
-    background: #f8fafc;
-  }
-  .newsletter-track {
-    display: flex;
-    height: 100%;
-    transition: transform 0.5s ease;
-  }
-  .newsletter-track img {
+  .nl-scroll-card {
     flex-shrink: 0;
-    width: 240px;
-    height: 100%;
+    width: 220px;
+    height: 320px;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #e8edf5;
+    background: #fff;
+    position: relative;
+    cursor: pointer;
+    scroll-snap-align: start;
+    transition: box-shadow 0.3s, border-color 0.3s;
+  }
+  .nl-scroll-card:hover {
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+    border-color: #2a7ae2;
+  }
+  .nl-scroll-card img {
+    width: 100%;
+    height: auto;
+    display: block;
     object-fit: cover;
     object-position: top;
-    border-right: 1px solid #e8edf5;
-    cursor: pointer;
+    transition: transform 3s ease-in-out;
+    transform: translateY(0);
+  }
+  .nl-scroll-card:hover img {
+    transform: translateY(var(--scroll-y, -70%));
+  }
+  /* Date label */
+  .nl-scroll-card__label {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 0.4rem 0.6rem;
+    background: linear-gradient(transparent, rgba(0,0,0,0.6));
+    color: #fff;
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-align: center;
+    pointer-events: none;
+    opacity: 0;
     transition: opacity 0.3s;
   }
-  .newsletter-track img:hover { opacity: 0.88; }
-  .newsletter-track img:last-child { border-right: none; }
-
-  .carousel-btn {
+  .nl-scroll-card:hover .nl-scroll-card__label {
+    opacity: 1;
+  }
+  /* Scroll hint icon */
+  .nl-scroll-card::before {
+    content: '\2195';
     position: absolute;
-    top: 50%; transform: translateY(-50%);
-    width: 32px; height: 32px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.92);
-    border: 1px solid #e2e8f0;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    cursor: pointer;
-    font-size: 1rem;
+    top: 8px; right: 8px;
+    width: 22px; height: 22px;
+    border-radius: 6px;
+    background: rgba(0,0,0,0.4);
+    color: #fff;
+    font-size: 0.65rem;
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: 2;
-    transition: background 0.2s;
-    color: #374151;
+    opacity: 0.7;
+    transition: opacity 0.3s;
   }
-  .carousel-btn:hover { background: #fff; }
-  .carousel-btn--prev { left: 8px; }
-  .carousel-btn--next { right: 8px; }
+  .nl-scroll-card:hover::before {
+    opacity: 0;
+  }
+  /* Fade hint at bottom */
+  .nl-scroll-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 40px;
+    background: linear-gradient(transparent, rgba(255,255,255,0.65));
+    pointer-events: none;
+    transition: opacity 0.3s;
+  }
+  .nl-scroll-card:hover::after {
+    opacity: 0;
+  }
 
   /* ===== Lightbox ===== */
   .design-lightbox {
@@ -285,15 +328,12 @@ author_profile: true
     .design-content { font-size: 0.9rem; }
     .design-content .philosophy { padding: 1.2rem 1.3rem; font-size: 0.9rem; }
     .design-grid { grid-template-columns: 1fr; }
-    .design-card--wide { flex-direction: column; }
-    .newsletter-carousel { height: 260px; }
-    .newsletter-track img { width: 200px; }
+    .nl-scroll-card { width: 180px; height: 270px; }
   }
   @media (max-width: 400px) {
     .design-content .philosophy { padding: 1rem; margin-bottom: 1.5rem; }
     .design-card__img { height: 160px; }
-    .newsletter-carousel { height: 220px; }
-    .newsletter-track img { width: 160px; }
+    .nl-scroll-card { width: 150px; height: 230px; }
   }
 </style>
 
@@ -331,18 +371,35 @@ I believe great design serves learning. Whether it's a course interface, a confe
   Biweekly newsletters designed for the Purdue Association of Learning Design and Technology (PALDT) as Marketing &amp; Design Officer. Created with Publicate, covering announcements, workshops, events, and community spotlights.
 </p>
 
-<div class="newsletter-carousel" id="newsletterCarousel">
-  <div class="newsletter-track" id="newsletterTrack">
-    <img src="/images/design/paldt-mar22.jpg" alt="PALDT Newsletter Mar 22, 2026" onclick="openLightbox(this.src)">
-    <img src="/images/design/paldt-mar09.jpg" alt="PALDT Newsletter Mar 9, 2026" onclick="openLightbox(this.src)">
-    <img src="/images/design/paldt-jan26.jpg" alt="PALDT Newsletter Jan 26, 2026" onclick="openLightbox(this.src)">
-    <img src="/images/design/paldt-w3.jpg" alt="PALDT Newsletter W3" onclick="openLightbox(this.src)">
-    <img src="/images/design/paldt-oct06.jpg" alt="PALDT Newsletter Oct 6, 2025" onclick="openLightbox(this.src)">
-    <img src="/images/design/paldt-sep22.jpg" alt="PALDT Newsletter Sep 22, 2025" onclick="openLightbox(this.src)">
-    <img src="/images/design/paldt-sep08.jpg" alt="PALDT Newsletter Sep 8, 2025" onclick="openLightbox(this.src)">
+<div class="newsletter-row">
+  <div class="nl-scroll-card" onclick="openLightbox('/images/design/paldt-mar22.jpg')">
+    <img src="/images/design/paldt-mar22.jpg" alt="PALDT Newsletter Mar 22, 2026">
+    <span class="nl-scroll-card__label">Mar 22, 2026</span>
   </div>
-  <button class="carousel-btn carousel-btn--prev" onclick="scrollCarousel(-1)">&lsaquo;</button>
-  <button class="carousel-btn carousel-btn--next" onclick="scrollCarousel(1)">&rsaquo;</button>
+  <div class="nl-scroll-card" onclick="openLightbox('/images/design/paldt-mar09.jpg')">
+    <img src="/images/design/paldt-mar09.jpg" alt="PALDT Newsletter Mar 9, 2026">
+    <span class="nl-scroll-card__label">Mar 9, 2026</span>
+  </div>
+  <div class="nl-scroll-card" onclick="openLightbox('/images/design/paldt-jan26.jpg')">
+    <img src="/images/design/paldt-jan26.jpg" alt="PALDT Newsletter Jan 26, 2026">
+    <span class="nl-scroll-card__label">Jan 26, 2026</span>
+  </div>
+  <div class="nl-scroll-card" onclick="openLightbox('/images/design/paldt-w3.jpg')">
+    <img src="/images/design/paldt-w3.jpg" alt="PALDT Newsletter W3">
+    <span class="nl-scroll-card__label">Fall 2025 W3</span>
+  </div>
+  <div class="nl-scroll-card" onclick="openLightbox('/images/design/paldt-oct06.jpg')">
+    <img src="/images/design/paldt-oct06.jpg" alt="PALDT Newsletter Oct 6, 2025">
+    <span class="nl-scroll-card__label">Oct 6, 2025</span>
+  </div>
+  <div class="nl-scroll-card" onclick="openLightbox('/images/design/paldt-sep22.jpg')">
+    <img src="/images/design/paldt-sep22.jpg" alt="PALDT Newsletter Sep 22, 2025">
+    <span class="nl-scroll-card__label">Sep 22, 2025</span>
+  </div>
+  <div class="nl-scroll-card" onclick="openLightbox('/images/design/paldt-sep08.jpg')">
+    <img src="/images/design/paldt-sep08.jpg" alt="PALDT Newsletter Sep 8, 2025">
+    <span class="nl-scroll-card__label">Sep 8, 2025</span>
+  </div>
 </div>
 
 <div class="design-lightbox" id="designLightbox" onclick="this.classList.remove('active')">
@@ -352,17 +409,23 @@ I believe great design serves learning. Whether it's a course interface, a confe
 </div>
 
 <script>
-// Newsletter carousel
-var track = document.getElementById('newsletterTrack');
-var carousel = document.getElementById('newsletterCarousel');
-var pos = 0;
-
-function scrollCarousel(dir) {
-  var step = 260;
-  var maxScroll = track.scrollWidth - carousel.offsetWidth;
-  pos = Math.max(0, Math.min(pos + dir * step, maxScroll));
-  track.style.transform = 'translateX(-' + pos + 'px)';
-}
+// Hover-scroll: calculate scroll distance for each newsletter card
+document.querySelectorAll('.nl-scroll-card').forEach(function(card) {
+  var img = card.querySelector('img');
+  function calcScroll() {
+    if (!img.naturalHeight) return;
+    var cardH = card.offsetHeight;
+    var imgH = (img.naturalWidth > 0) ? (card.offsetWidth / img.naturalWidth) * img.naturalHeight : img.naturalHeight;
+    if (imgH > cardH) {
+      var scrollDist = imgH - cardH;
+      card.style.setProperty('--scroll-y', '-' + scrollDist + 'px');
+      var duration = Math.max(2, Math.min(8, scrollDist / 150));
+      img.style.transitionDuration = duration + 's';
+    }
+  }
+  if (img.complete) { calcScroll(); } else { img.addEventListener('load', calcScroll); }
+  window.addEventListener('resize', calcScroll);
+});
 
 // Lightbox
 function openLightbox(src) {
@@ -370,11 +433,7 @@ function openLightbox(src) {
   document.getElementById('lightboxImg').src = src;
   lb.classList.add('active');
 }
-
-// Close on Escape
 document.addEventListener('keydown', function(e) {
-  if (e.key === 'Escape') {
-    document.getElementById('designLightbox').classList.remove('active');
-  }
+  if (e.key === 'Escape') document.getElementById('designLightbox').classList.remove('active');
 });
 </script>
