@@ -328,6 +328,8 @@ author_profile: true
     .design-content { font-size: 0.9rem; }
     .design-content .philosophy { padding: 1.2rem 1.3rem; font-size: 0.9rem; }
     .design-grid { grid-template-columns: 1fr; }
+    .design-card[style*="flex-direction:row"] { flex-direction: column !important; }
+    .design-card[style*="flex-direction:row"] .design-card__video { width: 100% !important; height: 200px !important; }
     .nl-scroll-card { width: 180px; height: 270px; }
   }
   @media (max-width: 400px) {
@@ -345,27 +347,23 @@ I believe great design serves learning. Whether it's a course interface, a confe
 
 <h2>Featured Projects</h2>
 
-<div class="design-grid">
-
-<!-- Zotero Tutorial Video -->
-<div class="design-card">
-  <div class="design-card__video" onclick="window.open('/files/zotero-tutorial.mp4','_blank')">
-    <img src="/images/design/zotero-thumb.jpg" alt="Zotero Tutorial Video thumbnail">
+<!-- Zotero Tutorial Video — horizontal layout -->
+<div class="design-card" style="flex-direction:row; align-items:stretch; cursor:pointer;" onclick="window.open('/files/zotero-tutorial.mp4','_blank')">
+  <div class="design-card__video" style="width:320px; height:auto; flex-shrink:0;">
+    <img src="/images/design/zotero-thumb.jpg" alt="Zotero Tutorial Video thumbnail" style="height:100%; object-fit:cover;">
     <div class="design-card__play"></div>
   </div>
-  <div class="design-card__body">
+  <div class="design-card__body" style="justify-content:center;">
     <div class="design-card__title">Zotero Reference Manager Tutorial</div>
     <div class="design-card__tags">
       <span class="design-tag design-tag--video">Video</span>
     </div>
     <div class="design-card__desc">A 2-minute instructional video tutorial on using Zotero for academic reference management. Produced as part of an RA project at Purdue Libraries.</div>
-    <span class="design-card__link" onclick="window.open('/files/zotero-tutorial.mp4','_blank')">Watch video &rarr;</span>
+    <span class="design-card__link">Watch video &rarr;</span>
   </div>
 </div>
 
-</div>
-
-<h2>PALDT Newsletters</h2>
+<h2 style="margin-top:1.5rem;">PALDT Newsletters</h2>
 
 <p style="font-size:0.88rem;color:#4a5568;margin-bottom:1rem;">
   Biweekly newsletters designed for the Purdue Association of Learning Design and Technology (PALDT) as Marketing &amp; Design Officer. Created with Publicate, covering announcements, workshops, events, and community spotlights.
