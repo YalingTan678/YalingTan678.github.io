@@ -201,22 +201,18 @@ author_profile: true
     justify-content: center;
   }
 
-  /* ===== Dark Featured Project ===== */
+  /* ===== Alt Featured Project ===== */
   .featured-project--dark {
-    background: #0f0f17;
-    border-color: rgba(255,255,255,0.08);
+    background: #fff;
+    border-color: #e8edf5;
     text-decoration: none;
     color: inherit;
   }
   .featured-project--dark:hover {
-    border-color: #818cf8;
+    border-color: #2a7ae2;
     color: inherit;
     text-decoration: none;
   }
-  .featured-project--dark .design-card__title { color: #f1f5f9; }
-  .featured-project--dark .design-card__desc { color: #94a3b8; }
-  .featured-project--dark ul { color: #94a3b8; }
-  .featured-project--dark .design-card__link { color: #818cf8; }
 
   .featured-project__preview {
     flex-shrink: 0;
@@ -233,13 +229,14 @@ author_profile: true
   .ips-hero-mock {
     width: 100%;
     height: 100%;
-    background: radial-gradient(ellipse at 50% 50%, rgba(99,102,241,0.2) 0%, #0a0a0f 70%);
+    background: linear-gradient(135deg, #eef2ff, #f5f3ff, #fdf2f8);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     padding: 1.5rem;
     gap: 0.6rem;
+    border-radius: 10px;
   }
   .ips-hero-mock .ips-tag {
     display: inline-block;
@@ -247,14 +244,14 @@ author_profile: true
     border-radius: 999px;
     font-size: 0.6rem;
     font-weight: 500;
-    border: 1px solid rgba(255,255,255,0.1);
-    background: rgba(255,255,255,0.05);
-    color: #94a3b8;
+    border: 1px solid #e2e8f0;
+    background: #fff;
+    color: #64748b;
   }
   .ips-hero-mock .ips-title {
     font-size: 1.3rem;
     font-weight: 800;
-    background: linear-gradient(135deg, #818cf8, #c084fc, #f472b6);
+    background: linear-gradient(135deg, #6366f1, #8b5cf6, #ec4899);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     margin: 0.3rem 0;
@@ -263,12 +260,12 @@ author_profile: true
     display: flex;
     gap: 1.2rem;
     font-size: 0.75rem;
-    color: #64748b;
+    color: #718096;
   }
   .ips-hero-mock .ips-stats strong {
     font-size: 1.1rem;
     font-weight: 800;
-    background: linear-gradient(135deg, #818cf8, #c084fc);
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     display: block;
