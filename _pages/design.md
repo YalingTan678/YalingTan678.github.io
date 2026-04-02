@@ -323,20 +323,6 @@ I believe great design serves learning. Whether it's a course interface, a confe
   </div>
 </div>
 
-<!-- Personal Academic Website -->
-<div class="design-card">
-  <div class="design-card__img">
-    <img src="/images/profile-v2.jpg" alt="Personal academic website">
-  </div>
-  <div class="design-card__body">
-    <div class="design-card__title">Personal Academic Website</div>
-    <div class="design-card__tags">
-      <span class="design-tag design-tag--web">Web</span>
-    </div>
-    <div class="design-card__desc">Designed and built this academic portfolio site using Jekyll and GitHub Pages, featuring custom card layouts, interactive components, and responsive design.</div>
-  </div>
-</div>
-
 </div>
 
 <h2>PALDT Newsletters</h2>
