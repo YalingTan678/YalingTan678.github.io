@@ -4,7 +4,7 @@ author_profile: false
 ---
 
 <!-- ========== RESEARCH STRANDS RADAR ========== -->
-<section class="lt-section lt-fade-in" style="padding-top:0">
+<section class="lt-section lt-fade-in" id="research-strands" style="padding-top:0">
   <h2 class="lt-section__title">Research Strands</h2>
   <p style="font-size:0.92rem;color:#4a5568;line-height:1.7;margin-bottom:1rem">My work moves across four interconnected strands. Hover over each area to see how they relate:</p>
 
@@ -494,7 +494,7 @@ author_profile: false
 </section>
 
 <!-- ========== METHODOLOGY (interactive pipeline) ========== -->
-<section class="lt-section lt-fade-in">
+<section class="lt-section lt-fade-in" id="methodology">
   <h2 class="lt-section__title">Methodology</h2>
   <p style="font-size:0.88rem;color:#4a5568;line-height:1.7;margin-bottom:1rem">I combine large-scale evidence synthesis with in-depth qualitative inquiry and iterative design. Each method feeds the next: reviews surface gaps, mixed methods explore them, statistics test claims, and design-based research translates findings into tools educators can actually use.</p>
   <style>
@@ -586,7 +586,7 @@ author_profile: false
 </section>
 
 <!-- ========== JOURNEY (Swimlane + Compact) ========== -->
-<section class="lt-section lt-fade-in">
+<section class="lt-section lt-fade-in" id="journey">
   <h2 class="lt-section__title">Journey</h2>
   <p style="font-size:0.88rem;color:#4a5568;line-height:1.7;margin-bottom:1rem">From translation studies to AI-mediated learning design, every step has brought me closer to one goal: becoming an instructional designer who harnesses AI to create equitable, human-centered learning experiences at scale.</p>
   <style>
@@ -686,5 +686,4 @@ author_profile: false
   }
   </script>
 </section>
-
 
