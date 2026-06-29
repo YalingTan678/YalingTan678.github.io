@@ -280,7 +280,7 @@ I study how emerging technologies transform education beyond the classroom. My w
 </a>
 
 <div class="pub-card">
-  <div class="pub-card__thumb pub-card__thumb--icon">📖</div>
+  <div class="pub-card__thumb"><img src="/images/pubs/answer-bot-to-tutor.png" alt="From Answer Bot to Course Tutor: PeteChat design story"></div>
   <div class="pub-card__body">
     <div class="pub-card__top">
       <span class="pub-card__title">From Answer Bot to Course Tutor: A Practical Design Case of a Guardrailed AI Assistant in Higher Education</span>
