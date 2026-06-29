@@ -279,7 +279,7 @@ I study how emerging technologies transform education beyond the classroom. My w
   </div>
 </a>
 
-<div class="pub-card">
+<a class="pub-card" href="/publication/answer-bot-to-tutor">
   <div class="pub-card__thumb"><img src="/images/pubs/answer-bot-to-tutor.png" alt="From Answer Bot to Course Tutor: PeteChat design story"></div>
   <div class="pub-card__body">
     <div class="pub-card__top">
@@ -291,7 +291,7 @@ I study how emerging technologies transform education beyond the classroom. My w
     <div class="pub-card__authors">Li, B., <strong>*Tan, L.</strong>, Zakharov, W., Qiu, Q., & Acton, C. (in press, 2026)</div>
     <div class="pub-card__venue">Invited book chapter, Springer</div>
   </div>
-</div>
+</a>
 
 <h2>Under Review</h2>
 
