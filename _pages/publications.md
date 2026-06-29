@@ -264,21 +264,6 @@ I study how emerging technologies transform education beyond the classroom. My w
 
 <h2>Preprints &amp; Book Chapters</h2>
 
-<a class="pub-card" href="/publication/ur-tutor-not-solver">
-  <div class="pub-card__thumb"><img src="/images/pubs/petechat-v2.png" alt="PeteChat interface"></div>
-  <div class="pub-card__body">
-    <div class="pub-card__top">
-      <span class="pub-card__title">Scaffolding over Shortcuts: Building a Safety-Aware LLM Tutoring System for University Contexts</span>
-      <div class="pub-card__badges">
-        <span class="pub-badge pub-badge--upcoming">Preprint</span>
-      </div>
-    </div>
-    <div class="pub-card__authors">Li, B., <strong>*Tan, L.</strong>, Zakharov, W., Acton, C. B., & Qiu, Q. (2026)</div>
-    <div class="pub-card__venue">arXiv:2606.09845</div>
-    <div class="pub-card__excerpt">Design case of PeteChat: an LLM-powered AI tutor with RAG pipeline and guardrails at Purdue.</div>
-  </div>
-</a>
-
 <a class="pub-card" href="/publication/answer-bot-to-tutor">
   <div class="pub-card__thumb"><img src="/images/pubs/answer-bot-to-tutor.png" alt="From Answer Bot to Course Tutor: PeteChat design story"></div>
   <div class="pub-card__body">
@@ -286,10 +271,12 @@ I study how emerging technologies transform education beyond the classroom. My w
       <span class="pub-card__title">From Answer Bot to Course Tutor: A Practical Design Case of a Guardrailed AI Assistant in Higher Education</span>
       <div class="pub-card__badges">
         <span class="pub-badge pub-badge--upcoming">In Press</span>
+        <span class="pub-badge pub-badge--web">arXiv</span>
       </div>
     </div>
     <div class="pub-card__authors">Li, B., <strong>*Tan, L.</strong>, Zakharov, W., Qiu, Q., & Acton, C. (in press, 2026)</div>
-    <div class="pub-card__venue">Invited book chapter, Springer</div>
+    <div class="pub-card__venue">Invited book chapter, Springer &middot; Preprint: arXiv:2606.09845</div>
+    <div class="pub-card__excerpt">Design case of PeteChat: a course-aligned, guardrailed AI tutor with a RAG pipeline that keeps students reasoning within the course rather than handing them answers.</div>
   </div>
 </a>
 
