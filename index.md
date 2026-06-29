@@ -236,7 +236,9 @@ author_profile: false
       ['pete','auth'],['auth','doubao'],            // literacy → cross → equity
       ['mjss','idle-gai'],['idle-gai','auth'],      // idle → cross
       ['doubao','aera'],['clil','tpxj'],            // equity → tpack
-      ['mjss','doubao'],['auth','tpxj']             // cross connections
+      ['mjss','doubao'],['auth','tpxj'],            // cross connections
+      ['aera','cmp'],['cmp','doubao'],              // meta-analysis cluster
+      ['ena','idle-gai'],['ena','mjss']             // IDLE pragmatics cluster
     ];
     var dotMap={};dots.forEach(function(d){dotMap[d.p.id]=d;});
     var webEls=[];
