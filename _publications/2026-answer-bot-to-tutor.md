@@ -32,6 +32,14 @@ The case documents the design responses, tensions, and early failures involved i
 
 ---
 
+## The PeteChat Interface
+
+![PeteChat interface with goal-setting and self-regulated learning scaffolds](/images/pubs/petechat-v2.png)
+
+*The redesigned interface adds explicit learning goals, self-reflection prompts, and pedagogical scaffolds that steer students toward reasoning rather than answers.*
+
+---
+
 ## How PeteChat Works
 
 PeteChat is **not ChatGPT in a Purdue wrapper**. It is a purpose-built system with three layers:
