@@ -262,7 +262,7 @@ I study how emerging technologies transform education beyond the classroom. My w
   </div>
 </a>
 
-<h2>Under Review</h2>
+<h2>Preprints &amp; Book Chapters</h2>
 
 <a class="pub-card" href="/publication/ur-tutor-not-solver">
   <div class="pub-card__thumb"><img src="/images/pubs/petechat-v2.png" alt="PeteChat interface"></div>
@@ -270,13 +270,44 @@ I study how emerging technologies transform education beyond the classroom. My w
     <div class="pub-card__top">
       <span class="pub-card__title">Scaffolding over Shortcuts: Building a Safety-Aware LLM Tutoring System for University Contexts</span>
       <div class="pub-card__badges">
-        <span class="pub-badge pub-badge--ur">Under Review</span>
+        <span class="pub-badge pub-badge--upcoming">Preprint</span>
       </div>
     </div>
-    <div class="pub-card__authors">Li, B., <strong>*Tan, L.</strong>, & Zakharov, W.</div>
+    <div class="pub-card__authors">Li, B., <strong>*Tan, L.</strong>, Zakharov, W., Acton, C. B., & Qiu, Q. (2026)</div>
+    <div class="pub-card__venue">arXiv:2606.09845</div>
     <div class="pub-card__excerpt">Design case of PeteChat: an LLM-powered AI tutor with RAG pipeline and guardrails at Purdue.</div>
   </div>
 </a>
+
+<div class="pub-card">
+  <div class="pub-card__thumb pub-card__thumb--icon">📖</div>
+  <div class="pub-card__body">
+    <div class="pub-card__top">
+      <span class="pub-card__title">From Answer Bot to Course Tutor: A Practical Design Case of a Guardrailed AI Assistant in Higher Education</span>
+      <div class="pub-card__badges">
+        <span class="pub-badge pub-badge--upcoming">In Press</span>
+      </div>
+    </div>
+    <div class="pub-card__authors">Li, B., <strong>*Tan, L.</strong>, Zakharov, W., Qiu, Q., & Acton, C. (in press, 2026)</div>
+    <div class="pub-card__venue">Invited book chapter, Springer</div>
+  </div>
+</div>
+
+<h2>Under Review</h2>
+
+<div class="pub-card">
+  <div class="pub-card__thumb pub-card__thumb--icon">📊</div>
+  <div class="pub-card__body">
+    <div class="pub-card__top">
+      <span class="pub-card__title">Comparison Matters: A Three-Level Meta-Analysis of the Effects of Digital Technology on Educationally Underserved Learners</span>
+      <div class="pub-card__badges">
+        <span class="pub-badge pub-badge--ur">Under Review</span>
+      </div>
+    </div>
+    <div class="pub-card__authors"><strong>*Tan, L.</strong>, Wang, C., Li, B., Lowell, V., & Xiao, F.</div>
+    <div class="pub-card__venue">Educational Research Review</div>
+  </div>
+</div>
 
 <a class="pub-card" href="/publication/ur-tpack-xinjiang">
   <div class="pub-card__thumb"><img src="/images/pubs/tpack-model.png" alt="TPACK Framework"></div>

@@ -4,10 +4,10 @@ collection: publications
 permalink: /publication/ur-tutor-not-solver
 excerpt: 'A design case documenting PeteChat, an LLM-powered AI tutor at Purdue University that scaffolds learning without undermining academic integrity.'
 date: 2026-03-03
-venue: 'Under Review'
+venue: 'arXiv:2606.09845 (Preprint)'
 publication_type: "journal"
-authors: 'Li, B., <strong>*Tan, L.</strong>, & Zakharov, W.'
-badge: 'Under Review'
+authors: 'Li, B., <strong>*Tan, L.</strong>, Zakharov, W., Acton, C. B., & Qiu, Q.'
+badge: 'Preprint'
 ---
 
 ## What This Paper Is About
