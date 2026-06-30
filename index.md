@@ -630,8 +630,8 @@ author_profile: false
     <button class="jny-fbtn active" onclick="jnyFilter('all',this)">All</button>
     <button class="jny-fbtn" style="background:#f5f3ff;color:#8b5cf6" onclick="jnyFilter('edu',this)">Education</button>
     <button class="jny-fbtn" style="background:#eff6ff;color:#3b82f6" onclick="jnyFilter('pub',this)">Publications</button>
-    <button class="jny-fbtn" style="background:#fffbeb;color:#d97706" onclick="jnyFilter('talk',this)">Talks</button>
     <button class="jny-fbtn" style="background:#f0fdfa;color:#14b8a6" onclick="jnyFilter('work',this)">Experience</button>
+    <button class="jny-fbtn" style="background:#fffbeb;color:#d97706" onclick="jnyFilter('talk',this)">Talks</button>
     <button class="jny-fbtn" style="background:#fdf2f8;color:#ec4899" onclick="jnyFilter('award',this)">Awards</button>
   </div>
   <div class="jny-frame">
@@ -655,19 +655,19 @@ author_profile: false
           <td><span class="jny-tipwrap"><a href="/publication/2025-two-years-innovation" class="jny-chip c-pub">CAEAI<span class="jny-tag" style="background:#dcfce7;color:#16a34a">Q1</span><small>IF ≈ 10.5</small></a><span class="jny-tip"><strong>Li, Tan, Wang &amp; Lowell (2025)</strong><br>Systematic review of empirical GenAI research<br>Computers &amp; Education: AI, 9, 100445</span></span> <span class="jny-tipwrap"><span class="jny-chip c-pub">MJSS<small>Tan &amp; Gao</small></span><span class="jny-tip"><strong>Tan &amp; Gao (2025)</strong><br>Human vs. machine interpreting<br>Mediterranean J. of Social Sciences, 16(3)</span></span></td>
           <td><span class="jny-tipwrap"><a href="/publication/2026-doubao-genai-efl" class="jny-chip c-pub">Doubao<span class="jny-tag" style="background:#dbeafe;color:#2563eb">Q2</span><small>Wang &amp; Tan</small></a><span class="jny-tip"><strong>Wang &amp; Tan (2026)</strong><br>GenAI scaffold in EFL writing<br>Psicologia Educativa, 14, 19-33</span></span> <span class="jny-tipwrap"><a href="/publication/answer-bot-to-tutor" class="jny-chip c-pub">PeteChat<span class="jny-tag" style="background:#ede9fe;color:#7c3aed">In Press</span><small>Springer</small></a><span class="jny-tip"><strong>Li, Tan, Zakharov, Qiu &amp; Acton (in press)</strong><br>From answer bot to course tutor: guardrailed AI assistant<br>Invited book chapter, Springer · arXiv:2606.09845</span></span> <span class="jny-tipwrap"><span class="jny-chip c-pub">3 Under Review<small>ERR · APER · Ed. Sci.</small></span><span class="jny-tip"><strong>Comparison Matters</strong> · Educational Research Review<br><strong>TPACK Xinjiang</strong> · Asia-Pacific Ed. Researcher<br><strong>Authorship &amp; AI</strong> · Education Science</span></span></td>
         </tr>
-        <tr data-cat="talk">
-          <td class="jny-cat" style="color:#f59e0b"><span class="jny-cat-dot" style="background:#f59e0b"></span>Talks</td>
-          <td></td><td></td>
-          <td><span class="jny-tipwrap"><a href="/publication/2024-call-context" class="jny-chip c-talk">CALL Tokyo<small>Interpreting</small></a><span class="jny-tip"><strong>XXIInd Int'l CALL Conference</strong><br>Human vs. machine interpreting<br>Tokyo, Japan · Sep 2024</span></span> <span class="jny-tipwrap"><span class="jny-chip c-talk">SCT + IPC<small>2 conferences</small></span><span class="jny-tip"><strong>3rd SCT Conference</strong>, Guangdong<br><strong>10th IPC Conference</strong>, Pisa<br>May–Jun 2024</span></span></td>
-          <td><span class="jny-tipwrap"><a href="/publication/2025-aect-authenticity" class="jny-chip c-talk">AECT + P-12<small>Las Vegas + Purdue</small></a><span class="jny-tip"><strong>AECT Convention</strong>, Las Vegas<br><strong>Purdue AI in P-12</strong> Conference<br>Oct–Nov 2025</span></span></td>
-          <td><span class="jny-tipwrap"><a href="/publication/2026-clawdbot-unboxed" class="jny-chip c-talk">Clawdbot<small>AI Lunch &amp; Learn</small></a><span class="jny-tip"><strong>Clawdbot Unboxed</strong><br>AI Lunch &amp; Learn Series<br>Purdue CoE · Feb 2026</span></span> <span class="jny-tipwrap"><span class="jny-chip upcoming c-talk" style="border:2px dashed #fbbf24">AECT<span class="jny-tag" style="background:#fef3c7;color:#d97706">Upcoming</span><small>Chicago</small></span><span class="jny-tip"><strong>AECT 2026 Convention</strong><br>IDLE pragmatics (ENA) &amp; PeteChat design case<br>Chicago, IL · Oct 2026</span></span></td>
-        </tr>
         <tr data-cat="work">
           <td class="jny-cat" style="color:#14b8a6"><span class="jny-cat-dot" style="background:#14b8a6"></span>Experience</td>
           <td></td><td></td>
           <td><span class="jny-tipwrap"><span class="jny-chip c-work">U. of Silesia<small>Lecturer · 200+</small></span><span class="jny-tip"><strong>Lecturer</strong>, Institute of Linguistics<br>Spoken Chinese &amp; Academic Writing<br>200+ international students · 2023–2024</span></span></td>
           <td><span class="jny-tipwrap"><a href="/service/" class="jny-chip c-work">RA + PALDT + GESC<small>Purdue University</small></a><span class="jny-tip"><strong>Research Assistant</strong>, Purdue Library &amp; SIS<br><strong>PALDT</strong> Marketing &amp; Design Officer<br><strong>GESC</strong> Committee Member</span></span></td>
           <td><span class="jny-tipwrap"><span class="jny-chip c-work">Guest Lecturer<small>EDCI 612</small></span><span class="jny-tip"><strong>Guest Lecturer</strong>, EDCI 612<br>AI and Multilingual Learners<br>Co-presented with Dr. Lowell &amp; Belle Li</span></span></td>
+        </tr>
+        <tr data-cat="talk">
+          <td class="jny-cat" style="color:#f59e0b"><span class="jny-cat-dot" style="background:#f59e0b"></span>Talks</td>
+          <td></td><td></td>
+          <td><span class="jny-tipwrap"><a href="/publication/2024-call-context" class="jny-chip c-talk">CALL Tokyo<small>Interpreting</small></a><span class="jny-tip"><strong>XXIInd Int'l CALL Conference</strong><br>Human vs. machine interpreting<br>Tokyo, Japan · Sep 2024</span></span> <span class="jny-tipwrap"><span class="jny-chip c-talk">SCT + IPC<small>2 conferences</small></span><span class="jny-tip"><strong>3rd SCT Conference</strong>, Guangdong<br><strong>10th IPC Conference</strong>, Pisa<br>May–Jun 2024</span></span></td>
+          <td><span class="jny-tipwrap"><a href="/publication/2025-aect-authenticity" class="jny-chip c-talk">AECT + P-12<small>Las Vegas + Purdue</small></a><span class="jny-tip"><strong>AECT Convention</strong>, Las Vegas<br><strong>Purdue AI in P-12</strong> Conference<br>Oct–Nov 2025</span></span></td>
+          <td><span class="jny-tipwrap"><a href="/publication/2026-clawdbot-unboxed" class="jny-chip c-talk">Clawdbot<small>AI Lunch &amp; Learn</small></a><span class="jny-tip"><strong>Clawdbot Unboxed</strong><br>AI Lunch &amp; Learn Series<br>Purdue CoE · Feb 2026</span></span> <span class="jny-tipwrap"><span class="jny-chip upcoming c-talk" style="border:2px dashed #fbbf24">AECT<span class="jny-tag" style="background:#fef3c7;color:#d97706">Upcoming</span><small>Chicago</small></span><span class="jny-tip"><strong>AECT 2026 Convention</strong><br>IDLE pragmatics (ENA) &amp; PeteChat design case<br>Chicago, IL · Oct 2026</span></span></td>
         </tr>
         <tr data-cat="award">
           <td class="jny-cat" style="color:#ec4899"><span class="jny-cat-dot" style="background:#ec4899"></span>Awards</td>
