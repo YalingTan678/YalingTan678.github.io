@@ -188,3 +188,76 @@
 </style>
 
 <!-- end custom head snippets -->
+
+<!-- Custom cursor: little angel (site-wide) -->
+<style>
+  @media (hover: hover) and (pointer: fine) {
+    html, body, a, button, .lt-nav__links a, input, textarea {
+      cursor: url('{{ base_path }}/images/cursor-angel.png') 4 4, auto;
+    }
+  }
+</style>
+
+<!-- Fairy sparkle trail behind the angel cursor -->
+<style>
+  .lt-star {
+    position: fixed;
+    left: 0; top: 0;
+    z-index: 9998;
+    pointer-events: none;
+    user-select: none;
+    line-height: 1;
+    animation:
+      lt-star-fall var(--dur, 0.8s) ease-out forwards,
+      lt-star-twinkle 0.18s ease-in-out 4 alternate;
+  }
+  @keyframes lt-star-fall {
+    0%   { transform: translate(-50%, -50%) scale(0.5) rotate(0deg); opacity: 1; }
+    25%  { transform: translate(calc(-50% + var(--dx) * 0.3), calc(-50% + var(--dy) * 0.2)) scale(1.05) rotate(calc(var(--rot) * 0.3)); opacity: 1; }
+    100% { transform: translate(calc(-50% + var(--dx)), calc(-50% + var(--dy))) scale(0.25) rotate(var(--rot)); opacity: 0; }
+  }
+  @keyframes lt-star-twinkle {
+    from { filter: brightness(1); }
+    to   { filter: brightness(1.9); }
+  }
+  @media (hover: none), (prefers-reduced-motion: reduce) {
+    .lt-star { display: none; }
+  }
+</style>
+<script>
+  (function() {
+    if (matchMedia('(hover: none)').matches || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var lastX = null, lastY = null, live = 0, MAX = 36;
+    var GOLD = ['#FFD54F', '#FFC107', '#FFE082'];
+    var PINK = ['#F75092', '#FFB1D4', '#F8BBD0'];
+    document.addEventListener('mousemove', function(e) {
+      if (lastX !== null) {
+        var d = Math.hypot(e.clientX - lastX, e.clientY - lastY);
+        if (d < 16) return; // spawn roughly every 16px of travel
+      }
+      lastX = e.clientX; lastY = e.clientY;
+      if (live >= MAX) return;
+      var gold = Math.random() < 0.55;
+      var star = document.createElement('span');
+      star.className = 'lt-star';
+      star.textContent = gold ? '✦' : '✧'; /* ✦ / ✧ */
+      var palette = gold ? GOLD : PINK;
+      var color = palette[Math.floor(Math.random() * palette.length)];
+      star.style.color = color;
+      star.style.textShadow = '0 0 6px ' + color;
+      star.style.fontSize = (gold ? 9 + Math.random() * 6 : 7 + Math.random() * 5) + 'px';
+      star.style.left = (e.clientX + (Math.random() * 18 - 9)) + 'px';
+      star.style.top = (e.clientY + (Math.random() * 14 - 4)) + 'px';
+      star.style.setProperty('--dx', (Math.random() * 26 - 13) + 'px');
+      star.style.setProperty('--dy', (18 + Math.random() * 30) + 'px'); /* drift downward */
+      star.style.setProperty('--rot', (Math.random() * 140 - 70) + 'deg');
+      star.style.setProperty('--dur', (0.65 + Math.random() * 0.45) + 's');
+      live++;
+      star.addEventListener('animationend', function done() {
+        if (star.parentNode) { star.parentNode.removeChild(star); live--; }
+        star.removeEventListener('animationend', done);
+      });
+      document.body.appendChild(star);
+    }, { passive: true });
+  })();
+</script>

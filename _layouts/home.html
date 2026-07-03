@@ -235,6 +235,60 @@
       .lt-typewriter {
         margin-bottom: 2.5rem;
       }
+
+      /* ========== HERO ILLUSTRATION (mono-line) ========== */
+      .lt-hero-art {
+        position: relative;
+        margin: 0 0 2.8rem;
+      }
+      /* soft watercolor wash behind the line art */
+      .lt-hero-art::before {
+        content: '';
+        position: absolute;
+        inset: 4% 6%;
+        pointer-events: none;
+        background:
+          radial-gradient(ellipse 46% 52% at 30% 42%, rgba(247, 80, 146, 0.10), transparent 70%),
+          radial-gradient(ellipse 40% 46% at 72% 55%, rgba(159, 80, 211, 0.09), transparent 70%),
+          radial-gradient(ellipse 52% 40% at 52% 78%, rgba(255, 193, 7, 0.07), transparent 72%);
+        filter: blur(14px);
+      }
+      .lt-hero-art img {
+        position: relative;
+        width: 100%;
+        display: block;
+        mix-blend-mode: multiply; /* let the wash tint through the white */
+      }
+      .lt-hero-art__stage { position: relative; }
+      .lt-hero-flow {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+      }
+      .lt-hero-flow path {
+        fill: none;
+        stroke-width: 9;
+        stroke-linecap: round;
+        opacity: 0.8;
+      }
+      .lt-hero-flow .f-yellow { stroke: #F5C518; }
+      .lt-hero-flow .f-red    { stroke: #E4372E; }
+      .lt-hero-flow .f-blue   { stroke: #4A7CF7; }
+      .lt-hero-flow .f-green  { stroke: #34A853; }
+      .lt-hero-flow .f-gold   { stroke: #F5A623; }
+
+      .lt-hero-art__caption {
+        position: relative;
+        text-align: center;
+        font-size: 0.92rem;
+        color: var(--color-heading);
+        letter-spacing: 0.04em;
+        margin-top: 0.2rem;
+      }
+      .lt-hero-art__caption .star { color: #FFC107; margin: 0 0.45rem; }
+      .lt-hero-art__caption em { font-style: italic; color: #C2185B; }
       .lt-typewriter__text {
         font-size: .95rem;
         font-weight: 400;
@@ -636,6 +690,13 @@
           <p class="lt-typewriter__text">
             I am a first-year Ph.D. student in <a href="https://education.purdue.edu/program/learning-design-and-technology-phd/" style="color:#2563eb;text-decoration:none;font-weight:500;border-bottom:1px solid rgba(37,99,235,.15)">Learning Design and Technology</a> at <a href="https://www.purdue.edu/" style="color:#2563eb;text-decoration:none;font-weight:500;border-bottom:1px solid rgba(37,99,235,.15)">Purdue University</a>, advised by <a href="https://education.purdue.edu/about/directory/victoria-lowell/" style="color:#2563eb;text-decoration:none;font-weight:500;border-bottom:1px solid rgba(37,99,235,.15)">Dr. Victoria Lowell</a>. I also work as a Research Assistant supervised by <a href="https://lib.purdue.edu/people/jtinio/" style="color:#2563eb;text-decoration:none;font-weight:500;border-bottom:1px solid rgba(37,99,235,.15)">Dr. Jerilyn Pia Tinio</a> at Purdue Libraries. My research explores how AI transforms learning beyond the classroom — designing authentic pathways that bridge theory and real-world practice. I focus on AI-assisted self-directed learning, IDLE, and authentic learning design in AI environments. As a first-year doctoral student, I'm just getting started — and I move fast.
           </p>
+        </div>
+
+        <!-- HERO ILLUSTRATION: mono-line Lily + robot -->
+        <div class="lt-hero-art">
+          <div class="lt-hero-art__stage">
+            <img src="{{ base_path }}/images/hero-monoline.jpg" alt="Continuous-line illustration of Lily reading a book with a small robot companion">
+          </div>
         </div>
 
         {{ content }}
