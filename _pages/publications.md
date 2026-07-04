@@ -707,9 +707,9 @@ author_profile: true
       <div class="meth-num" style="color:#0369A1">03</div>
       <div class="meth-title" style="color:#0369A1">Statistics &amp; Learning Analytics</div>
       <div class="meth-sub">R · SPSS · Coh-Metrix<br>ONA · effect sizes</div>
-      <div class="meth-counter" style="color:#0369A1"><span class="meth-cnt" data-target="108">0</span></div>
-      <div class="meth-counter-label">Indices Tested</div>
-      <div class="meth-detail">Quantitative analysis in R and SPSS, from classical inference to learning analytics methods such as Ordered Network Analysis (ONA), with 108 Coh-Metrix linguistic indices.</div>
+      <div class="meth-counter" style="color:#0369A1">Quant &amp; LA</div>
+      <div class="meth-counter-label">Analysis Toolkit</div>
+      <div class="meth-detail">From descriptive and inferential statistics to learning analytics: regression and multilevel models in R and SPSS, Ordered Network Analysis (ONA), and text metrics with Coh-Metrix.</div>
       <div class="meth-dot" style="background:#0369A1"></div>
     </div>
     <!-- Card 4 -->
