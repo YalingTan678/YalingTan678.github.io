@@ -51,7 +51,7 @@ author_profile: false
   <div class="jny-frame">
   <div class="jny-wrap">
     <table class="jny-table">
-      <thead><tr><th></th><th>2022</th><th>2023</th><th>2024</th><th class="jny-now">2025</th><th>2026</th></tr></thead>
+      <thead><tr><th></th><th>2022</th><th>2023</th><th>2024</th><th>2025</th><th class="jny-now">2026</th></tr></thead>
       <tbody>
         <tr data-cat="edu">
           <td class="jny-cat" style="color:#8b5cf6"><span class="jny-cat-dot" style="background:#8b5cf6"></span>Education</td>
