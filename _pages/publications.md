@@ -397,7 +397,7 @@ author_profile: true
 
     // web lines connecting dots
     var webLinks=[
-      ['genai','doubao'],['doubao','idle-gai'],['mjss','idle-gai'],
+      ['genai','doubao'],['doubao','idle-gai'],['mjss','idle-gai'],['clil','mjss'],
       ['genai','pete'],['pete','claw'],
       ['aera','auth'],['auth','tpxj'],
       ['doubao','auth'],['idle-gai','tpxj']
