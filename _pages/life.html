@@ -11,7 +11,7 @@ permalink: /life/
   <title>Life | Lily Tan</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@200;300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@200;300;400;500;600;700&display=swap" rel="stylesheet"/>
   <style>
     *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
     html,body{width:100%;overflow-x:hidden;font-family:'Inter',system-ui,sans-serif;background:#faf8ff;color:#1e1b4b}
@@ -25,15 +25,40 @@ permalink: /life/
       background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
       background-size:128px 128px}
 
-    /* ====== TOP NAV ====== */
-    .life-nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;
-      padding:0 2rem;height:54px;background:rgba(250,248,255,0.75);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
-      border-bottom:1px solid rgba(124,58,237,0.06)}
-    .life-nav__logo{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:#1e1b4b;text-decoration:none}
-    .life-nav__logo:hover{color:#7c3aed}
-    .life-nav__links{display:flex;gap:1.6rem;list-style:none}
-    .life-nav__links a{font-size:0.78rem;font-weight:500;color:rgba(30,27,75,0.5);text-decoration:none;letter-spacing:0.04em;transition:color 0.2s}
-    .life-nav__links a:hover,.life-nav__links a.active{color:#7c3aed}
+    /* ====== TOP NAV (homepage banner) ====== */
+    @property --m1 { syntax:'<percentage>'; initial-value:10%; inherits:false; }
+    @property --m2 { syntax:'<percentage>'; initial-value:90%; inherits:false; }
+    @property --m3 { syntax:'<percentage>'; initial-value:50%; inherits:false; }
+    @property --m4 { syntax:'<percentage>'; initial-value:30%; inherits:false; }
+    @property --m5 { syntax:'<percentage>'; initial-value:70%; inherits:false; }
+    .lt-nav{position:fixed;top:0;left:0;right:0;z-index:200;
+      background:
+        radial-gradient(circle at var(--m1) 20%, #241D9Aee 0%, transparent 40%),
+        radial-gradient(circle at var(--m2) 80%, #F75092dd 0%, transparent 45%),
+        radial-gradient(ellipse at var(--m3) 50%, #9F50D3cc 0%, transparent 50%),
+        radial-gradient(circle at var(--m4) 70%, #F75092bb 0%, transparent 35%),
+        radial-gradient(ellipse at var(--m5) 30%, #241D9Abb 0%, transparent 40%),
+        radial-gradient(circle at 50% 50%, #9F50D3aa 0%, transparent 60%),
+        linear-gradient(120deg, #241D9A, #9F50D3, #F75092, #E0EAFF, #9F50D3, #241D9A);
+      animation:meshFlow 15s ease-in-out infinite;
+      padding:0 3rem}
+    @keyframes meshFlow{
+      0%  {--m1:5%; --m2:95%;--m3:40%;--m4:20%;--m5:75%}
+      20% {--m1:35%;--m2:65%;--m3:70%;--m4:50%;--m5:15%}
+      40% {--m1:70%;--m2:25%;--m3:15%;--m4:80%;--m5:45%}
+      60% {--m1:90%;--m2:45%;--m3:60%;--m4:10%;--m5:85%}
+      80% {--m1:50%;--m2:80%;--m3:25%;--m4:65%;--m5:30%}
+      100%{--m1:5%; --m2:95%;--m3:40%;--m4:20%;--m5:75%}}
+    .lt-nav__inner{max-width:1400px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:60px}
+    .lt-nav__logo{font-weight:700;font-size:1.15rem;color:#fff;letter-spacing:-0.02em;text-decoration:none;
+      font-family:'Inter',system-ui,sans-serif;text-shadow:0 1px 3px rgba(0,0,0,0.15)}
+    .lt-nav__links{display:flex;gap:1.8rem;list-style:none}
+    .lt-nav__links a{font-size:0.9rem;font-weight:500;color:rgba(255,255,255,0.9);text-decoration:none;
+      transition:color 0.2s;position:relative;text-shadow:0 1px 3px rgba(0,0,0,0.1)}
+    .lt-nav__links a:hover,.lt-nav__links a.active{color:#fff}
+    .lt-nav__links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:#fff;transition:width 0.25s}
+    .lt-nav__links a:hover::after{width:100%}
+    @media (prefers-reduced-motion:reduce){.lt-nav{animation:none}}
 
     /* ====== BG PARTICLES ====== */
     #bgParticles{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;overflow:hidden}
@@ -44,21 +69,29 @@ permalink: /life/
 
     /* ====== LAYER 1: Card Gallery ====== */
     #layer1{position:fixed;top:0;left:0;width:100%;height:100%;z-index:10;display:flex;align-items:center;justify-content:center;overflow:hidden}
-    #layer1 .title-text{position:absolute;top:70px;left:50%;transform:translateX(-50%);text-align:center;z-index:12;pointer-events:none}
-    #layer1 .title-text h1{font-family:'Playfair Display',serif;font-size:clamp(1.2rem,2.2vw,1.8rem);font-weight:400;color:rgba(30,27,75,0.5);letter-spacing:0.05em}
+    #layer1 .title-text{position:absolute;top:84px;left:50%;transform:translateX(-50%);text-align:center;z-index:12;pointer-events:none}
+    #layer1 .title-text h1{font-family:'Bodoni Moda',Didot,'Playfair Display',serif;font-size:clamp(2rem,4.2vw,3.2rem);font-weight:400;letter-spacing:0.02em;background:linear-gradient(100deg,#241D9A 5%,#9F50D3 45%,#F75092 90%);-webkit-background-clip:text;background-clip:text;color:transparent}
     #layer1 .title-text p{font-size:0.65rem;color:rgba(30,27,75,0.22);margin-top:0.25rem;letter-spacing:0.15em;text-transform:uppercase}
+    #layer1 .title-text .stmt{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(0.95rem,1.35vw,1.12rem);
+      line-height:1.9;color:#1e1b4b;letter-spacing:0.01em;text-transform:none;margin:0.7rem 0 0.55rem;
+      opacity:0;animation:stmtIn 1.4s ease 0.9s forwards}
+    @keyframes stmtIn{to{opacity:1}}
+    @media (prefers-reduced-motion:reduce){#layer1 .title-text .stmt{animation:none;opacity:1}}
 
     .gallery-wrap{width:100%;height:100%;perspective:1200px;perspective-origin:50% 50%}
-    .gallery-stage{width:100%;height:100%;position:relative}
+    .gallery-stage{width:100%;height:100%;position:relative;transform:translateY(5.5vh)}
 
-    .gcard{position:absolute;left:50%;top:50%;border-radius:12px;overflow:hidden;will-change:transform,opacity;backface-visibility:hidden;
+    .gcard{position:absolute;left:50%;top:50%;border-radius:12px;overflow:visible;will-change:transform,opacity;backface-visibility:hidden;
       border:1px solid rgba(255,255,255,0.4);box-shadow:0 2px 8px rgba(30,27,75,0.08),0 25px 70px rgba(30,27,75,0.12);
       transition:box-shadow 0.45s ease,filter 0.45s ease}
     .gcard--main{cursor:pointer}
     .gcard--main.hovered{box-shadow:0 4px 12px rgba(124,58,237,0.15),0 40px 100px rgba(124,58,237,0.2),0 0 40px rgba(247,80,146,0.08)}
-    .gcard__img{width:100%;height:100%;background-size:cover;background-position:center;position:absolute;top:0;left:0;filter:contrast(1.04) saturate(1.1)}
-    .gcard::after{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(135deg,rgba(255,255,255,0.18) 0%,transparent 40%,transparent 60%,rgba(255,255,255,0.05) 100%);pointer-events:none;z-index:2}
-    .gcard__overlay{position:absolute;bottom:0;left:0;right:0;padding:1.5rem 1.2rem;z-index:3;background:linear-gradient(transparent 0%,rgba(0,0,0,0.55) 100%);display:flex;flex-direction:column;gap:0.25rem}
+    .gcard__img{width:100%;height:100%;background-size:cover;background-position:center;position:absolute;top:0;left:0;border-radius:12px;filter:contrast(1.04) saturate(1.1)}
+    .gcard::after{content:'';position:absolute;top:0;left:0;right:0;bottom:0;border-radius:12px;background:linear-gradient(135deg,rgba(255,255,255,0.18) 0%,transparent 40%,transparent 60%,rgba(255,255,255,0.05) 100%);pointer-events:none;z-index:2}
+
+    .gcard__mascot{position:absolute;top:0;right:18px;width:26%;transform:translateY(-55%);z-index:4;pointer-events:none;
+      filter:drop-shadow(0 3px 8px rgba(30,27,75,0.18))}
+    .gcard__overlay{position:absolute;bottom:0;left:0;right:0;padding:1.5rem 1.2rem;z-index:3;border-radius:0 0 12px 12px;background:linear-gradient(transparent 0%,rgba(0,0,0,0.55) 100%);display:flex;flex-direction:column;gap:0.25rem}
     .gcard__label{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:#fff;text-shadow:0 2px 10px rgba(0,0,0,0.3)}
     .gcard__explore{font-size:0.65rem;font-weight:500;color:rgba(255,255,255,0.6);letter-spacing:0.12em;text-transform:uppercase;opacity:0;transform:translateY(6px);transition:opacity 0.35s,transform 0.35s}
     .gcard--main.hovered .gcard__explore{opacity:1;transform:translateY(0)}
@@ -82,9 +115,10 @@ permalink: /life/
     @media(max-width:1100px){.masonry{columns:3}}
     @media(max-width:768px){
       .masonry{columns:2;padding:70px 1rem 2rem}
-      .life-nav{padding:0 1rem;height:48px}
-      .life-nav__links{gap:1rem}
-      .life-nav__links a{font-size:0.7rem}
+      .lt-nav{padding:0 1rem}
+      .lt-nav__inner{height:48px}
+      .lt-nav__links{gap:1rem}
+      .lt-nav__links a{font-size:0.75rem}
       .back-btn{top:1rem;left:1rem;padding:0.4rem 0.8rem;font-size:0.65rem}
       #layer1 .title-text{top:58px}
     }
@@ -93,16 +127,18 @@ permalink: /life/
 </head>
 <body>
 
-  <nav class="life-nav">
-    <a href="/" class="life-nav__logo">Lily Tan</a>
-    <ul class="life-nav__links">
-      <li><a href="/">Home</a></li>
-      <li><a href="/publications/">Research</a></li>
-      <li><a href="/teaching/">Teaching</a></li>
-      <li><a href="/service/">Service</a></li>
-      <li><a href="/cv/">CV</a></li>
-      <li><a href="/life/" class="active">Life</a></li>
-    </ul>
+  <nav class="lt-nav">
+    <div class="lt-nav__inner">
+      <a href="{{ base_path }}/" class="lt-nav__logo">Lily Tan</a>
+      <ul class="lt-nav__links">
+        <li><a href="{{ base_path }}/">Home</a></li>
+        <li><a href="{{ base_path }}/publications/">Research</a></li>
+        <li><a href="{{ base_path }}/teaching/">Teaching</a></li>
+        <li><a href="{{ base_path }}/service/">Service</a></li>
+        <li><a href="{{ base_path }}/cv/">CV</a></li>
+        <li><a href="{{ base_path }}/life/" class="active">Life</a></li>
+      </ul>
+    </div>
   </nav>
 
   <div class="film-grain"></div>
@@ -116,6 +152,7 @@ permalink: /life/
     </div>
     <div class="title-text">
       <h1>Beyond the Research</h1>
+      <p class="stmt">Stay soft enough to notice life.</p>
       <p>Click a card to explore</p>
     </div>
   </div>
@@ -165,11 +202,11 @@ var PHOTOS = {
 };
 
 /* ====== GALLERY CARDS ====== */
-var CARD_RY = -25, CARD_RX = 8, CARD_W = 280, CARD_H = 380;
+var CARD_RY = 0, CARD_RX = 0, CARD_W = 280, CARD_H = 380;
 var ALL_CARDS = [
-  { type:'main', key:'pet',     label:'Pet Lover', img:'/images/life/pet.jpg',     x:-300, y:160,  z:100,  ry:CARD_RY, rx:CARD_RX, w:CARD_W, h:CARD_H },
-  { type:'main', key:'florist', label:'Florist',   img:'/images/life/florist.jpg', x:0,    y:0,    z:-50,  ry:CARD_RY, rx:CARD_RX, w:CARD_W, h:CARD_H },
-  { type:'main', key:'travel',  label:'Moments',   img:'/images/life/travel.jpg',  x:300,  y:-160, z:-200, ry:CARD_RY, rx:CARD_RX, w:CARD_W, h:CARD_H }
+  { type:'main', key:'pet',     label:'Pet Lover', img:'/images/life/pet.jpg',     x:-300, y:55, z:0,  ry:CARD_RY, rx:CARD_RX, w:CARD_W, h:CARD_H },
+  { type:'main', key:'florist', label:'Florist',   img:'/images/life/florist.jpg', x:0,    y:55, z:0,  ry:CARD_RY, rx:CARD_RX, w:CARD_W, h:CARD_H },
+  { type:'main', key:'travel',  label:'Moments',   img:'/images/life/travel.jpg',  x:300,  y:55, z:0, ry:CARD_RY, rx:CARD_RX, w:CARD_W, h:CARD_H }
 ];
 
 /* ====== GLOBALS ====== */
@@ -205,7 +242,8 @@ function buildGallery() {
 
     card.innerHTML =
       '<div class="gcard__img" style="background-image:url(\'' + d.img + '\')"></div>' +
-      '<div class="gcard__overlay"><span class="gcard__label">' + d.label + '</span><span class="gcard__explore">Explore \u2192</span></div>';
+      '<div class="gcard__overlay"><span class="gcard__label">' + d.label + '</span><span class="gcard__explore">Explore \u2192</span></div>'
+    if (d.key === 'pet') card.innerHTML += '<img class="gcard__mascot" src="{{ base_path }}/images/life/lily-sit.png" alt="">';
 
     (function(el, data) {
       el.addEventListener('click', function() {

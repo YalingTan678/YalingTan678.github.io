@@ -8,7 +8,7 @@ venue: 'Computers and Education: Artificial Intelligence'
 publication_type: "journal"
 paperurl: 'https://doi.org/10.1016/j.caeai.2025.100445'
 authors: 'Li, B., <strong>*Tan, L.Y.</strong>, Wang, C., & Lowell, V.'
-badge: 'Q1, IF ≈ 10.5'
+badge: 'Q1, IF = 23.4'
 citation: 'Li, B., *Tan, L.Y., Wang, C., & Lowell, V. (2025). Two years of innovation: A systematic review of empirical generative AI research in language learning and teaching. <i>Computers and Education: Artificial Intelligence, 9</i>, 100445.'
 ---
 
