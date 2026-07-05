@@ -395,10 +395,13 @@ author_profile: true
 
   /* ===== Lily's Life app screens ===== */
   .app-shot {
-    flex-shrink: 0;
-    width: 132px;
+    flex: 1 1 0; /* five screens share the row edge-to-edge, like the PALDT row */
+    min-width: 0;
     cursor: pointer;
     scroll-snap-align: start;
+  }
+  @media (max-width: 768px) {
+    .app-shot { flex: 0 0 132px; }
   }
   .app-shot img {
     width: 100%;
