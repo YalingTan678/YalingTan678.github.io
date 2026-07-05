@@ -396,7 +396,7 @@ author_profile: true
   /* ===== Lily's Life app screens ===== */
   .app-shot {
     flex-shrink: 0;
-    width: 172px;
+    width: 132px;
     cursor: pointer;
     scroll-snap-align: start;
   }
@@ -404,34 +404,6 @@ author_profile: true
     width: 100%;
     aspect-ratio: 1162 / 2628; /* uniform phone ratio so captions align */
     object-fit: cover;
-    display: block;
-    border-radius: 14px;
-    border: 1px solid #e8edf5;
-    transition: box-shadow 0.3s, border-color 0.3s;
-  }
-  .app-shot:hover img {
-    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
-    border-color: #2a7ae2;
-  }
-  .app-shot__cap {
-    display: block;
-    text-align: center;
-    font-size: 0.72rem;
-    color: #64748b;
-    margin-top: 0.4rem;
-    font-weight: 500;
-  }
-
-  /* ===== Lily's Life app screens ===== */
-  .app-shot {
-    flex-shrink: 0;
-    width: 128px;
-    cursor: pointer;
-    scroll-snap-align: start;
-  }
-  .app-shot img {
-    width: 100%;
-    height: auto;
     display: block;
     border-radius: 14px;
     border: 1px solid #e8edf5;
@@ -492,6 +464,42 @@ I believe great design serves learning. Whether it's a course interface, a confe
 
 <h2>Featured Projects</h2>
 
+<!-- Lily's Life self-tracking app -->
+<div class="featured-project featured-project--stack">
+  <div class="featured-project__info">
+    <div class="design-card__title" style="font-size:0.95rem;">Lily's Life &mdash; Self-Tracking App</div>
+    <div class="design-card__tags" style="margin-top:0.3rem;">
+      <span class="design-tag design-tag--figma">UI Design</span>
+      <span class="design-tag design-tag--canva">App</span>
+    </div>
+    <div class="design-card__desc" style="margin-top:0.4rem;font-size:0.8rem;line-height:1.55;">
+      A personal tracking app I designed and use every day to log my own work and life: research pomodoros, focus sessions, weight, baking, and illustration. Hand-drawn vermilion line art on cream, built to make self-regulated learning feel warm and personal.
+    </div>
+  </div>
+<div class="newsletter-row">
+  <div class="app-shot" onclick="openLightbox('/images/design/lilyslife-home.jpg')">
+    <img src="/images/design/lilyslife-home.jpg" alt="Lily's Life app: Home screen with hand-drawn hero and progress list">
+    <span class="app-shot__cap">Home &middot; Today</span>
+  </div>
+  <div class="app-shot" onclick="openLightbox('/images/design/lilyslife-stats.jpg')">
+    <img src="/images/design/lilyslife-stats.jpg" alt="Lily's Life app: weekly stats with progress rings and weight curve">
+    <span class="app-shot__cap">Stats &middot; This Week</span>
+  </div>
+  <div class="app-shot" onclick="openLightbox('/images/design/lilyslife-research.jpg')">
+    <img src="/images/design/lilyslife-research.jpg" alt="Lily's Life app: research overview with focus heatmap and pomodoro timer">
+    <span class="app-shot__cap">Research &middot; Focus</span>
+  </div>
+  <div class="app-shot" onclick="openLightbox('/images/design/lilyslife-weight.jpg')">
+    <img src="/images/design/lilyslife-weight.jpg" alt="Lily's Life app: weight goal plan setup">
+    <span class="app-shot__cap">Weight &middot; Plan Setup</span>
+  </div>
+  <div class="app-shot" onclick="openLightbox('/images/design/lilyslife-profile.jpg')">
+    <img src="/images/design/lilyslife-profile.jpg" alt="Lily's Life app: profile and plan settings">
+    <span class="app-shot__cap">Profile &middot; Settings</span>
+  </div>
+</div>
+</div>
+
 <!-- Purdue Libraries RA Video Series -->
 <div class="featured-project">
   <div class="featured-project__video" onclick="window.open('/files/zotero-tutorial.mp4','_blank')">
@@ -510,24 +518,6 @@ I believe great design serves learning. Whether it's a course interface, a confe
     <span class="design-card__link" style="margin-top:0.6rem;" onclick="window.open('/files/zotero-tutorial.mp4','_blank')">Watch Zotero tutorial &rarr;</span>
   </div>
 </div>
-
-<!-- Interview Prep Skills -->
-<a class="featured-project featured-project--dark" href="https://github.com/YalingTan678/interview-prep-skills" target="_blank" style="font-style:normal;">
-  <div class="featured-project__preview">
-    <img src="/images/design/ips-skills-overview.jpg" alt="Interview Prep Skills overview: 11 skills grid">
-  </div>
-  <div class="featured-project__info">
-    <div class="design-card__title" style="font-size:0.95rem;">Interview Prep Skills</div>
-    <div class="design-card__tags" style="margin-top:0.3rem;">
-      <span class="design-tag design-tag--web">Web</span>
-      <span class="design-tag" style="background:#ede9fe;color:#7c3aed;">Agent Skills</span>
-    </div>
-    <div class="design-card__desc" style="margin-top:0.4rem;font-size:0.8rem;line-height:1.55;">
-      A systematic, framework-driven interview preparation system for university students, built as an Agent Skills suite of 11 interactive skills covering the full interview lifecycle, from decoding job descriptions and tailoring resumes to mock interviews and follow-ups.
-    </div>
-    <span class="design-card__link" style="margin-top:0.6rem;">View on GitHub &rarr;</span>
-  </div>
-</a>
 
 <!-- PALDT Newsletters -->
 <div class="featured-project featured-project--stack">
@@ -573,41 +563,23 @@ I believe great design serves learning. Whether it's a course interface, a confe
 </div>
 </div>
 
-<!-- Lily's Life self-tracking app -->
-<div class="featured-project featured-project--stack">
+<!-- Interview Prep Skills -->
+<a class="featured-project featured-project--dark" href="https://github.com/YalingTan678/interview-prep-skills" target="_blank" style="font-style:normal;">
+  <div class="featured-project__preview">
+    <img src="/images/design/ips-skills-overview.jpg" alt="Interview Prep Skills overview: 11 skills grid">
+  </div>
   <div class="featured-project__info">
-    <div class="design-card__title" style="font-size:0.95rem;">Lily's Life &mdash; Self-Tracking App</div>
+    <div class="design-card__title" style="font-size:0.95rem;">Interview Prep Skills</div>
     <div class="design-card__tags" style="margin-top:0.3rem;">
-      <span class="design-tag design-tag--figma">UI Design</span>
-      <span class="design-tag design-tag--canva">App</span>
+      <span class="design-tag design-tag--web">Web</span>
+      <span class="design-tag" style="background:#ede9fe;color:#7c3aed;">Agent Skills</span>
     </div>
     <div class="design-card__desc" style="margin-top:0.4rem;font-size:0.8rem;line-height:1.55;">
-      A personal tracking app I designed and use every day to log my own work and life: research pomodoros, focus sessions, weight, baking, and illustration. Hand-drawn vermilion line art on cream, built to make self-regulated learning feel warm and personal.
+      A systematic, framework-driven interview preparation system for university students, built as an Agent Skills suite of 11 interactive skills covering the full interview lifecycle, from decoding job descriptions and tailoring resumes to mock interviews and follow-ups.
     </div>
+    <span class="design-card__link" style="margin-top:0.6rem;">View on GitHub &rarr;</span>
   </div>
-<div class="newsletter-row">
-  <div class="app-shot" onclick="openLightbox('/images/design/lilyslife-home.jpg')">
-    <img src="/images/design/lilyslife-home.jpg" alt="Lily's Life app: Home screen with hand-drawn hero and progress list">
-    <span class="app-shot__cap">Home &middot; Today</span>
-  </div>
-  <div class="app-shot" onclick="openLightbox('/images/design/lilyslife-stats.jpg')">
-    <img src="/images/design/lilyslife-stats.jpg" alt="Lily's Life app: weekly stats with progress rings and weight curve">
-    <span class="app-shot__cap">Stats &middot; This Week</span>
-  </div>
-  <div class="app-shot" onclick="openLightbox('/images/design/lilyslife-research.jpg')">
-    <img src="/images/design/lilyslife-research.jpg" alt="Lily's Life app: research overview with focus heatmap and pomodoro timer">
-    <span class="app-shot__cap">Research &middot; Focus</span>
-  </div>
-  <div class="app-shot" onclick="openLightbox('/images/design/lilyslife-weight.jpg')">
-    <img src="/images/design/lilyslife-weight.jpg" alt="Lily's Life app: weight goal plan setup">
-    <span class="app-shot__cap">Weight &middot; Plan Setup</span>
-  </div>
-  <div class="app-shot" onclick="openLightbox('/images/design/lilyslife-profile.jpg')">
-    <img src="/images/design/lilyslife-profile.jpg" alt="Lily's Life app: profile and plan settings">
-    <span class="app-shot__cap">Profile &middot; Settings</span>
-  </div>
-</div>
-</div>
+</a>
 
 <div class="design-lightbox" id="designLightbox" onclick="this.classList.remove('active')">
   <img src="" alt="Newsletter full view" id="lightboxImg">
