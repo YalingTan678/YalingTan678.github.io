@@ -242,7 +242,7 @@ function buildGallery() {
 
     card.innerHTML =
       '<div class="gcard__img" style="background-image:url(\'' + d.img + '\')"></div>' +
-      '<div class="gcard__overlay"><span class="gcard__label">' + d.label + '</span><span class="gcard__explore">Explore \u2192</span></div>'
+      '<div class="gcard__overlay"><span class="gcard__label">' + d.label + '</span><span class="gcard__explore">Explore \u2192</span></div>';
     if (d.key === 'pet') card.innerHTML += '<img class="gcard__mascot" src="{{ base_path }}/images/life/lily-sit.png" alt="">';
 
     (function(el, data) {
@@ -347,7 +347,7 @@ function showDetailLayer() {
   gsap.to(flashOverlay, { opacity: 0, duration: 0.4 });
   window.scrollTo(0, 0);
 
-  // Build masonry grid
+ /* Build masonry grid */
   layer2.innerHTML = '';
   var wrap = document.createElement('div');
   wrap.className = 'masonry';
@@ -366,10 +366,10 @@ function showDetailLayer() {
 
   layer2.appendChild(wrap);
 
-  // Staggered scroll-reveal entrance
+ /* Staggered scroll-reveal entrance */
   var items = wrap.querySelectorAll('.mphoto');
   items.forEach(function(el, i) {
-    // Initial entrance: stagger from top
+ /* Initial entrance: stagger from top */
     gsap.to(el, {
       opacity: 1, y: 0, scale: 1,
       duration: 0.6,
@@ -387,7 +387,7 @@ function transitionToCards() {
 
   ScrollTrigger.getAll().forEach(function(st) { st.kill(); });
 
-  // Fade out masonry
+ /* Fade out masonry */
   gsap.to('#layer2 .mphoto', {
     opacity: 0, y: 30, scale: 0.95,
     stagger: 0.02, duration: 0.3, ease: 'power2.in',

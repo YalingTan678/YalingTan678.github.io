@@ -176,7 +176,7 @@ author_profile: false
             return e;
           })
           .onPointClick(showCard);
-        // NASA-style lighting: stronger sun, dimmer ambient, ocean glint
+ /* NASA-style lighting: stronger sun, dimmer ambient, ocean glint */
         try{
           var mat=globe.globeMaterial();
           if(mat.specular&&mat.specular.set){mat.specular.set('#3d5f96');}
@@ -189,9 +189,9 @@ author_profile: false
         globe.controls().autoRotate=!matchMedia('(prefers-reduced-motion: reduce)').matches;
         globe.controls().autoRotateSpeed=0.5;
         globe.controls().enableZoom=true;
-        globe.controls().minDistance=185;   // closest: street-of-the-globe detail
+        globe.controls().minDistance=185; /* closest: street-of-the-globe detail */
         globe.controls().maxDistance=420;
-        globe.controls().minPolarAngle=Math.PI*0.16;  // keep the northern hemisphere in frame
+        globe.controls().minPolarAngle=Math.PI*0.16; /* keep the northern hemisphere in frame */
         globe.controls().maxPolarAngle=Math.PI*0.60;
         globe.pointOfView({lat:32,lng:95,altitude:2.4},0);
         function resize(){globe.width(wrap.clientWidth).height(wrap.clientHeight);}
@@ -231,24 +231,24 @@ author_profile: false
       {n:'Las Vegas',s:'AECT \u201925',x:140.4,y:101.1,lx:-72,ly:26},
       {n:'Chicago',s:'AECT \u201926',x:213.4,y:85.8,lx:16,ly:34,future:1}
     ];
-    // pieces: [fromIdx,toIdx] with optional via edge-wrap; stopAfter = index of arrival stop
+ /* pieces: [fromIdx,toIdx] with optional via edge-wrap; stopAfter = index of arrival stop */
     var PIECES=[
       {a:[721.1,118.8],b:[723.6,113.6],stop:1},
       {a:[723.6,113.6],b:[773.3,86],stop:2},
       {a:[773.3,86],b:[496.2,63.4],stop:3},
       {a:[496.2,63.4],b:[473.4,81],stop:4},
       {a:[473.4,81],b:[816.5,102.3],stop:5},
-      {a:[816.5,102.3],b:[958,86]},                       // to right edge (Pacific)
+      {a:[816.5,102.3],b:[958,86]}, /* to right edge (Pacific) */
       {a:[-8,86],b:[215.2,89.7],stop:6,teleport:1},
       {a:[215.2,89.7],b:[140.4,101.1],stop:7},
       {a:[140.4,101.1],b:[213.4,85.8],stop:8,future:1}
     ];
-    // quad control point: lifted perpendicular
+ /* quad control point: lifted perpendicular */
     PIECES.forEach(function(p){
       var mx=(p.a[0]+p.b[0])/2,my=(p.a[1]+p.b[1])/2;
       var dx=p.b[0]-p.a[0],dy=p.b[1]-p.a[1],L=Math.hypot(dx,dy)||1;
       var k=Math.min(46,L*0.22);
-      p.c=[mx+dy/L*-k, my+dx/L*k*0 - k];   // lift upward
+      p.c=[mx+dy/L*-k, my+dx/L*k*0 - k]; /* lift upward */
       p.len=L*1.08;
       var d='M '+p.a[0]+' '+p.a[1]+' Q '+p.c[0]+' '+p.c[1]+' '+p.b[0]+' '+p.b[1];
       p.el=el('path',{d:d,class:'jmap-route',
@@ -257,7 +257,7 @@ author_profile: false
         opacity:0});
       svg.appendChild(p.el);
     });
-    // stops + labels
+ /* stops + labels */
     var lblEls=[];
     STOPS.forEach(function(st,i){
       var g=el('g',{class:'jmap-stop'});
@@ -272,13 +272,13 @@ author_profile: false
     function lightUp(i){ lblEls[i][0].classList.add('on'); lblEls[i][1].classList.add('on'); }
     function resetLbls(){ lblEls.forEach(function(p){p[0].classList.remove('on');p[1].classList.remove('on');}); lightUp(0); }
 
-    // paper plane
+ /* paper plane */
     var plane=el('path',{d:'M0 0 L-13 5 L-8.5 0 L-13 -5 Z',fill:'url(#jmap-grad)',opacity:reduced?0:1});
     svg.appendChild(plane);
 
     if(reduced){ PIECES.forEach(function(p){p.el.setAttribute('opacity',1);}); STOPS.forEach(function(_,i){lightUp(i);}); return; }
 
-    function q(p,t){ // point on quad
+    function q(p,t){ /* point on quad */
       var mt=1-t;
       return [mt*mt*p.a[0]+2*mt*t*p.c[0]+t*t*p.b[0], mt*mt*p.a[1]+2*mt*t*p.c[1]+t*t*p.b[1]];
     }
@@ -371,7 +371,7 @@ author_profile: false
   </div>
   </div>
   <script>
-  // keep timeline tooltips fully inside the viewport (no clipping by table edges)
+ /* keep timeline tooltips fully inside the viewport (no clipping by table edges) */
   document.querySelectorAll('.jny-tipwrap').forEach(function(w){
     var tip=w.querySelector('.jny-tip');
     if(!tip)return;

@@ -567,7 +567,7 @@ I believe great design serves learning. Whether it's a course interface, a confe
 </div>
 
 <script>
-// Hover-scroll: calculate scroll distance for each newsletter card
+ /* Hover-scroll: calculate scroll distance for each newsletter card */
 document.querySelectorAll('.nl-scroll-card').forEach(function(card) {
   var img = card.querySelector('img');
   function calcScroll() {
@@ -585,7 +585,7 @@ document.querySelectorAll('.nl-scroll-card').forEach(function(card) {
   window.addEventListener('resize', calcScroll);
 });
 
-// Lightbox
+ /* Lightbox */
 function openLightbox(src) {
   var lb = document.getElementById('designLightbox');
   document.getElementById('lightboxImg').src = src;
