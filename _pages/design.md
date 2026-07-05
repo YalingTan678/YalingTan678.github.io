@@ -397,7 +397,6 @@ author_profile: true
   .app-shot {
     flex: 1 1 0; /* five screens share the row edge-to-edge, like the PALDT row */
     min-width: 0;
-    cursor: pointer;
     scroll-snap-align: start;
   }
   @media (max-width: 768px) {
@@ -411,10 +410,6 @@ author_profile: true
     border-radius: 14px;
     border: 1px solid #e8edf5;
     transition: box-shadow 0.3s, border-color 0.3s;
-  }
-  .app-shot:hover img {
-    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
-    border-color: #2a7ae2;
   }
   .app-shot__cap {
     display: block;
@@ -480,23 +475,23 @@ I believe great design serves learning. Whether it's a course interface, a confe
     </div>
   </div>
 <div class="newsletter-row">
-  <div class="app-shot" onclick="openLightbox('/images/design/lilyslife-home.jpg')">
+  <div class="app-shot">
     <img src="/images/design/lilyslife-home.jpg" alt="Lily's Life app: Home screen with hand-drawn hero and progress list">
     <span class="app-shot__cap">Home &middot; Today</span>
   </div>
-  <div class="app-shot" onclick="openLightbox('/images/design/lilyslife-stats.jpg')">
+  <div class="app-shot">
     <img src="/images/design/lilyslife-stats.jpg" alt="Lily's Life app: weekly stats with progress rings and weight curve">
     <span class="app-shot__cap">Stats &middot; This Week</span>
   </div>
-  <div class="app-shot" onclick="openLightbox('/images/design/lilyslife-research.jpg')">
+  <div class="app-shot">
     <img src="/images/design/lilyslife-research.jpg" alt="Lily's Life app: research overview with focus heatmap and pomodoro timer">
     <span class="app-shot__cap">Research &middot; Focus</span>
   </div>
-  <div class="app-shot" onclick="openLightbox('/images/design/lilyslife-weight.jpg')">
+  <div class="app-shot">
     <img src="/images/design/lilyslife-weight.jpg" alt="Lily's Life app: weight goal plan setup">
     <span class="app-shot__cap">Weight &middot; Plan Setup</span>
   </div>
-  <div class="app-shot" onclick="openLightbox('/images/design/lilyslife-profile.jpg')">
+  <div class="app-shot">
     <img src="/images/design/lilyslife-profile.jpg" alt="Lily's Life app: profile and plan settings">
     <span class="app-shot__cap">Profile &middot; Settings</span>
   </div>
