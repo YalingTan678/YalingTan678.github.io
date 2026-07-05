@@ -595,7 +595,7 @@
       }
       .lt-fade-in.visible {
         opacity: 1;
-        transform: translateY(0);
+        transform: none; /* not translateY(0): a kept transform hijacks position:fixed tooltips inside */
       }
       @media (prefers-reduced-motion: reduce) {
         .lt-fade-in { opacity: 1; transform: none; transition: none; }

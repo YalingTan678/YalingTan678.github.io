@@ -159,12 +159,13 @@ author_profile: true
   /* ===== Featured Project (horizontal) ===== */
   .featured-project {
     display: flex;
-    gap: 1.5rem;
-    padding: 1.2rem;
+    gap: 1.2rem;
+    padding: 1rem 1.1rem;
+    margin-bottom: 1rem;
     border: 1px solid #e8edf5;
     border-radius: 14px;
     background: #fff;
-    align-items: stretch;
+    align-items: center;
     transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
   }
   .featured-project:hover {
@@ -175,8 +176,8 @@ author_profile: true
   .featured-project__video {
     position: relative;
     flex-shrink: 0;
-    width: 340px;
-    min-height: 220px;
+    width: 240px;
+    aspect-ratio: 16 / 9; /* native video proportions, scaled down */
     border-radius: 10px;
     overflow: hidden;
     background: #000;
@@ -185,7 +186,7 @@ author_profile: true
   .featured-project__video img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    display: block;
     opacity: 0.85;
     transition: transform 0.4s, opacity 0.3s;
   }
@@ -215,64 +216,19 @@ author_profile: true
   }
   .featured-project--dark, .featured-project--dark * {
     font-style: normal;
+    text-decoration: none !important; /* the whole card is an <a>; kill theme underline on all inner text */
   }
 
   .featured-project__preview {
     flex-shrink: 0;
-    width: 340px;
-    min-height: 220px;
+    width: 240px;
     border-radius: 10px;
     overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
   }
-
-  /* Mini hero mock of the Interview Prep site */
-  .ips-hero-mock {
+  .featured-project__preview img {
     width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, #eef2ff, #f5f3ff, #fdf2f8);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 1.5rem;
-    gap: 0.6rem;
-    border-radius: 10px;
-  }
-  .ips-hero-mock .ips-tag {
-    display: inline-block;
-    padding: 0.2rem 0.6rem;
-    border-radius: 999px;
-    font-size: 0.6rem;
-    font-weight: 500;
-    border: 1px solid #e2e8f0;
-    background: #fff;
-    color: #64748b;
-  }
-  .ips-hero-mock .ips-title {
-    font-size: 1.3rem;
-    font-weight: 800;
-    background: linear-gradient(135deg, #6366f1, #8b5cf6, #ec4899);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    margin: 0.3rem 0;
-  }
-  .ips-hero-mock .ips-stats {
-    display: flex;
-    gap: 1.2rem;
-    font-size: 0.75rem;
-    color: #718096;
-  }
-  .ips-hero-mock .ips-stats strong {
-    font-size: 1.1rem;
-    font-weight: 800;
-    background: linear-gradient(135deg, #6366f1, #8b5cf6);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    height: auto;
     display: block;
-    text-align: center;
   }
 
   /* ===== Video Card ===== */
@@ -311,6 +267,12 @@ author_profile: true
   .design-card:hover .design-card__play {
     transform: translate(-50%, -50%) scale(1.1);
     box-shadow: 0 6px 24px rgba(0,0,0,0.3);
+  }
+  .featured-project__video .design-card__play {
+    width: 36px; height: 36px;
+  }
+  .featured-project__video .design-card__play::after {
+    border-width: 6px 0 6px 10px;
   }
   .design-card__play::after {
     content: '';
@@ -423,6 +385,34 @@ author_profile: true
     opacity: 0;
   }
 
+  /* ===== Lily's Life app screens ===== */
+  .app-shot {
+    flex-shrink: 0;
+    width: 172px;
+    cursor: pointer;
+    scroll-snap-align: start;
+  }
+  .app-shot img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 14px;
+    border: 1px solid #e8edf5;
+    transition: box-shadow 0.3s, border-color 0.3s;
+  }
+  .app-shot:hover img {
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+    border-color: #2a7ae2;
+  }
+  .app-shot__cap {
+    display: block;
+    text-align: center;
+    font-size: 0.72rem;
+    color: #64748b;
+    margin-top: 0.4rem;
+    font-weight: 500;
+  }
+
   /* ===== Lightbox ===== */
   .design-lightbox {
     display: none;
@@ -448,8 +438,8 @@ author_profile: true
     .design-content .philosophy { padding: 1.2rem 1.3rem; font-size: 0.9rem; }
     .design-grid { grid-template-columns: 1fr; }
     .featured-project { flex-direction: column; }
-    .featured-project__video { width: 100%; min-height: 200px; }
-    .featured-project__preview { width: 100%; min-height: 180px; }
+    .featured-project__video { width: 100%; }
+    .featured-project__preview { width: 100%; }
     .nl-scroll-card { width: 180px; height: 270px; }
   }
   @media (max-width: 400px) {
@@ -474,57 +464,33 @@ I believe great design serves learning. Whether it's a course interface, a confe
     <div class="design-card__play"></div>
   </div>
   <div class="featured-project__info">
-    <div class="design-card__title" style="font-size:1.05rem;">Purdue Libraries Instructional Video Series</div>
+    <div class="design-card__title" style="font-size:0.95rem;">Purdue Libraries Instructional Video Series</div>
     <div class="design-card__tags" style="margin-top:0.3rem;">
       <span class="design-tag design-tag--video">Video</span>
       <span class="design-tag design-tag--web">Coding</span>
     </div>
-    <div class="design-card__desc" style="margin-top:0.6rem;">
-      As a Research Assistant at Purdue University Libraries &amp; School of Information Studies, I design and produce short instructional videos to support graduate students across the College of Education. This series aims to lower the barrier to essential research skills, covering topics such as:
+    <div class="design-card__desc" style="margin-top:0.4rem;font-size:0.8rem;line-height:1.55;">
+      As a Research Assistant at Purdue Libraries &amp; School of Information Studies, I design and produce short instructional videos on essential research skills: Zotero, research guides, systematic writing, and data management.
     </div>
-    <ul style="font-size:0.84rem; color:#4a5568; line-height:1.7; padding-left:1.2rem; margin:0.5rem 0 0;">
-      <li><strong>Zotero</strong> &mdash; reference management &amp; citation workflows</li>
-      <li><strong>Research Guides</strong> &mdash; navigating library databases &amp; resources</li>
-      <li><strong>Systematic Writing</strong> &mdash; structuring literature reviews &amp; academic papers</li>
-      <li><strong>Data Management</strong> &mdash; organizing research data for reproducibility</li>
-    </ul>
-    <span class="design-card__link" style="margin-top:0.8rem;" onclick="window.open('/files/zotero-tutorial.mp4','_blank')">Watch Zotero tutorial &rarr;</span>
+    <span class="design-card__link" style="margin-top:0.6rem;" onclick="window.open('/files/zotero-tutorial.mp4','_blank')">Watch Zotero tutorial &rarr;</span>
   </div>
 </div>
 
 <!-- Interview Prep Skills -->
 <a class="featured-project featured-project--dark" href="https://github.com/YalingTan678/interview-prep-skills" target="_blank" style="font-style:normal;">
   <div class="featured-project__preview">
-    <div class="ips-hero-mock">
-      <span class="ips-tag">Undergrad</span>
-      <span class="ips-tag">Master's</span>
-      <span class="ips-tag">PhD</span>
-      <span class="ips-tag">Agent Skills Skill</span>
-      <div class="ips-title">Interview Prep Skills</div>
-      <div class="ips-stats">
-        <span><strong>11</strong> Skills</span>
-        <span><strong>3</strong> Workflows</span>
-        <span><strong>4</strong> Frameworks</span>
-      </div>
-    </div>
+    <img src="/images/design/ips-skills-overview.jpg" alt="Interview Prep Skills overview: 11 skills grid">
   </div>
   <div class="featured-project__info">
-    <div class="design-card__title" style="font-size:1.05rem;">Interview Prep Skills</div>
+    <div class="design-card__title" style="font-size:0.95rem;">Interview Prep Skills</div>
     <div class="design-card__tags" style="margin-top:0.3rem;">
       <span class="design-tag design-tag--web">Web</span>
       <span class="design-tag" style="background:#ede9fe;color:#7c3aed;">Agent Skills</span>
     </div>
-    <div class="design-card__desc" style="margin-top:0.6rem;">
-      A systematic, framework-driven interview preparation system designed for university students. Built as a Agent Skills skill suite with 11 interactive skills covering the full interview lifecycle:
+    <div class="design-card__desc" style="margin-top:0.4rem;font-size:0.8rem;line-height:1.55;">
+      A systematic, framework-driven interview preparation system for university students, built as an Agent Skills suite of 11 interactive skills covering the full interview lifecycle, from decoding job descriptions and tailoring resumes to mock interviews and follow-ups.
     </div>
-    <ul style="font-size:0.84rem; color:#4a5568; line-height:1.7; padding-left:1.2rem; margin:0.5rem 0 0;">
-      <li><strong>Role Investigator</strong> &mdash; decode job descriptions &amp; identify key competencies</li>
-      <li><strong>Resume Tailor</strong> &mdash; customize resumes per role with keyword alignment</li>
-      <li><strong>Mock Interview</strong> &mdash; AI-powered practice with real-time feedback</li>
-      <li><strong>Value Proposition</strong> &mdash; craft compelling personal narratives</li>
-      <li><strong>Thank-You Note</strong> &mdash; generate personalized follow-ups</li>
-    </ul>
-    <span class="design-card__link" style="margin-top:0.8rem;">View on GitHub &rarr;</span>
+    <span class="design-card__link" style="margin-top:0.6rem;">View on GitHub &rarr;</span>
   </div>
 </a>
 
@@ -562,6 +528,35 @@ I believe great design serves learning. Whether it's a course interface, a confe
   <div class="nl-scroll-card" onclick="openLightbox('/images/design/paldt-sep08.jpg')">
     <img src="/images/design/paldt-sep08.jpg" alt="PALDT Newsletter Sep 8, 2025">
     <span class="nl-scroll-card__label">Sep 8, 2025</span>
+  </div>
+</div>
+
+<h2 style="margin-top:1.5rem;">Lily's Life &mdash; Self-Tracking App</h2>
+
+<p style="font-size:0.88rem;color:#4a5568;margin-bottom:1rem;">
+  A personal tracking app I designed and use every day to log my own work and life: research pomodoros, focus sessions, weight, baking, and illustration. Hand-drawn vermilion line art on cream, built to make self-regulated learning feel warm and personal.
+</p>
+
+<div class="newsletter-row">
+  <div class="app-shot" onclick="openLightbox('/images/design/lilyslife-home.jpg')">
+    <img src="/images/design/lilyslife-home.jpg" alt="Lily's Life app: Home screen with hand-drawn hero and progress list">
+    <span class="app-shot__cap">Home &middot; Today</span>
+  </div>
+  <div class="app-shot" onclick="openLightbox('/images/design/lilyslife-stats.jpg')">
+    <img src="/images/design/lilyslife-stats.jpg" alt="Lily's Life app: weekly stats with progress rings and weight curve">
+    <span class="app-shot__cap">Stats &middot; This Week</span>
+  </div>
+  <div class="app-shot" onclick="openLightbox('/images/design/lilyslife-research.jpg')">
+    <img src="/images/design/lilyslife-research.jpg" alt="Lily's Life app: research overview with focus heatmap and pomodoro timer">
+    <span class="app-shot__cap">Research &middot; Focus</span>
+  </div>
+  <div class="app-shot" onclick="openLightbox('/images/design/lilyslife-weight.jpg')">
+    <img src="/images/design/lilyslife-weight.jpg" alt="Lily's Life app: weight goal plan setup">
+    <span class="app-shot__cap">Weight &middot; Plan Setup</span>
+  </div>
+  <div class="app-shot" onclick="openLightbox('/images/design/lilyslife-profile.jpg')">
+    <img src="/images/design/lilyslife-profile.jpg" alt="Lily's Life app: profile and plan settings">
+    <span class="app-shot__cap">Profile &middot; Settings</span>
   </div>
 </div>
 
