@@ -230,6 +230,18 @@ author_profile: true
     height: auto;
     display: block;
   }
+  .fp-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px;
+  }
+  .fp-grid img {
+    height: 80px;
+    object-fit: cover;
+    object-position: top;
+    cursor: pointer;
+    border-radius: 4px;
+  }
 
   /* ===== Video Card ===== */
   .design-card__video {
@@ -284,135 +296,6 @@ author_profile: true
     margin-left: 3px;
   }
 
-  /* ===== PALDT Newsletter Row with hover-scroll ===== */
-  .newsletter-row {
-    display: flex;
-    gap: 1rem;
-    overflow-x: auto;
-    padding-bottom: 0.8rem;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-  }
-  .newsletter-row::-webkit-scrollbar {
-    height: 6px;
-  }
-  .newsletter-row::-webkit-scrollbar-track {
-    background: #f1f5f9;
-    border-radius: 3px;
-  }
-  .newsletter-row::-webkit-scrollbar-thumb {
-    background: #cbd5e1;
-    border-radius: 3px;
-  }
-
-  .nl-scroll-card {
-    flex-shrink: 0;
-    width: 220px;
-    height: 320px;
-    border-radius: 12px;
-    overflow: hidden;
-    border: 1px solid #e8edf5;
-    background: #fff;
-    position: relative;
-    cursor: pointer;
-    scroll-snap-align: start;
-    transition: box-shadow 0.3s, border-color 0.3s;
-  }
-  .nl-scroll-card:hover {
-    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
-    border-color: #2a7ae2;
-  }
-  .nl-scroll-card img {
-    width: 100%;
-    height: auto;
-    display: block;
-    object-fit: cover;
-    object-position: top;
-    transition: transform 3s ease-in-out;
-    transform: translateY(0);
-  }
-  .nl-scroll-card:hover img {
-    transform: translateY(var(--scroll-y, -70%));
-  }
-  /* Date label */
-  .nl-scroll-card__label {
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    padding: 0.4rem 0.6rem;
-    background: linear-gradient(transparent, rgba(0,0,0,0.6));
-    color: #fff;
-    font-size: 0.72rem;
-    font-weight: 600;
-    text-align: center;
-    pointer-events: none;
-    opacity: 0;
-    transition: opacity 0.3s;
-  }
-  .nl-scroll-card:hover .nl-scroll-card__label {
-    opacity: 1;
-  }
-  /* Scroll hint icon */
-  .nl-scroll-card::before {
-    content: '\2195';
-    position: absolute;
-    top: 8px; right: 8px;
-    width: 22px; height: 22px;
-    border-radius: 6px;
-    background: rgba(0,0,0,0.4);
-    color: #fff;
-    font-size: 0.65rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 2;
-    opacity: 0.7;
-    transition: opacity 0.3s;
-  }
-  .nl-scroll-card:hover::before {
-    opacity: 0;
-  }
-  /* Fade hint at bottom */
-  .nl-scroll-card::after {
-    content: '';
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    height: 40px;
-    background: linear-gradient(transparent, rgba(255,255,255,0.65));
-    pointer-events: none;
-    transition: opacity 0.3s;
-  }
-  .nl-scroll-card:hover::after {
-    opacity: 0;
-  }
-
-  /* ===== Lily's Life app screens ===== */
-  .app-shot {
-    flex-shrink: 0;
-    width: 172px;
-    cursor: pointer;
-    scroll-snap-align: start;
-  }
-  .app-shot img {
-    width: 100%;
-    height: auto;
-    display: block;
-    border-radius: 14px;
-    border: 1px solid #e8edf5;
-    transition: box-shadow 0.3s, border-color 0.3s;
-  }
-  .app-shot:hover img {
-    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
-    border-color: #2a7ae2;
-  }
-  .app-shot__cap {
-    display: block;
-    text-align: center;
-    font-size: 0.72rem;
-    color: #64748b;
-    margin-top: 0.4rem;
-    font-weight: 500;
-  }
-
   /* ===== Lightbox ===== */
   .design-lightbox {
     display: none;
@@ -440,12 +323,10 @@ author_profile: true
     .featured-project { flex-direction: column; }
     .featured-project__video { width: 100%; }
     .featured-project__preview { width: 100%; }
-    .nl-scroll-card { width: 180px; height: 270px; }
   }
   @media (max-width: 400px) {
     .design-content .philosophy { padding: 1rem; margin-bottom: 1.5rem; }
     .design-card__img { height: 160px; }
-    .nl-scroll-card { width: 150px; height: 230px; }
   }
 </style>
 
@@ -494,69 +375,41 @@ I believe great design serves learning. Whether it's a course interface, a confe
   </div>
 </a>
 
-<h2 style="margin-top:1.5rem;">PALDT Newsletters</h2>
-
-<p style="font-size:0.88rem;color:#4a5568;margin-bottom:1rem;">
-  Biweekly newsletters designed for the Purdue Association of Learning Design and Technology (PALDT) as Marketing &amp; Design Officer. Created with Publicate, covering announcements, workshops, events, and community spotlights.
-</p>
-
-<div class="newsletter-row">
-  <div class="nl-scroll-card" onclick="openLightbox('/images/design/paldt-mar22.jpg')">
-    <img src="/images/design/paldt-mar22.jpg" alt="PALDT Newsletter Mar 22, 2026">
-    <span class="nl-scroll-card__label">Mar 22, 2026</span>
+<!-- PALDT Newsletters -->
+<div class="featured-project">
+  <div class="featured-project__preview fp-grid">
+    <img src="/images/design/paldt-mar22.jpg" alt="PALDT Newsletter Mar 22, 2026" onclick="openLightbox(this.src)">
+    <img src="/images/design/paldt-mar09.jpg" alt="PALDT Newsletter Mar 9, 2026" onclick="openLightbox(this.src)">
+    <img src="/images/design/paldt-jan26.jpg" alt="PALDT Newsletter Jan 26, 2026" onclick="openLightbox(this.src)">
+    <img src="/images/design/paldt-sep08.jpg" alt="PALDT Newsletter Sep 8, 2025" onclick="openLightbox(this.src)">
   </div>
-  <div class="nl-scroll-card" onclick="openLightbox('/images/design/paldt-mar09.jpg')">
-    <img src="/images/design/paldt-mar09.jpg" alt="PALDT Newsletter Mar 9, 2026">
-    <span class="nl-scroll-card__label">Mar 9, 2026</span>
-  </div>
-  <div class="nl-scroll-card" onclick="openLightbox('/images/design/paldt-jan26.jpg')">
-    <img src="/images/design/paldt-jan26.jpg" alt="PALDT Newsletter Jan 26, 2026">
-    <span class="nl-scroll-card__label">Jan 26, 2026</span>
-  </div>
-  <div class="nl-scroll-card" onclick="openLightbox('/images/design/paldt-w3.jpg')">
-    <img src="/images/design/paldt-w3.jpg" alt="PALDT Newsletter W3">
-    <span class="nl-scroll-card__label">Sep 8, 2025</span>
-  </div>
-  <div class="nl-scroll-card" onclick="openLightbox('/images/design/paldt-oct06.jpg')">
-    <img src="/images/design/paldt-oct06.jpg" alt="PALDT Newsletter Oct 6, 2025">
-    <span class="nl-scroll-card__label">Oct 6, 2025</span>
-  </div>
-  <div class="nl-scroll-card" onclick="openLightbox('/images/design/paldt-sep22.jpg')">
-    <img src="/images/design/paldt-sep22.jpg" alt="PALDT Newsletter Sep 22, 2025">
-    <span class="nl-scroll-card__label">Sep 22, 2025</span>
-  </div>
-  <div class="nl-scroll-card" onclick="openLightbox('/images/design/paldt-sep08.jpg')">
-    <img src="/images/design/paldt-sep08.jpg" alt="PALDT Newsletter Sep 8, 2025">
-    <span class="nl-scroll-card__label">Sep 8, 2025</span>
+  <div class="featured-project__info">
+    <div class="design-card__title" style="font-size:0.95rem;">PALDT Newsletters</div>
+    <div class="design-card__tags" style="margin-top:0.3rem;">
+      <span class="design-tag design-tag--print">Newsletter</span>
+      <span class="design-tag design-tag--branding">PALDT</span>
+    </div>
+    <div class="design-card__desc" style="margin-top:0.4rem;font-size:0.8rem;line-height:1.55;">
+      Biweekly newsletters designed for the Purdue Association of Learning Design and Technology (PALDT) as Marketing &amp; Design Officer, created with Publicate: announcements, workshops, events, and community spotlights. Click a cover to read an issue.
+    </div>
   </div>
 </div>
 
-<h2 style="margin-top:1.5rem;">Lily's Life &mdash; Self-Tracking App</h2>
-
-<p style="font-size:0.88rem;color:#4a5568;margin-bottom:1rem;">
-  A personal tracking app I designed and use every day to log my own work and life: research pomodoros, focus sessions, weight, baking, and illustration. Hand-drawn vermilion line art on cream, built to make self-regulated learning feel warm and personal.
-</p>
-
-<div class="newsletter-row">
-  <div class="app-shot" onclick="openLightbox('/images/design/lilyslife-home.jpg')">
-    <img src="/images/design/lilyslife-home.jpg" alt="Lily's Life app: Home screen with hand-drawn hero and progress list">
-    <span class="app-shot__cap">Home &middot; Today</span>
+<!-- Lily's Life self-tracking app -->
+<div class="featured-project">
+  <div class="featured-project__preview" onclick="openLightbox('/images/design/lilyslife-strip5.jpg')" style="cursor:pointer;">
+    <img src="/images/design/lilyslife-strip4.jpg" alt="Lily's Life app screens: home, stats, research focus, weight plan">
   </div>
-  <div class="app-shot" onclick="openLightbox('/images/design/lilyslife-stats.jpg')">
-    <img src="/images/design/lilyslife-stats.jpg" alt="Lily's Life app: weekly stats with progress rings and weight curve">
-    <span class="app-shot__cap">Stats &middot; This Week</span>
-  </div>
-  <div class="app-shot" onclick="openLightbox('/images/design/lilyslife-research.jpg')">
-    <img src="/images/design/lilyslife-research.jpg" alt="Lily's Life app: research overview with focus heatmap and pomodoro timer">
-    <span class="app-shot__cap">Research &middot; Focus</span>
-  </div>
-  <div class="app-shot" onclick="openLightbox('/images/design/lilyslife-weight.jpg')">
-    <img src="/images/design/lilyslife-weight.jpg" alt="Lily's Life app: weight goal plan setup">
-    <span class="app-shot__cap">Weight &middot; Plan Setup</span>
-  </div>
-  <div class="app-shot" onclick="openLightbox('/images/design/lilyslife-profile.jpg')">
-    <img src="/images/design/lilyslife-profile.jpg" alt="Lily's Life app: profile and plan settings">
-    <span class="app-shot__cap">Profile &middot; Settings</span>
+  <div class="featured-project__info">
+    <div class="design-card__title" style="font-size:0.95rem;">Lily's Life &mdash; Self-Tracking App</div>
+    <div class="design-card__tags" style="margin-top:0.3rem;">
+      <span class="design-tag design-tag--figma">UI Design</span>
+      <span class="design-tag design-tag--canva">App</span>
+    </div>
+    <div class="design-card__desc" style="margin-top:0.4rem;font-size:0.8rem;line-height:1.55;">
+      A personal tracking app I designed and use every day to log my own work and life: research pomodoros, focus sessions, weight, baking, and illustration. Hand-drawn vermilion line art on cream, built to make self-regulated learning feel warm and personal.
+    </div>
+    <span class="design-card__link" style="margin-top:0.6rem;" onclick="openLightbox('/images/design/lilyslife-strip5.jpg')">View all screens &rarr;</span>
   </div>
 </div>
 
@@ -567,24 +420,6 @@ I believe great design serves learning. Whether it's a course interface, a confe
 </div>
 
 <script>
- /* Hover-scroll: calculate scroll distance for each newsletter card */
-document.querySelectorAll('.nl-scroll-card').forEach(function(card) {
-  var img = card.querySelector('img');
-  function calcScroll() {
-    if (!img.naturalHeight) return;
-    var cardH = card.offsetHeight;
-    var imgH = (img.naturalWidth > 0) ? (card.offsetWidth / img.naturalWidth) * img.naturalHeight : img.naturalHeight;
-    if (imgH > cardH) {
-      var scrollDist = imgH - cardH;
-      card.style.setProperty('--scroll-y', '-' + scrollDist + 'px');
-      var duration = Math.max(2, Math.min(8, scrollDist / 150));
-      img.style.transitionDuration = duration + 's';
-    }
-  }
-  if (img.complete) { calcScroll(); } else { img.addEventListener('load', calcScroll); }
-  window.addEventListener('resize', calcScroll);
-});
-
  /* Lightbox */
 function openLightbox(src) {
   var lb = document.getElementById('designLightbox');
