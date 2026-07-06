@@ -367,10 +367,6 @@ My service philosophy is to strengthen academic communities through reliable and
   <div style="flex:1"><strong>Independent Applying the QM Rubric (APPQMR)</strong><br><span style="font-size:0.85rem;color:#718096">Quality Matters &middot; October 2025</span></div>
 </div>
 
-<div class="award-item">
-  <div style="flex:1"><strong>Quality Matters Rubric Workshop (7th ed.) Certificate</strong><br><span style="font-size:0.85rem;color:#718096">Quality Matters &middot; March 2026</span></div>
-</div>
-
 <h2>Professional Memberships</h2>
 
 <div class="award-item">
