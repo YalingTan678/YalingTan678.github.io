@@ -355,16 +355,19 @@ My service philosophy is to strengthen academic communities through reliable and
 
 <h2>Certifications</h2>
 
-<ul>
-<li><strong>Quality Matters Rubric Workshop (7th ed.) Certificate</strong> (March 2026)</li>
-</ul>
+<div class="award-item">
+  <div style="flex:1"><strong>Quality Matters Rubric Workshop (7th ed.) Certificate</strong><br><span style="font-size:0.85rem;color:#718096">Quality Matters &middot; March 2026</span></div>
+</div>
 
 <h2>Professional Memberships</h2>
 
-<ul>
-<li>American Educational Research Association (AERA) &mdash; 2025 to Present</li>
-<li>Association for Educational Communications and Technology (AECT) &mdash; 2025 to Present</li>
-</ul>
+<div class="award-item">
+  <div style="flex:1"><strong>American Educational Research Association (AERA)</strong><br><span style="font-size:0.85rem;color:#718096">Member &middot; 2025 &ndash; Present</span></div>
+</div>
+
+<div class="award-item">
+  <div style="flex:1"><strong>Association for Educational Communications and Technology (AECT)</strong><br><span style="font-size:0.85rem;color:#718096">Member &middot; 2025 &ndash; Present</span></div>
+</div>
 
 </div>
 
