@@ -322,7 +322,7 @@ My service philosophy is to strengthen academic communities through reliable and
   <span style="flex-shrink:0;cursor:pointer" title="View certificate" onclick="openSvcLightbox('/images/service/wdea-cert.jpg')">
     <img src="/images/service/wdea-cert.jpg" alt="WDEA Top 10 Best Practices in AIED certificate" style="width:110px;height:auto;display:block;border-radius:6px;border:1px solid #e8edf5;box-shadow:0 3px 10px rgba(15,23,42,.12);transition:transform .25s" onmouseover="this.style.transform='scale(1.6)'" onmouseout="this.style.transform='scale(1)'">
   </span>
-  <div style="flex:1"><strong>Top 10 Best Practices in AIED</strong><br><span style="font-size:0.85rem;color:#718096">World Digital Education Alliance (WDEA), for the PeteChat guardrailed AI assistant &middot; <a href="javascript:void(0)" onclick="openSvcLightbox('/images/service/wdea-cert.jpg')">certificate</a></span></div>
+  <div style="flex:1"><strong>Top 10 Best Practices in AIED</strong><br><span style="font-size:0.85rem;color:#718096">World Digital Education Alliance (WDEA), for the PeteChat guardrailed AI assistant</span></div>
   <div class="award-right"><span class="award-amount">Top 10</span><br><span style="font-size:0.78rem;color:#718096">2026</span></div>
 </div>
 
