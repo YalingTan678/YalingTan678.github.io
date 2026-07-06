@@ -319,10 +319,10 @@ My service philosophy is to strengthen academic communities through reliable and
 </div>
 
 <div class="award-item">
-  <a href="/images/service/wdea-cert.jpg" target="_blank" rel="noopener" style="flex-shrink:0" title="View certificate">
+  <span style="flex-shrink:0;cursor:pointer" title="View certificate" onclick="openSvcLightbox('/images/service/wdea-cert.jpg')">
     <img src="/images/service/wdea-cert.jpg" alt="WDEA Top 10 Best Practices in AIED certificate" style="width:110px;height:auto;display:block;border-radius:6px;border:1px solid #e8edf5;box-shadow:0 3px 10px rgba(15,23,42,.12);transition:transform .25s" onmouseover="this.style.transform='scale(1.6)'" onmouseout="this.style.transform='scale(1)'">
-  </a>
-  <div style="flex:1"><strong>Top 10 Best Practices in AIED</strong><br><span style="font-size:0.85rem;color:#718096">World Digital Education Alliance (WDEA), for the PeteChat guardrailed AI assistant &middot; <a href="/images/service/wdea-cert.jpg" target="_blank" rel="noopener">certificate</a></span></div>
+  </span>
+  <div style="flex:1"><strong>Top 10 Best Practices in AIED</strong><br><span style="font-size:0.85rem;color:#718096">World Digital Education Alliance (WDEA), for the PeteChat guardrailed AI assistant &middot; <a href="javascript:void(0)" onclick="openSvcLightbox('/images/service/wdea-cert.jpg')">certificate</a></span></div>
   <div class="award-right"><span class="award-amount">Top 10</span><br><span style="font-size:0.78rem;color:#718096">2026</span></div>
 </div>
 
@@ -404,5 +404,19 @@ document.querySelectorAll('.svc-scroll-img').forEach(function(container) {
   }
   // Recalculate on resize
   window.addEventListener('resize', calcScroll);
+});
+</script>
+
+<div id="svcLightbox" onclick="this.style.display='none'" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.85);z-index:9999;align-items:center;justify-content:center;cursor:pointer">
+  <img id="svcLightboxImg" src="" alt="Full view" style="max-height:92vh;max-width:94vw;border-radius:8px;box-shadow:0 8px 40px rgba(0,0,0,.4)">
+</div>
+<script>
+function openSvcLightbox(src){
+  var lb=document.getElementById('svcLightbox');
+  document.getElementById('svcLightboxImg').src=src;
+  lb.style.display='flex';
+}
+document.addEventListener('keydown',function(e){
+  if(e.key==='Escape')document.getElementById('svcLightbox').style.display='none';
 });
 </script>
