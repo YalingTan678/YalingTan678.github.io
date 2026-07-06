@@ -293,24 +293,6 @@ My service philosophy is to strengthen academic communities through reliable and
   </div>
 </div>
 
-<!-- AI in P-12 -->
-<div class="svc-card">
-  <div class="svc-card__img">
-    <img src="/images/service/ai-p12.png" alt="Lily Tan presenting at Purdue AI in P-12 Conference">
-  </div>
-  <div class="svc-card__body">
-    <div class="svc-card__header">
-      <span class="svc-card__org">Purdue AI in P-12 Conference</span>
-      <span class="svc-card__meta">Nov 2025</span>
-    </div>
-    <div class="svc-card__role">Graduate Judge</div>
-    <ul class="svc-card__desc">
-      <li>Reviewed and scored conference submissions and offered evaluative feedback.</li>
-    </ul>
-  </div>
-</div>
-
-
 <h2>Honors, Awards &amp; Recognitions</h2>
 
 <div class="award-item">
@@ -364,23 +346,25 @@ My service philosophy is to strengthen academic communities through reliable and
 <li>Association for Educational Communications and Technology (AECT) &mdash; 2025 to Present</li>
 </ul>
 
-</div>
-
-
 <h2>Peer Review</h2>
 
 <div class="award-item">
-  <div style="flex:1"><strong>Ad-hoc Reviewer</strong><br><span style="font-size:0.85rem;color:#718096">ACM Transactions on Computing Education (TOCE)</span></div>
-  <div class="award-right"><span style="font-size:0.78rem;color:#718096">2026</span></div>
+  <div style="flex:1"><strong>Ad-hoc Reviewer</strong><br><span style="font-size:0.85rem;color:#718096">ACM Transactions on Computing Education (TOCE) &middot; 2026</span></div>
 </div>
 
 <div class="award-item">
-  <div style="flex:1"><strong>Proposal Reviewer</strong><br><span style="font-size:0.85rem;color:#718096">AECT International Convention</span></div>
-  <div class="award-right"><span style="font-size:0.78rem;color:#718096">2026</span></div>
+  <div style="flex:1"><strong>Proposal Reviewer</strong><br><span style="font-size:0.85rem;color:#718096">AECT International Convention &middot; 2026</span></div>
 </div>
 
+<div class="award-item">
+  <div style="flex:1"><strong>Graduate Judge</strong><br><span style="font-size:0.85rem;color:#718096">Purdue AI in P-12 Conference &middot; reviewed and scored conference submissions &middot; Nov 2025</span></div>
+</div>
+
+</div>
+
+
 <script>
-// Calculate scroll distance based on actual image height
+/* Calculate scroll distance based on actual image height */
 document.querySelectorAll('.svc-scroll-img').forEach(function(container) {
   var img = container.querySelector('img');
 
@@ -391,7 +375,7 @@ document.querySelectorAll('.svc-scroll-img').forEach(function(container) {
     if (imgH > containerH) {
       var scrollDist = imgH - containerH;
       container.style.setProperty('--scroll-y', '-' + scrollDist + 'px');
-      // Adjust transition speed based on scroll distance (longer = slower)
+      /* Adjust transition speed */
       var duration = Math.max(2, Math.min(6, scrollDist / 200));
       img.style.transitionDuration = duration + 's';
     }
@@ -402,7 +386,7 @@ document.querySelectorAll('.svc-scroll-img').forEach(function(container) {
   } else {
     img.addEventListener('load', calcScroll);
   }
-  // Recalculate on resize
+  /* Recalculate on resize */
   window.addEventListener('resize', calcScroll);
 });
 </script>
