@@ -10,7 +10,7 @@ author_profile: true
   .svc-content h2 {
     font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em;
     text-transform: uppercase; color: #2a7ae2;
-    margin-top: 2.5rem; margin-bottom: 1.2rem;
+    margin-top: 1.6rem; margin-bottom: 0.8rem;
     padding-bottom: 0.4rem; border-bottom: 2px solid #eef4ff;
   }
   .svc-content .philosophy {
@@ -219,15 +219,21 @@ author_profile: true
   .svc-content .award-item {
     display: flex; justify-content: space-between;
     align-items: center; gap: 0.5rem;
-    padding: 0.7rem 0; border-bottom: 1px solid #e8edf5;
+    padding: 0.4rem 0; border-bottom: 1px solid #e8edf5;
+    line-height: 1.5;
+  }
+  .svc-content .award-item strong { font-size: 0.88rem; }
+  .svc-content > ul li, .svc-content .page__content ul li {
+    font-size: 0.88rem;
+    margin-bottom: 0.15rem;
   }
   .svc-content .award-item:last-child { border-bottom: none; }
   .svc-content .award-right {
     text-align: right; flex-shrink: 0; min-width: 90px;
   }
   .svc-content .award-amount {
-    font-size: 0.83rem; color: #22c55e; font-weight: 600;
-    background: #f0fdf4; padding: 0.15rem 0.5rem; border-radius: 6px;
+    font-size: 0.78rem; color: #22c55e; font-weight: 600;
+    background: #f0fdf4; padding: 0.1rem 0.45rem; border-radius: 6px;
     display: inline-block;
   }
 </style>
@@ -302,7 +308,7 @@ My service philosophy is to strengthen academic communities through reliable and
 
 <div class="award-item">
   <span style="flex-shrink:0;cursor:pointer" title="View certificate" onclick="openSvcLightbox('/images/service/wdea-cert.jpg')">
-    <img src="/images/service/wdea-cert.jpg" alt="WDEA Top 10 Best Practices in AIED certificate" style="width:110px;height:auto;display:block;border-radius:6px;border:1px solid #e8edf5;box-shadow:0 3px 10px rgba(15,23,42,.12);transition:transform .25s" onmouseover="this.style.transform='scale(1.6)'" onmouseout="this.style.transform='scale(1)'">
+    <img src="/images/service/wdea-cert.jpg" alt="WDEA Top 10 Best Practices in AIED certificate" style="width:88px;height:auto;display:block;border-radius:6px;border:1px solid #e8edf5;box-shadow:0 3px 10px rgba(15,23,42,.12);transition:transform .25s" onmouseover="this.style.transform='scale(1.6)'" onmouseout="this.style.transform='scale(1)'">
   </span>
   <div style="flex:1"><strong>Top 10 Best Practices in AIED</strong><br><span style="font-size:0.85rem;color:#718096">World Digital Education Alliance (WDEA), for the PeteChat guardrailed AI assistant</span></div>
   <div class="award-right"><span class="award-amount">Top 10</span><br><span style="font-size:0.78rem;color:#718096">2026</span></div>
