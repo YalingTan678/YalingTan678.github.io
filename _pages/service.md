@@ -351,6 +351,7 @@ My service philosophy is to strengthen academic communities through reliable and
 
 <div class="award-item">
   <div style="flex:1"><strong>Graduate Judge</strong><br><span style="font-size:0.85rem;color:#718096">Purdue AI in P-12 Conference &middot; reviewed and scored conference submissions &middot; Nov 2025</span></div>
+</div>
 
 <h2>Certifications</h2>
 
@@ -366,9 +367,6 @@ My service philosophy is to strengthen academic communities through reliable and
 </ul>
 
 </div>
-
-</div>
-
 
 <script>
 /* Calculate scroll distance based on actual image height */
