@@ -89,27 +89,27 @@ author_profile: true
     justify-content: space-between;
     align-items: flex-start;
     flex-wrap: wrap;
-    gap: 0.4rem;
-    margin-bottom: 0.25rem;
+    gap: 0.35rem;
+    margin-bottom: 0.15rem;
   }
   .svc-card__org {
     font-weight: 650;
-    font-size: 0.92rem;
+    font-size: 0.88rem;
     color: #1a1a2e;
-    line-height: 1.4;
+    line-height: 1.3;
   }
   .svc-card__meta {
-    font-size: 0.8rem;
+    font-size: 0.76rem;
     color: #718096;
     flex-shrink: 0;
     text-align: right;
     white-space: nowrap;
   }
   .svc-card__role {
-    font-size: 0.82rem;
+    font-size: 0.78rem;
     color: #2a7ae2;
     font-weight: 500;
-    margin-bottom: 0.25rem;
+    margin-bottom: 0.18rem;
   }
   .svc-card__desc {
     list-style: none;
@@ -117,12 +117,12 @@ author_profile: true
     margin: 0;
   }
   .svc-card__desc li {
-    font-size: 0.8rem;
+    font-size: 0.76rem;
     color: #4a5568;
-    line-height: 1.55;
-    padding-left: 1.1rem;
+    line-height: 1.4;
+    padding-left: 1rem;
     position: relative;
-    margin-bottom: 0.15rem;
+    margin-bottom: 0.08rem;
   }
   .svc-card__desc li::before {
     content: '';
