@@ -361,6 +361,13 @@ My service philosophy is to strengthen academic communities through reliable and
 <h2>Certifications</h2>
 
 <div class="award-item">
+  <span style="flex-shrink:0;cursor:pointer" title="View certificate" onclick="openSvcLightbox('/images/service/qm-appqmr-cert.jpg')">
+    <img src="/images/service/qm-appqmr-cert.jpg" alt="Independent Applying the QM Rubric (APPQMR) certificate" style="width:88px;height:auto;display:block;border-radius:6px;border:1px solid #e8edf5;box-shadow:0 3px 10px rgba(15,23,42,.12);transition:transform .25s" onmouseover="this.style.transform='scale(1.6)'" onmouseout="this.style.transform='scale(1)'">
+  </span>
+  <div style="flex:1"><strong>Independent Applying the QM Rubric (APPQMR)</strong><br><span style="font-size:0.85rem;color:#718096">Quality Matters &middot; October 2025</span></div>
+</div>
+
+<div class="award-item">
   <div style="flex:1"><strong>Quality Matters Rubric Workshop (7th ed.) Certificate</strong><br><span style="font-size:0.85rem;color:#718096">Quality Matters &middot; March 2026</span></div>
 </div>
 
