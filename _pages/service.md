@@ -339,6 +339,19 @@ My service philosophy is to strengthen academic communities through reliable and
   <div class="award-right"><span class="award-amount">$750</span><br><span style="font-size:0.78rem;color:#718096">2019</span></div>
 </div>
 
+<h2>Peer Review</h2>
+
+<div class="award-item">
+  <div style="flex:1"><strong>Ad-hoc Reviewer</strong><br><span style="font-size:0.85rem;color:#718096">ACM Transactions on Computing Education (TOCE) &middot; 2026</span></div>
+</div>
+
+<div class="award-item">
+  <div style="flex:1"><strong>Proposal Reviewer</strong><br><span style="font-size:0.85rem;color:#718096">AECT International Convention &middot; 2026</span></div>
+</div>
+
+<div class="award-item">
+  <div style="flex:1"><strong>Graduate Judge</strong><br><span style="font-size:0.85rem;color:#718096">Purdue AI in P-12 Conference &middot; reviewed and scored conference submissions &middot; Nov 2025</span></div>
+
 <h2>Certifications</h2>
 
 <ul>
@@ -352,18 +365,6 @@ My service philosophy is to strengthen academic communities through reliable and
 <li>Association for Educational Communications and Technology (AECT) &mdash; 2025 to Present</li>
 </ul>
 
-<h2>Peer Review</h2>
-
-<div class="award-item">
-  <div style="flex:1"><strong>Ad-hoc Reviewer</strong><br><span style="font-size:0.85rem;color:#718096">ACM Transactions on Computing Education (TOCE) &middot; 2026</span></div>
-</div>
-
-<div class="award-item">
-  <div style="flex:1"><strong>Proposal Reviewer</strong><br><span style="font-size:0.85rem;color:#718096">AECT International Convention &middot; 2026</span></div>
-</div>
-
-<div class="award-item">
-  <div style="flex:1"><strong>Graduate Judge</strong><br><span style="font-size:0.85rem;color:#718096">Purdue AI in P-12 Conference &middot; reviewed and scored conference submissions &middot; Nov 2025</span></div>
 </div>
 
 </div>
