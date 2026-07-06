@@ -314,8 +314,8 @@ My service philosophy is to strengthen academic communities through reliable and
 <h2>Honors, Awards &amp; Recognitions</h2>
 
 <div class="award-item">
-  <div style="flex:1"><strong>Summer Research Grant</strong><br><span style="font-size:0.85rem;color:#718096">Department of Curriculum &amp; Instruction, College of Education, Purdue University</span></div>
-  <div class="award-right"><span class="award-amount">.50 FTE GRA + tuition</span><br><span style="font-size:0.78rem;color:#718096">2026</span></div>
+  <div style="flex:1"><strong>Summer Research Grant</strong><br><span style="font-size:0.85rem;color:#718096">Department of Curriculum &amp; Instruction, College of Education, Purdue University &middot; .50 FTE GRA with tuition remission</span></div>
+  <div class="award-right"><span class="award-amount">$4,695.68</span><br><span style="font-size:0.78rem;color:#718096">2026</span></div>
 </div>
 
 <div class="award-item">
