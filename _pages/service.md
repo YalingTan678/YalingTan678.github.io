@@ -238,18 +238,6 @@ author_profile: true
 My service philosophy is to strengthen academic communities through reliable and design-minded support. I focus on making opportunities visible, communication clear, and events smooth. I also prioritize inclusive mentoring by connecting people thoughtfully and fostering supportive, sustainable relationships. I serve consistently, listen first, and improve systems based on real needs.
 </div>
 
-<h2>Peer Review</h2>
-
-<div class="award-item">
-  <div style="flex:1"><strong>Ad-hoc Reviewer</strong><br><span style="font-size:0.85rem;color:#718096">ACM Transactions on Computing Education (TOCE)</span></div>
-  <div class="award-right"><span style="font-size:0.78rem;color:#718096">2026</span></div>
-</div>
-
-<div class="award-item">
-  <div style="flex:1"><strong>Proposal Reviewer</strong><br><span style="font-size:0.85rem;color:#718096">AECT International Convention</span></div>
-  <div class="award-right"><span style="font-size:0.78rem;color:#718096">2026</span></div>
-</div>
-
 <h2>Service &amp; Leadership</h2>
 
 <!-- Lunar New Year Celebration -->
@@ -373,6 +361,19 @@ My service philosophy is to strengthen academic communities through reliable and
 <li>Association for Educational Communications and Technology (AECT) &mdash; 2025 to Present</li>
 </ul>
 
+</div>
+
+
+<h2>Peer Review</h2>
+
+<div class="award-item">
+  <div style="flex:1"><strong>Ad-hoc Reviewer</strong><br><span style="font-size:0.85rem;color:#718096">ACM Transactions on Computing Education (TOCE)</span></div>
+  <div class="award-right"><span style="font-size:0.78rem;color:#718096">2026</span></div>
+</div>
+
+<div class="award-item">
+  <div style="flex:1"><strong>Proposal Reviewer</strong><br><span style="font-size:0.85rem;color:#718096">AECT International Convention</span></div>
+  <div class="award-right"><span style="font-size:0.78rem;color:#718096">2026</span></div>
 </div>
 
 <script>
