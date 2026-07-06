@@ -238,6 +238,18 @@ author_profile: true
 My service philosophy is to strengthen academic communities through reliable and design-minded support. I focus on making opportunities visible, communication clear, and events smooth. I also prioritize inclusive mentoring by connecting people thoughtfully and fostering supportive, sustainable relationships. I serve consistently, listen first, and improve systems based on real needs.
 </div>
 
+<h2>Peer Review</h2>
+
+<div class="award-item">
+  <div style="flex:1"><strong>Ad-hoc Reviewer</strong><br><span style="font-size:0.85rem;color:#718096">ACM Transactions on Computing Education (TOCE)</span></div>
+  <div class="award-right"><span style="font-size:0.78rem;color:#718096">2026</span></div>
+</div>
+
+<div class="award-item">
+  <div style="flex:1"><strong>Proposal Reviewer</strong><br><span style="font-size:0.85rem;color:#718096">AECT International Convention</span></div>
+  <div class="award-right"><span style="font-size:0.78rem;color:#718096">2026</span></div>
+</div>
+
 <h2>Service &amp; Leadership</h2>
 
 <!-- Lunar New Year Celebration -->
@@ -312,6 +324,26 @@ My service philosophy is to strengthen academic communities through reliable and
 
 
 <h2>Honors, Awards &amp; Recognitions</h2>
+
+<div class="award-item">
+  <div style="flex:1"><strong>Summer Research Grant</strong><br><span style="font-size:0.85rem;color:#718096">Department of Curriculum &amp; Instruction, College of Education, Purdue University</span></div>
+  <div class="award-right"><span class="award-amount">.50 FTE GRA + tuition</span><br><span style="font-size:0.78rem;color:#718096">2026</span></div>
+</div>
+
+<div class="award-item">
+  <div style="flex:1"><strong>Top 10 Best Practices in AIED</strong><br><span style="font-size:0.85rem;color:#718096">World Digital Education Alliance (WDEA), for the PeteChat guardrailed AI assistant</span></div>
+  <div class="award-right"><span class="award-amount">Top 10</span><br><span style="font-size:0.78rem;color:#718096">2026</span></div>
+</div>
+
+<div class="award-item">
+  <div style="flex:1"><strong>Data Stewardship Award &mdash; Finalist</strong><br><span style="font-size:0.85rem;color:#718096">Purdue Libraries (NSF-funded initiative), for PeteChat</span></div>
+  <div class="award-right"><span class="award-amount">Finalist</span><br><span style="font-size:0.78rem;color:#718096">AY 2025</span></div>
+</div>
+
+<div class="award-item">
+  <div style="flex:1"><strong>LDT Travel Support Program</strong><br><span style="font-size:0.85rem;color:#718096">Curriculum &amp; Instruction and LDT Programs, Purdue University</span></div>
+  <div class="award-right"><span class="award-amount">$250</span><br><span style="font-size:0.78rem;color:#718096">2025</span></div>
+</div>
 
 <div class="award-item">
   <div style="flex:1"><strong>National Academic Fellowship</strong><br><span style="font-size:0.85rem;color:#718096">Northeastern University, Department of Interpreting</span></div>
