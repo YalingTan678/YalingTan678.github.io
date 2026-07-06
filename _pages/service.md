@@ -57,9 +57,9 @@ author_profile: true
   /* ===== Image + Text Card Layout ===== */
   .svc-card {
     display: flex;
-    gap: 1.5rem;
-    margin-bottom: 2rem;
-    padding-bottom: 2rem;
+    gap: 1.1rem;
+    margin-bottom: 1.1rem;
+    padding-bottom: 1.1rem;
     border-bottom: 1px solid #e8edf5;
     align-items: flex-start;
   }
@@ -67,8 +67,8 @@ author_profile: true
 
   .svc-card__img {
     flex-shrink: 0;
-    width: 280px;
-    height: 200px;
+    width: 190px;
+    height: 132px;
     border-radius: 14px;
     overflow: hidden;
     box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
@@ -94,7 +94,7 @@ author_profile: true
   }
   .svc-card__org {
     font-weight: 650;
-    font-size: 1rem;
+    font-size: 0.92rem;
     color: #1a1a2e;
     line-height: 1.4;
   }
@@ -106,10 +106,10 @@ author_profile: true
     white-space: nowrap;
   }
   .svc-card__role {
-    font-size: 0.88rem;
+    font-size: 0.82rem;
     color: #2a7ae2;
     font-weight: 500;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.25rem;
   }
   .svc-card__desc {
     list-style: none;
@@ -117,12 +117,12 @@ author_profile: true
     margin: 0;
   }
   .svc-card__desc li {
-    font-size: 0.88rem;
+    font-size: 0.8rem;
     color: #4a5568;
-    line-height: 1.65;
+    line-height: 1.55;
     padding-left: 1.1rem;
     position: relative;
-    margin-bottom: 0.3rem;
+    margin-bottom: 0.15rem;
   }
   .svc-card__desc li::before {
     content: '';
@@ -137,8 +137,8 @@ author_profile: true
   /* ===== Hover-scroll long image (PALDT newsletter) ===== */
   .svc-scroll-img {
     flex-shrink: 0;
-    width: 280px;
-    height: 200px;
+    width: 190px;
+    height: 132px;
     border-radius: 14px;
     overflow: hidden;
     box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
