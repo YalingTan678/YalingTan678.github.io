@@ -146,8 +146,10 @@ author_profile: true
 
 <div class="pub-page">
 
-
-
+<!-- ========== TAGLINE ========== -->
+<section style="margin:2.6rem 0 0.4rem;text-align:center">
+  <p style="font-size:clamp(1.25rem,3.4vw,1.75rem);font-weight:700;line-height:1.35;margin:0;letter-spacing:-0.01em;background:linear-gradient(90deg,#6366f1,#8b5cf6,#ec4899);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:#8b5cf6">Educators define learning, for people and for machines.</p>
+</section>
 
 
 <!-- ========== RESEARCH STRANDS RADAR ========== -->
