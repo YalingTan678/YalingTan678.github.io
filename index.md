@@ -117,7 +117,7 @@ author_profile: false
       {name:'Tokyo',img:'{{ base_path }}/images/journey/pc-tokyo.jpg',lat:35.7,lng:139.7,yr:'2024',title:'XXIInd CALL Conference',desc:'Presented human vs. machine interpreting. The talk that grew into the MJSS paper.'},
       {name:'West Lafayette',img:'{{ base_path }}/images/journey/pc-westlafayette.jpg',lat:40.43,lng:-86.9,yr:'2025\u2013now',title:'Ph.D. LDT \u00b7 Purdue University',desc:'Learning Design and Technology with Dr. Victoria Lowell. Home base for everything on this site.'},
       {name:'Las Vegas',img:'{{ base_path }}/images/journey/pc-lasvegas.jpg',lat:36.17,lng:-115.1,yr:'2025',title:'AECT International Convention',desc:'Artificial authenticity and academic integrity in the age of GenAI.'},
-      {name:'Chicago',img:'{{ base_path }}/images/journey/pc-chicago.jpg',lat:41.88,lng:-87.6,yr:'2026 \u00b7 upcoming',title:'AECT International Convention',desc:'Next stop on the calendar.',future:true}
+      {name:'Chicago',img:'{{ base_path }}/images/journey/pc-chicago.jpg',lat:41.88,lng:-87.6,yr:'2026',title:'Modern Meta-Analysis Research Institute (MMARI)',desc:'NSF-funded meta-analysis training in R/RStudio and Open Science, July 2026. Returning in October for the AECT International Convention.'}
     ];
     var ARCS=[];
     for(var i=0;i<STOPS.length-1;i++){
@@ -229,7 +229,7 @@ author_profile: false
       {n:'Tokyo',s:'CALL \u201924',x:816.5,y:102.3,lx:12,ly:12},
       {n:'West Lafayette',s:'Ph.D. · Purdue',x:215.2,y:89.7,lx:12,ly:-12},
       {n:'Las Vegas',s:'AECT \u201925',x:140.4,y:101.1,lx:-72,ly:26},
-      {n:'Chicago',s:'AECT \u201926',x:213.4,y:85.8,lx:16,ly:34,future:1}
+      {n:'Chicago',s:'MMARI + AECT \u201926',x:213.4,y:85.8,lx:16,ly:34}
     ];
  /* pieces: [fromIdx,toIdx] with optional via edge-wrap; stopAfter = index of arrival stop */
     var PIECES=[
@@ -241,7 +241,7 @@ author_profile: false
       {a:[816.5,102.3],b:[958,86]}, /* to right edge (Pacific) */
       {a:[-8,86],b:[215.2,89.7],stop:6,teleport:1},
       {a:[215.2,89.7],b:[140.4,101.1],stop:7},
-      {a:[140.4,101.1],b:[213.4,85.8],stop:8,future:1}
+      {a:[140.4,101.1],b:[213.4,85.8],stop:8}
     ];
  /* quad control point: lifted perpendicular */
     PIECES.forEach(function(p){
@@ -350,7 +350,7 @@ author_profile: false
           <td></td><td></td>
           <td><span class="jny-tipwrap"><span class="jny-chip c-work">U. of Silesia<small>Lecturer · 200+</small></span><span class="jny-tip"><strong>Lecturer</strong>, Institute of Linguistics<br>Spoken Chinese &amp; Academic Writing<br>200+ international students · 2023–2024</span></span></td>
           <td><span class="jny-tipwrap"><a href="/service/" class="jny-chip c-work">RA + PALDT + GESC<small>Purdue University</small></a><span class="jny-tip"><strong>Research Assistant</strong>, Purdue Library &amp; SIS<br><strong>PALDT</strong> Marketing &amp; Design Officer<br><strong>GESC</strong> Committee Member</span></span></td>
-          <td><span class="jny-tipwrap"><span class="jny-chip c-work">Guest Lecturer<small>EDCI 612</small></span><span class="jny-tip"><strong>Guest Lecturer</strong>, EDCI 612<br>AI and Multilingual Learners<br>Co-presented with Dr. Lowell &amp; Belle Li</span></span></td>
+          <td><span class="jny-tipwrap"><span class="jny-chip c-work">Guest Lecturer<small>EDCI 612</small></span><span class="jny-tip"><strong>Guest Lecturer</strong>, EDCI 612<br>AI and Multilingual Learners<br>Co-presented with Dr. Lowell &amp; Belle Li</span></span> <span class="jny-tipwrap"><span class="jny-chip c-work">MMARI<small>Meta-Analysis Institute</small></span><span class="jny-tip"><strong>Modern Meta-Analysis Research Institute</strong><br>NSF-funded training in meta-analysis (R/RStudio) &amp; Open Science<br>Chicago, IL · Jul 2026</span></span></td>
         </tr>
         <tr data-cat="talk">
           <td class="jny-cat" style="color:#f59e0b"><span class="jny-cat-dot" style="background:#f59e0b"></span>Talks</td>
