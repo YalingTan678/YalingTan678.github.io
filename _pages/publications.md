@@ -749,10 +749,12 @@ author_profile: true
     <p class="pub-item__t" style="margin:0">Modern Meta-Analysis Research Institute (MMARI) <span class="pub-badge" style="background:#ede9fe;color:#7c3aed">NSF-funded</span></p>
     <p class="pub-item__m" style="margin-top:4px">Chicago, IL &middot; July 2026</p>
     <p style="font-size:.85rem;color:#4a5568;line-height:1.7;margin:.7rem 0 0">Selected participant in an NSF-funded training institute on modern meta-analysis. The program covered effect-size computation and synthesis workflows in R/RStudio and Open Science practices for transparent, reproducible evidence synthesis. This training directly supports my evidence-synthesis research line, including <a href="#under-review">a meta-analysis currently under review</a>.</p>
-    <div style="display:flex;gap:10px;margin-top:.9rem">
-      <img src="/images/mmari/1.jpg" alt="MMARI 2026, Chicago" style="flex:1;min-width:0;height:150px;object-fit:cover;border-radius:10px;border:1px solid #eee9f3" onerror="this.style.display='none'">
-      <img src="/images/mmari/2.jpg" alt="MMARI 2026, Chicago" style="flex:1;min-width:0;height:150px;object-fit:cover;border-radius:10px;border:1px solid #eee9f3" onerror="this.style.display='none'">
-      <img src="/images/mmari/3.jpg" alt="MMARI 2026, Chicago" style="flex:1;min-width:0;height:150px;object-fit:cover;border-radius:10px;border:1px solid #eee9f3" onerror="this.style.display='none'">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:.9rem">
+      <img src="/images/mmari/1.jpg" alt="MMARI 2026 cohort, Chicago" style="grid-column:1/-1;width:100%;height:240px;object-fit:cover;border-radius:10px;border:1px solid #eee9f3" onerror="this.style.display='none'">
+      <img src="/images/mmari/2.jpg" alt="MMARI 2026, Chicago" style="width:100%;height:170px;object-fit:cover;border-radius:10px;border:1px solid #eee9f3" onerror="this.style.display='none'">
+      <img src="/images/mmari/3.jpg" alt="MMARI 2026, Chicago" style="width:100%;height:170px;object-fit:cover;border-radius:10px;border:1px solid #eee9f3" onerror="this.style.display='none'">
+      <img src="/images/mmari/4.jpg" alt="MMARI 2026, Chicago" style="width:100%;height:170px;object-fit:cover;border-radius:10px;border:1px solid #eee9f3" onerror="this.style.display='none'">
+      <img src="/images/mmari/5.jpg" alt="MMARI 2026 working session, Chicago" style="width:100%;height:170px;object-fit:cover;border-radius:10px;border:1px solid #eee9f3" onerror="this.style.display='none'">
     </div>
   </div>
 </section>
