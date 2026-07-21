@@ -871,12 +871,19 @@ author_profile: true
     <p class="pub-item__t" style="margin:0">Modern Meta-Analysis Research Institute (MMARI) <span class="pub-badge" style="background:#ede9fe;color:#7c3aed">NSF-funded</span></p>
     <p class="pub-item__m" style="margin-top:4px">Chicago, IL &middot; July 2026</p>
     <p style="font-size:.85rem;color:#4a5568;line-height:1.7;margin:.7rem 0 0">Selected participant in an NSF-funded training institute on modern meta-analysis. The program covered effect-size computation and synthesis workflows in R/RStudio and Open Science practices for transparent, reproducible evidence synthesis. This training directly supports my evidence-synthesis research line, including <a href="#under-review">a meta-analysis currently under review</a>.</p>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:.9rem">
-      <img src="/images/mmari/1.jpg" alt="MMARI 2026 cohort, Chicago" style="grid-column:1/-1;width:100%;height:240px;object-fit:cover;border-radius:10px;border:1px solid #eee9f3" onerror="this.style.display='none'">
-      <img src="/images/mmari/2.jpg" alt="MMARI 2026, Chicago" style="width:100%;height:170px;object-fit:cover;border-radius:10px;border:1px solid #eee9f3" onerror="this.style.display='none'">
-      <img src="/images/mmari/3.jpg" alt="MMARI 2026, Chicago" style="width:100%;height:170px;object-fit:cover;border-radius:10px;border:1px solid #eee9f3" onerror="this.style.display='none'">
-      <img src="/images/mmari/4.jpg" alt="MMARI 2026, Chicago" style="width:100%;height:170px;object-fit:cover;border-radius:10px;border:1px solid #eee9f3" onerror="this.style.display='none'">
-      <img src="/images/mmari/5.jpg" alt="MMARI 2026 working session, Chicago" style="width:100%;height:170px;object-fit:cover;border-radius:10px;border:1px solid #eee9f3" onerror="this.style.display='none'">
+    <style>
+      .mmari-strip{display:flex;gap:8px;margin-top:.9rem}
+      .mmari-strip img{flex:1;min-width:0;height:90px;object-fit:cover;border-radius:8px;border:1px solid #eee9f3;transition:transform .3s ease,box-shadow .3s}
+      .mmari-strip img:hover{transform:scale(2.2);box-shadow:0 10px 30px rgba(30,27,75,.25);position:relative;z-index:5}
+      .mmari-strip img:first-child:hover{transform-origin:left center}
+      .mmari-strip img:last-child:hover{transform-origin:right center}
+    </style>
+    <div class="mmari-strip">
+      <img src="/images/mmari/1.jpg" alt="MMARI 2026 cohort, Chicago">
+      <img src="/images/mmari/2.jpg" alt="MMARI 2026, Chicago">
+      <img src="/images/mmari/3.jpg" alt="MMARI 2026, Chicago">
+      <img src="/images/mmari/4.jpg" alt="MMARI 2026, Chicago">
+      <img src="/images/mmari/5.jpg" alt="MMARI 2026 working session, Chicago">
     </div>
   </div>
 </section>
