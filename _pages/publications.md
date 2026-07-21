@@ -870,7 +870,7 @@ author_profile: true
   <div style="padding:1.3rem 1.4rem;border-radius:14px;background:#fff;border:1px solid #eee9f3;box-shadow:0 4px 20px rgba(124,58,237,.08)">
     <p class="pub-item__t" style="margin:0">Modern Meta-Analysis Research Institute (MMARI) <span class="pub-badge" style="background:#ede9fe;color:#7c3aed">NSF-funded</span></p>
     <p class="pub-item__m" style="margin-top:4px">Chicago, IL &middot; July 2026</p>
-    <p style="font-size:.85rem;color:#4a5568;line-height:1.7;margin:.7rem 0 0">Selected participant in an NSF-funded training institute on modern meta-analysis. The program covered effect-size computation and synthesis workflows in R/RStudio and Open Science practices for transparent, reproducible evidence synthesis. This training directly supports my evidence-synthesis research line, including <a href="#under-review">a meta-analysis currently under review</a>.</p>
+    <p style="font-size:.85rem;color:#4a5568;line-height:1.7;margin:.7rem 0 0">Selected participant in an NSF-funded training institute on modern meta-analysis. The program covered effect-size computation and synthesis workflows in R/RStudio and Open Science practices for transparent, reproducible evidence synthesis. This training directly supports my evidence-synthesis research line.</p>
     <style>
       .mmari-strip{display:flex;gap:8px;margin-top:.9rem}
       .mmari-strip img{flex:1;min-width:0;height:90px;object-fit:cover;border-radius:8px;border:1px solid #eee9f3;transition:transform .3s ease,box-shadow .3s}
@@ -880,10 +880,10 @@ author_profile: true
     </style>
     <div class="mmari-strip">
       <img src="/images/mmari/1.jpg" alt="MMARI 2026 cohort, Chicago">
-      <img src="/images/mmari/2.jpg" alt="MMARI 2026, Chicago">
-      <img src="/images/mmari/3.jpg" alt="MMARI 2026, Chicago">
+      <img src="/images/mmari/2.jpg" alt="MMARI 2026, Chicago" style="object-position:50% 18%">
+      <img src="/images/mmari/3.jpg" alt="MMARI 2026, Chicago" style="object-position:50% 65%">
       <img src="/images/mmari/4.jpg" alt="MMARI 2026, Chicago">
-      <img src="/images/mmari/5.jpg" alt="MMARI 2026 working session, Chicago">
+      <img src="/images/mmari/5.jpg" alt="MMARI 2026 working session, Chicago" style="object-position:50% 28%">
     </div>
   </div>
 </section>
