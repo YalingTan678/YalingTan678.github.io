@@ -236,6 +236,34 @@ author_profile: true
     background: #f0fdf4; padding: 0.1rem 0.45rem; border-radius: 6px;
     display: inline-block;
   }
+  .svc-cert-thumb {
+    flex-shrink: 0;
+    width: 88px;
+    padding: 0;
+    border: 0;
+    border-radius: 6px;
+    background: transparent;
+    cursor: pointer;
+  }
+  .svc-cert-thumb img {
+    display: block;
+    width: 88px;
+    height: 62px;
+    object-fit: cover;
+    border: 1px solid #e8edf5;
+    border-radius: 6px;
+    box-shadow: 0 3px 10px rgba(15,23,42,.12);
+    transition: transform .25s, box-shadow .25s;
+  }
+  .svc-cert-thumb:hover img,
+  .svc-cert-thumb:focus-visible img {
+    transform: scale(1.08);
+    box-shadow: 0 6px 18px rgba(15,23,42,.2);
+  }
+  .svc-cert-thumb:focus-visible {
+    outline: 2px solid #2a7ae2;
+    outline-offset: 3px;
+  }
 </style>
 
 <div class="svc-content">
@@ -351,6 +379,9 @@ My service philosophy is to strengthen academic communities through reliable and
 </div>
 
 <div class="award-item">
+  <button type="button" class="svc-cert-thumb" title="View AECT proposal reviewer certificate" aria-label="View AECT proposal reviewer certificate" onclick="openSvcLightbox('/images/service/aect-proposal-reviewer.png')">
+    <img src="/images/service/aect-proposal-reviewer.png" alt="AECT certificate of appreciation awarded to Lily Tan for reviewing 2026 International Convention proposals">
+  </button>
   <div style="flex:1"><strong>Proposal Reviewer</strong><br><span style="font-size:0.85rem;color:#718096">AECT International Convention &middot; 2026</span></div>
 </div>
 
