@@ -12,7 +12,7 @@ site_theme               : "default"
 title                    : "Lily Tan"
 title_separator          : "-"
 name                     : "Lily Tan"
-description              : &description "PhD Student at Purdue University"
+description              : &description "Lily Tan is a PhD researcher in Learning Design and Technology at Purdue University, studying AI-mediated learning, human-centered educational technology, and instructional design."
 url                      : https://YalingTan678.github.io
 repository               : "YalingTan678.github.io"
 
@@ -107,9 +107,14 @@ facebook:
 og_image                 : 
 og_description           : 
 social:
-  type                   : 
-  name                   : 
-  links: 
+  type                   : Person
+  name                   : Lily Tan
+  links:
+    - "https://education.purdue.edu/about/directory/lily-tan/"
+    - "https://scholar.google.com/citations?user=_BC9GucAAAAJ&hl=en"
+    - "https://orcid.org/0009-0003-3935-4113"
+    - "https://www.researchgate.net/profile/Lily-Tan-9"
+    - "https://www.linkedin.com/in/lily-tan-50bb152b5/"
 
 # Analytics
 analytics:
@@ -298,5 +303,4 @@ compress_html:
 # Custom CSS
 custom_css:
   - "/assets/css/custom.css"
-
 

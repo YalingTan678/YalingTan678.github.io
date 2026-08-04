@@ -6,7 +6,9 @@
 {% endif %}
 {% assign seo_url = seo_url | default: site.github.url %}
 
-{% if page.title and page.title != site.title %}
+{% if page.seo_title %}
+  {% assign seo_title = page.seo_title %}
+{% elsif page.title and page.title != site.title %}
   {% assign seo_title = page.title | append: " " | append: site.title_separator | append: " " | append: site.title %}
 {% else %}
   {% assign seo_title = site.title %}
@@ -97,6 +99,15 @@
       "@type" : "{% if site.social.type %}{{ site.social.type }}{% else %}Person{% endif %}",
       "name" : "{{ site.social.name | default: site.name }}",
       "url" : {{ seo_url | jsonify }},
+      "image" : {{ "/images/profile-v2.jpg" | prepend: seo_url | jsonify }},
+      "jobTitle" : "PhD Researcher in Learning Design and Technology",
+      "description" : {{ site.description | jsonify }},
+      "email" : "mailto:tyaling@purdue.edu",
+      "affiliation" : {
+        "@type" : "CollegeOrUniversity",
+        "name" : "Purdue University",
+        "url" : "https://www.purdue.edu/"
+      },
       "sameAs" : {{ site.social.links | jsonify }}
     }
   </script>
