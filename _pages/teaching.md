@@ -191,6 +191,25 @@ My teaching philosophy is grounded in the belief that language acquisition is mo
 
 <h2>Teaching Experience</h2>
 
+<!-- Honors College GTA -->
+<a class="teach-card" href="https://honors.purdue.edu/" target="_blank">
+  <div class="teach-card__img">
+    <img src="/images/teaching/honors-college.jpg" alt="John Martinson Honors College, Purdue University">
+  </div>
+  <div class="teach-card__body">
+    <div class="teach-card__header">
+      <span class="teach-card__org">Purdue University</span>
+      <span class="teach-card__meta">Aug 2026 &ndash; Present &middot; West Lafayette, IN</span>
+    </div>
+    <div class="teach-card__role">Graduate Teaching Assistant, John Martinson Honors College</div>
+    <ul class="teach-card__desc">
+      <li>HONR 19901: Honors First Year Experience I (Forge Your Story). Support instruction and student engagement in the Honors College first-year seminar in a 20-hour-per-week appointment.</li>
+      <li>Lead the Assessment and Course Improvement workstream, collecting and analyzing student feedback and learning data to inform revisions to course design and delivery.</li>
+    </ul>
+    <span class="teach-card__link">Visit Honors College &rarr;</span>
+  </div>
+</a>
+
 <!-- EDCI 612 -->
 <a class="teach-card" href="/teaching/edci612/">
   <div class="teach-card__img">

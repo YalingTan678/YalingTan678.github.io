@@ -833,8 +833,16 @@ author_profile: true
 <div class="conf-item">
   <span class="conf-item__y">2026</span>
   <div class="conf-item__bd">
-    <p class="conf-item__t"><span class="pub-badge pub-badge--conf">Conf</span> A Meta-analysis on the Achievement of Technology on Students from Low-income Families <span class="pub-badge pub-badge--upcoming">Upcoming</span></p>
-    <p class="conf-item__m"><strong>*Tan, L.</strong>, Lowell, V. &amp; Li, B. &middot; AERA International Convention, Los Angeles, CA</p>
+    <p class="conf-item__t"><span class="pub-badge pub-badge--conf">Conf</span> Scaffolding Extramural GAI-mediated Informal Digital Learning of English for Pragmatic Competence: An Epistemic Network Analysis <span class="pub-badge pub-badge--upcoming">Upcoming</span></p>
+    <p class="conf-item__m"><strong>*Tan, L.</strong>, Lowell, V., Li, B., &amp; Fei, X. &middot; AECT International Convention, Chicago, IL &middot; Oct 2026</p>
+  </div>
+</div>
+
+<div class="conf-item">
+  <span class="conf-item__y">2026</span>
+  <div class="conf-item__bd">
+    <p class="conf-item__t"><span class="pub-badge pub-badge--conf">Conf</span> A Design Case of PeteChat: Designing AI Tutors That Teach Students How to Think, Not What to Answer <span class="pub-badge pub-badge--upcoming">Upcoming</span></p>
+    <p class="conf-item__m">Li, B., <strong>Tan, L.</strong>, Zakharov, W., Qiu, Q., &amp; Acton, C. &middot; AECT International Convention, Chicago, IL &middot; Oct 2026</p>
   </div>
 </div>
 
@@ -863,6 +871,22 @@ author_profile: true
     <p class="conf-item__m">Li, B., Wang, J., &amp; <strong>Tan, L.</strong> &middot; AECT International Convention, Las Vegas, NV</p>
   </div>
 </div>
+
+<a class="conf-item" href="/publication/2024-call-context">
+  <span class="conf-item__y">2024</span>
+  <div class="conf-item__bd">
+    <p class="conf-item__t"><span class="pub-badge pub-badge--conf">Conf</span> Pointing to Context from a Relevance Theory Perspective: A Comparative Study of Human and Machine Interpreting</p>
+    <p class="conf-item__m"><strong>Tan, L.</strong> &middot; XXIInd International CALL Conference, Tokyo, Japan &middot; Sep 2024</p>
+  </div>
+</a>
+
+<a class="conf-item" href="/publication/2024-sociocultural-ai">
+  <span class="conf-item__y">2024</span>
+  <div class="conf-item__bd">
+    <p class="conf-item__t"><span class="pub-badge pub-badge--conf">Conf</span> Exploring the Extracurricular Development of AI-Assisted English Learners: A Phenomenological Exploration</p>
+    <p class="conf-item__m"><strong>Tan, L.</strong> &amp; Zhang, Y. &middot; 3rd International Conference on Sociocultural Theory and Foreign Language Research, Guangdong, China &middot; May 2024</p>
+  </div>
+</a>
 
 <!-- ========== RESEARCH TRAINING ========== -->
 <section id="research-training" style="margin:1.6rem 0 2.2rem">

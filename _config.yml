@@ -12,7 +12,7 @@ site_theme               : "default"
 title                    : "Lily Tan"
 title_separator          : "-"
 name                     : "Lily Tan"
-description              : &description "Lily Tan is a PhD researcher in Learning Design and Technology at Purdue University, studying AI-mediated learning, human-centered educational technology, and instructional design."
+description              : &description "Lily Tan is a PhD researcher in Learning Design and Technology at Purdue University, studying informal digital learning, human-centered AI, and human-computer interaction."
 url                      : https://YalingTan678.github.io
 repository               : "YalingTan678.github.io"
 

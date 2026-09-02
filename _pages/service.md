@@ -299,7 +299,7 @@ My service philosophy is to strengthen academic communities through reliable and
   <div class="svc-card__body">
     <div class="svc-card__header">
       <span class="svc-card__org">PALDT (Purdue Association of Learning Design and Technology)</span>
-      <span class="svc-card__meta">Sep 2025 &ndash; Present</span>
+      <span class="svc-card__meta">Sep 2025 &ndash; Jul 2026</span>
     </div>
     <div class="svc-card__role">Marketing &amp; Design Officer</div>
     <ul class="svc-card__desc">
@@ -317,7 +317,7 @@ My service philosophy is to strengthen academic communities through reliable and
   <div class="svc-card__body">
     <div class="svc-card__header">
       <span class="svc-card__org">GESC (Purdue Graduate Student Education Council)</span>
-      <span class="svc-card__meta">Sep 2025 &ndash; Present</span>
+      <span class="svc-card__meta">Sep 2025 &ndash; Jul 2026</span>
     </div>
     <div class="svc-card__role">Committee Member</div>
     <ul class="svc-card__desc">

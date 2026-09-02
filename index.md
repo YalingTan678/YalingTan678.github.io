@@ -2,13 +2,13 @@
 layout: home
 author_profile: false
 seo_title: "Lily Tan | AI & Learning Design Researcher at Purdue University"
-description: "Lily Tan is a Purdue University PhD researcher studying AI-mediated learning, human-centered educational technology, and instructional design. Explore her research, publications, teaching, design, and service."
-last_modified_at: 2026-08-04
+description: "Lily Tan is a Purdue University PhD researcher studying informal digital learning, human-centered AI, and human-computer interaction. Explore her research, publications, teaching, design, and service."
+last_modified_at: 2026-09-02
 ---
 
 <header class="lt-home-intro lt-fade-in">
   <h1>Lily Tan</h1>
-  <p><strong>PhD researcher in Learning Design and Technology at Purdue University</strong>, studying AI-mediated learning, human-centered educational technology, and instructional design.</p>
+  <p><strong>PhD researcher in Learning Design and Technology at Purdue University</strong>, studying informal digital learning, human-centered AI, and human-computer interaction.</p>
   <p class="lt-home-intro__links"><a href="/publications/">Research &amp; Publications</a><span aria-hidden="true">·</span><a href="https://education.purdue.edu/about/directory/lily-tan/">Purdue Profile</a><span aria-hidden="true">·</span><a href="https://scholar.google.com/citations?user=_BC9GucAAAAJ&amp;hl=en">Google Scholar</a></p>
 </header>
 <style>
@@ -368,8 +368,8 @@ last_modified_at: 2026-08-04
           <td class="jny-cat" style="color:#14b8a6"><span class="jny-cat-dot" style="background:#14b8a6"></span>Experience</td>
           <td></td><td></td>
           <td><span class="jny-tipwrap"><span class="jny-chip c-work">U. of Silesia<small>Lecturer · 200+</small></span><span class="jny-tip"><strong>Lecturer</strong>, Institute of Linguistics<br>Spoken Chinese &amp; Academic Writing<br>200+ international students · 2023–2024</span></span></td>
-          <td><span class="jny-tipwrap"><a href="/service/" class="jny-chip c-work">RA + PALDT + GESC<small>Purdue University</small></a><span class="jny-tip"><strong>Research Assistant</strong>, Purdue Library &amp; SIS<br><strong>PALDT</strong> Marketing &amp; Design Officer<br><strong>GESC</strong> Committee Member</span></span></td>
-          <td><span class="jny-tipwrap"><span class="jny-chip c-work">Guest Lecturer<small>EDCI 612</small></span><span class="jny-tip"><strong>Guest Lecturer</strong>, EDCI 612<br>AI and Multilingual Learners<br>Co-presented with Dr. Lowell &amp; Belle Li</span></span> <span class="jny-tipwrap"><span class="jny-chip c-work">MMARI<small>Meta-Analysis Institute</small></span><span class="jny-tip"><strong>Modern Meta-Analysis Research Institute</strong><br>NSF-funded training in meta-analysis (R/RStudio) &amp; Open Science<br>Chicago, IL · Jul 2026</span></span></td>
+          <td><span class="jny-tipwrap"><a href="/service/" class="jny-chip c-work">RA + PALDT + GESC<small>Purdue University</small></a><span class="jny-tip"><strong>Research Assistant</strong>, Purdue Library &amp; SIS · Sep 2025–May 2026<br><strong>PALDT</strong> Marketing &amp; Design Officer<br><strong>GESC</strong> Committee Member</span></span></td>
+          <td><span class="jny-tipwrap"><span class="jny-chip c-work">Guest Lecturer<small>EDCI 612</small></span><span class="jny-tip"><strong>Guest Lecturer</strong>, EDCI 612<br>AI and Multilingual Learners<br>Co-presented with Dr. Lowell &amp; Belle Li</span></span> <span class="jny-tipwrap"><span class="jny-chip c-work">MMARI<small>Meta-Analysis Institute</small></span><span class="jny-tip"><strong>Modern Meta-Analysis Research Institute</strong><br>NSF-funded training in meta-analysis (R/RStudio) &amp; Open Science<br>Chicago, IL · Jul 2026</span></span> <span class="jny-tipwrap"><a href="/teaching/" class="jny-chip c-work">Honors College GTA<small>HONR 19901</small></a><span class="jny-tip"><strong>Graduate Teaching Assistant</strong>, John Martinson Honors College<br>HONR 19901 Honors First Year Experience I<br>Purdue University · Aug 2026–present</span></span></td>
         </tr>
         <tr data-cat="talk">
           <td class="jny-cat" style="color:#f59e0b"><span class="jny-cat-dot" style="background:#f59e0b"></span>Talks</td>

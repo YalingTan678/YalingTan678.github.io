@@ -475,7 +475,7 @@ I believe great design serves learning. Whether it's a course interface, a confe
       <span class="design-tag design-tag--web">Coding</span>
     </div>
     <div class="design-card__desc" style="margin-top:0.4rem;font-size:0.8rem;line-height:1.55;">
-      As a Research Assistant at Purdue Libraries &amp; School of Information Studies, I design and produce short instructional videos on essential research skills: Zotero, research guides, systematic writing, and data management.
+      As a Research Assistant at Purdue Libraries &amp; School of Information Studies (2025&ndash;2026), I designed and produced short instructional videos on essential research skills: Zotero, research guides, systematic writing, and data management.
     </div>
     <span class="design-card__link" style="margin-top:0.6rem;" onclick="window.open('/files/zotero-tutorial.mp4','_blank')">Watch Zotero tutorial &rarr;</span>
   </div>
