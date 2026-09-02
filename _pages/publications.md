@@ -156,7 +156,6 @@ author_profile: true
     <button class="rdr-fb rdr-fb--on" data-filter="all">All</button>
     <button class="rdr-fb" data-filter="publication">Publications</button>
     <button class="rdr-fb" data-filter="talk">Talks</button>
-    <button class="rdr-fb" data-filter="progress">In Progress</button>
   </div>
 
   <!-- ========== TAGLINE ========== -->
@@ -242,9 +241,9 @@ author_profile: true
       {id:'clil',l:'CLIL \u00b7 Ed. Adv. \u201923',s:'lang',a:268,r:235,t:'publication',v:'Education Advances',y:2023,st:'Published',lk:'/publication/2023-clil-translation',d:'MTI talent cultivation from the perspective of CLIL.'},
       {id:'pete',l:'PeteChat Design Case \u00b7 Springer',s:'hai',a:20,r:160,t:'publication',v:'Springer (in press)',y:2026,st:'Upcoming',lk:'/publication/answer-bot-to-tutor',d:'From answer bot to course tutor: a guardrailed AI assistant design case.'},
       {id:'claw',l:'Clawdbot Unboxed \u00b7 Talk \u201926',s:'hai',a:48,r:205,t:'talk',v:'AI Lunch & Learn, Purdue',y:2026,st:'Presented',lk:'/publication/2026-clawdbot-unboxed',d:'Invited talk: what Clawdbot does, why it\u2019s hot, and where it breaks.'},
-      {id:'aera',l:'Meta-analysis \u00b7 AERA \u201926',s:'evid',a:160,r:150,t:'talk',v:'AERA Convention',y:2026,st:'Upcoming',lk:null,d:'Meta-analysis on technology and the achievement of students from low-income families.'},
-      {id:'auth',l:'Authorship & AI',s:'evid',a:130,r:205,t:'progress',v:'Under review',y:2026,st:'In Review',lk:null,d:'Faculty perspectives on originality and AI-mediated composition.'},
-      {id:'tpxj',l:'TPACK & Culture',s:'evid',a:175,r:225,t:'progress',v:'Under review',y:2026,st:'In Review',lk:null,d:'Cultural context and technology integration knowledge among trainee teachers.'}
+      {id:'aect26',l:'IDLE Pragmatics (ENA) \u00b7 AECT \u201926',s:'lang',a:283,r:225,t:'talk',v:'AECT Convention, Chicago',y:2026,st:'Upcoming',lk:null,d:'Scaffolding extramural GAI-mediated IDLE for pragmatic competence: an epistemic network analysis.'},
+      {id:'pete26',l:'PeteChat \u00b7 AECT \u201926',s:'hai',a:8,r:215,t:'talk',v:'AECT Convention, Chicago',y:2026,st:'Upcoming',lk:null,d:'A design case of PeteChat: AI tutors that teach students how to think, not what to answer.'},
+      {id:'aect25',l:'Artificial Authenticity \u00b7 AECT \u201925',s:'evid',a:150,r:185,t:'talk',v:'AECT Convention, Las Vegas',y:2025,st:'Presented',lk:'/publication/2025-aect-authenticity',d:'Higher education instructors\u2019 perspectives on academic integrity in the age of generative AI.'}
     ];
     /* helpers */
     function pol(a,r){return{x:CX+r*Math.cos(a*RAD),y:CY+r*Math.sin(a*RAD)};}
@@ -800,33 +799,6 @@ author_profile: true
 </a>
 
 </div></div>
-
-<h2 id="under-review">Under Review</h2>
-
-
-<div class="pub-item">
-  <div class="pub-item__icon">&#128202;</div>
-  <div class="pub-item__bd">
-    <p class="pub-item__t">A Meta-analysis on the Achievement of Technology on Students from Low-income Families <span class="pub-badge pub-badge--ur">Under Review</span></p>
-    <p class="pub-item__m"><strong>*Tan, L.</strong>, Wang, C., Li, B., Lowell, V., &amp; Fei, X.</p>
-  </div>
-</div>
-
-<div class="pub-item">
-  <img class="pub-item__th" src="/images/pubs/tpack-model.png" alt="TPACK framework">
-  <div class="pub-item__bd">
-    <p class="pub-item__t">How Ethnic and Cultural Context Shapes Technology Integration Knowledge Among Trainee Teachers in Western China <span class="pub-badge pub-badge--ur">Under Review</span></p>
-    <p class="pub-item__m">Liu, H. &amp; <strong>*Tan, L.</strong></p>
-  </div>
-</div>
-
-<div class="pub-item">
-  <img class="pub-item__th" src="/images/pubs/authorship-ai-loop.png" alt="AI authenticity loop">
-  <div class="pub-item__bd">
-    <p class="pub-item__t">Whose Words Are These? University Faculty Perspectives on Originality and AI-Mediated Composition <span class="pub-badge pub-badge--ur">Under Review</span></p>
-    <p class="pub-item__m">Li, B. &amp; <strong>*Tan, L.</strong></p>
-  </div>
-</div>
 
 <h2>Conference Presentations &amp; Invited Talks</h2>
 
