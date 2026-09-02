@@ -6,22 +6,6 @@ description: "Lily Tan is a Purdue University PhD researcher studying informal d
 last_modified_at: 2026-09-02
 ---
 
-<header class="lt-home-intro lt-fade-in">
-  <h1>Lily Tan</h1>
-  <p><strong>PhD researcher in Learning Design and Technology at Purdue University</strong>, studying informal digital learning, human-centered AI, and human-computer interaction.</p>
-  <p class="lt-home-intro__links"><a href="/publications/">Research &amp; Publications</a><span aria-hidden="true">·</span><a href="https://education.purdue.edu/about/directory/lily-tan/">Purdue Profile</a><span aria-hidden="true">·</span><a href="https://scholar.google.com/citations?user=_BC9GucAAAAJ&amp;hl=en">Google Scholar</a></p>
-</header>
-<style>
-  .lt-home-intro { margin: 0 0 1.8rem; padding: 1.35rem 1.5rem; border: 1px solid #e2e8f0; border-radius: 16px; background: linear-gradient(135deg, #fff 0%, #f8f7ff 55%, #fff4f8 100%); }
-  .lt-home-intro h1 { margin: 0 0 .35rem; color: #1e1b4b; font-size: 1.8rem; line-height: 1.2; }
-  .lt-home-intro p { margin: 0; color: #4a5568; font-size: .92rem; line-height: 1.7; }
-  .lt-home-intro__links { display: flex; flex-wrap: wrap; gap: .3rem .65rem; margin-top: .55rem !important; font-size: .78rem !important; }
-  .lt-home-intro__links a { font-weight: 600; }
-  [data-theme="dark"] .lt-home-intro { background: linear-gradient(135deg, #1e293b 0%, #1e1b4b 100%); border-color: #334155; }
-  [data-theme="dark"] .lt-home-intro h1 { color: #f8fafc; }
-  [data-theme="dark"] .lt-home-intro p { color: #cbd5e1; }
-</style>
-
 <!-- ========== JOURNEY (Swimlane + Compact) ========== -->
 <section class="lt-section lt-fade-in">
   <h2 class="lt-section__title">Journey</h2>
