@@ -43,6 +43,9 @@
       {% endif %}
 
       <!-- Academic websites -->
+      {% if author.purdue_profile %}
+        <li><a href="{{ author.purdue_profile }}"><i class="fas fa-fw fa-university icon-pad-right" aria-hidden="true"></i>Purdue Profile</a></li>
+      {% endif %}
       {% if author.googlescholar %}
         <li><a href="{{ author.googlescholar }}"><i class="ai ai-google-scholar ai-fw icon-pad-right"></i>Google Scholar</a></li>
       {% endif %}
