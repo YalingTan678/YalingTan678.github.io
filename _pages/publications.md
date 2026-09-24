@@ -751,7 +751,7 @@ author_profile: true
 <div class="pub-yr"><h3>2026</h3><div>
 
 <a class="pub-item" href="/publication/2026-tutor-not-solver">
-  <img class="pub-item__th" src="/images/pubs/petechat-v1.png" alt="PeteChat interface">
+  <img class="pub-item__th" src="/images/pubs/petechat-arxiv-positioning.jpg" alt="PeteChat positioning figure">
   <div class="pub-item__bd">
     <p class="pub-item__t">Tutor, Not Solver: Designing a Guardrailed AI Assistant for Learning in Higher Education: A Design Case of PeteChat <span class="pub-badge pub-badge--web">arXiv preprint</span></p>
     <p class="pub-item__m">Li, B., <strong>*Tan, L.</strong>, Zakharov, W., Qiu, Q., &amp; Acton, C. &middot; <i>arXiv:2606.09845</i></p>

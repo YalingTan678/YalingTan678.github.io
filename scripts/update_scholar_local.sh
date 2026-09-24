@@ -34,8 +34,8 @@ if git diff --quiet _data/scholar.json; then
   exit 0
 fi
 
-git add _data/scholar.json
-git commit --quiet -m "chore: update Google Scholar stats (citations $1, h-index $3)"
+# ponytail: commit only this file so staged unrelated changes are never swept into the auto-commit (2026-09-18 incident)
+git commit --quiet --only _data/scholar.json -m "chore: update Google Scholar stats (citations $1, h-index $3)"
 git pull --rebase --quiet origin master
 git push --quiet origin master
 echo "$(date): pushed update (citations=$1, h-index=$3)" >> /tmp/scholar-update.log
