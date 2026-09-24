@@ -239,6 +239,7 @@ author_profile: true
       {id:'mjss',l:'Interpreting \u00b7 MJSS \u201925',s:'lang',a:305,r:210,t:'publication',v:'MJSS',y:2025,st:'Published',lk:'/publication/2025-pointing-to-context',d:'Human vs. machine interpreting from a relevance theory perspective.'},
       {id:'idle-gai',l:'IDLE & GAI \u00b7 Talk \u201925',s:'lang',a:232,r:215,t:'talk',v:'Purdue AI in P-12',y:2025,st:'Presented',lk:null,d:'Extramural GAI-mediated IDLE and pragmatic competence of Chinese undergraduates.'},
       {id:'clil',l:'CLIL \u00b7 Ed. Adv. \u201923',s:'lang',a:268,r:235,t:'publication',v:'Education Advances',y:2023,st:'Published',lk:'/publication/2023-clil-translation',d:'MTI talent cultivation from the perspective of CLIL.'},
+      {id:'pete-arxiv',l:'PeteChat DBR Case \u00b7 arXiv \u201926',s:'hai',a:38,r:135,t:'publication',v:'arXiv preprint',y:2026,st:'Published',lk:'/publication/2026-tutor-not-solver',d:'Tutor, not solver: eight design principles for a guardrailed, assessment-aware AI tutor.'},
       {id:'pete',l:'PeteChat Design Case \u00b7 Springer',s:'hai',a:20,r:160,t:'publication',v:'Springer (in press)',y:2026,st:'Upcoming',lk:'/publication/answer-bot-to-tutor',d:'From answer bot to course tutor: a guardrailed AI assistant design case.'},
       {id:'claw',l:'Clawdbot Unboxed \u00b7 Talk \u201926',s:'hai',a:48,r:205,t:'talk',v:'AI Lunch & Learn, Purdue',y:2026,st:'Presented',lk:'/publication/2026-clawdbot-unboxed',d:'Invited talk: what Clawdbot does, why it\u2019s hot, and where it breaks.'},
       {id:'aect26',l:'IDLE Pragmatics (ENA) \u00b7 AECT \u201926',s:'lang',a:283,r:225,t:'talk',v:'AECT Convention, Chicago',y:2026,st:'Upcoming',lk:null,d:'Scaffolding extramural GAI-mediated IDLE for pragmatic competence: an epistemic network analysis.'},
@@ -749,10 +750,18 @@ author_profile: true
 
 <div class="pub-yr"><h3>2026</h3><div>
 
+<a class="pub-item" href="/publication/2026-tutor-not-solver">
+  <img class="pub-item__th" src="/images/pubs/petechat-v1.png" alt="PeteChat interface">
+  <div class="pub-item__bd">
+    <p class="pub-item__t">Tutor, Not Solver: Designing a Guardrailed AI Assistant for Learning in Higher Education: A Design Case of PeteChat <span class="pub-badge pub-badge--web">arXiv preprint</span></p>
+    <p class="pub-item__m">Li, B., <strong>*Tan, L.</strong>, Zakharov, W., Qiu, Q., &amp; Acton, C. &middot; <i>arXiv:2606.09845</i></p>
+  </div>
+</a>
+
 <a class="pub-item" href="/publication/answer-bot-to-tutor">
   <img class="pub-item__th" src="/images/pubs/answer-bot-to-tutor.png" alt="PeteChat design story">
   <div class="pub-item__bd">
-    <p class="pub-item__t">From Answer Bot to Course Tutor: A Practical Design Case of a Guardrailed AI Assistant in Higher Education <span class="pub-badge pub-badge--upcoming">In Press</span> <span class="pub-badge pub-badge--web">arXiv</span></p>
+    <p class="pub-item__t">From Answer Bot to Course Tutor: A Practical Design Case of a Guardrailed AI Assistant in Higher Education <span class="pub-badge pub-badge--upcoming">In Press</span></p>
     <p class="pub-item__m">Li, B., <strong>*Tan, L.</strong>, Zakharov, W., Qiu, Q., &amp; Acton, C. &middot; <i>Invited book chapter, Springer</i></p>
   </div>
 </a>

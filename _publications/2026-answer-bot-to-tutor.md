@@ -12,7 +12,7 @@ badge: 'In Press'
 
 ![From Answer Bot to Course Tutor: PeteChat design story](/images/pubs/answer-bot-to-tutor.png)
 
-*Invited book chapter, Springer (in press). Preprint available on arXiv: [arXiv:2606.09845](https://arxiv.org/abs/2606.09845).*
+*Invited book chapter, Springer (in press).*
 
 ---
 
