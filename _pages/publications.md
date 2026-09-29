@@ -225,10 +225,10 @@ author_profile: true
   .rmap-fade{animation:rmapFade .5s ease .15s both}
   .rmap-intro .rmap-fade{animation-duration:1.1s}
   .rmap-intro .rmap-item{animation-duration:1.3s;animation-timing-function:cubic-bezier(.22,1,.36,1)}
-  .rmap-orbit{transform-origin:650px 225px;animation:rmapOrbit 2.8s cubic-bezier(.5,0,.2,1) both}
-  @keyframes rmapOrbit{from{transform:rotate(-720deg)}to{transform:rotate(0deg)}}
+  .rmap-orbit{transform-origin:650px 225px;animation:rmapOrbit 2s cubic-bezier(.5,0,.2,1) both}
+  @keyframes rmapOrbit{from{transform:rotate(-360deg)}to{transform:rotate(0deg)}}
   .rmap-intro .rmap-sat.rmap-fade{animation-duration:.8s}
-  .rmap-intro .rmap-sat text{animation:rmapIn .7s ease 2.5s both}
+  .rmap-intro .rmap-sat text{animation:rmapIn .7s ease 1.7s both}
   @keyframes rmapIn{from{opacity:0}}
   .rmap-wait *{animation-play-state:paused!important}
   html[data-theme="dark"] #rmap{background:#fff;border-radius:18px;padding:18px 14px}
@@ -398,7 +398,7 @@ author_profile: true
       layer.appendChild(el('circle',exp?{cx:EX.x,cy:EX.y,r:EX.R+60,fill:'url(#rmap-g-outer)',class:'rmap-bg'}:{cx:C0.x,cy:C0.y+75,r:400,fill:'url(#rmap-g-outer)',class:'rmap-bg'}));
       if(!exp){
         /* default view: three satellites tucked behind the current term.
-           on first load they circle the centre twice before settling */
+           on first load they circle the centre once before settling */
         var orbit=el('g',intro?{class:'rmap-orbit'}:{});layer.appendChild(orbit);
         ['up','down','side'].forEach(function(k){
           var g=G[k],ids=r[k],has=ids.length>0;
@@ -409,7 +409,7 @@ author_profile: true
           }
           orbit.appendChild(s);
         });
-        var late=intro?3:moved?0.4:0.12;
+        var late=intro?2.2:moved?0.4:0.12;
         ['up','down','side'].forEach(function(k){
           var g=G[k],m=r[k].length;
           fan(r[k],g.x,g.y,g.r,g.R,g.a,g.dir,m>1?Math.min(g.step,g.max/(m-1)):0,late);
