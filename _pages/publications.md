@@ -281,9 +281,19 @@ author_profile: true
     /* work-to-work links: the radar's web lines whose both ends still exist */
     var LINKS=[['genai','doubao'],['doubao','idle-gai'],['mjss','idle-gai'],['clil','mjss'],['genai','pete'],['pete','claw']];
 
-    /* one node table: root, strands, works. soft = second line is secondary text */
+    /* methods: titles, tags and descriptions copied from the Methodology cards */
+    var M=[
+      {id:'sr',lbl:['Systematic Reviews'],c:'#0D9488',chips:['PRISMA','Scoping','Meta-analyses'],d:'Able to conduct PRISMA-guided systematic literature reviews and multi-level meta-analyses end to end, from search strategy and screening to coding and effect-size synthesis.'},
+      {id:'mm',lbl:['Mixed Methods'],c:'#7C3AED',chips:['Surveys','Interviews','Interventions'],d:'Triangulating surveys, interviews, and multi-week classroom interventions in convergent designs for richer, validated findings.'},
+      {id:'st',lbl:['Statistics &','Learning Analytics'],c:'#0369A1',chips:['R','SPSS','Coh-Metrix','ONA'],d:'From descriptive and inferential statistics to learning analytics: regression and multilevel models in R and SPSS, Ordered Network Analysis (ONA), and text metrics with Coh-Metrix.'},
+      {id:'dbr',lbl:['Design-Based Research'],c:'#EA580C',chips:['Iterative cycles','In-vivo prototyping'],d:'Translating findings into real tools through iterative design-test-refine cycles in authentic classroom contexts.'}
+    ];
+ /* which works use which method. DRAFT: only the three that name their method in their own title or summary */
+    var USES={genai:['sr'],'pete-arxiv':['dbr'],aect26:['st']};
+    /* one node table: root, strands, methods, works. soft = second line is secondary text */
     var N={root:{id:'root',k:'root',c:'#1e1b4b',lines:['AI × Education','Shared foundation'],soft:1,kick:'Shared foundation',d:'My work moves across three interconnected strands.'}};
     S.forEach(function(s){N[s.id]={id:s.id,k:'strand',s:s.id,c:s.c,lines:s.lbl,kick:'Research strand',d:s.sub,chips:CHIPS[s.id]};});
+    M.forEach(function(m){N[m.id]={id:m.id,k:'method',c:m.c,lines:m.lbl,kick:'Method',d:m.d,chips:m.chips};});
     P.forEach(function(p){
       var a=p.l.split(' · ');
       N[p.id]={id:p.id,k:'work',s:p.s,c:N[p.s].c,lines:[a[0],a.slice(1).join(' · ')],soft:1,kick:p.t==='talk'?'Talk':'Publication',d:p.d,p:p};
@@ -298,7 +308,14 @@ author_profile: true
     /* up = part of, down = includes, side = related */
     function rel(id){
       var n=N[id],o={up:[],down:[],side:[]};
-      if(n.k==='root'){o.down=S.map(function(s){return s.id;});}
+      if(n.k==='root'){
+        o.down=S.map(function(s){return s.id;});
+        o.side=M.map(function(m){return m.id;});
+      }else if(n.k==='method'){
+        o.up=['root'];
+        o.down=P.filter(function(p){return (USES[p.id]||[]).indexOf(id)!==-1;}).sort(function(a,b){return b.y-a.y;}).map(function(p){return p.id;});
+        o.side=M.filter(function(m){return m.id!==id;}).map(function(m){return m.id;});
+      }
       else if(n.k==='strand'){
         o.up=['root'];
         o.down=P.filter(function(p){return p.s===id;}).sort(function(a,b){return b.y-a.y;}).map(function(p){return p.id;});
@@ -372,7 +389,9 @@ author_profile: true
         it.appendChild(el('line',{x1:cx+rEdge*cs,y1:cy+rEdge*sn,x2:x,y2:y,stroke:'#475569','stroke-width':'1.2','stroke-dasharray':'6 4',opacity:'.45'}));
         it.appendChild(el('circle',{cx:x,cy:y,r:24,fill:'transparent'}));
         var d=el('g',{class:'rmap-dot'});
-        d.appendChild(el('circle',{cx:x,cy:y,r:10.5,fill:'#fff',stroke:t.c,'stroke-width':'2.8'}));
+        d.appendChild(t.k==='method'
+          ?el('rect',{x:x-9.5,y:y-9.5,width:19,height:19,rx:3,transform:'rotate(45 '+x.toFixed(1)+' '+y.toFixed(1)+')',fill:'#fff',stroke:t.c,'stroke-width':'2.8'})
+          :el('circle',{cx:x,cy:y,r:10.5,fill:'#fff',stroke:t.c,'stroke-width':'2.8'}));
         d.appendChild(el('circle',{cx:x,cy:y,r:4,fill:t.c,class:'rmap-pulse'}));
         it.appendChild(d);
         var two=t.lines.length>1;
