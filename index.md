@@ -3,7 +3,7 @@ layout: home
 author_profile: false
 seo_title: "Lily Tan | AI & Learning Design Researcher at Purdue University"
 description: "Lily Tan is a Purdue University PhD researcher studying informal digital learning, human-centered AI, and human-computer interaction. Explore her research, publications, teaching, design, and service."
-last_modified_at: 2026-09-02
+last_modified_at: 2026-09-30
 ---
 
 <!-- ========== JOURNEY (Swimlane + Compact) ========== -->
@@ -367,7 +367,7 @@ last_modified_at: 2026-09-02
           <td></td><td></td>
           <td><span class="jny-tipwrap"><span class="jny-chip c-award">Fellowship + Erasmus+<small>$2K + $5K</small></span><span class="jny-tip"><strong>National Academic Fellowship</strong> $2K<br>Northeastern University<br><strong>Erasmus+ Fund</strong> $5K · U. of Silesia</span></span></td>
           <td><span class="jny-tipwrap"><span class="jny-chip c-award">LDT Travel<small>$250</small></span><span class="jny-tip"><strong>LDT Travel Support Program</strong><br>Curriculum &amp; Instruction<br>Purdue University</span></span> <span class="jny-tipwrap"><span class="jny-chip c-award">Data Stewardship<span class="jny-tag" style="background:#fce7f3;color:#db2777">Finalist</span><small>Purdue Libraries</small></span><span class="jny-tip"><strong>Data Stewardship Award — Finalist</strong><br>Purdue Libraries (NSF-funded)<br>For PeteChat · AY 2025</span></span></td>
-          <td><span class="jny-tipwrap"><span class="jny-chip c-award">Summer Research Grant<small>GRA + tuition</small></span><span class="jny-tip"><strong>Summer Research Grant</strong> (2026)<br>Dept. of Curriculum &amp; Instruction, Purdue<br>.50 FTE GRA + tuition remission · College of Education</span></span> <span class="jny-tipwrap"><span class="jny-chip c-award">WDEA Top 10 AIED<small>Best Practices</small></span><span class="jny-tip"><strong>Top 10 Best Practices in AIED</strong> (2026)<br>World Digital Education Alliance<br>For PeteChat: guardrailed AI assistant</span></span></td>
+          <td><span class="jny-tipwrap"><span class="jny-chip c-award">Summer Research Grant<small>GRA + tuition</small></span><span class="jny-tip"><strong>Summer Research Grant</strong> (2026)<br>Dept. of Curriculum &amp; Instruction, Purdue<br>.50 FTE GRA + tuition remission · College of Education</span></span> <span class="jny-tipwrap"><span class="jny-chip c-award">WDEA Top 10 AIED<small>Best Practices</small></span><span class="jny-tip"><strong>Top 10 Best Practices in AIED</strong> (2026)<br>World Digital Education Alliance<br>For PeteChat: guardrailed AI assistant</span></span> <span class="jny-tipwrap"><span class="jny-chip c-award">AECT Travel<small>$1,065</small></span><span class="jny-tip"><strong>AECT 2026 Conference Travel Awards</strong> $1,065<br>College of Education Dean&rsquo;s Office $500 &middot; Curriculum &amp; Instruction $365 &middot; LDT Program $200<br>Purdue University &middot; Sep 2026</span></span></td>
         </tr>
       </tbody>
     </table>
