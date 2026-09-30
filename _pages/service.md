@@ -276,6 +276,9 @@ My service philosophy is to strengthen academic communities through reliable and
 
 <!-- PGSG grant review committee -->
 <div class="svc-card">
+  <div class="svc-card__img">
+    <img src="/images/service/pgsg.png" alt="Purdue Graduate Student Government">
+  </div>
   <div class="svc-card__body">
     <div class="svc-card__header">
       <span class="svc-card__org">PGSG (Purdue Graduate Student Government) Grant Review &amp; Allocation Committee</span>
@@ -330,13 +333,13 @@ My service philosophy is to strengthen academic communities through reliable and
   </div>
   <div class="svc-card__body">
     <div class="svc-card__header">
-      <span class="svc-card__org">GESC (Purdue Graduate Student Education Council)</span>
-      <span class="svc-card__meta">Sep 2025 &ndash; Jul 2026</span>
+      <span class="svc-card__org">GSEC (Purdue Graduate Student Education Council)</span>
+      <span class="svc-card__meta">Sep 2025 &ndash; present</span>
     </div>
-    <div class="svc-card__role">Committee Member</div>
+    <div class="svc-card__role">AGSERS Committee Co-Chair (2026&ndash;27) &middot; Mentorship Committee Member (2025&ndash;26)</div>
     <ul class="svc-card__desc">
-      <li>Collaborate with committee members to design and coordinate mentorship initiatives.</li>
-      <li>Match mentors and mentees based on research interests, career goals, and program needs to foster meaningful connections.</li>
+      <li>Co-chair the committee that organizes the Annual Graduate Student Education Research Symposium (AGSERS), the College of Education&rsquo;s graduate research symposium held each spring with poster, three-minute thesis, and podium presentations.</li>
+      <li>Collaborated with committee members to design and coordinate mentorship initiatives; matched mentors and mentees based on research interests, career goals, and program needs.</li>
     </ul>
   </div>
 </div>
