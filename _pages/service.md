@@ -274,6 +274,20 @@ My service philosophy is to strengthen academic communities through reliable and
 
 <h2>Service &amp; Leadership</h2>
 
+<!-- PGSG grant review committee -->
+<div class="svc-card">
+  <div class="svc-card__body">
+    <div class="svc-card__header">
+      <span class="svc-card__org">PGSG (Purdue Graduate Student Government) Grant Review &amp; Allocation Committee</span>
+      <span class="svc-card__meta">AY 2026 &ndash; 27</span>
+    </div>
+    <div class="svc-card__role">Grant Reviewer</div>
+    <ul class="svc-card__desc">
+      <li>Review and score graduate students&rsquo; Professional Grant applications, which fund non-research professional development such as certificate programs, professional venues, and workshops, to inform the committee&rsquo;s allocation decisions.</li>
+    </ul>
+  </div>
+</div>
+
 <!-- Lunar New Year Celebration -->
 <div class="svc-card">
   <div class="svc-card__img">
