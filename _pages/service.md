@@ -326,7 +326,7 @@ My service philosophy is to strengthen academic communities through reliable and
   </div>
 </div>
 
-<!-- GESC -->
+<!-- GSEC -->
 <div class="svc-card">
   <div class="svc-card__img">
     <img src="/images/service/gesc.png" alt="Purdue GSEC">
