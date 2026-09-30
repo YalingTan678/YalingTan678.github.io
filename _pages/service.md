@@ -291,19 +291,20 @@ My service philosophy is to strengthen academic communities through reliable and
   </div>
 </div>
 
-<!-- Lunar New Year Celebration -->
+<!-- GSEC -->
 <div class="svc-card">
   <div class="svc-card__img">
-    <img src="/images/service/lunar-new-year.jpg" alt="Purdue Lunar New Year Celebration booth">
+    <img src="/images/service/gesc.png" alt="Purdue GSEC">
   </div>
   <div class="svc-card__body">
     <div class="svc-card__header">
-      <span class="svc-card__org">Purdue Lunar New Year Celebration, Asian American and Asian Resource and Cultural Center (AAARCC)</span>
-      <span class="svc-card__meta">Feb 2026</span>
+      <span class="svc-card__org">GSEC (Purdue Graduate Student Education Council)</span>
+      <span class="svc-card__meta">Sep 2025 &ndash; present</span>
     </div>
-    <div class="svc-card__role">Cultural Exhibit Contributor</div>
+    <div class="svc-card__role">AGSERS Committee Co-Chair (2026&ndash;27) &middot; Mentorship Committee Member (2025&ndash;26)</div>
     <ul class="svc-card__desc">
-      <li>Represented the College of Education; designed and hosted a cultural exhibit booth for 1,200+ attendees.</li>
+      <li>Co-chair the committee that organizes the Annual Graduate Student Education Research Symposium (AGSERS), the College of Education&rsquo;s graduate research symposium held each spring with poster, three-minute thesis, and podium presentations.</li>
+      <li>Collaborated with committee members to design and coordinate mentorship initiatives; matched mentors and mentees based on research interests, career goals, and program needs.</li>
     </ul>
   </div>
 </div>
@@ -326,20 +327,19 @@ My service philosophy is to strengthen academic communities through reliable and
   </div>
 </div>
 
-<!-- GSEC -->
+<!-- Lunar New Year Celebration -->
 <div class="svc-card">
   <div class="svc-card__img">
-    <img src="/images/service/gesc.png" alt="Purdue GSEC">
+    <img src="/images/service/lunar-new-year.jpg" alt="Purdue Lunar New Year Celebration booth">
   </div>
   <div class="svc-card__body">
     <div class="svc-card__header">
-      <span class="svc-card__org">GSEC (Purdue Graduate Student Education Council)</span>
-      <span class="svc-card__meta">Sep 2025 &ndash; present</span>
+      <span class="svc-card__org">Purdue Lunar New Year Celebration, Asian American and Asian Resource and Cultural Center (AAARCC)</span>
+      <span class="svc-card__meta">Feb 2026</span>
     </div>
-    <div class="svc-card__role">AGSERS Committee Co-Chair (2026&ndash;27) &middot; Mentorship Committee Member (2025&ndash;26)</div>
+    <div class="svc-card__role">Cultural Exhibit Contributor</div>
     <ul class="svc-card__desc">
-      <li>Co-chair the committee that organizes the Annual Graduate Student Education Research Symposium (AGSERS), the College of Education&rsquo;s graduate research symposium held each spring with poster, three-minute thesis, and podium presentations.</li>
-      <li>Collaborated with committee members to design and coordinate mentorship initiatives; matched mentors and mentees based on research interests, career goals, and program needs.</li>
+      <li>Represented the College of Education; designed and hosted a cultural exhibit booth for 1,200+ attendees.</li>
     </ul>
   </div>
 </div>
