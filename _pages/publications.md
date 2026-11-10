@@ -276,6 +276,7 @@ author_profile: true
       {id:'claw',l:'Clawdbot Unboxed · Talk ’26',s:'hai',t:'talk',v:'AI Lunch & Learn, Purdue',y:2026,st:'Presented',lk:'/publication/2026-clawdbot-unboxed',d:'Invited talk: what Clawdbot does, why it’s hot, and where it breaks.'},
       {id:'aect26',l:'IDLE Pragmatics (ENA) · AECT ’26',s:'lang',t:'talk',v:'AECT Convention, Chicago',y:2026,st:'Presented',lk:null,d:'Scaffolding extramural GAI-mediated IDLE for pragmatic competence: an epistemic network analysis.'},
       {id:'pete26',l:'PeteChat · AECT ’26',s:'hai',t:'talk',v:'AECT Convention, Chicago',y:2026,st:'Presented',lk:null,d:'A design case of PeteChat: AI tutors that teach students how to think, not what to answer.'},
+      {id:'aera',l:'Meta-analysis · AERA ’26',s:'evid',t:'talk',v:'AERA Annual Meeting',y:2026,st:'Presented',lk:'/publication/2026-aera-meta-analysis',d:'Meta-analysis on technology and the achievement of students from low-income families.'},
       {id:'aect25',l:'Artificial Authenticity · AECT ’25',s:'evid',t:'talk',v:'AECT Convention, Las Vegas',y:2025,st:'Presented',lk:'/publication/2025-aect-authenticity',d:'Higher education instructors’ perspectives on academic integrity in the age of generative AI.'}
     ];
     /* work-to-work links: the radar's web lines whose both ends still exist */
@@ -668,6 +669,14 @@ author_profile: true
   <img src="/images/aect26/3.jpg" alt="Purdue LDT group dinner at AECT 2026, Chicago">
   <img src="/images/aect26/4.jpg" alt="Purdue reception at AECT 2026, Chicago">
 </div>
+
+<a class="conf-item" href="/publication/2026-aera-meta-analysis">
+  <span class="conf-item__y">2026</span>
+  <div class="conf-item__bd">
+    <p class="conf-item__t"><span class="pub-badge pub-badge--conf">Conf</span> A Meta-analysis on the Achievement of Technology on Students from Low-income Families</p>
+    <p class="conf-item__m"><strong>*Tan, L.</strong>, Lowell, V., &amp; Li, B. &middot; AERA Annual Meeting, Los Angeles, CA &middot; Apr 2026</p>
+  </div>
+</a>
 
 <a class="conf-item conf-item--featured" href="/publication/2026-clawdbot-unboxed">
   <span class="conf-item__y">2026</span>
