@@ -672,13 +672,14 @@ author_profile: true
 </div>
 
 
-<div class="conf-item">
+<a class="conf-item conf-item--featured" href="/images/pubs/p12-2026-cert.jpg" target="_blank" rel="noopener">
   <span class="conf-item__y">2026</span>
+  <img class="pub-item__th" src="/images/pubs/p12-2026-cert.jpg" alt="Purdue AI in P-12 Education Conference 2026 certificate, Lily Tan">
   <div class="conf-item__bd">
     <p class="conf-item__t"><span class="pub-badge pub-badge--conf">Conf</span> From IDLE to AI-Mediated IDLE: What 214 Studies Can and Cannot Tell Us About Informal Digital Learning of English</p>
     <p class="conf-item__m"><strong>Tan, L.</strong>, Lowell, V., Li, B., &amp; Fei, X. &middot; Purdue AI in P-12 Education Conference, West Lafayette, IN &middot; Nov 2026</p>
   </div>
-</div>
+</a>
 
 <a class="conf-item" href="/publication/2026-aera-meta-analysis">
   <span class="conf-item__y">2026</span>
