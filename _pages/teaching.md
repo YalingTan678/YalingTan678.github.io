@@ -206,6 +206,10 @@ My teaching philosophy is grounded in the belief that language acquisition is mo
       <li>HONR 19901: Honors First Year Experience I (Forge Your Story). Support instruction and student engagement in the Honors College first-year seminar in a 20-hour-per-week appointment.</li>
       <li>Lead the Assessment and Course Improvement workstream, collecting and analyzing student feedback and learning data to inform revisions to course design and delivery.</li>
     </ul>
+    <figure style="margin:.7rem 0 .5rem">
+      <img src="/images/teaching/honors-gla-allfiredup.jpg" alt="Honors College GLA team gathering at All Fired Up" style="width:150px;aspect-ratio:4/3;object-fit:cover;border-radius:8px;border:1px solid #eee9f3;display:block;transition:transform .3s,box-shadow .3s;transform-origin:left center" onmouseover="this.style.transform='scale(2.2)';this.style.boxShadow='0 10px 30px rgba(30,27,75,.25)';this.style.position='relative';this.style.zIndex=5" onmouseout="this.style.transform='';this.style.boxShadow='';this.style.zIndex=''">
+      <figcaption style="font-size:.75rem;color:#718096;margin-top:4px">Honors College GLA team gathering at All Fired Up, Fall 2026</figcaption>
+    </figure>
     <span class="teach-card__link">Visit Honors College &rarr;</span>
   </div>
 </a>
