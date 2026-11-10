@@ -663,7 +663,8 @@ author_profile: true
 </div>
 
 <!-- ponytail: reuses .mmari-strip styles defined in the Research Training section -->
-<div class="mmari-strip" style="margin:-.2rem 0 1.4rem">
+<style>.aect26-strip img{flex:0 0 150px;height:auto;aspect-ratio:4/3}</style>
+<div class="mmari-strip aect26-strip" style="margin:-.2rem 0 1.4rem">
   <img src="/images/aect26/1.jpg" alt="Lily Tan presenting at AECT 2026, Palmer House, Chicago" style="object-position:30% 50%">
   <img src="/images/aect26/2.jpg" alt="Lily Tan presenting study findings at AECT 2026, Chicago" style="object-position:70% 50%">
   <img src="/images/aect26/3.jpg" alt="Purdue LDT group dinner at AECT 2026, Chicago">
