@@ -651,7 +651,6 @@ author_profile: true
   <div class="conf-item__bd">
     <p class="conf-item__t"><span class="pub-badge pub-badge--conf">Conf</span> Scaffolding Extramural GAI-mediated Informal Digital Learning of English for Pragmatic Competence: An Epistemic Network Analysis</p>
     <p class="conf-item__m"><strong>*Tan, L.</strong>, Lowell, V., Li, B., &amp; Fei, X. &middot; AECT International Convention, Chicago, IL &middot; Nov 2026</p>
-    <!-- ponytail: reuses .mmari-strip styles defined in the Research Training section -->
     <style>.mmari-strip.aect26-strip{flex-wrap:wrap}.mmari-strip.aect26-strip img{flex:0 0 150px;height:auto;aspect-ratio:4/3}</style>
     <div class="mmari-strip aect26-strip" style="margin:.6rem 0 0">
       <img src="/images/aect26/1.jpg" alt="Lily Tan presenting at AECT 2026, Palmer House, Chicago" style="object-position:30% 50%">
