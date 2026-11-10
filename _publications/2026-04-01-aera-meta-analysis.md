@@ -4,16 +4,15 @@ collection: publications
 permalink: /publication/2026-aera-meta-analysis
 excerpt: 'A meta-analysis examining the effects of technology-based interventions on academic achievement for students from low-income families.'
 date: 2026-04-01
-venue: 'AERA International Convention'
+venue: 'AERA Annual Meeting'
 location: 'Los Angeles, CA'
 publication_type: "conference"
 authors: '<strong>*Tan, L.</strong>, Lowell, V. & Li, B.'
-badge: 'Upcoming'
 ---
 
-## Presentation Preview
+## Presentation
 
-*This presentation is upcoming at the 2026 AERA International Convention in Los Angeles, CA (April 2026).*
+*Presented at the 2026 AERA Annual Meeting in Los Angeles, CA (April 2026).*
 
 ## Study Overview
 

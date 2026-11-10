@@ -120,7 +120,7 @@ last_modified_at: 2026-09-30
       {name:'Tokyo',img:'{{ base_path }}/images/journey/pc-tokyo.jpg',lat:35.7,lng:139.7,yr:'2024',title:'XXIInd CALL Conference',desc:'Presented human vs. machine interpreting. The talk that grew into the MJSS paper.'},
       {name:'West Lafayette',img:'{{ base_path }}/images/journey/pc-westlafayette.jpg',lat:40.43,lng:-86.9,yr:'2025\u2013now',title:'Ph.D. LDT \u00b7 Purdue University',desc:'Learning Design and Technology with Dr. Victoria Lowell. Home base for everything on this site.'},
       {name:'Las Vegas',img:'{{ base_path }}/images/journey/pc-lasvegas.jpg',lat:36.17,lng:-115.1,yr:'2025',title:'AECT International Convention',desc:'Artificial authenticity and academic integrity in the age of GenAI.'},
-      {name:'Chicago',img:'{{ base_path }}/images/journey/pc-chicago.jpg',lat:41.88,lng:-87.6,yr:'2026',title:'Modern Meta-Analysis Research Institute (MMARI)',desc:'NSF-funded meta-analysis training in R/RStudio and Open Science, July 2026. Returning in October for the AECT International Convention.'}
+      {name:'Chicago',img:'{{ base_path }}/images/journey/pc-chicago.jpg',lat:41.88,lng:-87.6,yr:'2026',title:'Modern Meta-Analysis Research Institute (MMARI)',desc:'NSF-funded meta-analysis training in R/RStudio and Open Science, July 2026. Returned in November to present at the AECT International Convention.'}
     ];
     var ARCS=[];
     for(var i=0;i<STOPS.length-1;i++){

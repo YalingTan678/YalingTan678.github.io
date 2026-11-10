@@ -274,8 +274,8 @@ author_profile: true
       {id:'pete-arxiv',l:'PeteChat DBR Case · arXiv ’26',s:'hai',t:'publication',v:'arXiv preprint',y:2026,st:'Published',lk:'/publication/2026-tutor-not-solver',d:'Tutor, not solver: eight design principles for a guardrailed, assessment-aware AI tutor.'},
       {id:'pete',l:'PeteChat Design Case · Springer',s:'hai',t:'publication',v:'Springer (in press)',y:2026,st:'Upcoming',lk:'/publication/answer-bot-to-tutor',d:'From answer bot to course tutor: a guardrailed AI assistant design case.'},
       {id:'claw',l:'Clawdbot Unboxed · Talk ’26',s:'hai',t:'talk',v:'AI Lunch & Learn, Purdue',y:2026,st:'Presented',lk:'/publication/2026-clawdbot-unboxed',d:'Invited talk: what Clawdbot does, why it’s hot, and where it breaks.'},
-      {id:'aect26',l:'IDLE Pragmatics (ENA) · AECT ’26',s:'lang',t:'talk',v:'AECT Convention, Chicago',y:2026,st:'Upcoming',lk:null,d:'Scaffolding extramural GAI-mediated IDLE for pragmatic competence: an epistemic network analysis.'},
-      {id:'pete26',l:'PeteChat · AECT ’26',s:'hai',t:'talk',v:'AECT Convention, Chicago',y:2026,st:'Upcoming',lk:null,d:'A design case of PeteChat: AI tutors that teach students how to think, not what to answer.'},
+      {id:'aect26',l:'IDLE Pragmatics (ENA) · AECT ’26',s:'lang',t:'talk',v:'AECT Convention, Chicago',y:2026,st:'Presented',lk:null,d:'Scaffolding extramural GAI-mediated IDLE for pragmatic competence: an epistemic network analysis.'},
+      {id:'pete26',l:'PeteChat · AECT ’26',s:'hai',t:'talk',v:'AECT Convention, Chicago',y:2026,st:'Presented',lk:null,d:'A design case of PeteChat: AI tutors that teach students how to think, not what to answer.'},
       {id:'aect25',l:'Artificial Authenticity · AECT ’25',s:'evid',t:'talk',v:'AECT Convention, Las Vegas',y:2025,st:'Presented',lk:'/publication/2025-aect-authenticity',d:'Higher education instructors’ perspectives on academic integrity in the age of generative AI.'}
     ];
     /* work-to-work links: the radar's web lines whose both ends still exist */
@@ -648,17 +648,25 @@ author_profile: true
 <div class="conf-item">
   <span class="conf-item__y">2026</span>
   <div class="conf-item__bd">
-    <p class="conf-item__t"><span class="pub-badge pub-badge--conf">Conf</span> Scaffolding Extramural GAI-mediated Informal Digital Learning of English for Pragmatic Competence: An Epistemic Network Analysis <span class="pub-badge pub-badge--upcoming">Upcoming</span></p>
-    <p class="conf-item__m"><strong>*Tan, L.</strong>, Lowell, V., Li, B., &amp; Fei, X. &middot; AECT International Convention, Chicago, IL &middot; Oct 2026</p>
+    <p class="conf-item__t"><span class="pub-badge pub-badge--conf">Conf</span> Scaffolding Extramural GAI-mediated Informal Digital Learning of English for Pragmatic Competence: An Epistemic Network Analysis</p>
+    <p class="conf-item__m"><strong>*Tan, L.</strong>, Lowell, V., Li, B., &amp; Fei, X. &middot; AECT International Convention, Chicago, IL &middot; Nov 2026</p>
   </div>
 </div>
 
 <div class="conf-item">
   <span class="conf-item__y">2026</span>
   <div class="conf-item__bd">
-    <p class="conf-item__t"><span class="pub-badge pub-badge--conf">Conf</span> A Design Case of PeteChat: Designing AI Tutors That Teach Students How to Think, Not What to Answer <span class="pub-badge pub-badge--upcoming">Upcoming</span></p>
-    <p class="conf-item__m">Li, B., <strong>Tan, L.</strong>, Zakharov, W., Qiu, Q., &amp; Acton, C. &middot; AECT International Convention, Chicago, IL &middot; Oct 2026</p>
+    <p class="conf-item__t"><span class="pub-badge pub-badge--conf">Conf</span> A Design Case of PeteChat: Designing AI Tutors That Teach Students How to Think, Not What to Answer</p>
+    <p class="conf-item__m">Li, B., <strong>Tan, L.</strong>, Zakharov, W., Qiu, Q., &amp; Acton, C. &middot; AECT International Convention, Chicago, IL &middot; Nov 2026</p>
   </div>
+</div>
+
+<!-- ponytail: reuses .mmari-strip styles defined in the Research Training section -->
+<div class="mmari-strip" style="margin:-.2rem 0 1.4rem">
+  <img src="/images/aect26/1.jpg" alt="Lily Tan presenting at AECT 2026, Palmer House, Chicago" style="object-position:30% 50%">
+  <img src="/images/aect26/2.jpg" alt="Lily Tan presenting study findings at AECT 2026, Chicago" style="object-position:70% 50%">
+  <img src="/images/aect26/3.jpg" alt="Purdue LDT group dinner at AECT 2026, Chicago">
+  <img src="/images/aect26/4.jpg" alt="Purdue reception at AECT 2026, Chicago">
 </div>
 
 <a class="conf-item conf-item--featured" href="/publication/2026-clawdbot-unboxed">
