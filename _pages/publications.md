@@ -276,6 +276,7 @@ author_profile: true
       {id:'claw',l:'Clawdbot Unboxed · Talk ’26',s:'hai',t:'talk',v:'AI Lunch & Learn, Purdue',y:2026,st:'Presented',lk:'/publication/2026-clawdbot-unboxed',d:'Invited talk: what Clawdbot does, why it’s hot, and where it breaks.'},
       {id:'aect26',l:'IDLE Pragmatics (ENA) · AECT ’26',s:'lang',t:'talk',v:'AECT Convention, Chicago',y:2026,st:'Presented',lk:null,d:'Scaffolding extramural GAI-mediated IDLE for pragmatic competence: an epistemic network analysis.'},
       {id:'pete26',l:'PeteChat · AECT ’26',s:'hai',t:'talk',v:'AECT Convention, Chicago',y:2026,st:'Presented',lk:null,d:'A design case of PeteChat: AI tutors that teach students how to think, not what to answer.'},
+      {id:'idle-p12',l:'IDLE Review · P-12 ’26',s:'lang',t:'talk',v:'Purdue AI in P-12',y:2026,st:'Presented',lk:null,d:'From IDLE to AI-mediated IDLE: what 214 studies can and cannot tell us about informal digital learning of English.'},
       {id:'aera',l:'Meta-analysis · AERA ’26',s:'evid',t:'talk',v:'AERA Annual Meeting',y:2026,st:'Presented',lk:'/publication/2026-aera-meta-analysis',d:'Meta-analysis on technology and the achievement of students from low-income families.'},
       {id:'aect25',l:'Artificial Authenticity · AECT ’25',s:'evid',t:'talk',v:'AECT Convention, Las Vegas',y:2025,st:'Presented',lk:'/publication/2025-aect-authenticity',d:'Higher education instructors’ perspectives on academic integrity in the age of generative AI.'}
     ];
@@ -670,6 +671,14 @@ author_profile: true
   </div>
 </div>
 
+
+<div class="conf-item">
+  <span class="conf-item__y">2026</span>
+  <div class="conf-item__bd">
+    <p class="conf-item__t"><span class="pub-badge pub-badge--conf">Conf</span> From IDLE to AI-Mediated IDLE: What 214 Studies Can and Cannot Tell Us About Informal Digital Learning of English</p>
+    <p class="conf-item__m"><strong>Tan, L.</strong>, Lowell, V., Li, B., &amp; Fei, X. &middot; Purdue AI in P-12 Education Conference, West Lafayette, IN &middot; Nov 2026</p>
+  </div>
+</div>
 
 <a class="conf-item" href="/publication/2026-aera-meta-analysis">
   <span class="conf-item__y">2026</span>
