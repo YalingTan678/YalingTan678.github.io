@@ -462,6 +462,27 @@ I believe great design serves learning. Whether it's a course interface, a confe
 
 <h2>Featured Projects</h2>
 
+<!-- KLI x Purdue UXD Experience Studio (Fall 2026) -->
+<div class="featured-project">
+  <div class="featured-project__video" onclick="openLightbox('/images/design/kli-exstudio.jpg')">
+    <img src="/images/design/kli-exstudio.jpg" alt="Key Lime Interactive team, Purdue UXD Experience Studio, Fall 2026" style="object-fit:cover;object-position:center 30%;">
+  </div>
+  <div class="featured-project__info">
+    <div class="design-card__title" style="font-size:0.95rem;">AI Experience Readiness &middot; Key Lime Interactive &times; Purdue UXD Experience Studio</div>
+    <div class="design-card__tags" style="margin-top:0.3rem;">
+      <span class="design-tag design-tag--web">UX Research</span>
+      <span class="design-tag" style="background:#ecfccb;color:#4d7c0f;">Responsible AI</span>
+    </div>
+    <div class="design-card__desc" style="margin-top:0.4rem;font-size:0.8rem;line-height:1.55;">
+      Fall 2026 industry-sponsored studio with Key Lime Interactive. Our six-person team is researching and designing an approachable assessment that helps organizations identify strengths, risks, and next steps when creating, testing, launching, and improving human-centered, responsible AI-enabled experiences.
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:0.4rem 1.2rem;margin-top:0.6rem;">
+    <span class="design-card__link" style="margin-top:0;" onclick="window.open('https://engineering.purdue.edu/ExStudio/teams-history/teams-fa26/','_blank')">Experience Studio Fall 2026 teams &rarr;</span>
+    <span class="design-card__link" style="margin-top:0;" onclick="window.open('https://www.linkedin.com/feed/update/urn:li:ugcPost:7526714501593972736/','_blank')">LinkedIn post &rarr;</span>
+    </div>
+  </div>
+</div>
+
 <!-- Purdue Libraries RA Video Series -->
 <div class="featured-project">
   <div class="featured-project__video" onclick="window.open('/files/zotero-tutorial.mp4','_blank')">
